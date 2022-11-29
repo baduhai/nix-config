@@ -28,10 +28,7 @@
         wget = "wget --hsts-file=\"$XDG_DATA_HOME/wget-hsts\"";
       };
       functions = {
-#         fish_greeting = ''
-#           set -x PF_INFO ascii title os kernel uptime pkgs memory palette
-#           eval $HOME/.scripts/pfetch
-#         '';
+        fish_greeting = "";
         tsh = "ssh -o RequestTTY=yes $argv tmux -u -CC new -A -s tmux-main";
       };
       shellInit = ''

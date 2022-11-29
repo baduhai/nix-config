@@ -30,7 +30,7 @@
         upgrade = "rm ~/.gtkrc-2.0; nix flake update --commit-lock-file /home/user/Projects/nix-config; sudo nixos-rebuild switch --upgrade --flake '/home/user/Projects/nix-config#'";
         upgrade-boot = "rm ~/.gtkrc-2.0; nix flake update --commit-lock-file /home/user/Projects/nix-config; sudo nixos-rebuild boot --upgrade --flake '/home/user/Projects/nix-config#'";
       };
-    }
+    };
     micro = {
       enable = true;
       settings = {
