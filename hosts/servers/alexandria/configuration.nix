@@ -2,11 +2,13 @@
 
 {
   imports = [
+    # Host-specific imports
     ./hardware-configuration.nix
     ./hosted-services.nix
     ./packages.nix
     ./users.nix
     <home-manager/nixos>
+
   ];
 
   swapDevices = [ { device = "/swapfile"; size = 8192; } ];
