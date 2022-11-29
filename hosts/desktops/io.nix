@@ -19,6 +19,7 @@
     ./common/packages.nix
     ./common/users.nix
     ./common/boot.nix
+    ./common/nix.nix
   ];
 
   networking.hostName = "io";
