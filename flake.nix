@@ -24,15 +24,15 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, nur, kmonad, nixpkgs-stable, home-manager-stable, ... }: {
+  outputs = inputs @ { nixpkgs, home-manager, nur, kmonad, nixpkgs-stable, home-manager-stable, ... }: {
     nixosConfigurations = {
       io = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
         modules = [
           ./hosts/desktops/io.nix
           kmonad.nixosModules.default
           { nixpkgs.overlays = [ nur.overlay ]; }
-#           ( {...}: { nix.registry.nixpkgs.flake = nixpkgs; } )
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
