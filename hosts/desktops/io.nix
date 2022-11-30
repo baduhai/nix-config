@@ -45,6 +45,10 @@
   ];
 
   services = {
+    xserver.displayManager.autoLogin = {
+      enable = true;
+      user = "user";
+    };
     kmonad = {
       enable = true;
       keyboards.internal = {
