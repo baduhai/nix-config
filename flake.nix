@@ -22,9 +22,14 @@
       url = "github:nix-community/home-manager/release-22.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs @ { nixpkgs, home-manager, nur, kmonad, nixpkgs-stable, home-manager-stable, ... }: {
+  outputs = inputs @ { nixpkgs, home-manager, nur, kmonad, nixpkgs-stable, home-manager-stable, deploy-rs, ... }: {
     nixosConfigurations = {
       io = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -32,8 +37,10 @@
         modules = [
           ./hosts/desktops/io.nix
           kmonad.nixosModules.default
-          { nixpkgs.overlays = [ nur.overlay ]; }
           home-manager.nixosModules.home-manager
+          {
+            nixpkgs.overlays = [ nur.overlay ];
+          }
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -45,10 +52,30 @@
       alexandria = nixpkgs-stable.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/servers/alexandria/configuration.nix
-          ( {...}: { nix.registry.nixpkgs.flake = nixpkgs-stable; } )
+          ./hosts/servers/alexandria.nix
           home-manager-stable.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.user = import ./users/servers/user.nix;
+          }
         ];
+      };
+    };
+
+    deploy = {
+      autoRollback = false;
+      magicRollback = false;
+      user = "root";
+      sshUser = "root";
+      nodes = {
+        "alexandria" = {
+          hostname = "alexandria";
+          profiles.system = {
+            remoteBuild = true;
+            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.alexandria;
+          };
+        };
       };
     };
   };

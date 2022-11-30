@@ -2,6 +2,7 @@
 
 {
   nix = {
+    settings.auto-optimise-store = true;
     extraOptions = "experimental-features = nix-command flakes";
     gc = { # Garbage collector
       automatic = true;

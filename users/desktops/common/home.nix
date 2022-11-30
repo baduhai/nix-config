@@ -30,9 +30,9 @@
         url = "https://raw.githubusercontent.com/baduhai/dotfiles/master/kitty/scroll_mark.py";
         sha256 = "Abif6LIOCiXyDdQMZ4pQnLK++It0VYIM+WE7Oydwkfo=";
       };
+      ".config/electron-flags.conf".text = "--ozone-platform-hint=auto";
       # Autostart programs
       ".config/autostart/org.kde.yakuake.desktop".source = config.lib.file.mkOutOfStoreSymlink "/var/run/current-system/sw/share/applications/org.kde.yakuake.desktop";
-      ".config/autostart/megasync.desktop".source = config.lib.file.mkOutOfStoreSymlink "/var/run/current-system/sw/share/applications/megasync.desktop";
       ".config/autostart/koi.desktop".source = config.lib.file.mkOutOfStoreSymlink "/var/run/current-system/sw/share/applications/koi.desktop";
       # Fix flatpak fonts, themes, icons and cursor
       ".icons/breeze_cursors".source = config.lib.file.mkOutOfStoreSymlink "/run/current-system/sw/share/icons/breeze_cursors";
