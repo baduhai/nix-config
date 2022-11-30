@@ -29,7 +29,7 @@
     };
   };
 
-  outputs = inputs @ { nixpkgs, home-manager, nur, kmonad, nixpkgs-stable, home-manager-stable, deploy-rs, ... }: {
+  outputs = inputs @ { self, nixpkgs, home-manager, nur, kmonad, nixpkgs-stable, home-manager-stable, deploy-rs, ... }: {
     nixosConfigurations = {
       io = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
