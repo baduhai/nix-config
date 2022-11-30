@@ -3,8 +3,8 @@
 {
   imports = [
     # Host-specific imports
-    .alexandria/hardware-configuration.nix
-    .alexandria/hosted-services.nix
+    ./alexandria/hardware-configuration.nix
+    ./alexandria/hosted-services.nix
     # Host-common imports
     ../common/networking.nix
     ../common/packages.nix
