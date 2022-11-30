@@ -18,8 +18,6 @@
   users.users.user.extraGroups = [ "docker" ];
 
   swapDevices = [ { device = "/swapfile"; size = 8192; } ];
-  
-  boot.kernelPackages = pkgs.linuxPackages_hardened;
 
   networking = {
     hostName = "alexandria";
