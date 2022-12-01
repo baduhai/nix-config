@@ -8,16 +8,16 @@
         enable = true;
         historyFile = "~/.cache/bash_history";
     };
-    #micro = {
-    #  enable = true;
-    #  settings = {
-    #    clipboard = "terminal";
-    #    mkparents = true;
-    #    scrollbar = true;
-    #    tabstospaces = true;
-    #    tabsize = 2;
-    #  };
-    #};
+    micro = {
+      enable = true;
+      settings = {
+        clipboard = "terminal";
+        mkparents = true;
+        scrollbar = true;
+        tabstospaces = true;
+        tabsize = 2;
+      };
+    };
     fish = {
       enable = true;
       interactiveShellInit = "any-nix-shell fish --info-right | source";

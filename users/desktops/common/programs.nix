@@ -31,16 +31,6 @@
         upgrade-boot = "rm ~/.gtkrc-2.0; nix flake update --commit-lock-file /home/user/Projects/nix-config; sudo nixos-rebuild boot --upgrade --flake '/home/user/Projects/nix-config#'";
       };
     };
-    micro = {
-      enable = true;
-      settings = {
-        clipboard = "terminal";
-        mkparents = true;
-        scrollbar = true;
-        tabstospaces = true;
-        tabsize = 2;
-      };
-    };
     btop = {
       enable = true;
       settings = {
