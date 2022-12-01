@@ -59,6 +59,7 @@
   ];
 
   programs = {
+    adb.enable = true;
     steam.enable = true;
     dconf.enable = true;
     kdeconnect.enable = true;

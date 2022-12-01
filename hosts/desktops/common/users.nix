@@ -8,9 +8,10 @@
   users.users.user = {
     description = "William";
     extraGroups = [
-      "libvirtd"
       "uaccess" # Needed for HID dev
       "dialout" # Needed for arduino dev
+      "libvirtd"
+      "adbusers"
     ];
   };
 }
