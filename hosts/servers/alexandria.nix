@@ -32,4 +32,19 @@
       ];
     };
   };
+
+  services.minecraft-server = {
+    enable = true;
+    eula = true;
+    declarative = true;
+    openFirewall = true;
+    package = pkgs.papermc;
+    serverProperties = {
+      motd = "Alexandria";
+      difficulty = "hard";
+      gamemode = "survival";
+      level-seed = "-7649949940957896961";
+    };
+    dataDir = "/data/minecraft";
+  };
 }
