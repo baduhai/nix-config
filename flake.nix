@@ -51,6 +51,7 @@
 
       alexandria = nixpkgs-stable.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
         modules = [
           ./hosts/servers/alexandria.nix
           home-manager-stable.nixosModules.home-manager
