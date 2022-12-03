@@ -7,7 +7,7 @@
     nur.url = "github:nix-community/nur";
 
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -19,7 +19,7 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.11";
 
     home-manager-stable = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
