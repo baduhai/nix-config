@@ -23,10 +23,7 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    deploy-rs = {
-      url = "github:serokell/deploy-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    deploy-rs.url = "github:serokell/deploy-rs";
   };
 
   outputs = inputs @ { self, nixpkgs, home-manager, nur, kmonad, nixpkgs-stable, home-manager-stable, deploy-rs, ... }: {

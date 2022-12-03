@@ -13,6 +13,9 @@
     ../common/users.nix
     ../common/boot.nix
     ../common/nix.nix
+    # Server-common imports
+    ./common/boot.nix
+    ./common/nix.nix
   ];
 
   users.users.user.extraGroups = [ "docker" ];
