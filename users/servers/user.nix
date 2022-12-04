@@ -3,7 +3,6 @@
 {
   imports = [
     # Host-common imports
-    ../common/programs.nix
-    ../common/home.nix
+    ../common
   ];
 }
