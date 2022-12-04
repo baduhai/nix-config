@@ -2,20 +2,12 @@
 
 {
   imports = [
-    # Host-specific imports
-    ./alexandria/hardware-configuration.nix
-    ./alexandria/hosted-services.nix
     # Host-common imports
-    ../common/networking.nix
-    ../common/packages.nix
-    ../common/services.nix
-    ../common/locale.nix
-    ../common/users.nix
-    ../common/boot.nix
-    ../common/nix.nix
+    ../common
     # Server-common imports
-    ./common/boot.nix
-    ./common/nix.nix
+    ./common
+    # Host-specific imports
+    ./alexandria
   ];
 
   users.users.user.extraGroups = [ "docker" ];

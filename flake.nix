@@ -70,7 +70,7 @@
       user = "root";
       sshUser = "root";
       nodes = {
-        "alexandria" = {
+        alexandria = {
           hostname = "alexandria";
           profiles.system = {
             remoteBuild = true;

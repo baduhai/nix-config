@@ -2,24 +2,12 @@
 
 {
   imports = [ 
-    # Host-specific imports
-    ./io/hardware-configuration.nix
     # Host-common imports
-    ../common/networking.nix
-    ../common/services.nix
-    ../common/packages.nix
-    ../common/locale.nix
-    ../common/users.nix
-    ../common/boot.nix
-    ../common/nix.nix
+    ../common
     # Desktop-common imports
-    ./common/virtualisation.nix
-    ./common/hardware.nix
-    ./common/services.nix
-    ./common/packages.nix
-    ./common/users.nix
-    ./common/boot.nix
-    ./common/nix.nix
+    ./common
+    # Host-specific imports
+    ./io
   ];
 
   networking.hostName = "io";
