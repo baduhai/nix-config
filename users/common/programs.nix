@@ -2,11 +2,14 @@
 
 {
   programs = {
-    home-manager.enable = true;
     password-store.enable = true;
     bash = {
         enable = true;
         historyFile = "~/.cache/bash_history";
+    };
+    nix-index = {
+      enable = true;
+      enableFishIntegration = true;
     };
     micro = {
       enable = true;
