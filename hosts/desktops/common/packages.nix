@@ -27,7 +27,6 @@
     mangohud
     megasync # Soon to be dropped once nas is fully operational
     mpv
-    neofetch
     obs-studio
     obs-studio-plugins.obs-vkcapture
     prismlauncher-qt5
