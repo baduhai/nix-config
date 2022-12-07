@@ -4,6 +4,11 @@
   environment.systemPackages = with pkgs; [
     arduino
     ark
+    aspell
+    aspellDicts.de
+    aspellDicts.en
+    aspellDicts.en-computers
+    aspellDicts.pt-BR
     bat
     bitwarden
     chatterino2
@@ -17,9 +22,6 @@
     gocryptfs
     helvum
     heroic
-    hunspell
-    hunspellDicts.de-de
-    hunspellDicts.en-gb-ise
     inkscape
     # itch # Currently using unsafe electron version
     kate
