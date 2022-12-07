@@ -20,7 +20,6 @@
     hunspell
     hunspellDicts.de-de
     hunspellDicts.en-gb-ise
-    hunspellDicts.
     inkscape
     # itch # Currently using unsafe electron version
     kate
