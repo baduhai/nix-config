@@ -8,7 +8,7 @@
     aspellDicts.de
     aspellDicts.en
     aspellDicts.en-computers
-    aspellDicts.pt-BR
+    aspellDicts.pt_BR
     bat
     bitwarden
     chatterino2
