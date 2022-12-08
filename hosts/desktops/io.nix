@@ -12,7 +12,7 @@
 
   networking.hostName = "io";
 
-  nix.nixPath = [ "nixos-config=/home/user/Projects/nix-config/hosts/desktops/io.nix" ];
+  nix.nixPath = [ "nixos-config=/home/user/Projects/nix-config/personal/hosts/desktops/io.nix" ];
 
   zramSwap = {
     enable = true;
