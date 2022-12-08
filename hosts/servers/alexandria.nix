@@ -35,7 +35,6 @@
       motd = "Bem-vindo a Alexandria";
       difficulty = "hard";
       gamemode = "survival";
-      level-seed = "-7649949940957896961";
     };
     dataDir = "/data/minecraft";
   };
