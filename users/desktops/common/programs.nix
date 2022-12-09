@@ -13,7 +13,7 @@
   programs = {
     password-store.package = pkgs.pass-wayland;
     mangohud = {
-      enable            = true;
+      enable = true;
       enableSessionWide = true;
     };
     git = {

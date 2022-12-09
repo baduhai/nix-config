@@ -30,13 +30,12 @@
     libreoffice-qt
     logseq
     mangohud
-    megasync # Soon to be dropped once nas is fully operational
     mpv
     obs-studio
     obs-studio-plugins.obs-vkcapture
     prismlauncher-qt5
     protonup
-    prusa-slicer
+#     prusa-slicer
     qbittorrent
     quickemu
     retroarchFull
