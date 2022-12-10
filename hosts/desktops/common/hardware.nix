@@ -2,10 +2,11 @@
 
 {
   hardware = {
+    xpadneo.enable = true;
     bluetooth.enable = true;
-    opengl.driSupport32Bit = true; # For OpenGL games
-    steam-hardware.enable = true; # Allow steam client to manage controllers
     pulseaudio.enable = false; # Use pipewire instead
+    steam-hardware.enable = true; # Allow steam client to manage controllers
+    opengl.driSupport32Bit = true; # For OpenGL games
   };
 
   sound.enable = true;
