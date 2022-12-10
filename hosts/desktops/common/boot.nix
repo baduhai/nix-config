@@ -6,6 +6,7 @@
     initrd.systemd.enable = true;
     loader.efi.efiSysMountPoint = "/boot/efi";
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    extraModprobeConfig = ''options bluetooth disable_ertm=1'';
     kernelModules = [
       "i2c-dev" # Required for arduino dev
       "i2c-piix4" # Required for arduino dev
