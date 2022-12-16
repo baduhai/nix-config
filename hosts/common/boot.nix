@@ -8,10 +8,6 @@
       systemd-boot = {
         enable = true;
         editor = false;
-        netbootxyz = {
-          enable = true;
-          entryFilename = "z_netbootxyz.conf";
-        };
       };
     };
   };
