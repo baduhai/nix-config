@@ -20,11 +20,4 @@
     fish.enable = true;
     command-not-found.enable = false;
   };
-
-  console = {
-    font = "Hack";
-    packages = with pkgs; [
-      (nerdfonts.override{fonts = ["Hack"];})
-    ];
-  };
 }
