@@ -22,7 +22,7 @@
   };
 
   console = {
-    font = "Hack Nerd Font";
+    font = "Hack";
     packages = with pkgs; [
       (nerdfonts.override{fonts = ["Hack"];})
     ];
