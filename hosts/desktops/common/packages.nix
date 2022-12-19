@@ -33,6 +33,7 @@
     mpv
     obs-studio
     obs-studio-plugins.obs-vkcapture
+    p7zip
     prismlauncher-qt5
     protonup
 #     prusa-slicer
