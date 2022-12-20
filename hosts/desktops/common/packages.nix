@@ -58,6 +58,7 @@
       extraPkgs = pkgs: [  ];
     })
     # Packages from 3rd party overlays
+    agenix.agenix
     nur.repos.baduhai.koi
     nur.repos.baduhai.emulationstation-de
   ];

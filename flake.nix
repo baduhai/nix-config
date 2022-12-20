@@ -44,12 +44,15 @@
           agenix.nixosModule
           home-manager.nixosModules.home-manager
           {
-            nixpkgs.overlays = [ nur.overlay ];
-          }
-          {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.user = import ./users/desktops/user.nix;
+          }
+          {
+            nixpkgs.overlays = [
+              nur.overlay
+              agenix.overlay
+            ];
           }
         ];
       };
