@@ -12,6 +12,16 @@
       recommendedTlsSettings = true;
       virtualHosts = {
         "baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8000/"; };
+        "detect.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8001/"; };
+        "cinny.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8002/"; };
+        "jellyfin.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8003/"; };
+        "librespeed.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8004/"; };
+        "paperless.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8005/"; };
+        "pyload.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8006/"; };
+        "shiori.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8007/"; };
+        "sync.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8008/"; };
+        "whoogle.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8009/"; };
+#         ".baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:80/"; };
       };
     };
   };
@@ -106,6 +116,20 @@
             "--label=traefik.http.routers.detect.rule=Host(`detect.baduhai.me`)"
           ];
         };
+        "cinny" = { # Cinny matrix client
+          image = "ghcr.io/cinnyapp/cinny:latest";
+          ports = [
+            "8002:80"
+          ];
+          extraOptions = [
+            "--pull=always"
+            "--label=traefik.enable=true"
+            "--label=traefik.http.routers.cinny.entrypoints=websecure"
+            "--label=traefik.http.routers.cinny.tls.certresolver=letsencrypt"
+            "--label=traefik.http.services.cinny.loadbalancer.server.port=80"
+            "--label=traefik.http.routers.cinny.rule=Host(`cinny.baduhai.me`)"
+          ];
+        };
         "jellyfin" = {
           image = "lscr.io/linuxserver/jellyfin:10.8.4";
           environment = {
@@ -130,6 +154,23 @@
             "--label=traefik.http.routers.jellyfin.tls.certresolver=letsencrypt"
             "--label=traefik.http.services.jellyfin.loadbalancer.server.port=8096"
             "--label=traefik.http.routers.jellyfin.rule=Host(`jellyfin.baduhai.me`)"
+          ];
+        };
+        "librespeed" = { # Speedtest
+          image = "lscr.io/linuxserver/librespeed:latest";
+          environment = {
+            TZ = "Europe/Berlin";
+          };
+          ports = [
+            "8004:80"
+          ];
+          extraOptions = [
+            "--pull=always"
+            "--label=traefik.enable=true"
+            "--label=traefik.http.routers.librespeed.entrypoints=websecure"
+            "--label=traefik.http.routers.librespeed.tls.certresolver=letsencrypt"
+            "--label=traefik.http.services.librespeed.loadbalancer.server.port=80"
+            "--label=traefik.http.routers.librespeed.rule=Host(`librespeed.baduhai.me`)"
           ];
         };
         "paperless" = { # Digital document manager
@@ -231,37 +272,6 @@
             "--label=traefik.http.routers.syncthing.tls.certresolver=letsencrypt"
             "--label=traefik.http.services.syncthing.loadbalancer.server.port=8384"
             "--label=traefik.http.routers.syncthing.rule=Host(`sync.baduhai.me`)"
-          ];
-        };
-        "cinny" = { # Cinny matrix client
-          image = "ghcr.io/cinnyapp/cinny:latest";
-          ports = [
-            "8002:80"
-          ];
-          extraOptions = [
-            "--pull=always"
-            "--label=traefik.enable=true"
-            "--label=traefik.http.routers.cinny.entrypoints=websecure"
-            "--label=traefik.http.routers.cinny.tls.certresolver=letsencrypt"
-            "--label=traefik.http.services.cinny.loadbalancer.server.port=80"
-            "--label=traefik.http.routers.cinny.rule=Host(`cinny.baduhai.me`)"
-          ];
-        };
-        "librespeed" = { # Speedtest
-          image = "lscr.io/linuxserver/librespeed:latest";
-          environment = {
-            TZ = "Europe/Berlin";
-          };
-          ports = [
-            "8004:80"
-          ];
-          extraOptions = [
-            "--pull=always"
-            "--label=traefik.enable=true"
-            "--label=traefik.http.routers.librespeed.entrypoints=websecure"
-            "--label=traefik.http.routers.librespeed.tls.certresolver=letsencrypt"
-            "--label=traefik.http.services.librespeed.loadbalancer.server.port=80"
-            "--label=traefik.http.routers.librespeed.rule=Host(`librespeed.baduhai.me`)"
           ];
         };
         "whoogle" = { # Anonymised google search
