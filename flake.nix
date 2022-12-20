@@ -3,33 +3,37 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    nur.url = "github:nix-community/nur";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.11";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    kmonad = {
-      url = "github:kmonad/kmonad?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.11";
-
     home-manager-stable = {
       url = "github:nix-community/home-manager/release-22.11";
       inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
+    nur.url = "github:nix-community/nur";
+
+    kmonad = {
+      url = "github:kmonad/kmonad?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, nur, kmonad, nixpkgs-stable, home-manager-stable, deploy-rs, ... }: {
+  outputs = inputs @ { self, nixpkgs, home-manager, nur, kmonad, nixpkgs-stable, home-manager-stable, deploy-rs, agenix, ... }: {
     nixosConfigurations = {
       io = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -37,6 +41,7 @@
         modules = [
           ./hosts/desktops/io.nix
           kmonad.nixosModules.default
+          agenix.nixosModule
           home-manager.nixosModules.home-manager
           {
             nixpkgs.overlays = [ nur.overlay ];
