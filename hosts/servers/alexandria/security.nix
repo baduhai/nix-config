@@ -7,7 +7,7 @@
     acceptTerms = true;
     defaults = {
       email = "baduhai@proton.me";
-      dnsResolver = "100.100.100.100:53";
+      dnsResolver = "1.1.1.1:53";
       dnsProvider = "cloudflare";
     };
     certs."baduhai.me" = {
