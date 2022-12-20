@@ -1,18 +1,18 @@
 { config, pkgs, libs, ... }:
 
 {
-  age.secrets.cloudflare-dns-api-key.file = ../../../secrets/cloudflare-dns-api-key.age;
+  age.secrets.cloudflare-creds.file = ../../../secrets/cloudflare-creds.age;
 
   security.acme = {
     acceptTerms = true;
     defaults = {
       email = "baduhai@proton.me";
-      dnsResolver = "1.1.1.1:53";
+      dnsResolver = "100.100.100.100:53";
       dnsProvider = "cloudflare";
-      credentialsFile = config.age.secrets.cloudflare-dns-api-key.path;
+      credentialsFile = config.age.secrets.cloudflare-creds.path;
     };
     certs."baduhai.me" = {
-      extraDomainNames = "*.baduhai.me";
+      extraDomainNames = [ "*.baduhai.me" ];
     };
   };
 }

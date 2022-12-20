@@ -1,6 +1,8 @@
 { config, pkgs, libs, ... }:
 
 {
+  users.users.nginx.extraGroups = [ "acme" ];
+
   services = {
     nginx = {
       enable = true;
@@ -9,17 +11,7 @@
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
       virtualHosts = {
-        "baduhai.me" = { useACMEHoost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8000/"; };
-#         "detect.baduhai.me"     = { default = true; enableACME = true; addSSL = true; locations."/".proxyPass = "http://127.0.0.1:8001/"; };
-#         "cinny.baduhai.me"      = { default = true; enableACME = true; addSSL = true; locations."/".proxyPass = "http://127.0.0.1:8002/"; };
-#         "jellyfin.baduhai.me"   = { default = true; enableACME = true; addSSL = true; locations."/".proxyPass = "http://127.0.0.1:8003/"; };
-#         "librespeed.baduhai.me" = { default = true; enableACME = true; addSSL = true; locations."/".proxyPass = "http://127.0.0.1:8004/"; };
-#         "paperless.baduhai.me"  = { default = true; enableACME = true; addSSL = true; locations."/".proxyPass = "http://127.0.0.1:8005/"; };
-#         "pyload.baduhai.me"     = { default = true; enableACME = true; addSSL = true; locations."/".proxyPass = "http://127.0.0.1:8006/"; };
-#         "shiori.baduhai.me"     = { default = true; enableACME = true; addSSL = true; locations."/".proxyPass = "http://127.0.0.1:8007/"; };
-#         "sync.baduhai.me"       = { default = true; enableACME = true; addSSL = true; locations."/".proxyPass = "http://127.0.0.1:8008/"; };
-#         "whoogle.baduhai.me"    = { default = true; enableACME = true; addSSL = true; locations."/".proxyPass = "http://127.0.0.1:8009/"; };
-#         "adguard.baduhai.me"    = { default = true; enableACME = true; addSSL = true; locations."/".proxyPass = "http://100.77.225.37:3000/"; };
+        "baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8000/"; };
       };
     };
   };

@@ -6,5 +6,5 @@ let
   servers = [ alexandria ];
 in
 {
-  "cloudflare-dns-api-key.age".publicKeys = [ alexandria ];
+  "cloudflare-creds.age".publicKeys = [ alexandria ];
 }
