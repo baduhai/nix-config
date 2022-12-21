@@ -31,9 +31,14 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, nur, kmonad, nixpkgs-stable, home-manager-stable, deploy-rs, agenix, ... }: {
+  outputs = inputs @ { self, nixpkgs, home-manager, nur, kmonad, nixpkgs-stable, home-manager-stable, deploy-rs, agenix, nixos-generators, ... }: {
     nixosConfigurations = {
       io = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -86,6 +91,16 @@
             path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.alexandria;
           };
         };
+      };
+    };
+
+    packages.x86_64-linux = {
+      install-iso = nixos-generators.nixosGenerate {
+        system = "x86_64-linux";
+        modules = [
+          {users.users.nixos.openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKcwF1yuWEfYGScNocEbs0AmGxyTIzGc4/IhpU587SJE" ];}
+        ];
+        format = "install-iso";
       };
     };
   };
