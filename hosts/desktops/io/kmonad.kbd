@@ -10,6 +10,7 @@
 
 (defalias
   ovrvw   M-w #|Overview button|#
+  fsc     M-f11
   cps     (multi-tap 150 rsft caps) #|Caps lock replacement|#
   medkey  (multi-tap 200 KeyNextSong KeyPreviousSong) #|Play-pause key|#
   mute    (multi-tap 200 KeyMute M-KeyMute) #|Mute audio and mic|#
@@ -33,7 +34,7 @@
 )
 
 (deflayer default
-  esc   KeyBack KeyForward KeyRefresh f11 @ovrvw brdn brup  @mute  pp   @medkey   del
+  esc   KeyBack KeyForward KeyRefresh @fsc @ovrvw brdn brup  @mute  pp   @medkey  del
   grv   1     2     3     4     5     6     7     8     9     0     -     =       bspc
   tab   q     w     e     r     t     y     u     i     o     p     [     ]       ret
   lmet  a     s     d     f     g     h     j     k     l     ;     '     \

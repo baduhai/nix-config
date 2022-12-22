@@ -27,8 +27,8 @@
       functions = {
         rebuild = "rm ~/.gtkrc-2.0; sudo nixos-rebuild switch --flake '/home/user/Projects/personal/nix-config#'";
         rebuild-boot = "rm ~/.gtkrc-2.0; sudo nixos-rebuild boot --flake '/home/user/Projects/personal/nix-config#'";
-        upgrade = "rm ~/.gtkrc-2.0; nix flake update --commit-lock-file /home/user/Projects/personal/nix-config; sudo nixos-rebuild switch --upgrade --flake '/home/user/Projects/personal/nix-config#'";
-        upgrade-boot = "rm ~/.gtkrc-2.0; nix flake update --commit-lock-file /home/user/Projects/personal/nix-config; sudo nixos-rebuild boot --upgrade --flake '/home/user/Projects/personal/nix-config#'";
+        upgrade = "rm ~/.gtkrc-2.0; nix flake lock --update-input nixpkgs --commit-lock-file /home/user/Projects/personal/nix-config; sudo nixos-rebuild switch --upgrade --flake '/home/user/Projects/personal/nix-config#'";
+        upgrade-boot = "rm ~/.gtkrc-2.0; nix flake lock --update-input nixpkgs --commit-lock-file /home/user/Projects/personal/nix-config; sudo nixos-rebuild boot --upgrade --flake '/home/user/Projects/personal/nix-config#'";
       };
     };
     btop = {
