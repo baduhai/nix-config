@@ -1,4 +1,4 @@
-{ config, pkgs, libs, ... }:
+{ inputs, config, pkgs, libs, ... }:
 
 {
   users.users.nginx.extraGroups = [ "acme" ];
@@ -11,7 +11,7 @@
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
       virtualHosts = {
-        "baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8000/"; };
+        "baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; root = inputs.homepage; };
         "detect.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8001/"; };
         "cinny.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8002/"; };
         "jellyfin.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8003/"; };
@@ -31,19 +31,6 @@
     oci-containers = {
       backend = "docker";
       containers = {
-        "homarr" = {
-          image = "ghcr.io/ajnart/homarr:latest";
-          volumes = [
-            "/data/homarr/configs:/app/data/configs"
-            "/var/run/docker.sock:/var/run/docker.sock:ro"
-          ];
-          ports = [
-            "8000:7575"
-          ];
-          extraOptions = [
-            "--pull=always"
-          ];
-        };
         "changedetection" = {
           image = "lscr.io/linuxserver/changedetection.io:latest";
           environment = {

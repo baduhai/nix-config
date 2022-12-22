@@ -102,6 +102,22 @@
         "type": "github"
       }
     },
+    "homepage": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1671712043,
+        "narHash": "sha256-/vXNV0mnDjLsHq26wnneivKmKIpb/3Yv7n95k3LIuK8=",
+        "owner": "baduhai",
+        "repo": "homepage",
+        "rev": "d9f2b593d2a51d4111cece5d781c23774c8a3adb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "baduhai",
+        "repo": "homepage",
+        "type": "github"
+      }
+    },
     "kmonad": {
       "inputs": {
         "nixpkgs": [
@@ -213,6 +229,7 @@
         "deploy-rs": "deploy-rs",
         "home-manager": "home-manager",
         "home-manager-stable": "home-manager-stable",
+        "homepage": "homepage",
         "kmonad": "kmonad",
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs",

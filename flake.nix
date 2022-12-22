@@ -5,40 +5,23 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.11";
 
-    home-manager = {
-      url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    home-manager-stable = {
-      url = "github:nix-community/home-manager/release-22.11";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
+    home-manager = { url = "github:nix-community/home-manager/master"; inputs.nixpkgs.follows = "nixpkgs"; };
+    home-manager-stable = { url = "github:nix-community/home-manager/release-22.11"; inputs.nixpkgs.follows = "nixpkgs-stable"; };
 
     nur.url = "github:nix-community/nur";
 
-    kmonad = {
-      url = "github:kmonad/kmonad?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    kmonad = { url = "github:kmonad/kmonad?dir=nix"; inputs.nixpkgs.follows = "nixpkgs"; };
 
-    deploy-rs = {
-      url = "github:serokell/deploy-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    deploy-rs = { url = "github:serokell/deploy-rs"; inputs.nixpkgs.follows = "nixpkgs"; };
 
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    agenix = { url = "github:ryantm/agenix"; inputs.nixpkgs.follows = "nixpkgs"; };
 
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
+    nixos-generators = { url = "github:nix-community/nixos-generators"; inputs.nixpkgs.follows = "nixpkgs-stable"; };
+    
+    homepage = { url = "github:baduhai/homepage"; flake = false; };
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, nur, kmonad, nixpkgs-stable, home-manager-stable, deploy-rs, agenix, nixos-generators, ... }: {
+  outputs = inputs @ { self, nixpkgs, home-manager, nur, kmonad, nixpkgs-stable, home-manager-stable, deploy-rs, agenix, nixos-generators, homepage, ... }: {
     nixosConfigurations = {
       io = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
