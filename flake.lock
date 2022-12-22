@@ -42,6 +42,22 @@
         "type": "github"
       }
     },
+    "dotfiles": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1663267647,
+        "narHash": "sha256-XFl5nWxyIozJgHiryTPZVaANO4QHUkKmRVozJEvI8NM=",
+        "owner": "baduhai",
+        "repo": "dotfiles",
+        "rev": "7e3eb76e2af6f60fccb7dc3e7bc3c6500d54895b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "baduhai",
+        "repo": "dotfiles",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -227,6 +243,7 @@
       "inputs": {
         "agenix": "agenix",
         "deploy-rs": "deploy-rs",
+        "dotfiles": "dotfiles",
         "home-manager": "home-manager",
         "home-manager-stable": "home-manager-stable",
         "homepage": "homepage",
