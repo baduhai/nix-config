@@ -12,7 +12,6 @@
     bat
     bitwarden
     chatterino2
-    deploy-rs
     fd
     filelight
     firefox-wayland # Until firefox moves to using wayland by default
@@ -59,6 +58,7 @@
     })
     # Packages from 3rd party overlays
     agenix
+    deploy-rs
     nur.repos.baduhai.koi
     nur.repos.baduhai.emulationstation-de
   ];

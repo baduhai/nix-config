@@ -19,9 +19,11 @@
     nixos-generators = { url = "github:nix-community/nixos-generators"; inputs.nixpkgs.follows = "nixpkgs-stable"; };
     
     homepage = { url = "github:baduhai/homepage"; flake = false; };
+
+    dotfiles = { url = "github:baduhai/dotfiles"; flake = false; };
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, nur, kmonad, nixpkgs-stable, home-manager-stable, deploy-rs, agenix, nixos-generators, homepage, ... }: {
+  outputs = inputs @ { self, nixpkgs, home-manager, nur, kmonad, nixpkgs-stable, home-manager-stable, deploy-rs, agenix, nixos-generators, homepage, dotfiles, ... }: {
     nixosConfigurations = {
       io = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -40,6 +42,7 @@
             nixpkgs.overlays = [
               nur.overlay
               agenix.overlay
+              deploy-rs.overlay
             ];
           }
         ];
