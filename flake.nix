@@ -33,18 +33,7 @@
           kmonad.nixosModules.default
           agenix.nixosModule
           home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.user = import ./users/desktops/user.nix;
-          }
-          {
-            nixpkgs.overlays = [
-              nur.overlay
-              agenix.overlay
-              deploy-rs.overlay
-            ];
-          }
+          { nixpkgs.overlays = [ nur.overlay agenix.overlay ]; }
         ];
       };
 
@@ -53,13 +42,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/servers/alexandria.nix
-          agenix.nixosModule
           home-manager-stable.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.user = import ./users/servers/user.nix;
-          }
         ];
       };
     };

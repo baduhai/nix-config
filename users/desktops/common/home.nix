@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, ... }:
+{ specialArgs, inputs, config, pkgs, lib, ... }:
 
 {
   home = {

@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ specialArgs, inputs, config, pkgs, lib, ... }:
 
 {
   users.users = {
@@ -17,5 +17,11 @@
       openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKcwF1yuWEfYGScNocEbs0AmGxyTIzGc4/IhpU587SJE" ];
       hashedPassword = "!";
     };
+  };
+  
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = specialArgs;
   };
 }

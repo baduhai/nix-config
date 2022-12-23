@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ specialArgs, inputs, config, pkgs, lib, ... }:
 
 {
   environment.sessionVariables = rec {
@@ -14,4 +14,6 @@
       "adbusers"
     ];
   };
+  
+  home-manager.users.user = import ../../../users/desktops/user.nix;
 }
