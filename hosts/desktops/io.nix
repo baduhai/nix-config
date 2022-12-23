@@ -12,6 +12,8 @@
 
   networking.hostName = "io";
 
+  nix.nixPath = [ "nixos-config=${./io.nix}" ];
+
   zramSwap = {
     enable = true;
     memoryPercent = 100;

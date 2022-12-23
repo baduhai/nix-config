@@ -6,7 +6,7 @@
   nix = {
     registry.nixpkgs.flake = inputs.nixpkgs;
     nixPath = [
-      "nixpkgs=/etc/channels/nixpkgs"
+      "nixpkgs=${inputs.nixpkgs}"
       "/nix/var/nix/profiles/per-user/root/channels"
     ];
   };
