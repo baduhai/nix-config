@@ -40,34 +40,20 @@
         update_ms = 500;
       };
     };
-    kitty = {
+    wezterm = {
       enable = true;
-      theme = "Afterglow";
-      font = {
-        name = "Hack Nerd Font";
-        size = 10;
-      };
-      keybindings = {
-        "kitty_mod+f" = "launch --location=hsplit --allow-remote-control kitty +kitten search.py @active-kitty-window-id";
-      };
-      settings = {
-        clipboard_control = "write-clipboard read-clipboard write-primary read-primary";
-        confirm_os_window_close = "-2";
-        cursor_shape = "block";
-        initial_window_height = "570";
-        initial_window_width = "120c";
-        remember_window_size = "no";
-        tab_bar_background = "#3b3b3b";
-        tab_bar_margin_color = "#3b3b3b";
-        tab_bar_margin_height = "3 3";
-        tab_bar_margin_width = 2;
-        tab_bar_min_tabs = 1;
-        tab_bar_style = "fade";
-        tab_fade = 0;
-        tab_switch_strategy = "left";
-        tab_title_template = "{fmt.bg._3b3b3b}{fmt.fg._202020}{fmt.fg.default}{fmt.bg._202020}{fmt.fg._c6c6c6} {title} {fmt.fg.default}{fmt.bg.default}{fmt.fg._202020}{fmt.fg.default}";
-        active_tab_title_template = "{fmt.bg._3b3b3b}{fmt.fg._fcfcfc}{fmt.fg.default}{fmt.bg._fcfcfc}{fmt.fg._3b3b3b} {title} {fmt.fg.default}{fmt.bg.default}{fmt.fg._fcfcfc}{fmt.fg.default}";
-      };
+      extraConfig = ''
+        local wezterm = require 'wezterm'
+        return {
+          font_size = 10,
+          color_scheme = 'Twilight (base16)',
+          hide_tab_bar_if_only_one_tab = true,
+          font = wezterm.font_with_fallback ({
+            "Hack Nerd Font",
+            "Noto Color Emoji",
+          }),
+        }
+      '';
     };
   };
 }

@@ -25,7 +25,6 @@
     inkscape
     # itch # Currently using unsafe electron version
     kate
-    kitty
     kolourpaint
     libreoffice-qt
     logseq
@@ -52,6 +51,7 @@
     vagrant
     ventoy-bin
     virt-manager
+    wezterm
     yakuake
     # Package overrides
     (appimage-run.override {
