@@ -51,8 +51,8 @@
             "Hack Nerd Font",
             "Noto Color Emoji",
           }),
-          initial_cols = 120,
           initial_cols = 30,
+          initial_cols = 120,
         }
       '';
     };
