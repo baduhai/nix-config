@@ -23,7 +23,6 @@
       userEmail = "williamhai@hotmail.com";
     };
     fish = {
-      shellAliases.ssh = "kitty +kitten ssh";
       functions = {
         rebuild = "rm ~/.gtkrc-2.0; sudo nixos-rebuild switch --flake '/home/user/Projects/personal/nix-config#'";
         rebuild-boot = "rm ~/.gtkrc-2.0; sudo nixos-rebuild boot --flake '/home/user/Projects/personal/nix-config#'";
@@ -52,6 +51,8 @@
             "Hack Nerd Font",
             "Noto Color Emoji",
           }),
+          initial_cols = 120,
+          initial_cols = 30,
         }
       '';
     };
