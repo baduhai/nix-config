@@ -53,6 +53,7 @@
           }),
           initial_cols = 120,
           initial_rows = 34,
+          enable_scroll_bar=true,
         }
       '';
     };
