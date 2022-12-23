@@ -42,6 +42,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/servers/alexandria.nix
+          agenix.nixosModule
           home-manager-stable.nixosModules.home-manager
         ];
       };
