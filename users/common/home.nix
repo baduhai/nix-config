@@ -8,5 +8,8 @@
     sessionVariables = {
       EDITOR = "micro";
     };
+    activation.installMicroPlugins = ''
+      ${pkgs.micro}/bin/micro -plugin install filemanager
+    '';
   };
 }

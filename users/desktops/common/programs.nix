@@ -43,6 +43,8 @@
       enable = true;
       extraConfig = ''
         local wezterm = require 'wezterm'
+        local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
+        local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
         return {
           font_size = 10,
           color_scheme = 'Twilight (base16)',
@@ -53,7 +55,6 @@
           }),
           initial_cols = 120,
           initial_rows = 34,
-          enable_scroll_bar=true,
         }
       '';
     };

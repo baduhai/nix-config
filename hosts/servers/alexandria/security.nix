@@ -1,7 +1,11 @@
 { config, pkgs, libs, ... }:
 
 {
-  age.secrets.cloudflare-creds.file = ../../../secrets/cloudflare-creds.age;
+  age.secrets.cloudflare-creds = {
+    file = ../../../secrets/cloudflare-creds.age; 
+    owner = "nginx"; 
+    group = "hosted"; 
+  };
 
   security.acme = {
     acceptTerms = true;
