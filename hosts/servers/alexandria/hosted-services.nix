@@ -1,6 +1,6 @@
 { inputs, config, pkgs, libs, ... }:
 
-{  
+{
   age.secrets = {
     paperless-pass = {
       file = ../../../secrets/paperless-pass.age;
@@ -68,7 +68,7 @@
       kTLS = true;
       locations."/".proxyPass = "http://127.0.0.1:8096";
     };
-    
+
     paperless = {
       enable = true;
       dataDir = "/data/paperless/data";
@@ -80,22 +80,84 @@
         PAPERLESS_OCR_LANGUAGE = "eng+por+deu";
       };
     };
-    nginx.virtualHosts."paperless.baduhai.me" = { 
-      useACMEHost = "baduhai.me"; 
-      forceSSL = true; 
-      kTLS = true; 
-      locations."/".proxyPass = "http://127.0.0.1:${toString config.services.paperless.port}"; 
+    nginx.virtualHosts."paperless.baduhai.me" = {
+      useACMEHost = "baduhai.me";
+      forceSSL = true;
+      kTLS = true;
+      locations."/".proxyPass = "http://127.0.0.1:${toString config.services.paperless.port}";
     };
-    
+
     shiori = {
       enable = true;
       port = 8005;
     };
-    nginx.virtualHosts."shiori.baduhai.me" = { 
-      useACMEHost = "baduhai.me"; 
-      forceSSL = true; 
-      kTLS = true; 
-      locations."/".proxyPass = "http://127.0.0.1:${toString config.services.shiori.port}"; 
+    nginx.virtualHosts."shiori.baduhai.me" = {
+      useACMEHost = "baduhai.me";
+      forceSSL = true;
+      kTLS = true;
+      locations."/".proxyPass = "http://127.0.0.1:${toString config.services.shiori.port}";
+    };
+
+    radarr = {
+      enable = true;
+      group = "hosted";
+    };
+    nginx.virtualHosts."radarr.baduhai.me" = {
+      useACMEHost = "baduhai.me";
+      forceSSL = true;
+      kTLS = true;
+      locations."/".proxyPass = "http://127.0.0.1:7878";
+    };
+
+    sonarr = {
+      enable = true;
+      group = "hosted";
+    };
+    nginx.virtualHosts."sonarr.baduhai.me" = {
+      useACMEHost = "baduhai.me";
+      forceSSL = true;
+      kTLS = true;
+      locations."/".proxyPass = "http://127.0.0.1:8989";
+    };
+
+    bazarr = {
+      enable = true;
+      group = "hosted";
+    };
+    nginx.virtualHosts."bazarr.baduhai.me" = {
+      useACMEHost = "baduhai.me";
+      forceSSL = true;
+      kTLS = true;
+      locations."/".proxyPass = "http://127.0.0.1:6767";
+    };
+
+    prowlarr.enable = true;
+    nginx.virtualHosts."prowlarr.baduhai.me" = {
+      useACMEHost = "baduhai.me";
+      forceSSL = true;
+      kTLS = true;
+      locations."/".proxyPass = "http://127.0.0.1:9696";
+    };
+
+    deluge = {
+      enable = true;
+      web.enable = true;
+      group = "hosted";
+      openFirewall = true;
+    };
+    nginx.virtualHosts."deluge.baduhai.me" = {
+      useACMEHost = "baduhai.me";
+      forceSSL = true;
+      kTLS = true;
+      locations."/".proxyPass = "http://127.0.0.1:8112";
+    };
+
+    n8n.enable = true;
+    nginx.virtualHosts."n8n.baduhai.me" = {
+      useACMEHost = "baduhai.me";
+      forceSSL = true;
+      kTLS = true;
+      locations."/".proxyPass = "http://127.0.0.1:5678";
     };
 
     minecraft-server = {
