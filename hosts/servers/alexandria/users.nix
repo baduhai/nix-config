@@ -8,10 +8,10 @@
         gid = 1005;
         members = [
           "user"
-          "nginx"
-          "vaultwarden"
+          "shiori"
           "minecraft"
           "paperless"
+          "vaultwarden"
         ];
       };
     };

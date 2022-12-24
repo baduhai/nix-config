@@ -2,7 +2,11 @@
 
 {  
   age.secrets = {
-    paperless-pass.file = ../../../secrets/paperless-pass.age;
+    paperless-pass = {
+      file = ../../../secrets/paperless-pass.age;
+      owner = "paperless";
+      group = "hosted";
+    };
   };
 
   services = {
@@ -17,10 +21,8 @@
         "baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; root = inputs.homepage; };
         "cinny.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8002"; };
         "librespeed.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8003"; };
-        "pyload.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8005"; };
-        "shiori.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8006"; };
-        "sync.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8007"; };
-        "whoogle.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8008"; };
+        "sync.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8006"; };
+        "whoogle.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:8007"; };
       };
     };
 
@@ -84,6 +86,17 @@
       kTLS = true; 
       locations."/".proxyPass = "http://127.0.0.1:${toString config.services.paperless.port}"; 
     };
+    
+    shiori = {
+      enable = true;
+      port = 8005;
+    };
+    nginx.virtualHosts."shiori.baduhai.me" = { 
+      useACMEHost = "baduhai.me"; 
+      forceSSL = true; 
+      kTLS = true; 
+      locations."/".proxyPass = "http://127.0.0.1:${toString config.services.shiori.port}"; 
+    };
 
     minecraft-server = {
       enable = true;
@@ -126,87 +139,28 @@
             "--pull=always"
           ];
         };
-#         "paperless" = {
-#           image = "lscr.io/linuxserver/paperless-ngx:latest";
-#           environment = {
-#             PUID = "1000";
-#            PGID = "100";
-#              TZ = "Europe/Berlin";
-#             PAPERLESS_URL = "https://paperless.baduhai.me";
-#             PAPERLESS_OCR_LANGUAGE = "eng+deu+por";
-#             DOCKER_MODS = "linuxserver/mods:papermerge-multilangocr";
-#           OCRLANG = "eng,por,deu";
-#           };
-#           volumes = [
-#             "/data/paperless-ngx/config:/config"
-#             "/data/paperless-ngx/data:/data"
-#           ];
-#           ports = [
-#             "8005:8000"
-#           ];
-#           extraOptions = [
-#             "--pull=always"
-#           ];
-#         };
-#         "pyload" = { # Download manager
-#           image = "lscr.io/linuxserver/pyload-ng:latest";
-#           environment = {
-#             PUID = "1000";
-#             PGID = "100";
-#             TZ = "Europe/Berlin";
-#           };
-#           volumes = [
-#             "/data/pyload/config:/config"
-#             "/data/pyload/downloads:/downloads"
-#           ];
-#           ports = [
-#             "8005:8000"
-#             "9666:9666"
-#           ];
-#           extraOptions = [
-#             "--pull=always"
-#           ];
-#         };
-#         "shiori" = {
-#           image = "docker.io/nicholaswilde/shiori:latest";
-#           environment = {
-#             TZ = "Europe/Berlin";
-#             PUID = "1000";
-#             PGID = "100";
-#             SHIORI_DIR = "/data";
-#           };
-#           volumes = [
-#             "/data/shiori:/data"
-#           ];
-#           ports = [
-#             "8006:8080"
-#           ];
-#           extraOptions = [
-#             "--pull=always"
-#           ];
-#         };
-#         "syncthing" = {
-#           image = "lscr.io/linuxserver/syncthing:1.20.4";
-#           environment = {
-#             PUID = "1000";
-#             PGID = "100";
-#             TZ = "Europe/Berlin";
-#           };
-#           volumes = [
-#             "/data/syncthing/config:/config"
-#             "/data/syncthing/data1:/data1"
-#             "/data/syncthing/data2:/data2"
-#             "/data/syncthing/notes:/sync/notes"
-#           ];
-#           ports = [
-#             "8007:8384"
-#             "22000:22000"
-#             "21027:21027/udp"
-#           ];
-#           extraOptions = [
-#             "--pull=always"
-#           ];
-#         };
+        "syncthing" = {
+          image = "lscr.io/linuxserver/syncthing:1.20.4";
+          environment = {
+            PUID = "1000";
+            PGID = "100";
+            TZ = "Europe/Berlin";
+          };
+          volumes = [
+            "/data/syncthing/config:/config"
+            "/data/syncthing/data1:/data1"
+            "/data/syncthing/data2:/data2"
+            "/data/syncthing/notes:/sync/notes"
+          ];
+          ports = [
+            "8006:8384"
+            "22000:22000"
+            "21027:21027/udp"
+          ];
+          extraOptions = [
+            "--pull=always"
+          ];
+        };
         "whoogle" = {
           image = "benbusby/whoogle-search:latest";
           environment = {
@@ -219,7 +173,7 @@
             WHOOGLE_CONFIG_GET_ONLY = "1";
           };
           ports = [
-            "8008:5000"
+            "8007:5000"
           ];
           extraOptions = [
             "--pull=always"
