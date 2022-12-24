@@ -120,7 +120,7 @@
             TZ = "Europe/Berlin";
           };
           ports = [
-            "8004:80"
+            "8003:80"
           ];
           extraOptions = [
             "--pull=always"
