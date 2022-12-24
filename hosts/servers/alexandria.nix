@@ -10,8 +10,6 @@
     ./alexandria
   ];
 
-  users.users.user.extraGroups = [ "docker" ];
-
   nix.nixPath = [ "nixos-config=${./alexandria.nix}" ];
 
   swapDevices = [ { device = "/swapfile"; size = 8192; } ];

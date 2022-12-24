@@ -2,7 +2,10 @@
 
 {
   users = {
-    users.nginx.extraGroups = [ "acme" ];
+    users = {
+      nginx.extraGroups = [ "acme" ];
+      user.extraGroups = [ "docker" ];
+    };
     groups = {
       hosted = {
         gid = 1005;
