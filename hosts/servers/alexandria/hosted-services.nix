@@ -60,7 +60,6 @@
     jellyfin = {
       enable = true;
       group = "hosted";
-      openFirewall = true;
     };
     nginx.virtualHosts."jellyfin.baduhai.me" = {
       useACMEHost = "baduhai.me";
