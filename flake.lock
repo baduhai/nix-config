@@ -251,7 +251,8 @@
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
-        "nur": "nur"
+        "nur": "nur",
+        "webui-aria2": "webui-aria2"
       }
     },
     "utils": {
@@ -296,6 +297,22 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "webui-aria2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1630466997,
+        "narHash": "sha256-Nxo27o0xW/US+KY/ZrNkLe7/1Lns9vjtyQwam2nmXzg=",
+        "owner": "ziahamza",
+        "repo": "webui-aria2",
+        "rev": "109903f0e2774cf948698cd95a01f77f33d7dd2c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ziahamza",
+        "repo": "webui-aria2",
         "type": "github"
       }
     }
