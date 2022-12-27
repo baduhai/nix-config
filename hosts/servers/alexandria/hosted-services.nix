@@ -138,18 +138,15 @@
       locations."/".proxyPass = "http://127.0.0.1:9696";
     };
 
-    deluge = {
+    aria2 = {
       enable = true;
-      web.enable = true;
-      group = "hosted";
-      openFirewall = true;
+      downloadDir = "/data/aria";
     };
-    nginx.virtualHosts."deluge.baduhai.me" = {
+    nginx.virtualHosts."aria2.baduhai.me" = {
       useACMEHost = "baduhai.me";
       forceSSL = true;
       kTLS = true;
-      locations."/".proxyPass = "http://127.0.0.1:8112";
-    };
+      root = "${inputs.webui-aria2}/docs"; };
 
     n8n.enable = true;
     nginx.virtualHosts."n8n.baduhai.me" = {

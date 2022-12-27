@@ -17,10 +17,12 @@
     agenix = { url = "github:ryantm/agenix"; inputs.nixpkgs.follows = "nixpkgs"; };
 
     nixos-generators = { url = "github:nix-community/nixos-generators"; inputs.nixpkgs.follows = "nixpkgs-stable"; };
-    
+
     homepage = { url = "github:baduhai/homepage"; flake = false; };
 
     dotfiles = { url = "github:baduhai/dotfiles"; flake = false; };
+
+    webui-aria2 = { url = "github:ziahamza/webui-aria2"; flake = false; };
   };
 
   outputs = inputs @ { self, nixpkgs, home-manager, nur, kmonad, nixpkgs-stable, home-manager-stable, deploy-rs, agenix, nixos-generators, homepage, dotfiles, ... }: {
