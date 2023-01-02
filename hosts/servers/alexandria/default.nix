@@ -6,5 +6,6 @@
     ./hosted-services.nix
     ./security.nix
     ./users.nix
+    ./services
   ];
 }

@@ -4,6 +4,7 @@
   boot = {
     plymouth.enable = true;
     initrd.systemd.enable = true;
+    supportedFilesystems = [ "ntfs" ];
     loader.efi.efiSysMountPoint = "/boot/efi";
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     extraModprobeConfig = ''options bluetooth disable_ertm=1'';
