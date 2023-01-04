@@ -27,21 +27,24 @@
             "--pull=always"
           ];
         };
-        "qflood" = {
-          image = "cr.hotio.dev/hotio/qflood";
+        "transmission" = {
+          image = "lscr.io/linuxserver/transmission:latest";
           environment = {
             PUID = "1000";
             PGID = "100";
-            UMASK = "002";
+            TRANSMISSION_WEB_HOME = "/flood-for-transmission/";
             TZ = "America/Bahia";
-            FLOOD_AUTH = "false";
           };
           volumes = [
-            "/data/qflood:/config"
+            "/data/transmission/config:/config"
+            "/data/transmission/downloads:/downloads"
+            "/data/transmission/watch:/watch"
           ];
           ports = [
-            "${config.ports.flood}:3000"
-            "${config.ports.qbittorrent}:8080"
+            "${config.ports.flood}:9091"
+            "51413:51413"
+            "51413:51413/udp"
+
           ];
           extraOptions = [
             "--pull=always"
