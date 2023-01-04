@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, libs, ... }:
+{ specialArgs, inputs, config, pkgs, lib, ... }:
 
 {
   age.secrets = {
@@ -16,7 +16,7 @@
         DOMAIN = "https://bitwarden.baduhai.me";
         SIGNUPS_ALLOWED = false;
         ROCKET_ADDRESS = "127.0.0.1";
-        ROCKET_PORT = 8000;
+        ROCKET_PORT = "${config.ports.vaultwarden}";
       };
     };
 
@@ -25,13 +25,8 @@
       group = "hosted";
       behindProxy = true;
       datastorePath = "/data/changedetection";
-      port = 8001;
+      port = "${config.ports.changedetection-io}";
       baseURL = "https://detect.baduhai.me";
-    };
-
-    jellyfin = {
-      enable = true;
-      group = "hosted";
     };
 
     paperless = {
@@ -39,7 +34,7 @@
       dataDir = "/data/paperless/data";
       mediaDir = "/data/paperless/media";
       passwordFile = config.age.secrets.paperless-pass.path;
-      port = 8004;
+      port = "${config.ports.paperless}";
       consumptionDirIsPublic = true;
       extraConfig = {
         PAPERLESS_OCR_LANGUAGE = "eng+por+deu";
@@ -48,40 +43,9 @@
 
     shiori = {
       enable = true;
-      port = 8005;
+      port = "${config.ports.shiori}";
     };
-
-    radarr = {
-      enable = true;
-      group = "hosted";
-    };
-
-    sonarr = {
-      enable = true;
-      group = "hosted";
-    };
-
-    bazarr = {
-      enable = true;
-      group = "hosted";
-    };
-
-    prowlarr.enable = true;
 
     n8n.enable = true;
-
-    minecraft-server = {
-      enable = true;
-      eula = true;
-      declarative = true;
-      openFirewall = true;
-      package = pkgs.papermc;
-      serverProperties = {
-        motd = "Bem-vindo a Alexandria";
-        difficulty = "hard";
-        gamemode = "survival";
-      };
-      dataDir = "/data/minecraft";
-    };
   };
 }

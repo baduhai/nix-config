@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, libs, ... }:
+{ specialArgs, inputs, config, pkgs, lib, ... }:
 
 {
   services.nginx = {
@@ -8,26 +8,23 @@
     recommendedOptimisation = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
-    virtualHosts = let
-      useACMEHost = "baduhai.me";
-      forceSSL = true;
-      kTLS = true;
-    in {
-      "baduhai.me".root = inputs.homepage;
-      "bazarr.baduhai.me".locations."/".proxyPass = "http://127.0.0.1:6767";
-      "bitwarden.baduhai.me".locations."/".proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
-      "cinny.baduhai.me".locations."/".proxyPass = "http://127.0.0.1:8002";
-      "detect.baduhai.me".locations."/".proxyPass = "http://127.0.0.1:${toString config.services.changedetection-io.port}";
-      "jellyfin.baduhai.me".locations."/".proxyPass = "http://127.0.0.1:8096";
-      "librespeed.baduhai.me".locations."/".proxyPass = "http://127.0.0.1:8003";
-      "n8n.baduhai.me".locations."/".proxyPass = "http://127.0.0.1:${N8N_PORT}";
-      "paperless.baduhai.me".locations."/".proxyPass = "http://127.0.0.1:${toString config.services.paperless.port}";
-      "prowlarr.baduhai.me".locations."/".proxyPass = "http://127.0.0.1:9696";
-      "radarr.baduhai.me".locations."/".proxyPass = "http://127.0.0.1:7878";
-      "shiori.baduhai.me".locations."/".proxyPass = "http://127.0.0.1:${toString config.services.shiori.port}";
-      "sonarr.baduhai.me".locations."/".proxyPass = "http://127.0.0.1:8989";
-      "sync.baduhai.me"locations."/".proxyPass = "http://127.0.0.1:8006";
-      "whoogle.baduhai.me".locations."/".proxyPass = "http://127.0.0.1:8007";
+    virtualHosts = {
+      "baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; root = inputs.homepage; };
+      "bazarr.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.bazaar}"; };
+      "bitwarden.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.vaultwarden}"; };
+      "cinny.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.cinny}"; };
+      "detect.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.changedetection-io}"; };
+      "flood.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.flood}"; };
+      "jellyfin.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.jellyfin}"; };
+      "librespeed.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.librespeed}"; };
+      "n8n.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.n8n}"; };
+      "paperless.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.paperless}"; };
+      "prowlarr.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.prowlarr}"; };
+      "radarr.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.radarr}"; };
+      "shiori.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.shiori}"; };
+      "sonarr.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.sonarr}"; };
+      "sync.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.syncthing}"; };
+      "whoogle.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.whoogle}"; };
     };
   };
 }

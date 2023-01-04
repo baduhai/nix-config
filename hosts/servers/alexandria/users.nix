@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, libs, ... }:
+{ specialArgs, inputs, config, pkgs, lib, ... }:
 
 {
   users = {

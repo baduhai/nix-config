@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, libs, ... }:
+{ specialArgs, inputs, config, pkgs, lib, ... }:
 
 {
   virtualisation = {
@@ -9,7 +9,7 @@
         "cinny" = {
           image = "ghcr.io/cinnyapp/cinny:latest";
           ports = [
-            "8002:80"
+            "${config.ports.cinny}:80"
           ];
           extraOptions = [
             "--pull=always"
@@ -21,7 +21,7 @@
             TZ = "Europe/Berlin";
           };
           ports = [
-            "8003:80"
+            "${config.ports.librespeed}:80"
           ];
           extraOptions = [
             "--pull=always"
@@ -41,7 +41,7 @@
             "/data/syncthing/notes:/sync/notes"
           ];
           ports = [
-            "8006:8384"
+            "${config.ports.syncthing}:8384"
             "22000:22000"
             "21027:21027/udp"
           ];
@@ -60,7 +60,7 @@
             WHOOGLE_CONFIG_GET_ONLY = "1";
           };
           ports = [
-            "8007:5000"
+            "${config.ports.whoogle}:5000"
           ];
           extraOptions = [
             "--pull=always"

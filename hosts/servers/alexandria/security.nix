@@ -1,10 +1,10 @@
-{ config, pkgs, libs, ... }:
+{ specialArgs, inputs, config, pkgs, lib, ... }:
 
 {
   age.secrets.cloudflare-creds = {
-    file = ../../../secrets/cloudflare-creds.age; 
-    owner = "nginx"; 
-    group = "hosted"; 
+    file = ../../../secrets/cloudflare-creds.age;
+    owner = "nginx";
+    group = "hosted";
   };
 
   security.acme = {

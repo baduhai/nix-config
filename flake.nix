@@ -33,6 +33,7 @@
           kmonad.nixosModules.default
           agenix.nixosModule
           home-manager.nixosModules.home-manager
+          self.nixosModules.flood
           { nixpkgs.overlays = [ nur.overlay agenix.overlay ]; }
         ];
       };
@@ -63,6 +64,8 @@
         };
       };
     };
+
+    nixosModules.flood = import ./modules/flood.nix;
 
     packages.x86_64-linux = {
       install-iso = nixos-generators.nixosGenerate {
