@@ -24,5 +24,7 @@
       user = "user";
       group = "hosted";
     };
+
+    jackett.enable = true;
   };
 }

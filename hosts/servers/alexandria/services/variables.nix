@@ -23,6 +23,6 @@ in
     whoogle             = mkStringOption "8007";
     flood               = mkStringOption "8008";
     sonarr              = mkStringOption "8989";
-    prowlarr            = mkStringOption "9696";
+    jackett             = mkStringOption "9117";
   };
 }
