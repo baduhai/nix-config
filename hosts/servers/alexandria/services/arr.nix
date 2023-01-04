@@ -25,6 +25,8 @@
       group = "hosted";
     };
 
+    aria2.enable = true;
+
     jackett.enable = true;
   };
 }

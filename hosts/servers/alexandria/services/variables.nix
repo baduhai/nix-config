@@ -21,7 +21,6 @@ in
     syncthing           = mkStringOption "8006";
     jellyfin            = mkStringOption "8096";
     whoogle             = mkStringOption "8007";
-    flood               = mkStringOption "8008";
     sonarr              = mkStringOption "8989";
     jackett             = mkStringOption "9117";
   };

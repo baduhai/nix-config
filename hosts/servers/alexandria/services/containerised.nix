@@ -27,29 +27,6 @@
             "--pull=always"
           ];
         };
-        "transmission" = {
-          image = "lscr.io/linuxserver/transmission:latest";
-          environment = {
-            PUID = "1000";
-            PGID = "100";
-            TRANSMISSION_WEB_HOME = "/flood-for-transmission/";
-            TZ = "America/Bahia";
-          };
-          volumes = [
-            "/data/transmission/config:/config"
-            "/data/transmission/downloads:/downloads"
-            "/data/transmission/watch:/watch"
-          ];
-          ports = [
-            "${config.ports.flood}:9091"
-            "51413:51413"
-            "51413:51413/udp"
-
-          ];
-          extraOptions = [
-            "--pull=always"
-          ];
-        };
         "syncthing" = {
           image = "lscr.io/linuxserver/syncthing:1.20.4";
           environment = {
