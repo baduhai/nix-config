@@ -22,6 +22,7 @@ in
     jellyfin            = mkStringOption "8096";
     whoogle             = mkStringOption "8007";
     flood               = mkStringOption "8008";
+    qbittorrent         = mkStringOption "8009";
     sonarr              = mkStringOption "8989";
     prowlarr            = mkStringOption "9696";
   };

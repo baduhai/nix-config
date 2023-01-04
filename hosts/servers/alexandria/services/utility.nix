@@ -25,7 +25,7 @@
       group = "hosted";
       behindProxy = true;
       datastorePath = "/data/changedetection";
-      port = "${config.ports.changedetection-io}";
+      port = lib.toInt "${config.ports.changedetection-io}";
       baseURL = "https://detect.baduhai.me";
     };
 
@@ -34,7 +34,7 @@
       dataDir = "/data/paperless/data";
       mediaDir = "/data/paperless/media";
       passwordFile = config.age.secrets.paperless-pass.path;
-      port = "${config.ports.paperless}";
+      port = lib.toInt "${config.ports.paperless}";
       consumptionDirIsPublic = true;
       extraConfig = {
         PAPERLESS_OCR_LANGUAGE = "eng+por+deu";
@@ -43,7 +43,7 @@
 
     shiori = {
       enable = true;
-      port = "${config.ports.shiori}";
+      port = lib.toInt "${config.ports.shiori}";
     };
 
     n8n.enable = true;

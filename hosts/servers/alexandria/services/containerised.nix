@@ -18,10 +18,30 @@
         "librespeed" = {
           image = "lscr.io/linuxserver/librespeed:latest";
           environment = {
-            TZ = "Europe/Berlin";
+            TZ = "America/Bahia";
           };
           ports = [
             "${config.ports.librespeed}:80"
+          ];
+          extraOptions = [
+            "--pull=always"
+          ];
+        };
+        "qflood" = {
+          image = "cr.hotio.dev/hotio/qflood";
+          environment = {
+            PUID = "1000";
+            PGID = "100";
+            UMASK = "002";
+            TZ = "America/Bahia";
+            FLOOD_AUTH = "false";
+          };
+          volumes = [
+            "/data/qflood:/config"
+          ];
+          ports = [
+            "${config.ports.flood}:3000"
+            "${config.ports.qbittorrent}:8080"
           ];
           extraOptions = [
             "--pull=always"
@@ -32,7 +52,7 @@
           environment = {
             PUID = "1000";
             PGID = "100";
-            TZ = "Europe/Berlin";
+            TZ = "America/Bahia";
           };
           volumes = [
             "/data/syncthing/config:/config"
