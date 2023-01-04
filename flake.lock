@@ -121,11 +121,11 @@
     "homepage": {
       "flake": false,
       "locked": {
-        "lastModified": 1672862991,
-        "narHash": "sha256-gQRWcCFU+mVbQm3lUDmco0Pb8UMWGdOyZZn348LCubY=",
+        "lastModified": 1672863685,
+        "narHash": "sha256-5D4CHfcstTaqmhuKXm1w/jFgSa4N3bVSJa+FkpaD6Bs=",
         "owner": "baduhai",
         "repo": "homepage",
-        "rev": "315515a6cdf41b7de2915ede0f95022892d60d13",
+        "rev": "3918167e54464bd6d98f2ff70ca0679e5be8264f",
         "type": "github"
       },
       "original": {
