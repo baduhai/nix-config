@@ -9,19 +9,20 @@
 
     radarr = {
       enable = true;
+      user = "user";
       group = "hosted";
     };
 
     sonarr = {
       enable = true;
+      user = "user";
       group = "hosted";
     };
 
     bazarr = {
       enable = true;
+      user = "user";
       group = "hosted";
     };
-
-    prowlarr.enable = true;
   };
 }
