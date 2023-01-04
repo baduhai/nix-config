@@ -3,7 +3,7 @@
 {
   age.secrets = {
     paperless-pass = {
-      file = ../../../secrets/paperless-pass.age;
+      file = ../../../../secrets/paperless-pass.age;
       owner = "paperless";
       group = "hosted";
     };
