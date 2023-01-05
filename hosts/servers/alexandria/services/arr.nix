@@ -2,6 +2,13 @@
 
 {
   services = {
+    qbittorrent = {
+      enable = true;
+      user = "user";
+      group = "hosted";
+      port = lib.toInt "${config.ports.qbittorrent}";
+    };
+
     jellyfin = {
       enable = true;
       group = "hosted";
@@ -24,8 +31,6 @@
       user = "user";
       group = "hosted";
     };
-
-    aria2.enable = true;
 
     jackett.enable = true;
   };

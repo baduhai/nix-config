@@ -44,6 +44,7 @@
           ./hosts/servers/alexandria.nix
           agenix.nixosModule
           home-manager-stable.nixosModules.home-manager
+          self.nixosModules.qbittorrent
         ];
       };
     };
@@ -63,6 +64,8 @@
         };
       };
     };
+
+    nixosModules.qbittorrent = import ./modules/qbittorrent.nix;
 
     packages.x86_64-linux = {
       install-iso = nixos-generators.nixosGenerate {
