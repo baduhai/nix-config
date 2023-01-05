@@ -11,6 +11,7 @@
 
     jellyfin = {
       enable = true;
+      user = "user";
       group = "hosted";
     };
 
