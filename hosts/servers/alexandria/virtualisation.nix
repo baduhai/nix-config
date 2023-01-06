@@ -1,124 +1,71 @@
 { specialArgs, inputs, config, pkgs, lib, ... }:
 
 {
-  age.secrets = {
-    paperless-pass = {
-      file = ../../../../secrets/paperless-pass.age;
-      owner = "paperless";
-      group = "hosted";
-    };
-  };
-
-  services = {
-    bazarr = {
-      enable = true;
-      user = "user";
-      group = "hosted";
-    };
-
-    changedetection-io = {
-      enable = true;
-      group = "hosted";
-      behindProxy = true;
-      datastorePath = "/data/changedetection";
-      port = lib.toInt "${config.ports.changedetection-io}";
-      baseURL = "https://detect.baduhai.me";
-    };
-
-    jackett.enable = true;
-
-    jellyfin = {
-      enable = true;
-      user = "user";
-      group = "hosted";
-    };
-
-    minecraft-server = {
-      enable = true;
-      eula = true;
-      declarative = true;
-      openFirewall = true;
-      package = pkgs.papermc;
-      serverProperties = {
-        motd = "Bem-vindo a Alexandria";
-        difficulty = "hard";
-        gamemode = "survival";
-      };
-      dataDir = "/data/minecraft";
-    };
-
-    n8n.enable = true;
-
-    nginx = {
-      enable = true;
-      group = "hosted";
-      recommendedGzipSettings = true;
-      recommendedOptimisation = true;
-      recommendedProxySettings = true;
-      recommendedTlsSettings = true;
-      virtualHosts = {
-        "baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; root = inputs.homepage; };
-        "bazarr.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.bazaar}"; };
-        "bitwarden.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.vaultwarden}"; };
-        "cinny.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.cinny}"; };
-        "detect.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.changedetection-io}"; };
-        "jackett.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.jackett}"; };
-        "jellyfin.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.jellyfin}"; };
-        "librespeed.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.librespeed}"; };
-        "n8n.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.n8n}"; };
-        "paperless.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.paperless}"; };
-        "qbittorrent.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.qbittorrent}"; };
-        "radarr.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.radarr}"; };
-        "shiori.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.shiori}"; };
-        "sonarr.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.sonarr}"; };
-        "sync.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.syncthing}"; };
-        "whoogle.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.whoogle}"; };
-    };
-  };
-
-    paperless = {
-      enable = true;
-      dataDir = "/data/paperless/data";
-      mediaDir = "/data/paperless/media";
-      passwordFile = config.age.secrets.paperless-pass.path;
-      port = lib.toInt "${config.ports.paperless}";
-      consumptionDirIsPublic = true;
-      extraConfig = {
-        PAPERLESS_OCR_LANGUAGE = "eng+por+deu";
-      };
-    };
-
-    qbittorrent = {
-      enable = true;
-      user = "user";
-      group = "hosted";
-      port = lib.toInt "${config.ports.qbittorrent}";
-    };
-
-    radarr = {
-      enable = true;
-      user = "user";
-      group = "hosted";
-    };
-
-    shiori = {
-      enable = true;
-      port = lib.toInt "${config.ports.shiori}";
-    };
-
-    sonarr = {
-      enable = true;
-      user = "user";
-      group = "hosted";
-    };
-
-    vaultwarden = {
-      enable = true;
-      config = {
-        DOMAIN = "https://bitwarden.baduhai.me";
-        SIGNUPS_ALLOWED = false;
-        ROCKET_ADDRESS = "127.0.0.1";
-        ROCKET_PORT = "${config.ports.vaultwarden}";
+  virtualisation = {
+    docker.enable = true;
+    oci-containers = {
+      backend = "docker";
+      containers = {
+        "cinny" = {
+          image = "ghcr.io/cinnyapp/cinny:latest";
+          ports = [
+            "${config.ports.cinny}:80"
+          ];
+          extraOptions = [
+            "--pull=always"
+          ];
+        };
+        "librespeed" = {
+          image = "lscr.io/linuxserver/librespeed:latest";
+          environment = {
+            TZ = "America/Bahia";
+          };
+          ports = [
+            "${config.ports.librespeed}:80"
+          ];
+          extraOptions = [
+            "--pull=always"
+          ];
+        };
+        "syncthing" = {
+          image = "lscr.io/linuxserver/syncthing:1.20.4";
+          environment = {
+            PUID = "1000";
+            PGID = "100";
+            TZ = "America/Bahia";
+          };
+          volumes = [
+            "/data/syncthing/config:/config"
+            "/data/syncthing/data1:/data1"
+            "/data/syncthing/data2:/data2"
+            "/data/syncthing/notes:/sync/notes"
+          ];
+          ports = [
+            "${config.ports.syncthing}:8384"
+            "22000:22000"
+            "21027:21027/udp"
+          ];
+          extraOptions = [
+            "--pull=always"
+          ];
+        };
+        "whoogle" = {
+          image = "benbusby/whoogle-search:latest";
+          environment = {
+            HTTPS_ONLY = "1";
+            WHOOGLE_CONFIG_DISABLE = "1";
+            WHOOGLE_CONFIG_LANGUAGE = "lang_en";
+            WHOOGLE_CONFIG_THEME = "system";
+            WHOOGLE_CONFIG_VIEW_IMAGE = "1";
+            WHOOGLE_CONFIG_GET_ONLY = "1";
+          };
+          ports = [
+            "${config.ports.whoogle}:5000"
+          ];
+          extraOptions = [
+            "--pull=always"
+          ];
+        };
       };
     };
   };
