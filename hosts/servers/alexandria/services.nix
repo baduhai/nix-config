@@ -7,6 +7,11 @@
       owner = "paperless";
       group = "hosted";
     };
+    keycloakpg-pass = {
+      file = ../../../secrets/keycloakpg-pass.age;
+      owner = "user";
+      group = "hosted";
+    };
   };
 
   services = {
@@ -33,6 +38,24 @@
       group = "hosted";
     };
 
+    keycloak = {
+      enable = true;
+      database = {
+        type = "postgresql";
+        createLocally = true;
+        username = "keycloak";
+        passwordFile = config.age.secrets.keycloakpg-pass.path;
+      };
+      settings = {
+        hostname = "baduhai.me";
+        http-relative-path = "/cloak";
+        http-port = lib.toInt "${config.ports.keycloak}";
+        proxy = "passthrough";
+        http-enabled = true;
+        initialAdminPassword = "changeme";
+      };
+    };
+
     minecraft-server = {
       enable = true;
       eula = true;
@@ -57,7 +80,13 @@
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
       virtualHosts = {
-        "baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; root = inputs.homepage; };
+        "baduhai.me" = {
+          useACMEHost = "baduhai.me";
+          forceSSL = true;
+          kTLS = true;
+          root = inputs.homepage;
+          locations."/cloak/".proxyPass = "http://127.0.0.1:${config.ports.keycloak}/cloak/";
+        };
         "bazarr.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.bazaar}"; };
         "bitwarden.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.vaultwarden}"; };
         "cinny.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.cinny}"; };
@@ -73,8 +102,8 @@
         "sonarr.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.sonarr}"; };
         "sync.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.syncthing}"; };
         "whoogle.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.whoogle}"; };
+      };
     };
-  };
 
     paperless = {
       enable = true;
@@ -87,6 +116,8 @@
         PAPERLESS_OCR_LANGUAGE = "eng+por+deu";
       };
     };
+
+    postgresql.enable = true;
 
     qbittorrent = {
       enable = true;
