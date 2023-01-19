@@ -1,5 +1,11 @@
 { specialArgs, inputs, config, pkgs, lib, ... }:
 
+let
+  plasma = pkgs.writeScriptBin "plasma" ''
+    ${pkgs.plasma-workspace}/bin/startplasma-wayland &> /dev/null
+  '';
+in
+
 {
   services = {
     printing.enable = true;
@@ -40,17 +46,12 @@
     greetd = {
       enable = true;
       settings = {
-        default_session.command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember  --asterisks --time --greeting \"Welcome to Nix\" --cmd ${pkgs.plasma-workspace}/bin/startplasma-wayland";
-#         initial_session = {
-#           command = "${pkgs.plasma-workspace}/bin/startplasma-wayland";
-#           user = "user";
-#         };
+        default_session.command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --user-menu --asterisks --time --greeting \"Welcome to NixOS\" --cmd ${plasma}/bin/plasma";
+        initial_session = {
+          command = "${plasma}/bin/plasma";
+          user = "user";
+        };
       };
     };
   };
-
-  environment.etc."greetd/environments".text = ''
-    startplasma-wayland
-    fish
-  '';
 }

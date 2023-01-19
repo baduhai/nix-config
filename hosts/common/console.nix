@@ -1,22 +1,47 @@
 { specialArgs, inputs, config, pkgs, lib, ... }:
 
 {
-  console.colors = [
-    "002b36"
-    "dc322f"
-    "859900"
-    "b58900"
-    "268bd2"
-    "d33682"
-    "2aa198"
-    "eee8d5"
-    "002b36"
-    "cb4b16"
-    "586e75"
-    "657b83"
-    "839496"
-    "6c71c4"
-    "93a1a1"
-    "fdf6e3"
-  ];
+  console = {
+    keyMap = "us";
+    earlySetup = true;
+    colors = [
+      "2E3440"
+      "3B4252"
+      "434C5E"
+      "4C566A"
+      "D8DEE9"
+      "E5E9F0"
+      "ECEFF4"
+      "8FBCBB"
+      "88C0D0"
+      "81A1C1"
+      "5E81AC"
+      "BF616A"
+      "D08770"
+      "EBCB8B"
+      "A3BE8C"
+      "B48EAD"
+    ];
+  };
+
+  i18n = {
+    consoleColors = [
+      "2E3440"
+      "3B4252"
+      "434C5E"
+      "4C566A"
+      "D8DEE9"
+      "E5E9F0"
+      "ECEFF4"
+      "8FBCBB"
+      "88C0D0"
+      "81A1C1"
+      "5E81AC"
+      "BF616A"
+      "D08770"
+      "EBCB8B"
+      "A3BE8C"
+      "B48EAD"
+    ];
+  };
 }
