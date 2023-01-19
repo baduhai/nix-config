@@ -66,6 +66,8 @@
         motd = "Bem-vindo a Alexandria";
         difficulty = "hard";
         gamemode = "survival";
+        online-mode = "false";
+        spawn-protection = "0";
       };
       dataDir = "/data/minecraft";
     };

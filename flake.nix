@@ -30,9 +30,9 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/desktops/io.nix
-          kmonad.nixosModules.default
           agenix.nixosModule
-          home-manager.nixosModules.home-manager
+          kmonad.nixosModules.default
+          home-manager.nixosModules.default
           { nixpkgs.overlays = [ nur.overlay agenix.overlay ]; }
         ];
       };

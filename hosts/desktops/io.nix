@@ -1,7 +1,7 @@
 { specialArgs, inputs, config, pkgs, lib, ... }:
 
 {
-  imports = [ 
+  imports = [
     # Host-common imports
     ../common
     # Desktop-common imports

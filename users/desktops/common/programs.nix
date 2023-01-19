@@ -47,7 +47,7 @@
         local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
         return {
           font_size = 10,
-          color_scheme = 'Twilight (base16)',
+          color_scheme = 'Atelier Cave (base16)',
           hide_tab_bar_if_only_one_tab = true,
           font = wezterm.font_with_fallback ({
             "Hack Nerd Font",
