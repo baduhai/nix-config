@@ -11,6 +11,7 @@
     lazydocker
     micro
     neofetch
+    sysz
     tmux
     tree
     wget
