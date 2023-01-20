@@ -1,5 +1,9 @@
 { specialArgs, inputs, config, pkgs, lib, ... }:
 
+let
+  fontFamily = "Hack Nerd Font";
+in
+
 {
   fonts.fontconfig.enable = true;
 
@@ -20,7 +24,7 @@
       enable = true;
       diff-so-fancy.enable = true;
       userName = "William";
-      userEmail = "williamhai@hotmail.com";
+      userEmail = "baduhai@proton.me";
     };
     fish = {
       functions = {
@@ -46,15 +50,15 @@
         local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
         local SOLID_RIGHT_ARROW = utf8.char(0xe0b0)
         return {
-          font_size = 10,
+          font_size = 11,
           color_scheme = 'Atelier Cave (base16)',
           hide_tab_bar_if_only_one_tab = true,
           font = wezterm.font_with_fallback ({
             "Hack Nerd Font",
             "Noto Color Emoji",
           }),
-          initial_cols = 120,
-          initial_rows = 34,
+          initial_cols = 108,
+          initial_rows = 32,
         }
       '';
     };
