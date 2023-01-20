@@ -45,11 +45,11 @@
     "dotfiles": {
       "flake": false,
       "locked": {
-        "lastModified": 1674245831,
-        "narHash": "sha256-xUSj3zAFbbU29y0leUMJsv0HHW+b1sCuMTPvMnfVCo4=",
+        "lastModified": 1674247000,
+        "narHash": "sha256-ZYO6aK0VHdeR0JBtAsYOnpe5dmSFMbuppM/6nb6mUPs=",
         "owner": "baduhai",
         "repo": "dotfiles",
-        "rev": "33db78b93eaecdbdfc608bfd44f957e8c6d32a68",
+        "rev": "fb7ee9f6833838b3da29499940d5284bbd87c68b",
         "type": "github"
       },
       "original": {
