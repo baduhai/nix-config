@@ -14,7 +14,8 @@
     ];
     file = {
       # Dotfiles that can't be managed via home-manager
-      ".local/share/color-schemes/BreezeDarkNeutral.colors".source = "${inputs.dotfiles}/color-schemes/BreezeDarkNeutral.colors";
+      ".local/share/color-schemes/QogirLight.colors".source = "${inputs.dotfiles}/QogirLight.colors";
+      ".local/share/color-schemes/Carl.colors".source = "${inputs.dotfiles}/Carl.colors";
       ".config/MangoHud/MangoHud.conf".source = "${inputs.dotfiles}/MangoHud/MangoHud.conf";
       # Autostart programs
       ".config/autostart/org.kde.yakuake.desktop".source = config.lib.file.mkOutOfStoreSymlink "/var/run/current-system/sw/share/applications/org.kde.yakuake.desktop";
