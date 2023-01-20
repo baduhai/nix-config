@@ -25,7 +25,7 @@
       enable = true;
       enableBashIntegration = true;
       enableFishIntegration = true;
-      settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile "${inputs.dotfiles}/montys.omp.json"));
+      settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile "${inputs.dotfiles}/omp.json"));
     };
     fish = {
       enable = true;
