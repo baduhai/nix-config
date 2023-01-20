@@ -19,6 +19,7 @@
         scrollbar = true;
         tabstospaces = true;
         tabsize = 2;
+        colorscheme = "cmc-16";
       };
     };
     oh-my-posh = {
