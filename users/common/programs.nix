@@ -21,6 +21,12 @@
         tabsize = 2;
       };
     };
+    oh-my-posh = {
+      enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile "${inputs.dotfiles}/montys.omp.json"));
+    };
     fish = {
       enable = true;
       interactiveShellInit = "any-nix-shell fish --info-right | source";
@@ -35,26 +41,9 @@
         tsh = "ssh -o RequestTTY=yes $argv tmux -u -CC new -A -s tmux-main";
       };
       shellInit = ''
-        set -g theme_date_format "+%H:%M"
-        set -g theme_date_timezone America/Bahia
-        set -g theme_avoid_ambiguous_glyphs yes
-        set -g theme_color_scheme dark
-        set -g theme_nerd_fonts yes
-        set -g theme_title_display_user yes
-        set -g theme_title_display_process yes
-        set -g theme_display_git_default_branch yes
         set -g -x FONTCONFIG_FILE ${pkgs.fontconfig.out}/etc/fonts/fonts.conf
       '';
       plugins  = [
-        {
-          name = "bobthefish";
-          src = pkgs.fetchFromGitHub {
-            owner = "oh-my-fish";
-            repo = "theme-bobthefish";
-            rev = "2dcfcab653ae69ae95ab57217fe64c97ae05d8de";
-            sha256 = "jBbm0wTNZ7jSoGFxRkTz96QHpc5ViAw9RGsRBkCQEIU=";
-          };
-        }
         {
           name = "bang-bang";
           src = pkgs.fetchFromGitHub {
