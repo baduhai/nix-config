@@ -2,7 +2,7 @@
 
 {
   console = {
-    keyMap = "us";
+    useXkbConfig = true;
     earlySetup = true;
     colors = [
       "2E3440"
