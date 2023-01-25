@@ -67,6 +67,7 @@
     adb.enable = true;
     steam.enable = true;
     dconf.enable = true;
+    nix-ld.enable = true;
     kdeconnect.enable = true;
     partition-manager.enable = true;
     gnupg.agent = {
