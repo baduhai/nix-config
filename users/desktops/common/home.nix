@@ -14,8 +14,8 @@
     ];
     file = {
       # Dotfiles that can't be managed via home-manager
-      ".local/share/color-schemes/QogirLight.colors".source = "${inputs.dotfiles}/QogirLight.colors";
-      ".local/share/color-schemes/Carl.colors".source = "${inputs.dotfiles}/Carl.colors";
+      ".local/share/color-schemes/CatppuccinMocha.colors".source = "${inputs.dotfiles}/CatppuccinMocha.colors";
+      ".local/share/color-schemes/CatppuccinLatte.colors".source = "${inputs.dotfiles}/CatppuccinLatte.colors";
       ".config/wezterm/wezterm.lua".source = "${inputs.dotfiles}/wezterm.lua";
       ".config/MangoHud/MangoHud.conf".source = "${inputs.dotfiles}/MangoHud/MangoHud.conf";
       # Autostart programs
