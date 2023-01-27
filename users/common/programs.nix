@@ -63,14 +63,6 @@
             sha256 = "sha256-XmRGe39O3xXmTvfawwT2mCwLIyXOlQm7f40mH5tzz+s=";
           };
         }
-        {
-          name = "catppuccin";
-          src = {
-            owner = "catppuccin";
-            repo = "fish";
-            sha256 = "";
-          };
-        }
       ];
     };
     tmux = {
