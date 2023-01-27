@@ -13,6 +13,7 @@
     bitwarden
     chatterino2
     deploy-rs
+    distrobox
     fd
     filelight
     firefox-wayland # Until firefox moves to using wayland by default
