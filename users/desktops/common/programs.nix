@@ -34,14 +34,5 @@ in
         upgrade-boot = "rm ~/.gtkrc-2.0; nix flake lock --update-input nixpkgs --commit-lock-file /home/user/Projects/personal/nix-config; sudo nixos-rebuild boot --upgrade --flake '/home/user/Projects/personal/nix-config#'";
       };
     };
-    btop = {
-      enable = true;
-      settings = {
-        color_theme = "gruvbox_dark.theme";
-        theme_background = false;
-        proc_sorting = "cpu direct";
-        update_ms = 500;
-      };
-    };
   };
 }

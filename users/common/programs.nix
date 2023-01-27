@@ -28,6 +28,15 @@
       enableFishIntegration = true;
       settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile "${inputs.dotfiles}/omp.json"));
     };
+    btop = {
+      enable = true;
+      settings = {
+        color_theme = "catppuccin_mocha.theme";
+        theme_background = false;
+        proc_sorting = "cpu direct";
+        update_ms = 500;
+      };
+    };
     fish = {
       enable = true;
       interactiveShellInit = "any-nix-shell fish --info-right | source";
