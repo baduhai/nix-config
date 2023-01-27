@@ -19,7 +19,7 @@
         scrollbar = true;
         tabstospaces = true;
         tabsize = 2;
-        colorscheme = "cmc-16";
+        colorscheme = "simple";
       };
     };
     oh-my-posh = {
@@ -51,7 +51,7 @@
             owner = "oh-my-fish";
             repo = "plugin-bang-bang";
             rev = "f969c618301163273d0a03d002614d9a81952c1e";
-            sha256 = "A8ydBX4LORk+nutjHurqNNWFmW6LIiBPQcxS3x4nbeQ=";
+            sha256 = "sha256-A8ydBX4LORk+nutjHurqNNWFmW6LIiBPQcxS3x4nbeQ=";
           };
         }
         {
@@ -60,7 +60,15 @@
             owner = "PatrickF1";
             repo = "fzf.fish";
             rev = "v9.2";
-            sha256 = "XmRGe39O3xXmTvfawwT2mCwLIyXOlQm7f40mH5tzz+s=";
+            sha256 = "sha256-XmRGe39O3xXmTvfawwT2mCwLIyXOlQm7f40mH5tzz+s=";
+          };
+        }
+        {
+          name = "catppuccin";
+          src = {
+            owner = "catppuccin";
+            repo = "fish";
+            sha256 = "";
           };
         }
       ];

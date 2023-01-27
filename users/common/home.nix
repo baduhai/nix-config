@@ -8,8 +8,9 @@
     sessionVariables = {
       EDITOR = "micro";
     };
-    activation.installMicroPlugins = ''
-      ${pkgs.micro}/bin/micro -plugin install filemanager
-    '';
+    file = {
+      ".config/btop/themes/catppuccin_mocha.theme".source = "${inputs.dotfiles}/.config/btop/themes/catppuccin_mocha.theme";
+      ""
+    };
   };
 }

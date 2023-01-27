@@ -52,7 +52,6 @@
     ventoy-bin
     virt-manager
     wezterm
-    yakuake
     # Package overrides
     (appimage-run.override {
       extraPkgs = pkgs: [  ];
