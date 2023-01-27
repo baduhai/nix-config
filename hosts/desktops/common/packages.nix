@@ -28,6 +28,7 @@
     kate
     kolourpaint
     libreoffice-qt
+    librewolf
     logseq
     mangohud
     mpv
