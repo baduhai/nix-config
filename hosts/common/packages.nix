@@ -7,6 +7,7 @@
     any-nix-shell
     bind
     btop
+    comma
     git
     lazydocker
     micro

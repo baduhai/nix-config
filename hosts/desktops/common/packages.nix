@@ -32,6 +32,7 @@
     logseq
     mangohud
     mpv
+    # nix-init
     obs-studio
     obs-studio-plugins.obs-vkcapture
     p7zip
@@ -56,7 +57,7 @@
     wezterm
     # Package overrides
     (appimage-run.override {
-      extraPkgs = pkgs: [  ];
+      extraPkgs = pkgs: [ libthai ];
     })
     # Packages from 3rd party overlays
     agenix
