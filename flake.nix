@@ -30,10 +30,10 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/desktops/io.nix
-          agenix.nixosModule
+          agenix.nixosModules.default
           kmonad.nixosModules.default
           home-manager.nixosModules.default
-          { nixpkgs.overlays = [ nur.overlay agenix.overlay ]; }
+          { nixpkgs.overlays = [ nur.overlay agenix.overlays.default ]; }
         ];
       };
 
@@ -42,7 +42,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/servers/alexandria.nix
-          agenix.nixosModule
+          agenix.nixosModules.default
           home-manager-stable.nixosModules.home-manager
           self.nixosModules.qbittorrent
         ];
