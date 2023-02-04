@@ -21,7 +21,7 @@
     fzf
     gimp
     gocryptfs
-    helvum
+#     helvum
     heroic
     inkscape
     # itch # Currently using unsafe electron version
@@ -32,7 +32,7 @@
     logseq
     mangohud
     mpv
-    # nix-init
+    nix-init
     obs-studio
     obs-studio-plugins.obs-vkcapture
     p7zip
