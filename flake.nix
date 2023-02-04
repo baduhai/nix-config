@@ -8,7 +8,7 @@
     home-manager = { url = "github:nix-community/home-manager/master"; inputs.nixpkgs.follows = "nixpkgs"; };
     home-manager-stable = { url = "github:nix-community/home-manager/release-22.11"; inputs.nixpkgs.follows = "nixpkgs-stable"; };
 
-    nur.url = "github:nix-community/nur";
+    baduhai-nur.url = "github:baduhai/nur";
 
     kmonad = { url = "github:kmonad/kmonad?dir=nix"; inputs.nixpkgs.follows = "nixpkgs"; };
 
@@ -23,7 +23,7 @@
     dotfiles = { url = "github:baduhai/dotfiles"; flake = false; };
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, nur, kmonad, nixpkgs-stable, home-manager-stable, deploy-rs, agenix, nixos-generators, homepage, dotfiles, ... }: {
+  outputs = inputs @ { self, nixpkgs, home-manager, baduhai-nur, kmonad, nixpkgs-stable, home-manager-stable, deploy-rs, agenix, nixos-generators, homepage, dotfiles, ... }: {
     nixosConfigurations = {
       io = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -33,7 +33,7 @@
           agenix.nixosModules.default
           kmonad.nixosModules.default
           home-manager.nixosModules.default
-          { nixpkgs.overlays = [ nur.overlay agenix.overlays.default ]; }
+          { nixpkgs.overlays = [ baduhai-nur.overlay agenix.overlays.default ]; }
         ];
       };
 

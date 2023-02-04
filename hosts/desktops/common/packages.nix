@@ -60,10 +60,10 @@
     })
     # Packages from 3rd party overlays
     agenix
-    nur.repos.baduhai.chatterino7
-    nur.repos.baduhai.emulationstation-de
-    nur.repos.baduhai.koi
-    nur.repos.baduhai.notesnook
+    chatterino7
+    emulationstation-de
+    koi
+    notesnook
   ];
 
   programs = {
