@@ -20,10 +20,10 @@
     fzf
     gimp
     gocryptfs
-#     helvum
+    helvum
     heroic
     inkscape
-    # itch # Currently using unsafe electron version
+#     itch # Currently using unsafe electron version
     kate
     kolourpaint
     libreoffice-qt
@@ -50,6 +50,7 @@
     thunderbird-wayland # Until thunderbird moves to using wayland by default
     ungoogled-chromium
     unrar
+    upwork
     vagrant
     ventoy-bin
     virt-manager
