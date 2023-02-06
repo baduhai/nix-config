@@ -20,7 +20,7 @@
     fzf
     gimp
     gocryptfs
-    helvum
+#     helvum
     heroic
     inkscape
 #     itch # Currently using unsafe electron version
