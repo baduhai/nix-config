@@ -24,6 +24,7 @@
     heroic
     inkscape
 #     itch # Currently using unsafe electron version
+    jellyfin-media-player
     kate
     kolourpaint
     libreoffice-qt
