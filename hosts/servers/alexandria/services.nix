@@ -136,5 +136,5 @@
     };
   };
 
-  systemd.services.systemd-udevd.restartIfChanged = false; # Workaround for upstream bug in NetworkManager-wait-online.service
+  systemd.services.NetworkManager-wait-online.enable = false; # Workaround for upstream bug in NetworkManager-wait-online.service
 }
