@@ -38,24 +38,6 @@
       group = "hosted";
     };
 
-    keycloak = {
-      enable = true;
-      database = {
-        type = "postgresql";
-        createLocally = true;
-        username = "keycloak";
-        passwordFile = config.age.secrets.keycloakpg-pass.path;
-      };
-      settings = {
-        hostname = "baduhai.me";
-        http-relative-path = "/cloak";
-        http-port = lib.toInt "${config.ports.keycloak}";
-        proxy = "passthrough";
-        http-enabled = true;
-        initialAdminPassword = "changeme";
-      };
-    };
-
     minecraft-server = {
       enable = true;
       eula = true;
@@ -71,8 +53,6 @@
       };
       dataDir = "/data/minecraft";
     };
-
-    n8n.enable = true;
 
     nginx = {
       enable = true;
@@ -149,7 +129,7 @@
       enable = true;
       config = {
         DOMAIN = "https://bitwarden.baduhai.me";
-        SIGNUPS_ALLOWED = false;
+        SIGNUPS_ALLOWED = true;
         ROCKET_ADDRESS = "127.0.0.1";
         ROCKET_PORT = "${config.ports.vaultwarden}";
       };
