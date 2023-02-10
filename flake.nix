@@ -25,6 +25,18 @@
 
   outputs = inputs @ { self, nixpkgs, home-manager, baduhai-nur, kmonad, nixpkgs-stable, home-manager-stable, deploy-rs, agenix, nixos-generators, homepage, dotfiles, ... }: {
     nixosConfigurations = {
+      rotterdam = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/desktops/rotterdam.nix
+          agenix.nixosModules.default
+          kmonad.nixosModules.default
+          home-manager.nixosModules.default
+          { nixpkgs.overlays = [ baduhai-nur.overlay agenix.overlays.default ]; }
+        ];
+      };
+
       io = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };

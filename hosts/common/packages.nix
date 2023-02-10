@@ -9,7 +9,6 @@
     btop
     comma
     git
-    lazydocker
     micro
     neofetch
     sysz

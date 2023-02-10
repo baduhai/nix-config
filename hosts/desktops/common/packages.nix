@@ -45,6 +45,7 @@
     rpcs3
     signal-desktop
     solvespace
+    space-cadet-pinball
     steam-run
     streamlink-twitch-gui-bin
     tdesktop
@@ -56,6 +57,7 @@
     ventoy-bin
     virt-manager
     wezterm
+    yubikey-personalization-gui
     # Package overrides
     (appimage-run.override {
       extraPkgs = pkgs: [ libthai ];

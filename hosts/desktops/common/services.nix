@@ -27,21 +27,6 @@ in
         enable     = true;
         excludePackages = ( with pkgs.plasma5Packages; [ elisa oxygen khelpcenter ]);
       };
-#       displayManager = {
-#         defaultSession = "plasmawayland";
-#         sddm = {
-#           enable = true;
-#           autoNumlock = true;
-#           settings = {
-#             Theme = {
-#               CursorTheme = "breeze_cursors";
-#             };
-#             X11 = {
-#               UserAuthFile = ".local/share/sddm/Xauthority";
-#             };
-#           };
-#         };
-#       };
     };
     greetd = {
       enable = true;
