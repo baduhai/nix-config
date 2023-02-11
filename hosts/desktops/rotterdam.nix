@@ -29,4 +29,8 @@
   users.users.user.extraGroups = [
     "corectrl"
   ];
+
+  environment.sessionVariables = rec {
+    KWIN_DRM_NO_AMS = "1"; # RDNA2 colour/gamma modesetting bug workaround for kwin wayland
+  };
 }

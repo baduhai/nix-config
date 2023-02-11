@@ -41,7 +41,7 @@
 #     prusa-slicer
     qbittorrent
     quickemu
-    retroarchFull
+#     retroarchFull
     rpcs3
     signal-desktop
     solvespace
