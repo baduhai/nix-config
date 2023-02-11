@@ -2,7 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    arduino
     ark
     aspell
     aspellDicts.de

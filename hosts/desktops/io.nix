@@ -19,13 +19,20 @@
     memoryPercent = 100;
   };
 
-  boot.kernelParams = [
-    "nosgx"
-    "i915.fastboot=1"
-    "mem_sleep_default=deep"
-  ];
+  boot = {
+    kernelParams = [
+      "nosgx"
+      "i915.fastboot=1"
+      "mem_sleep_default=deep"
+    ];
+    kernelModules = [
+      "i2c-dev" # Required for arduino dev
+      "i2c-piix4" # Required for arduino dev
+    ];
+  };
 
   environment.systemPackages = with pkgs; [
+    arduino
     gnome-network-displays
     maliit-keyboard
     rnote
