@@ -18,10 +18,11 @@ in
       wireplumber.enable = true;
     };
     xserver = {
-      enable = false;
+      enable = true;
       autorun = false;
       layout = "us";
       xkbVariant = "altgr-intl";
+      exportConfiguration = true;
       excludePackages = ( with pkgs; [ xterm ]);
       desktopManager.plasma5 = {
         enable     = true;
