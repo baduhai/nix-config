@@ -24,7 +24,7 @@ in
       xkbVariant = "altgr-intl";
       exportConfiguration = true;
       excludePackages = ( with pkgs; [ xterm ]);
-      displayServer.startx.enable = true;
+      displayManager.startx.enable = true;
       desktopManager.plasma5 = {
         enable     = true;
         excludePackages = ( with pkgs.plasma5Packages; [ elisa oxygen khelpcenter ]);
