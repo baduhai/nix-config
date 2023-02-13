@@ -34,7 +34,7 @@
     KWIN_DRM_NO_AMS = "1"; # RDNA2 colour/gamma modesetting bug workaround for kwin wayland
   };
 
-  network.firewall = {
+  networking.firewall = {
     allowedTCPPorts =[
       27036 # Steam remote play
       27037 # Steam remote play
