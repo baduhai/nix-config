@@ -12,13 +12,27 @@
 
   networking.hostName = "rotterdam";
 
-  nix.nixPath = [ "nixos-config=${./rotterdam.nix}" ];
+  services.hardware.openrgb.enable = true;
+
+  programs.corectrl.enable = true;
+
+  systemd.targets.hibernate.enable = false; # disable non-functional hibernate
+
+  nix.nixPath = [
+    "nixos-config=${./rotterdam.nix}"
+  ];
+
+  users.users.user.extraGroups = [
+    "corectrl"
+  ];
 
   boot.kernelParams = [
     "processor.max_cstate=1" # Fixes bug where ryzen cpus freeze when in highest C state
   ];
 
-  services.hardware.openrgb.enable = true;
+  environment.sessionVariables = rec {
+    KWIN_DRM_NO_AMS = "1"; # RDNA2 colour/gamma modesetting bug workaround for kwin wayland
+  };
 
   environment.systemPackages = with pkgs; [
     cemu
@@ -28,16 +42,6 @@
     # Packages from 3rd party overlays
     emulationstation-de
   ];
-
-  programs.corectrl.enable = true;
-
-  users.users.user.extraGroups = [
-    "corectrl"
-  ];
-
-  environment.sessionVariables = rec {
-    KWIN_DRM_NO_AMS = "1"; # RDNA2 colour/gamma modesetting bug workaround for kwin wayland
-  };
 
   networking.firewall = {
     allowedTCPPorts =[
