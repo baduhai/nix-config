@@ -21,7 +21,12 @@
   services.hardware.openrgb.enable = true;
 
   environment.systemPackages = with pkgs; [
+    cemu
+#     retroarchFull
+    rpcs3
     yuzu-ea
+    # Packages from 3rd party overlays
+    emulationstation-de
   ];
 
   programs.corectrl.enable = true;

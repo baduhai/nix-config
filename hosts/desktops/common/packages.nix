@@ -40,8 +40,6 @@
 #     prusa-slicer
     qbittorrent
     quickemu
-#     retroarchFull
-    rpcs3
     signal-desktop
     solvespace
     space-cadet-pinball
@@ -64,7 +62,6 @@
     # Packages from 3rd party overlays
     agenix
     chatterino7
-    emulationstation-de
     koi
     notesnook
   ];
