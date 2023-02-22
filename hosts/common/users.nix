@@ -7,6 +7,7 @@
       shell = pkgs.fish;
       extraGroups = [
         "networkmanager"
+        "docker"
         "wheel"
       ];
       openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKcwF1yuWEfYGScNocEbs0AmGxyTIzGc4/IhpU587SJE" ];
