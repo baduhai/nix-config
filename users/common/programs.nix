@@ -42,7 +42,6 @@
       interactiveShellInit = "any-nix-shell fish --info-right | source";
       loginShellInit = "any-nix-shell fish --info-right | source";
       shellAliases = {
-        d = "kitty +kitten diff";
         nano = "micro";
         wget = "wget --hsts-file=\"$XDG_DATA_HOME/wget-hsts\"";
       };
