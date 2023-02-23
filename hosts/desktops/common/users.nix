@@ -11,6 +11,7 @@
     extraGroups = [
       "uaccess" # Needed for HID dev
       "dialout" # Needed for arduino dev
+      "libvirt"
       "libvirtd"
       "adbusers"
     ];
