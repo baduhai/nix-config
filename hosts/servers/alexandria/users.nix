@@ -20,5 +20,5 @@
     };
   };
 
-  home-manager.users.user = import ../../../users/servers/user.nix;
+  home-manager.users.user = import ../../../../users/servers/user.nix;
 }
