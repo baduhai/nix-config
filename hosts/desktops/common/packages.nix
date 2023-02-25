@@ -40,6 +40,7 @@
 #     prusa-slicer
     qbittorrent
     quickemu
+    quickgui
     signal-desktop
     solvespace
     space-cadet-pinball
