@@ -25,7 +25,7 @@
       baseURL = "https://detect.baduhai.me";
     };
 
-    invoiceplane.sites,"invoice.baduhai.me" = {
+    invoiceplane.sites."invoice.baduhai.me" = {
       enable = true;
       port = lib.toInt "${config.ports.paperless}";
       stateDir = "/data/invoiceplane";
