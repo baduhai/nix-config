@@ -7,11 +7,6 @@
       owner = "paperless";
       group = "hosted";
     };
-    keycloakpg-pass = {
-      file = ../../../secrets/keycloakpg-pass.age;
-      owner = "user";
-      group = "hosted";
-    };
   };
 
   services = {
@@ -28,6 +23,15 @@
       datastorePath = "/data/changedetection";
       port = lib.toInt "${config.ports.changedetection-io}";
       baseURL = "https://detect.baduhai.me";
+    };
+
+    invoiceplane.sites,"invoice.baduhai.me" = {
+      enable = true;
+      port = lib.toInt "${config.ports.paperless}";
+      stateDir = "/data/invoiceplane";
+      extraConfig = ''
+        IP_URL=https://invoice.baduhai.me
+      '';
     };
 
     jackett.enable = true;
@@ -67,12 +71,12 @@
           forceSSL = true;
           kTLS = true;
           root = inputs.homepage;
-          locations."/cloak/".proxyPass = "http://127.0.0.1:${config.ports.keycloak}/cloak/";
         };
         "bazarr.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.bazaar}"; };
         "bitwarden.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.vaultwarden}"; };
         "cinny.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.cinny}"; };
         "detect.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.changedetection-io}"; };
+        "invoice.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.invoiceplane}"; };
         "jackett.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.jackett}"; };
         "jellyfin.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.jellyfin}"; };
         "librespeed.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.librespeed}"; };

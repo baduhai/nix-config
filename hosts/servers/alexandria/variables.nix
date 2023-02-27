@@ -22,7 +22,7 @@ in
     jellyfin            = mkStringOption "8096";
     whoogle             = mkStringOption "8007";
     qbittorrent         = mkStringOption "8008";
-    keycloak            = mkStringOption "8009";
+    invoiceplane        = mkStringOption "8009";
     sonarr              = mkStringOption "8989";
     jackett             = mkStringOption "9117";
   };
