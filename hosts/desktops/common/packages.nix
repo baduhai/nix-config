@@ -43,6 +43,7 @@
     signal-desktop
     solvespace
     space-cadet-pinball
+    spotify
     steam-run
     streamlink-twitch-gui-bin
     tdesktop
