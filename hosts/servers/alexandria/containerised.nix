@@ -6,6 +6,18 @@
     oci-containers = {
       backend = "docker";
       containers = {
+        "actual" = {
+          image = "jlongster/actual-server:latest";
+          ports = [
+            "${config.ports.actual}:5006"
+          ];
+          volumes = [
+            "/data/actual:/data"
+          ];
+          extraOptions = [
+            "--pull=always"
+          ];
+        };
         "cinny" = {
           image = "ghcr.io/cinnyapp/cinny:latest";
           ports = [
