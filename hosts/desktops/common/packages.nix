@@ -24,6 +24,7 @@
     inkscape
 #     itch # Currently using unsafe electron version
     jellyfin-media-player
+    junction
     kate
     kolourpaint
     libreoffice-qt
