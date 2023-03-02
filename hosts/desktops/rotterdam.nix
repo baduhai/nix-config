@@ -14,8 +14,6 @@
 
   services.hardware.openrgb.enable = true;
 
-  programs.corectrl.enable = true;
-
   systemd.targets.hibernate.enable = false; # disable non-functional hibernate
 
   nix.nixPath = [
@@ -32,6 +30,11 @@
 
   environment.sessionVariables = rec {
     KWIN_DRM_NO_AMS = "1"; # RDNA2 colour/gamma modesetting bug workaround for kwin wayland
+  };
+
+  programs = {
+    corectrl.enable = true;
+    steam.dedicatedServer.openFirewall = true;
   };
 
   environment.systemPackages = with pkgs; [
