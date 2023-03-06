@@ -20,6 +20,10 @@ in
       enable = true;
       enableSessionWide = true;
     };
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
     git = {
       enable = true;
       diff-so-fancy.enable = true;
