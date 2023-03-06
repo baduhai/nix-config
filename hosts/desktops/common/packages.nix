@@ -50,7 +50,6 @@
     thunderbird-wayland # Until thunderbird moves to using wayland by default
     ungoogled-chromium
     unrar
-    upwork
     vagrant
     ventoy-bin
     virt-manager
