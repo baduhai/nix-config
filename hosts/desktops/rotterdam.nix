@@ -26,6 +26,7 @@
 
   boot.kernelParams = [
     "processor.max_cstate=1" # Fixes bug where ryzen cpus freeze when in highest C state
+    "clearcpuid=514"
   ];
 
   environment.sessionVariables = rec {
