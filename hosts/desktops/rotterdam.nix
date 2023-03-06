@@ -40,9 +40,9 @@
 
   environment.systemPackages = with pkgs; [
     cemu
-#     retroarchFull
+    retroarchFull
     rpcs3
-    yuzu-ea
+#     yuzu-ea
     # Packages from 3rd party overlays
     emulationstation-de
   ];
