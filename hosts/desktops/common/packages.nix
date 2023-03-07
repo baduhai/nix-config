@@ -41,6 +41,7 @@
 #     prusa-slicer
     qbittorrent
     quickemu
+    rust-analyzer
     signal-desktop
     solvespace
     space-cadet-pinball
