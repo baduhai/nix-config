@@ -31,6 +31,7 @@
     logseq
     mangohud
     mpv
+    nil
     nix-init
     obs-studio
     obs-studio-plugins.obs-vkcapture
