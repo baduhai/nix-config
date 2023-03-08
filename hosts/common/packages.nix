@@ -16,6 +16,7 @@
     tmux
     tree
     wget
+    zellij
   ];
 
   programs = {

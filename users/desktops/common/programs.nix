@@ -1,9 +1,5 @@
 { specialArgs, inputs, config, pkgs, lib, ... }:
 
-let
-  fontFamily = "Hack Nerd Font";
-in
-
 {
   fonts.fontconfig.enable = true;
 
