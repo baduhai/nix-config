@@ -12,12 +12,12 @@
     lazydocker
     micro
     neofetch
-    nnn
     sysz
     tmux
     tree
     wget
-    zellij
+    # Packages with overrides
+    nnn.override.withNerdIcons = true;
   ];
 
   programs = {
