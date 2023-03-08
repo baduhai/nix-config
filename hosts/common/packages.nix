@@ -16,8 +16,10 @@
     tmux
     tree
     wget
-    # Packages with overrides
-    nnn.override.withNerdIcons = true;
+    # Package overrides
+    (nnn.override {
+      withNerdIcons = true;
+    })
   ];
 
   programs = {
