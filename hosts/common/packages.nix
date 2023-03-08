@@ -12,6 +12,7 @@
     lazydocker
     micro
     neofetch
+    nnn
     sysz
     tmux
     tree
