@@ -38,6 +38,11 @@
     steam.dedicatedServer.openFirewall = true;
   };
 
+  hardware.opengl.extraPackages = with pkgs; [
+    rocm-opencl-icd
+    rocm-opencl-runtime
+  ];
+
   environment.systemPackages = with pkgs; [
     cemu
     retroarchFull
