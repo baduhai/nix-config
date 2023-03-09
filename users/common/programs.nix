@@ -40,7 +40,7 @@
     fish = {
       enable = true;
       interactiveShellInit = "any-nix-shell fish --info-right | source";
-      loginShellInit = "any-nix-shell fish --info-right | source";
+      loginShellInit = "nix-your-shell fish --info-right | source";
       shellAliases = {
         nano = "micro";
         wget = "wget --hsts-file=\"$XDG_DATA_HOME/wget-hsts\"";

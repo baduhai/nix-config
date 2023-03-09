@@ -4,7 +4,6 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    any-nix-shell
     bind
     btop
     comma
@@ -12,6 +11,7 @@
     lazydocker
     micro
     neofetch
+    nix-your-shell
     sysz
     tmux
     tree
