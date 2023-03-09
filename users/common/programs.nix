@@ -39,7 +39,7 @@
     };
     fish = {
       enable = true;
-      interactiveShellInit = "any-nix-shell fish --info-right | source";
+      interactiveShellInit = "any-nix-shell fish | source";
       loginShellInit = "nix-your-shell fish --info-right | source";
       shellAliases = {
         nano = "micro";
