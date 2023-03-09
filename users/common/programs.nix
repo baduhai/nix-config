@@ -18,7 +18,7 @@
         mkparents = true;
         scrollbar = true;
         tabstospaces = true;
-        tabsize = 2;
+        tabsize = 4;
         colorscheme = "simple";
       };
     };
