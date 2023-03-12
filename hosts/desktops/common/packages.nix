@@ -37,6 +37,7 @@
     obs-studio-plugins.obs-vkcapture
     p7zip
     prismlauncher-qt5
+    protontricks
     protonup
 #     prusa-slicer
     qbittorrent
