@@ -7,7 +7,12 @@
     supportedFilesystems = [ "ntfs" ];
     loader.efi.efiSysMountPoint = "/boot/efi";
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
-    extraModprobeConfig = ''options bluetooth disable_ertm=1'';
+    extraModprobeConfig = ''
+      options bluetooth disable_ertm=1
+    '';
+    kernel.sysctl = {
+      "net.ipv4.tcp_mtu_probing" = 1;
+    };
     kernelParams = [
       "quiet"
       "splash"

@@ -12,7 +12,7 @@
     lazydocker
     micro
     neofetch
-    nix-your-shell
+    # nix-your-shell # Currently only available in unstable
     sysz
     tmux
     tree

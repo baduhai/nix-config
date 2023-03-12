@@ -9,9 +9,6 @@
       name = "breeze_cursors";
       package = pkgs.breeze-icons;
     };
-    packages = with pkgs; [
-      syncthingtray
-    ];
     file = {
       ".config/wezterm/wezterm.lua".source = "${inputs.dotfiles}/.config/wezterm/wezterm.lua";
       ".config/MangoHud/MangoHud.conf".source = "${inputs.dotfiles}/.config/MangoHud/MangoHud.conf";
