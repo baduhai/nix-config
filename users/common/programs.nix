@@ -39,8 +39,8 @@
     };
     fish = {
       enable = true;
-      interactiveShellInit = "nix-your-shell fish | source";
-      loginShellInit = "nix-your-shell fish | source";
+      # interactiveShellInit = "nix-your-shell fish | source"; # nix-your-shell only in unstable
+      # loginShellInit = "nix-your-shell fish | source";
       shellAliases = {
         nano = "micro";
         wget = "wget --hsts-file=\"$XDG_DATA_HOME/wget-hsts\"";

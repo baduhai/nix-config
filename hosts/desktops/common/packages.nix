@@ -33,6 +33,7 @@
     mpv
     nil
     nix-init
+    nix-your-shell
     obs-studio
     obs-studio-plugins.obs-vkcapture
     p7zip

@@ -27,6 +27,8 @@
       userEmail = "baduhai@proton.me";
     };
     fish = {
+      interactiveShellInit = "nix-your-shell fish | source";
+      loginShellInit = "nix-your-shell fish | source";
       functions = {
         rebuild = "rm ~/.gtkrc-2.0; sudo nixos-rebuild switch --flake '/home/user/Projects/personal/nix-config#'";
         rebuild-boot = "rm ~/.gtkrc-2.0; sudo nixos-rebuild boot --flake '/home/user/Projects/personal/nix-config#'";
