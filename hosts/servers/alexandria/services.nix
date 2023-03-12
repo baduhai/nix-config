@@ -31,6 +31,7 @@
       enable = true;
       user = "user";
       group = "hosted";
+      openFirewall = true;
     };
 
     minecraft-server = {
