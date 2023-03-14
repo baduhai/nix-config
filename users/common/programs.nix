@@ -22,11 +22,16 @@
         colorscheme = "simple";
       };
     };
-    oh-my-posh = {
+    # oh-my-posh = {
+      # enable = true;
+      # enableBashIntegration = true;
+      # enableFishIntegration = true;
+      # settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile "${inputs.dotfiles}/omp.json"));
+    # };
+    starship = {
       enable = true;
       enableBashIntegration = true;
       enableFishIntegration = true;
-      settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile "${inputs.dotfiles}/omp.json"));
     };
     btop = {
       enable = true;
