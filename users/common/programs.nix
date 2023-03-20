@@ -20,14 +20,9 @@
         tabstospaces = true;
         tabsize = 4;
         colorscheme = "simple";
+        relativeruler = true;
       };
     };
-    # oh-my-posh = {
-      # enable = true;
-      # enableBashIntegration = true;
-      # enableFishIntegration = true;
-      # settings = builtins.fromJSON (builtins.unsafeDiscardStringContext (builtins.readFile "${inputs.dotfiles}/omp.json"));
-    # };
     starship = {
       enable = true;
       enableBashIntegration = true;
