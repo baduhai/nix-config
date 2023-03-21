@@ -48,7 +48,7 @@
             WHOOGLE_CONFIG_THEME = "system";
             WHOOGLE_CONFIG_VIEW_IMAGE = "1";
             WHOOGLE_CONFIG_GET_ONLY = "1";
-            WHOOGLE_CONFIG_STYLE = ".logo, .logo-div, footer { display:none !important }"
+            WHOOGLE_CONFIG_STYLE = ".logo, .logo-div, footer { display:none !important }";
           };
           ports = [
             "${config.ports.whoogle}:5000"
