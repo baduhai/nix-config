@@ -27,18 +27,6 @@
             "--pull=always"
           ];
         };
-        "convo" = {
-          image = "convos/convos:stable";
-          ports = [
-            "${config.ports.convo}:3000";
-          ];
-          volumes = [
-            "/data/convo:/data";
-          ];
-          extraOptions = [
-            "--pull=always"
-          ];
-        }
         "librespeed" = {
           image = "lscr.io/linuxserver/librespeed:latest";
           environment = {
