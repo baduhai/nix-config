@@ -2,9 +2,9 @@
 
 {
   virtualisation = {
-    docker.enable = true;
+    podman.enable = true;
     oci-containers = {
-      backend = "docker";
+      backend = "podman";
       containers = {
         "actual" = {
           image = "jlongster/actual-server:latest";
@@ -34,28 +34,6 @@
           };
           ports = [
             "${config.ports.librespeed}:80"
-          ];
-          extraOptions = [
-            "--pull=always"
-          ];
-        };
-        "syncthing" = {
-          image = "lscr.io/linuxserver/syncthing:1.20.4";
-          environment = {
-            PUID = "1000";
-            PGID = "100";
-            TZ = "America/Bahia";
-          };
-          volumes = [
-            "/data/syncthing/config:/config"
-            "/data/syncthing/data1:/data1"
-            "/data/syncthing/data2:/data2"
-            "/data/syncthing/notes:/sync/notes"
-          ];
-          ports = [
-            "${config.ports.syncthing}:8384"
-            "22000:22000"
-            "21027:21027/udp"
           ];
           extraOptions = [
             "--pull=always"
