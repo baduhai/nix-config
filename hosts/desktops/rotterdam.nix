@@ -36,7 +36,7 @@
   programs = {
     corectrl.enable = true;
     steam.dedicatedServer.openFirewall = true;
-    doirdcam.enable = true;
+    droidcam.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
