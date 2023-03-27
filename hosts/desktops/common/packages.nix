@@ -27,6 +27,7 @@
     junction
     kate
     kolourpaint
+    libfido2
     libreoffice-qt
     logseq
     mangohud
