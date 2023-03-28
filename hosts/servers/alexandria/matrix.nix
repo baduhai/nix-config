@@ -13,7 +13,7 @@
       port = 6167;
       max_request_size = 20000000;
       allow_registration = true;
-      allow_encryption = true;
+      allow_encryption = false;
       allow_federation = false;
     };
   };
