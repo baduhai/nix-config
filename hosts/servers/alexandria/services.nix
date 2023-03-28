@@ -58,6 +58,12 @@
       recommendedProxySettings = true;
       recommendedTlsSettings = true;
       virtualHosts = {
+        "baduhai.me" = {
+          useACMEHost = "baduhai.me";
+          forceSSL = true;
+          kTLS = true;
+          root = inputs.homepage;
+        }
         "bazarr.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.bazaar}"; };
         "bitwarden.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.vaultwarden}"; };
         "cinny.baduhai.me" = { useACMEHost = "baduhai.me"; forceSSL = true; kTLS = true; locations."/".proxyPass = "http://127.0.0.1:${config.ports.cinny}"; };
