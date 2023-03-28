@@ -1,6 +1,6 @@
 { config
 , pkgs
-, flake-inputs
+, inputs
 , ...
 }:
 
@@ -47,7 +47,7 @@ in
 
     # This causes NixOS to use the flake defined in this repository instead of
     # the build of Conduit built into nixpkgs.
-    package = flake-inputs.conduit.packages.${pkgs.system}.default;
+    package = inputs.conduit.packages.${pkgs.system}.default;
 
     settings.global = {
       inherit server_name;
