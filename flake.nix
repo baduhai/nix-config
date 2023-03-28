@@ -77,7 +77,7 @@
                 unstable = nixpkgs.legacyPackages.x86_64-linux;
               };
             in {
-              nixpkgs.overlays = [ overlay-unstable ];
+              nixpkgs.overlays = [ unstable-overlay ];
             }
           )
         ];
