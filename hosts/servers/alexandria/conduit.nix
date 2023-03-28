@@ -92,6 +92,11 @@ in
       };
 
       "${server_name}" = {
+        useACMEHost = "baduhai.me";
+        forceSSL = true;
+        kTLS = true;
+        root = inputs.homepage;
+
         locations."=/.well-known/matrix/server" = {
           # Use the contents of the derivation built previously
           alias = "${well_known_server}";
@@ -109,7 +114,7 @@ in
           extraConfig = ''
             # Set the header since by default NGINX thinks it's just bytes
             default_type application/json;
-          
+
             # https://matrix.org/docs/spec/client_server/r0.4.0#web-browser-clients
             add_header Access-Control-Allow-Origin "*";
           '';
