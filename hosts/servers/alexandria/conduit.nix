@@ -45,9 +45,10 @@ in
   services.matrix-conduit = {
     enable = true;
 
-    # This causes NixOS to use the flake defined in this repository instead of
-    # the build of Conduit built into nixpkgs.
-    package = inputs.conduit.packages.${pkgs.system}.default;
+    package = pkgs.unstable.conduit;
+
+    global.allow_federation = false;
+    global.allow_registration = true;
 
     settings.global = {
       inherit server_name;

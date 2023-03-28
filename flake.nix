@@ -21,8 +21,6 @@
     homepage = { url = "github:baduhai/homepage"; flake = false; };
 
     dotfiles = { url = "github:baduhai/dotfiles"; flake = false; };
-
-    conduit = { url = "gitlab:famedly/conduit"; inputs.nixpkgs.follows = "nixpkgs-stable"; };
   };
 
   outputs = inputs @ {
@@ -38,7 +36,6 @@
     nixos-generators,
     homepage,
     dotfiles,
-    conduit,
     ... 
   }: {
     nixosConfigurations = {
@@ -74,6 +71,15 @@
           agenix.nixosModules.default
           home-manager-stable.nixosModules.home-manager
           self.nixosModules.qbittorrent
+          ({ config, pkgs, ... }: 
+            let
+              unstable-overlay = final: prev: {
+                unstable = nixpkgs.legacyPackages.x86_64-linux;
+              };
+            in {
+              nixpkgs.overlays = [ overlay-unstable ];
+            }
+          )
         ];
       };
     };
