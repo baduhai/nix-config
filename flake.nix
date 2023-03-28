@@ -21,9 +21,26 @@
     homepage = { url = "github:baduhai/homepage"; flake = false; };
 
     dotfiles = { url = "github:baduhai/dotfiles"; flake = false; };
+
+    conduit = { url = "gitlab:famedly/conduit"; inputs.nixpkgs.follows = "nixpkgs-stable"; };
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, baduhai-nur, kmonad, nixpkgs-stable, home-manager-stable, deploy-rs, agenix, nixos-generators, homepage, dotfiles, ... }: {
+  outputs = inputs @ {
+    self, 
+    nixpkgs, 
+    home-manager,
+    baduhai-nur,
+    kmonad,
+    nixpkgs-stable,
+    home-manager-stable,
+    deploy-rs,
+    agenix,
+    nixos-generators,
+    homepage,
+    dotfiles,
+    conduit,
+    ... 
+  }: {
     nixosConfigurations = {
       rotterdam = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
