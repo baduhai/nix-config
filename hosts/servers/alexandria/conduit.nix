@@ -45,7 +45,7 @@ in
   services.matrix-conduit = {
     enable = true;
 
-    package = pkgs.unstable.conduit;
+    package = pkgs.unstable.matrix-conduit;
 
 
     settings.global = {
