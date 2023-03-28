@@ -7,6 +7,7 @@
     ./variables.nix
     ./services.nix
     ./security.nix
+    ./conduit.nix
     ./users.nix
   ];
 }
