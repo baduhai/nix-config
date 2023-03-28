@@ -47,10 +47,10 @@ in
 
     package = pkgs.unstable.conduit;
 
-    global.allow_federation = false;
-    global.allow_registration = true;
 
     settings.global = {
+      allow_federation = false;
+      allow_registration = true;
       inherit server_name;
     };
   };
