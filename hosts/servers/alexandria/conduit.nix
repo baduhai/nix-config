@@ -64,19 +64,6 @@ in
         forceSSL = true;
         kTLS = true;
 
-        listen = [
-          {
-            addr = "0.0.0.0";
-            port = 443;
-            ssl = true;
-          }
-          {
-            addr = "0.0.0.0";
-            port = 8448;
-            ssl = true;
-          }
-        ];
-
         locations."/_matrix/" = {
           proxyPass = "http://backend_conduit$request_uri";
           proxyWebsockets = true;
@@ -130,9 +117,5 @@ in
       };
     };
   };
-
-  # Open firewall ports for Matrix federation
-  networking.firewall.allowedTCPPorts = [ 8448 ];
-  networking.firewall.allowedUDPPorts = [ 8448 ];
 }
           
