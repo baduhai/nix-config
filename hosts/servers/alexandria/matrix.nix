@@ -22,6 +22,7 @@
     useACMEHost = "baduhai.me";
     forceSSL = true;
     kTLS = true;
+    locations."/".proxyPass = "http://127.0.0.1:${config.ports.cinny2}";
     locations."/_matrix/".proxyPass = "http://127.0.0.1:6167$request_uri";
     locations."= /.well-known/matrix/client" = {
       alias = pkgs.writeText "matrix-wk-client" ''

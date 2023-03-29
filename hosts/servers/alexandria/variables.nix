@@ -23,6 +23,7 @@ in
     whoogle             = mkStringOption "8007";
     qbittorrent         = mkStringOption "8008";
     actual              = mkStringOption "8009";
+    cinny2              = mkStringOption "8010";
     sonarr              = mkStringOption "8989";
     jackett             = mkStringOption "9117";
   };
