@@ -27,6 +27,7 @@
     junction
     kate
     kolourpaint
+    latte-dock
     libfido2
     libreoffice-qt
     logseq
