@@ -10,6 +10,8 @@
     ./rotterdam
   ];
 
+  hardware.opengl.mesaPackage = pkgs.mesa_22
+
   networking.hostName = "rotterdam";
 
   services.hardware.openrgb.enable = true;
