@@ -25,10 +25,10 @@
 #     itch # Currently using unsafe electron version
     jellyfin-media-player
     junction
-    kate
     kolourpaint
     libfido2
     libreoffice-qt
+    lite-xl
     logseq
     mangohud
     mpv
@@ -68,7 +68,6 @@
     agenix
     chatterino7
     koi
-    notesnook
   ];
 
   programs = {
@@ -94,4 +93,12 @@
       (nerdfonts.override { fonts = [ "Hack" ]; })
     ];
   };
+
+  environment.plasma5.excludePackages = ( with pkgs.plasma5Packages; [
+    elisa
+    oxygen
+    khelpcenter
+    konsole
+    kwrite
+  ]);
 }

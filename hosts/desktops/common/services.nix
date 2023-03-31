@@ -25,10 +25,7 @@ in
       exportConfiguration = true;
       excludePackages = ( with pkgs; [ xterm ]);
       displayManager.startx.enable = true;
-      desktopManager.plasma5 = {
-        enable     = true;
-        excludePackages = ( with pkgs.plasma5Packages; [ elisa oxygen khelpcenter ]);
-      };
+      desktopManager.plasma5.enable = true;
     };
     greetd = {
       enable = true;
