@@ -99,6 +99,5 @@
     oxygen
     khelpcenter
     konsole
-    kwrite
   ]);
 }
