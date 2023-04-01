@@ -44,6 +44,7 @@
 #     prusa-slicer
     qbittorrent
     quickemu
+    qview
     signal-desktop
     solvespace
     space-cadet-pinball
@@ -95,6 +96,7 @@
 
   environment.plasma5.excludePackages = ( with pkgs.plasma5Packages; [
     elisa
+    gwenview
     oxygen
     khelpcenter
     konsole
