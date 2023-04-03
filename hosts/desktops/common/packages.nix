@@ -66,6 +66,7 @@
     # Packages from 3rd party overlays
     agenix
     chatterino7
+    klassy
     koi
   ];
 

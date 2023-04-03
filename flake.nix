@@ -85,7 +85,6 @@
           modules = [
             ./hosts/servers/alexandria.nix
             agenix.nixosModules.default
-            home-manager-stable.nixosModules.home-manager
             self.nixosModules.qbittorrent
             ({ config, pkgs, ... }:
               let
