@@ -3,9 +3,7 @@
 {
   services.matrix-conduit = {
     enable = true;
-    extraEnvironment = {
-      RUST_MIN_STACK = "16777216";
-    };
+    extraEnvironment = { RUST_MIN_STACK = "16777216"; };
     package = pkgs.unstable.matrix-conduit;
     settings.global = {
       server_name = "baduhai.me";

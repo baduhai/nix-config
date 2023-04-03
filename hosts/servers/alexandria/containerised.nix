@@ -8,51 +8,27 @@
       containers = {
         "actual" = {
           image = "jlongster/actual-server:latest";
-          ports = [
-            "${config.ports.actual}:5006"
-          ];
-          volumes = [
-            "/data/actual:/data"
-          ];
-          extraOptions = [
-            "--pull=always"
-          ];
+          ports = [ "${config.ports.actual}:5006" ];
+          volumes = [ "/data/actual:/data" ];
+          extraOptions = [ "--pull=always" ];
         };
         "cinny" = {
           image = "ghcr.io/cinnyapp/cinny:latest";
-          ports = [
-            "${config.ports.cinny}:80"
-          ];
-          volumes = [
-            "/data/matrix/cinny-config.json:/app/config.json"
-          ];
-          extraOptions = [
-            "--pull=always"
-          ];
+          ports = [ "${config.ports.cinny}:80" ];
+          volumes = [ "/data/matrix/cinny-config.json:/app/config.json" ];
+          extraOptions = [ "--pull=always" ];
         };
         "cinny2" = {
           image = "ghcr.io/cinnyapp/cinny:latest";
-          ports = [
-            "${config.ports.cinny2}:80"
-          ];
-          volumes = [
-            "/data/matrix/cinny-config.json:/app/config.json"
-          ];
-          extraOptions = [
-            "--pull=always"
-          ];
+          ports = [ "${config.ports.cinny2}:80" ];
+          volumes = [ "/data/matrix/cinny-config.json:/app/config.json" ];
+          extraOptions = [ "--pull=always" ];
         };
         "librespeed" = {
           image = "lscr.io/linuxserver/librespeed:latest";
-          environment = {
-            TZ = "America/Bahia";
-          };
-          ports = [
-            "${config.ports.librespeed}:80"
-          ];
-          extraOptions = [
-            "--pull=always"
-          ];
+          environment = { TZ = "America/Bahia"; };
+          ports = [ "${config.ports.librespeed}:80" ];
+          extraOptions = [ "--pull=always" ];
         };
         "whoogle" = {
           image = "benbusby/whoogle-search:latest";
@@ -63,12 +39,8 @@
             WHOOGLE_CONFIG_VIEW_IMAGE = "1";
             WHOOGLE_CONFIG_GET_ONLY = "1";
           };
-          ports = [
-            "${config.ports.whoogle}:5000"
-          ];
-          extraOptions = [
-            "--pull=always"
-          ];
+          ports = [ "${config.ports.whoogle}:5000" ];
+          extraOptions = [ "--pull=always" ];
         };
       };
     };

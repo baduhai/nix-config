@@ -15,9 +15,7 @@
       dnsProvider = "cloudflare";
       credentialsFile = config.age.secrets.cloudflare-creds.path;
     };
-    certs."baduhai.me" = {
-      extraDomainNames = [ "*.baduhai.me" ];
-    };
+    certs."baduhai.me" = { extraDomainNames = [ "*.baduhai.me" ]; };
   };
 
   boot.kernel.sysctl = {

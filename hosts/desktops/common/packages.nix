@@ -19,10 +19,10 @@
     fzf
     gimp
     gocryptfs
-#     helvum
+    # helvum
     heroic
     inkscape
-#     itch # Currently using unsafe electron version
+    # itch # Currently using unsafe electron version
     jellyfin-media-player
     junction
     kolourpaint
@@ -42,7 +42,7 @@
     prismlauncher-qt5
     protontricks
     protonup
-#     prusa-slicer
+    # prusa-slicer
     qbittorrent
     quickemu
     qview
@@ -62,9 +62,7 @@
     wezterm
     yubikey-personalization-gui
     # Package overrides
-    (appimage-run.override {
-      extraPkgs = pkgs: [ libthai ];
-    })
+    (appimage-run.override { extraPkgs = pkgs: [ libthai ]; })
     # Packages from 3rd party overlays
     agenix
     chatterino7
@@ -95,11 +93,6 @@
     ];
   };
 
-  environment.plasma5.excludePackages = ( with pkgs.plasma5Packages; [
-    elisa
-    gwenview
-    oxygen
-    khelpcenter
-    konsole
-  ]);
+  environment.plasma5.excludePackages =
+    (with pkgs.plasma5Packages; [ elisa gwenview oxygen khelpcenter konsole ]);
 }

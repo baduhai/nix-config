@@ -4,8 +4,8 @@
   programs = {
     password-store.enable = true;
     bash = {
-        enable = true;
-        historyFile = "~/.cache/bash_history";
+      enable = true;
+      historyFile = "~/.cache/bash_history";
     };
     nix-index = {
       enable = true;
@@ -43,7 +43,7 @@
       # loginShellInit = "nix-your-shell fish | source";
       shellAliases = {
         nano = "micro";
-        wget = "wget --hsts-file=\"$XDG_DATA_HOME/wget-hsts\"";
+        wget = ''wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'';
       };
       functions = {
         fish_greeting = "";
@@ -53,7 +53,7 @@
         set -g -x NNN_OPTS H
         set -g -x FONTCONFIG_FILE ${pkgs.fontconfig.out}/etc/fonts/fonts.conf
       '';
-      plugins  = [
+      plugins = [
         {
           name = "bang-bang";
           src = pkgs.fetchFromGitHub {

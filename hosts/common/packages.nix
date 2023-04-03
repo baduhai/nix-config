@@ -18,9 +18,7 @@
     tree
     wget
     # Package overrides
-    (nnn.override {
-      withNerdIcons = true;
-    })
+    (nnn.override { withNerdIcons = true; })
   ];
 
   programs = {

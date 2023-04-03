@@ -11,5 +11,6 @@
 
   sound.enable = true;
 
-  security.rtkit.enable = true; # Needed for pipewire to acquire realtime priority
+  security.rtkit.enable =
+    true; # Needed for pipewire to acquire realtime priority
 }
