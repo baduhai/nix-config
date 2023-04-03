@@ -21,10 +21,4 @@
       hashedPassword = "!";
     };
   };
-
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    extraSpecialArgs = specialArgs;
-  };
 }

@@ -18,6 +18,4 @@
       "adbusers"
     ];
   };
-
-  home-manager.users.user = import ../../../users/desktops/user.nix;
 }

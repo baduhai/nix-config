@@ -57,8 +57,6 @@
           modules = [
             ./hosts/desktops/rotterdam.nix
             agenix.nixosModules.default
-            kmonad.nixosModules.default
-            home-manager.nixosModules.default
             {
               nixpkgs.overlays =
                 [ baduhai-nur.overlay agenix.overlays.default ];
@@ -95,6 +93,24 @@
                   unstable = nixpkgs.legacyPackages.x86_64-linux;
                 };
               in { nixpkgs.overlays = [ unstable-overlay ]; })
+          ];
+        };
+      };
+
+      homeConfigurations = {
+        server = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = { inherit inputs; };
+          modules = [
+            ./users/servers/user.nix
+          ];
+        };
+
+        desktop = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = { inherit inputs; };
+          modules = [
+            ./users/desktops/user.nix
           ];
         };
       };

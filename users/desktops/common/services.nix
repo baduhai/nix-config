@@ -1,4 +1,4 @@
-{ specialArgs, inputs, config, pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   services = { kdeconnect.enable = true; };
