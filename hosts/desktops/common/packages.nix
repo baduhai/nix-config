@@ -33,6 +33,7 @@
     mangohud
     mpv
     nil
+    nixfmt
     nix-init
     nix-your-shell
     obs-studio
