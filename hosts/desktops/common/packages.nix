@@ -19,7 +19,7 @@
     fzf
     gimp
     gocryptfs
-    # helvum
+    helvum
     heroic
     inkscape
     # itch # Currently using unsafe electron version
@@ -32,17 +32,14 @@
     logseq
     mangohud
     mpv
-    nil
     nixfmt
     nix-init
     nix-your-shell
     obs-studio
-    obs-studio-plugins.obs-vkcapture
     p7zip
     prismlauncher-qt5
     protontricks
     protonup
-    # prusa-slicer
     qbittorrent
     quickemu
     qview
@@ -60,13 +57,11 @@
     ventoy-bin
     virt-manager
     wezterm
-    yubikey-personalization-gui
     # Package overrides
     (appimage-run.override { extraPkgs = pkgs: [ libthai ]; })
     # Packages from 3rd party overlays
     agenix
     chatterino7
-    klassy
     koi
   ];
 

@@ -29,6 +29,13 @@
       enable = true;
       nix-direnv.enable = true;
     };
+    obs-studio = {
+      enable = true;
+      plugins = [
+        pkgs.obs-studio-plugins.obs-vkcapture
+        pkgs.obs-studio-plugins.obs-pipewire-audio-capture
+      ];
+    };
     git = {
       enable = true;
       diff-so-fancy.enable = true;
