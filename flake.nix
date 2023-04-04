@@ -128,17 +128,30 @@
         };
       };
 
-      checks.x86_64-linux = {
-        pre-commit-check = pre-commit-hooks.lib."x86_64-linux".run {
-          src = ./.;
-          hooks = { nixfmt.enable = true; };
+      checks = {
+        "x86_64-linux" = {
+          pre-commit-check = pre-commit-hooks.lib."x86_64-linux".run {
+            src = ./.;
+            hooks = { nixfmt.enable = true; };
+          };
+        };
+        "aarch64-linux" = {
+          pre-commit-check = pre-commit-hooks.lib."aarch64-linux".run {
+            src = ./.;
+            hooks = { nixfmt.enable = true; };
+          };
         };
       };
 
-      devShells.x86_64-linux.default =
-        nixpkgs.legacyPackages."x86_64-linux".mkShell {
+      devShells = {
+        "x86_64-linux".default = nixpkgs.legacyPackages."x86_64-linux".mkShell {
           inherit (self.checks."x86_64-linux".pre-commit-check) shellHook;
         };
+        "aarch64-linux".default =
+          nixpkgs.legacyPackages."aarch64-linux".mkShell {
+            inherit (self.checks."aarch64-linux".pre-commit-check) shellHook;
+          };
+      };
 
       nixosModules.qbittorrent = import ./modules/qbittorrent.nix;
 
