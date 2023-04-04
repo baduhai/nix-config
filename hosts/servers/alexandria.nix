@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ...}:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -12,16 +12,13 @@
 
   nix.nixPath = [ "nixos-config=${./alexandria.nix}" ];
 
-  swapDevices = [ { device = "/swapfile"; size = 8192; } ];
+  swapDevices = [{
+    device = "/swapfile";
+    size = 8192;
+  }];
 
   networking = {
     hostName = "alexandria";
-    firewall = {
-      allowedTCPPorts = [
-        80
-        443
-        9666
-      ];
-    };
+    firewall = { allowedTCPPorts = [ 80 443 9666 ]; };
   };
 }

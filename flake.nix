@@ -9,10 +9,6 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    home-manager-stable = {
-      url = "github:nix-community/home-manager/release-22.11";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
 
     baduhai-nur.url = "github:baduhai/nur";
 
@@ -45,11 +41,16 @@
       url = "github:baduhai/dotfiles";
       flake = false;
     };
+
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, baduhai-nur, kmonad
-    , nixpkgs-stable, home-manager-stable, deploy-rs, agenix, nixos-generators
-    , homepage, dotfiles, ... }: {
+    , nixpkgs-stable, deploy-rs, agenix, nixos-generators, homepage, dotfiles
+    , pre-commit-hooks, ... }: {
       nixosConfigurations = {
         rotterdam = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -100,17 +101,13 @@
         server = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs; };
-          modules = [
-            ./users/servers/user.nix
-          ];
+          modules = [ ./users/servers/user.nix ];
         };
 
         desktop = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs; };
-          modules = [
-            ./users/desktops/user.nix
-          ];
+          modules = [ ./users/desktops/user.nix ];
         };
       };
 
@@ -130,6 +127,18 @@
           };
         };
       };
+
+      checks.x86_64-linux = {
+        pre-commit-check = pre-commit-hooks.lib."x86_64-linux".run {
+          src = ./.;
+          hooks = { nixfmt.enable = true; };
+        };
+      };
+
+      devShells.x86_64-linux.default =
+        nixpkgs.legacyPackages."x86_64-linux".mkShell {
+          inherit (self.checks."x86_64-linux".pre-commit-check) shellHook;
+        };
 
       nixosModules.qbittorrent = import ./modules/qbittorrent.nix;
 
