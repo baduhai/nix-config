@@ -25,10 +25,6 @@
       enable = true;
       enableSessionWide = true;
     };
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
     obs-studio = {
       enable = true;
       plugins = [
@@ -36,24 +32,16 @@
         pkgs.obs-studio-plugins.obs-pipewire-audio-capture
       ];
     };
-    git = {
-      enable = true;
-      diff-so-fancy.enable = true;
-      userName = "William";
-      userEmail = "baduhai@proton.me";
-    };
     fish = {
-      interactiveShellInit = "nix-your-shell fish | source";
-      loginShellInit = "nix-your-shell fish | source";
       functions = {
         rebuild =
-          "rm ~/.gtkrc-2.0; sudo nixos-rebuild switch --flake '/home/user/Projects/personal/nix-config#'";
+          "sudo nixos-rebuild switch --flake '/home/user/Projects/personal/nix-config#'";
         rebuild-boot =
-          "rm ~/.gtkrc-2.0; sudo nixos-rebuild boot --flake '/home/user/Projects/personal/nix-config#'";
+          "sudo nixos-rebuild boot --flake '/home/user/Projects/personal/nix-config#'";
         upgrade =
-          "rm ~/.gtkrc-2.0; nix flake lock --update-input nixpkgs --commit-lock-file /home/user/Projects/personal/nix-config; sudo nixos-rebuild switch --upgrade --flake '/home/user/Projects/personal/nix-config#'";
+          "nix flake update --commit-lock-file /home/user/Projects/personal/nix-config";
         upgrade-boot =
-          "rm ~/.gtkrc-2.0; nix flake lock --update-input nixpkgs --commit-lock-file /home/user/Projects/personal/nix-config; sudo nixos-rebuild boot --upgrade --flake '/home/user/Projects/personal/nix-config#'";
+          "rm ~/.gtkrc-2.0; nix run '/home/user/Projects/personal/nix-config#homeConfigurations.desktop.activationPackage'";
       };
     };
   };

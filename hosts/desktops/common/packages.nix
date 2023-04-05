@@ -23,7 +23,6 @@
     heroic
     inkscape
     # itch # Currently using unsafe electron version
-    jellyfin-media-player
     junction
     kolourpaint
     libfido2
@@ -46,9 +45,7 @@
     signal-desktop
     solvespace
     space-cadet-pinball
-    spotify
     steam-run
-    streamlink-twitch-gui-bin
     tdesktop
     thunderbird-wayland # Until thunderbird moves to using wayland by default
     ungoogled-chromium
@@ -59,9 +56,7 @@
     wezterm
     # Package overrides
     (appimage-run.override { extraPkgs = pkgs: [ libthai ]; })
-    # Packages from 3rd party overlays
-    agenix
-    chatterino7
+    # Packages from 3rd party
     koi
   ];
 

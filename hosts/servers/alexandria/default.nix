@@ -2,12 +2,12 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
     ./containerised.nix
-    ./variables.nix
-    ./services.nix
-    ./security.nix
+    ./hardware-configuration.nix
     ./matrix.nix
+    ./security.nix
+    ./services.nix
     ./users.nix
+    ./variables.nix
   ];
 }

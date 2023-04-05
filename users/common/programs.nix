@@ -11,6 +11,35 @@
       enable = true;
       enableFishIntegration = true;
     };
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+    tmux = {
+      enable = true;
+      clock24 = true;
+      extraConfig = "set -g mouse on";
+    };
+    starship = {
+      enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+    };
+    git = {
+      enable = true;
+      diff-so-fancy.enable = true;
+      userName = "William";
+      userEmail = "baduhai@proton.me";
+    };
+    btop = {
+      enable = true;
+      settings = {
+        color_theme = "catppuccin_mocha.theme";
+        theme_background = false;
+        proc_sorting = "cpu direct";
+        update_ms = 500;
+      };
+    };
     micro = {
       enable = true;
       settings = {
@@ -23,24 +52,10 @@
         relativeruler = true;
       };
     };
-    starship = {
-      enable = true;
-      enableBashIntegration = true;
-      enableFishIntegration = true;
-    };
-    btop = {
-      enable = true;
-      settings = {
-        color_theme = "catppuccin_mocha.theme";
-        theme_background = false;
-        proc_sorting = "cpu direct";
-        update_ms = 500;
-      };
-    };
     fish = {
       enable = true;
-      # interactiveShellInit = "nix-your-shell fish | source"; # nix-your-shell only in unstable
-      # loginShellInit = "nix-your-shell fish | source";
+      interactiveShellInit = "nix-your-shell fish | source";
+      loginShellInit = "nix-your-shell fish | source";
       shellAliases = {
         nano = "micro";
         wget = ''wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'';
@@ -73,11 +88,6 @@
           };
         }
       ];
-    };
-    tmux = {
-      enable = true;
-      clock24 = true;
-      extraConfig = "set -g mouse on";
     };
   };
 }

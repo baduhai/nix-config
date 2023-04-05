@@ -9,7 +9,6 @@
     btop
     comma
     git
-    lazydocker
     micro
     neofetch
     # nix-your-shell # Currently only available in unstable
@@ -17,8 +16,6 @@
     tmux
     tree
     wget
-    # Package overrides
-    (nnn.override { withNerdIcons = true; })
   ];
 
   programs = {

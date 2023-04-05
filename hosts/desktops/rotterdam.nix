@@ -10,8 +10,6 @@
     ./rotterdam
   ];
 
-  hardware.opengl.mesaPackage = pkgs.mesa_22;
-
   networking.hostName = "rotterdam";
 
   services.hardware.openrgb.enable = true;
@@ -42,7 +40,7 @@
     cemu
     retroarchFull
     rpcs3
-    #     yuzu-ea
+    yuzu-ea
     # Packages from 3rd party overlays
     emulationstation-de
   ];
