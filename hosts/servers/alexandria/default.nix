@@ -15,6 +15,7 @@
     ./paperless.nix
     ./security.nix
     ./services.nix
+    ./shiori.nix
     ./users.nix
     ./variables.nix
     ./vaultwarden.nix
