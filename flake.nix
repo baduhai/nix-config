@@ -37,6 +37,11 @@
       flake = false;
     };
 
+    startpage = {
+      url = "github:baduhai/startpage";
+      flake = false;
+    };
+
     dotfiles = {
       url = "github:baduhai/dotfiles";
       flake = false;
@@ -49,7 +54,7 @@
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, baduhai-nur, kmonad
-    , nixpkgs-stable, deploy-rs, agenix, nixos-generators, homepage, dotfiles
+    , nixpkgs-stable, deploy-rs, agenix, nixos-generators, startpage, dotfiles
     , pre-commit-hooks, ... }: {
       nixosConfigurations = {
         rotterdam = nixpkgs.lib.nixosSystem {

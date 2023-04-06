@@ -12,7 +12,7 @@
       useACMEHost = "baduhai.me";
       forceSSL = true;
       kTLS = true;
-      root = inputs.homepage;
+      root = inputs.startpage;
     };
   };
 }

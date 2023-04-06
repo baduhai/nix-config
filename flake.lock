@@ -363,7 +363,24 @@
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-stable": "nixpkgs-stable",
-        "pre-commit-hooks": "pre-commit-hooks"
+        "pre-commit-hooks": "pre-commit-hooks",
+        "startpage": "startpage"
+      }
+    },
+    "startpage": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1680792425,
+        "narHash": "sha256-5kXCvoCiizxfBt7PKWhfxqT4uknSp/8kekGU4bwckgs=",
+        "owner": "baduhai",
+        "repo": "startpage",
+        "rev": "25d83b301541fb69119d3b35da88abb5cc24d0ae",
+        "type": "github"
+      },
+      "original": {
+        "owner": "baduhai",
+        "repo": "startpage",
+        "type": "github"
       }
     },
     "utils": {
