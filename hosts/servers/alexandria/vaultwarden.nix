@@ -5,14 +5,14 @@
     vaultwarden = {
       enable = true;
       config = {
-        DOMAIN = "https://bitwarden.baduhai.me";
+        DOMAIN = "https://vaultwarden.baduhai.me";
         SIGNUPS_ALLOWED = true;
         ROCKET_ADDRESS = "127.0.0.1";
         ROCKET_PORT = "${config.ports.vaultwarden}";
       };
     };
 
-    nginx.virtualHosts."bitwarden.baduhai.me" = {
+    nginx.virtualHosts."vaultwarden.baduhai.me" = {
       useACMEHost = "baduhai.me";
       forceSSL = true;
       kTLS = true;
