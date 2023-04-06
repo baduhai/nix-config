@@ -33,7 +33,7 @@
     };
 
     homepage = {
-      url = "github:baduhai/homepage";
+      url = "github:AlexW00/StartTreeV2";
       flake = false;
     };
 

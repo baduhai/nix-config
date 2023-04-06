@@ -192,16 +192,16 @@
     "homepage": {
       "flake": false,
       "locked": {
-        "lastModified": 1672941741,
-        "narHash": "sha256-fnqwmvogqHwj2qOIz2YY6btSSbR2OKSzDjdGkzrCAIA=",
-        "owner": "baduhai",
-        "repo": "homepage",
-        "rev": "7570db674ed1bf143763e1ff830a76f998c4198f",
+        "lastModified": 1659600028,
+        "narHash": "sha256-mdB+B3bZGjUlEvmr1gcZm0RvypMu4WdjcCi16nACivM=",
+        "owner": "AlexW00",
+        "repo": "StartTreeV2",
+        "rev": "8c2a9155a49445e86375134cfb9bf53790245e37",
         "type": "github"
       },
       "original": {
-        "owner": "baduhai",
-        "repo": "homepage",
+        "owner": "AlexW00",
+        "repo": "StartTreeV2",
         "type": "github"
       }
     },
@@ -363,24 +363,7 @@
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-stable": "nixpkgs-stable",
-        "pre-commit-hooks": "pre-commit-hooks",
-        "startpage": "startpage"
-      }
-    },
-    "startpage": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1680792425,
-        "narHash": "sha256-5kXCvoCiizxfBt7PKWhfxqT4uknSp/8kekGU4bwckgs=",
-        "owner": "baduhai",
-        "repo": "startpage",
-        "rev": "25d83b301541fb69119d3b35da88abb5cc24d0ae",
-        "type": "github"
-      },
-      "original": {
-        "owner": "baduhai",
-        "repo": "startpage",
-        "type": "github"
+        "pre-commit-hooks": "pre-commit-hooks"
       }
     },
     "utils": {
