@@ -1,4 +1,4 @@
-{ specialArgs, inputs, config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -33,7 +33,6 @@
     mpv
     nixfmt
     nix-init
-    nix-your-shell
     obs-studio
     p7zip
     prismlauncher-qt5

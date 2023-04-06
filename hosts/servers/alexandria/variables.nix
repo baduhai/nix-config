@@ -1,4 +1,4 @@
-{ specialArgs, inputs, config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 let
   mkStringOption = default:
@@ -18,12 +18,11 @@ in {
     librespeed = mkStringOption "8003";
     paperless = mkStringOption "8004";
     shiori = mkStringOption "8005";
-    syncthing = mkStringOption "8006";
-    jellyfin = mkStringOption "8096";
+    cinny2 = mkStringOption "8006";
     whoogle = mkStringOption "8007";
     qbittorrent = mkStringOption "8008";
     actual = mkStringOption "8009";
-    cinny2 = mkStringOption "8010";
+    jellyfin = mkStringOption "8096";
     sonarr = mkStringOption "8989";
     jackett = mkStringOption "9117";
   };
