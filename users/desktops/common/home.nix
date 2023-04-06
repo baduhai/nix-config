@@ -2,7 +2,6 @@
 
 {
   home = {
-    packages = with pkgs; [ nix-your-shell ];
     pointerCursor = {
       size = 24;
       gtk.enable = true;

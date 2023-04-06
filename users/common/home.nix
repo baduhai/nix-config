@@ -10,5 +10,6 @@
       ".config/starship.toml".source =
         "${inputs.dotfiles}/.config/starship.toml";
     };
+    packages = with pkgs; [ nix-your-shell ];
   };
 }
