@@ -8,7 +8,6 @@
     steam-hardware.enable = true; # Allow steam client to manage controllers
     opengl = {
       driSupport32Bit = true; # For OpenGL games
-      mesaPackage = pkgs.mesa_22; # NixOS/nixpkgs/issues/223729
     };
   };
 
