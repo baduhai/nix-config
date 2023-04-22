@@ -5,7 +5,6 @@
 
   environment.systemPackages = with pkgs; [
     bind
-    broot
     btop
     comma
     git
