@@ -10,6 +10,7 @@
     aspellDicts.pt_BR
     bat
     bitwarden
+    crun
     deploy-rs
     distrobox
     fd
@@ -50,7 +51,7 @@
     ungoogled-chromium
     unrar
     vagrant
-    ventoy-bin
+    ventoy
     virt-manager
     wezterm
     # Package overrides
