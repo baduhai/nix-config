@@ -8,7 +8,6 @@
     aspellDicts.en
     aspellDicts.en-computers
     aspellDicts.pt_BR
-    audiotube
     bat
     bitwarden
     crun
@@ -29,6 +28,7 @@
     kolourpaint
     libfido2
     libreoffice-qt
+    libsForQt5.audiotube
     lite-xl
     logseq
     mangohud
