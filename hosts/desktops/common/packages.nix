@@ -8,6 +8,7 @@
     aspellDicts.en
     aspellDicts.en-computers
     aspellDicts.pt_BR
+    audiotube
     bat
     bitwarden
     crun
