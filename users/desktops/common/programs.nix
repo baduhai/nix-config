@@ -38,7 +38,7 @@
           "sudo nixos-rebuild switch --flake '/home/user/Projects/personal/nix-config#'";
         rebuild-boot =
           "sudo nixos-rebuild boot --flake '/home/user/Projects/personal/nix-config#'";
-        upgrade =
+        update =
           "nix flake update --commit-lock-file /home/user/Projects/personal/nix-config";
         hm-rebuild =
           "rm ~/.gtkrc-2.0; nix run '/home/user/Projects/personal/nix-config#homeConfigurations.desktop.activationPackage'";
