@@ -4,7 +4,10 @@
   services = {
     fwupd.enable = true;
     fstrim.enable = true;
-    openssh.enable = true;
     tailscale.enable = true;
+    openssh = {
+      enable = true;
+      sftpServerExecutable = "internal-sftp";
+    };
   };
 }
