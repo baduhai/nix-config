@@ -5,9 +5,6 @@
     fwupd.enable = true;
     fstrim.enable = true;
     tailscale.enable = true;
-    openssh = {
-      enable = true;
-      sftpServerExecutable = "internal-sftp";
-    };
+    openssh.enable = true;
   };
 }
