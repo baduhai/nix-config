@@ -18,7 +18,7 @@
         "${inputs.dotfiles}/.config/solvespace/settings.json";
       ".config/lite-xl/fonts/icon-nerd-font.ttf".source =
         config.lib.file.mkOutOfStoreSymlink
-        "/var/run/current-system/sw/share/X11/fonts/Hack Regular Nerd Font Complete.ttf";
+        "/var/run/current-system/sw/share/X11/fonts/HackNerdFontMono-Regular.ttf";
       # Autostart programs
       ".config/autostart/koi.desktop".source =
         config.lib.file.mkOutOfStoreSymlink
