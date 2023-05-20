@@ -4,6 +4,7 @@
   virtualisation.oci-containers.containers."cinny" = {
     image = "ghcr.io/cinnyapp/cinny:latest";
     ports = [ "${config.ports.cinny}:80" ];
+    environment = { TZ = "America/Bahia"; };
     volumes = [ "/data/matrix/cinny-config.json:/app/config.json" ];
     extraOptions = [ "--pull=always" ];
   };
