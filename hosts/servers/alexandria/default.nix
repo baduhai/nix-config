@@ -10,7 +10,7 @@
     ./hardware-configuration.nix
     ./jellyfin.nix
     ./librespeed.nix
-    ./matrix.nix
+    # ./matrix.nix
     ./minecraft.nix
     ./nginx.nix
     ./paperless.nix
