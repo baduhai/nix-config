@@ -5,7 +5,10 @@
     searx = {
       enable = true;
       package = pkgs.searxng;
-      settings = { server.port = config.ports.searx; };
+      settings = {
+        server.port = config.ports.searx;
+        server.secret_key = "SEARX_SECRET_KEY";
+      };
     };
 
     nginx.virtualHosts."searx.baduhai.me" = {
