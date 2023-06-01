@@ -11,7 +11,7 @@ let
 
   all-hosts = desktops ++ servers;
 in {
+  "big-agi-keys.age".publicKeys = all-hosts;
   "cloudflare-creds.age".publicKeys = all-hosts;
   "paperless-pass.age".publicKeys = all-hosts;
-  "chatbot-ui-keys.age".publicKeys = all-hosts;
 }
