@@ -3,7 +3,7 @@
 {
   virtualisation.oci-containers.containers."chatbot-ui" = {
     image = "ghcr.io/mckaywrigley/chatbot-ui:main";
-    ports = [ "${config.ports.chatbot-ui}:5006" ];
+    ports = [ "${config.ports.chatbot-ui}:3000" ];
     environmentFiles = [ config.age.secrets.chatbot-ui-keys.path ];
     extraOptions = [ "--pull=always" ];
   };
