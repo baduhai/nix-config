@@ -6,7 +6,6 @@
     ./arr.nix
     ./big-agi.nix
     ./changedetection.nix
-    ./chatbot-ui.nix
     ./cinny.nix
     ./hardware-configuration.nix
     ./jellyfin.nix
