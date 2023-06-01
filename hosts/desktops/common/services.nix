@@ -8,6 +8,7 @@ let
 in {
   services = {
     printing.enable = true;
+    flatpak.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -37,5 +38,9 @@ in {
         };
       };
     };
+  };
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
   };
 }
