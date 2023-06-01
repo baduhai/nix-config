@@ -92,7 +92,9 @@
                 unstable-overlay = final: prev: {
                   unstable = nixpkgs.legacyPackages.x86_64-linux;
                 };
-              in { nixpkgs.overlays = [ unstable-overlay ]; })
+              in {
+                nixpkgs.overlays = [ unstable-overlay agenix.overlays.default ];
+              })
           ];
         };
       };
