@@ -14,12 +14,13 @@
     ./minecraft.nix
     ./nginx.nix
     ./paperless.nix
+    ./searx.nix
     ./security.nix
     ./services.nix
     ./shiori.nix
     ./users.nix
     ./variables.nix
     ./vaultwarden.nix
-    ./whoogle.nix
+    # ./whoogle.nix
   ];
 }

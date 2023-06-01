@@ -19,7 +19,7 @@ in {
     paperless = mkStringOption "8004";
     shiori = mkStringOption "8005";
     cinny2 = mkStringOption "8006";
-    whoogle = mkStringOption "8007";
+    searx = mkStringOption "8007";
     qbittorrent = mkStringOption "8008";
     actual = mkStringOption "8009";
     chatbot-ui = mkStringOption "8010";
