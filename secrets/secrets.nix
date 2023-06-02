@@ -12,6 +12,5 @@ let
   all-hosts = desktops ++ servers;
 in {
   "cloudflare-creds.age".publicKeys = all-hosts;
-  "gptnw-keys.age".publicKeys = all-hosts;
   "paperless-pass.age".publicKeys = all-hosts;
 }

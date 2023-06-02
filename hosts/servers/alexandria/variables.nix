@@ -19,10 +19,9 @@ in {
     paperless = mkStringOption "8004";
     shiori = mkStringOption "8005";
     cinny2 = mkStringOption "8006";
-    searx = mkStringOption "8007";
+    tailsx = mkStringOption "8007";
     qbittorrent = mkStringOption "8008";
     actual = mkStringOption "8009";
-    gptnw = mkStringOption "8010";
     jellyfin = mkStringOption "8096";
     sonarr = mkStringOption "8989";
     jackett = mkStringOption "9117";
