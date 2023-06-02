@@ -4,9 +4,9 @@
   imports = [
     ./actual.nix
     ./arr.nix
-    ./big-agi.nix
     ./changedetection.nix
     ./cinny.nix
+    ./gptnw.nix
     ./hardware-configuration.nix
     ./jellyfin.nix
     ./librespeed.nix
