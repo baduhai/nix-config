@@ -46,6 +46,7 @@
     signal-desktop
     solvespace
     space-cadet-pinball
+    steamtinkerlaunch
     steam-run
     tdesktop
     thunderbird-wayland # Until thunderbird moves to using wayland by default
