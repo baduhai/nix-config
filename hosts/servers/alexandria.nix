@@ -19,6 +19,9 @@
 
   networking = {
     hostName = "alexandria";
-    firewall = { allowedTCPPorts = [ 80 443 9666 ]; };
+    firewall = {
+      allowedTCPPorts = [ 80 443 9666 ];
+      allowedUDPPorts = [ 24454 ];
+    };
   };
 }
