@@ -31,6 +31,7 @@
     libsForQt5.audiotube
     lite-xl
     logseq
+    lutris
     mangohud
     mpv
     nixfmt
