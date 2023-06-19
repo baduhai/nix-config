@@ -57,6 +57,8 @@
     ventoy
     virt-manager
     wezterm
+    whatsapp-for-linux
+    youtube-music
     # Package overrides
     (appimage-run.override { extraPkgs = pkgs: [ libthai ]; })
     # Packages from 3rd party
