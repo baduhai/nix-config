@@ -9,6 +9,7 @@
         port = lib.toInt "${config.ports.searx}";
         bind_address = "0.0.0.0";
         secret_key = "&yEf!xLA@y3FdJ5BjKnUnNAkqer$iW!9";
+        method = "GET";
       };
     };
 
