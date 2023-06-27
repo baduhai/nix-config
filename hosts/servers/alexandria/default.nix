@@ -18,5 +18,6 @@
     ./users.nix
     ./variables.nix
     ./vaultwarden.nix
+    ./whoogle.nix
   ];
 }
