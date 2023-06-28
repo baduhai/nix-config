@@ -15,7 +15,7 @@
     ./searx.nix
     ./security.nix
     ./services.nix
-    ./snapdrop
+    ./snapdrop.nix
     ./shiori.nix
     ./users.nix
     ./variables.nix
