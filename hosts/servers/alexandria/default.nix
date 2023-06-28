@@ -9,7 +9,7 @@
     ./hardware-configuration.nix
     ./jellyfin.nix
     ./librespeed.nix
-    # ./minecraft.nix
+    ./minecraft.nix
     ./nginx.nix
     ./paperless.nix
     ./searx.nix
@@ -20,6 +20,5 @@
     ./users.nix
     ./variables.nix
     ./vaultwarden.nix
-    # ./whoogle.nix
   ];
 }

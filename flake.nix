@@ -46,11 +46,16 @@
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-minecraft = {
+      url = "github:Infinidoge/nix-minecraft";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, baduhai-nur, kmonad
     , nixpkgs-stable, deploy-rs, agenix, nixos-generators, homepage, dotfiles
-    , pre-commit-hooks, ... }: {
+    , pre-commit-hooks, nix-minecraft, ... }: {
       nixosConfigurations = {
         rotterdam = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -93,7 +98,12 @@
                   unstable = nixpkgs.legacyPackages.x86_64-linux;
                 };
               in {
-                nixpkgs.overlays = [ unstable-overlay agenix.overlays.default ];
+                nixpkgs.overlays = [
+                  unstable-overlay
+                  agenix.overlays.default
+                  nix-minecraft.overlay
+                ];
+                imports = [ nix-minecraft.nixosModules.minecraft-servers ];
               })
           ];
         };
