@@ -2,7 +2,7 @@
 
 {
   virtualisation.oci-containers.containers."snapdrop" = {
-    image = "jlongster/snapdrop-server:latest";
+    image = "lscr.io/linuxserver/pairdrop:latest";
     ports = [ "${config.ports.snapdrop}:3000" ];
     extraOptions = [ "--pull=always" ];
   };
