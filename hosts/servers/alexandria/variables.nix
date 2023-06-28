@@ -22,7 +22,7 @@ in {
     searx = mkStringOption "8007";
     qbittorrent = mkStringOption "8008";
     actual = mkStringOption "8009";
-    # whoogle = mkStringOption "8010";
+    snapdrop = mkStringOption "8010";
     jellyfin = mkStringOption "8096";
     sonarr = mkStringOption "8989";
     jackett = mkStringOption "9117";
