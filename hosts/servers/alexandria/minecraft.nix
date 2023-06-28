@@ -11,7 +11,7 @@ let
       version = "2.1.2";
       url =
         "https://cdn.modrinth.com/data/g8w1NapE/versions/MNgY2xFj/${pname}-${version}.jar";
-      hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+      hash = "sha256-oYM29Mcon9GTTyLcim85CPiWCdyB48nweVA+0Xq3PIY=";
     };
   };
   mcVersion = modpack.manifest.versions.minecraft;
