@@ -27,7 +27,7 @@ in {
         online-mode = false;
         spawn-protection = false;
       };
-      symlink."mods" = "${modpack}/mods";
+      symlinks."mods" = "${modpack}/mods";
     };
   };
 }
