@@ -1,10 +1,18 @@
 { inputs, config, pkgs, lib, ... }:
 
 let
-  modpack = pkgs.fetchPackwizModpack {
+  modpack = (pkgs.fetchPackwizModpack {
     url =
       "https://raw.githubusercontent.com/baduhai/FFS/06d253f0cd262b8d4a178d4db8e1a7188051e8d0/pack.toml";
     packHash = "sha256-UXjUqDLVUIIUoucHLz9qTqZ7wXOVriCuAcSmeevNz+Q=";
+  }).addFiles {
+    "mods/FabricProxy-lite.jar" = pkgs.fetchurl rec {
+      pname = "fabrictailor";
+      version = "2.1.2";
+      url =
+        "https://cdn.modrinth.com/data/g8w1NapE/versions/MNgY2xFj/${pname}-${version}.jar";
+      hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+    };
   };
   mcVersion = modpack.manifest.versions.minecraft;
   fabricVersion = modpack.manifest.versions.fabric;
