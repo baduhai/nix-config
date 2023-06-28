@@ -4,7 +4,7 @@ let
   modpack = pkgs.fetchPackwizModpack {
     url =
       "https://raw.githubusercontent.com/baduhai/FFS/06d253f0cd262b8d4a178d4db8e1a7188051e8d0/pack.toml";
-    packHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+    packHash = "sha256-UXjUqDLVUIIUoucHLz9qTqZ7wXOVriCuAcSmeevNz+Q=";
   };
   mcVersion = modpack.manifest.versions.minecraft;
   fabricVersion = modpack.manifest.versions.fabric;
