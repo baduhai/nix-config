@@ -16,7 +16,7 @@ in {
     enable = true;
     eula = true;
     dataDir = "/data/minecraft";
-    servers."alexandria" = {
+    servers."seridor" = {
       enable = true;
       package = pkgs.fabricServers.${serverVersion};
       openFirewall = true;
