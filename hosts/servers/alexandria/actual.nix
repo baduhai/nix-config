@@ -2,7 +2,7 @@
 
 {
   virtualisation.oci-containers.containers."actual" = {
-    image = "jlongster/actual-server:latest";
+    image = "docker.io/jlongster/actual-server:latest";
     ports = [ "${config.ports.actual}:5006" ];
     volumes = [ "/data/actual:/data" ];
     extraOptions = [ "--label=io.containers.autoupdate=registry" ];
