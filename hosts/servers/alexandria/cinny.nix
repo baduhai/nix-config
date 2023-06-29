@@ -6,7 +6,7 @@
     ports = [ "${config.ports.cinny}:80" ];
     environment = { TZ = "America/Bahia"; };
     volumes = [ "/data/matrix/cinny-config.json:/app/config.json" ];
-    extraOptions = [ "--pull=always" ];
+    extraOptions = [ "--label=io.containers.autoupdate=registry" ];
   };
 
   services.nginx.virtualHosts."cinny.baduhai.me" = {
