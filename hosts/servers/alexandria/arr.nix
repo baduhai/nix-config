@@ -5,7 +5,7 @@
     bazarr = {
       enable = true;
       user = "user";
-      group = "user";
+      group = "hosted";
     };
 
     jackett.enable = true;
