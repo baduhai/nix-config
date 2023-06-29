@@ -4,6 +4,6 @@
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;
-    autoPrune = true;
+    autoPrune.enable = true;
   };
 }
