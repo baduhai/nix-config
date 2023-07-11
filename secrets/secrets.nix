@@ -13,4 +13,5 @@ let
 in {
   "cloudflare-creds.age".publicKeys = all-hosts;
   "paperless-pass.age".publicKeys = all-hosts;
+  "miniflux-pass.age".publicKeys = all-hosts;
 }
