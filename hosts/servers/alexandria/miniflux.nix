@@ -22,7 +22,7 @@
 
   age.secrets.miniflux-pass = {
     file = ../../../secrets/miniflux-pass.age;
-    owner = "dbUser";
+    owner = "miniflux";
     group = "hosted";
   };
 }
