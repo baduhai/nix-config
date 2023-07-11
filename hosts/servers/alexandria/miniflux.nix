@@ -5,8 +5,8 @@
     miniflux = {
       enable = true;
       config = {
-        PORT = "${config.ports.miniflux}";
-        FETCH_YOUTUBE_WATCH_TIME = true;
+        PORT = config.ports.miniflux;
+        FETCH_YOUTUBE_WATCH_TIME = "true";
         BASE_URL = "https://miniflux.baduhai.me";
       };
       adminCredentialsFile = config.age.secrets.miniflux-pass.path;
