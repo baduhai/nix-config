@@ -15,7 +15,7 @@
     distrobox
     fd
     filelight
-    firefox-wayland # Until firefox moves to using wayland by default
+    firefox
     foliate
     fzf
     gimp
@@ -50,7 +50,7 @@
     steamtinkerlaunch
     steam-run
     tdesktop
-    thunderbird-wayland # Until thunderbird moves to using wayland by default
+    thunderbird
     ungoogled-chromium
     unrar
     vagrant
