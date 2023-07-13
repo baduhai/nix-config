@@ -5,7 +5,7 @@
     nextcloud = {
       enable = true;
       package = pkgs.nextcloud27;
-      hostname = "nextcloud.baduhai.me";
+      hostName = "nextcloud.baduhai.me";
       configureRedis = true;
       caching.apcu = false;
       https = true;
