@@ -4,18 +4,19 @@ let
   io-host =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKCIrKJk5zWzWEHvLMPMK8T3PyeBjsCsqzxPN+OrXfhA";
   io = [ io-user io-host ];
+
   rotterdam-user =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA1v3+q3EaruiiStWjubEJWvtejam/r41uoOpCdwJtLL";
   rotterdam-host =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK7zAxgU8LNi5/O5XgoOcLKjbNMmO2S7jAuCI9Nr/V4v";
   rotterdam = [ rotterdam-user rotterdam-host ];
-  desktops = io ++ rotterdam;
 
   alexandria-host =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK95QueW+jp1ZmF299Xr3XkgHJ6dL7aZVsfWxqbOKVKA";
   alexandria = [ alexandria-host ];
-  servers = alexandria;
 
+  desktops = io ++ rotterdam;
+  servers = alexandria;
   all-hosts = desktops ++ servers;
 in {
   "nextcloud.json.age".publicKeys = all-hosts;
