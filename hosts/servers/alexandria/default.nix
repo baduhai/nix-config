@@ -10,6 +10,7 @@
     ./jellyfin.nix
     ./librespeed.nix
     ./minecraft.nix
+    ./nextcloud.nix
     ./nginx.nix
     ./paperless.nix
     ./searx.nix
