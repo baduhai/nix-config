@@ -6,7 +6,7 @@
       enable = true;
       dataDir = "/data/paperless/data";
       mediaDir = "/data/paperless/media";
-      passwordFile = config.age.secrets.paperless-pass.path;
+      passwordFile = config.age.secrets.paperless.path;
       port = lib.toInt "${config.ports.paperless}";
       consumptionDirIsPublic = true;
       extraConfig = { PAPERLESS_OCR_LANGUAGE = "eng+por+deu"; };
@@ -20,8 +20,8 @@
     };
   };
 
-  age.secrets.paperless-pass = {
-    file = ../../../secrets/paperless-pass.age;
+  age.secrets.paperless = {
+    file = ../../../secrets/paperless.age;
     owner = "paperless";
     group = "hosted";
   };
