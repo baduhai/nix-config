@@ -9,7 +9,8 @@
       configureRedis = true;
       caching.apcu = false;
       https = true;
-      secretFile = config.age.secrets.nextcloud.path;
+      secretFile = config.age.secrets.nextcloud-secrets.path;
+      config.adminpassFile = config.age.secrets.nextcloud-adminpass.path;
     };
 
     nginx.virtualHosts.${config.services.nextcloud.hostName} = {
@@ -19,9 +20,16 @@
     };
   };
 
-  age.secrets.nextcloud = {
-    file = ../../../secrets/nextcloud.json.age;
-    owner = "nextcloud";
-    group = "hosted";
+  age.secrets = {
+    nextcloud-secrets = {
+      file = ../../../secrets/nextcloud-secrets.json.age;
+      owner = "nextcloud";
+      group = "hosted";
+    };
+    nextcloud-adminpass = {
+      file = ../../../secrets/nextcloud-adminpass.age;
+      owner = "nextcloud";
+      group = "hosted";
+    };
   };
 }

@@ -19,7 +19,8 @@ let
   servers = alexandria;
   all-hosts = desktops ++ servers;
 in {
-  "nextcloud.json.age".publicKeys = all-hosts;
+  "nextcloud-secrets.json.age".publicKeys = all-hosts;
+  "nextcloud-adminpass.age".publicKeys = all-hosts;
   "cloudflare.age".publicKeys = all-hosts;
   "paperless.age".publicKeys = all-hosts;
 }
