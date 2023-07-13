@@ -9,7 +9,7 @@
       configureRedis = true;
       caching.apcu = false;
       https = true;
-      sercreFile = config.age.secrets.nextcloud.path;
+      sercretFile = config.age.secrets.nextcloud.path;
     };
 
     nginx.virtualHosts.${config.services.nextcloud.hostName} = {
