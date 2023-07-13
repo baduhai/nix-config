@@ -9,8 +9,9 @@
       configureRedis = true;
       caching.apcu = false;
       https = true;
-      secretFile = config.age.secrets.nextcloud-secrets.path;
+      autoUpdateApps.enable = true;
       config.adminpassFile = config.age.secrets.nextcloud-adminpass.path;
+      secretFile = config.age.secrets.nextcloud-secrets.path;
     };
 
     nginx.virtualHosts.${config.services.nextcloud.hostName} = {
