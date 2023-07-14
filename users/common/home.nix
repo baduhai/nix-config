@@ -7,7 +7,7 @@
     stateVersion = "22.05";
     sessionVariables = {
       EDITOR = "micro";
-      TZ = "America/Bahia";
+      TZ = ":/etc/localtime";
     };
     file = {
       ".config/starship.toml".source =
