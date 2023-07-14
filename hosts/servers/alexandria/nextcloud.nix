@@ -13,6 +13,7 @@
       autoUpdateApps.enable = true;
       notify_push.enable = true;
       secretFile = config.age.secrets.nextcloud-secrets.path;
+      database.createLocally = true;
       config = {
         adminpassFile = config.age.secrets.nextcloud-adminpass.path;
         dbtype = "pgsql";
