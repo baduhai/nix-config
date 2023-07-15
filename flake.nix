@@ -124,17 +124,26 @@
       };
 
       deploy = {
-        autoRollback = false;
-        magicRollback = false;
-        user = "root";
-        sshUser = "root";
+        autoRollback = true;
+        magicRollback = true;
+        profilesOrder = [ "system" "user" ];
         nodes = {
           alexandria = {
             hostname = "alexandria";
-            profiles.system = {
-              remoteBuild = true;
-              path = deploy-rs.lib.x86_64-linux.activate.nixos
-                self.nixosConfigurations.alexandria;
+            profiles = {
+              system = {
+                user = "root";
+                sshUser = "root";
+                remoteBuild = true;
+                path = deploy-rs.lib.x86_64-linux.activate.nixos
+                  self.nixosConfigurations.alexandria;
+              };
+              user = {
+                user = "user";
+                remoteBuild = true;
+                path = deploy-rs.lib.x86_64-linux.activate.home-manager
+                  self.homeConfigurations.server;
+              };
             };
           };
         };
