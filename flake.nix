@@ -125,7 +125,7 @@
 
       deploy = {
         autoRollback = true;
-        magicRollback = true;
+        magicRollback = false;
         profilesOrder = [ "system" "user" ];
         nodes = {
           alexandria = {
