@@ -10,7 +10,6 @@
       configureRedis = true;
       https = true;
       autoUpdateApps.enable = true;
-      # notify_push.enable = true;
       secretFile = config.age.secrets.nextcloud-secrets.path;
       database.createLocally = true;
       caching = {
