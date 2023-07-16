@@ -4,19 +4,24 @@
   services = {
     nextcloud = {
       enable = true;
-      datadir = "/data/nextcloud";
       package = pkgs.nextcloud27;
+      datadir = "/data/nextcloud";
       hostName = "nextcloud.baduhai.me";
       configureRedis = true;
-      caching.apcu = false;
       https = true;
       autoUpdateApps.enable = true;
-      notify_push.enable = true;
+      # notify_push.enable = true;
       secretFile = config.age.secrets.nextcloud-secrets.path;
       database.createLocally = true;
+      caching = {
+        apcu = true;
+        redis = true;
+      };
       config = {
-        adminpassFile = config.age.secrets.nextcloud-adminpass.path;
         dbtype = "pgsql";
+        defaultPhoneRegion = "BR";
+        trustedProxies = [ "127.0.0.1" ];
+        adminpassFile = config.age.secrets.nextcloud-adminpass.path;
       };
     };
 
