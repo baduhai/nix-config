@@ -12,6 +12,7 @@
     ./minecraft.nix
     ./nextcloud.nix
     ./nginx.nix
+    ./node-red.nix
     ./paperless.nix
     ./searx.nix
     ./security.nix
