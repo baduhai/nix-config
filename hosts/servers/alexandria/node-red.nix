@@ -5,6 +5,7 @@
     node-red = {
       enable = true;
       group = "hosted";
+      withNpmAndGcc = true;
       userDir = "/data/node-red";
     };
 
