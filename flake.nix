@@ -134,11 +134,13 @@
               system = {
                 user = "root";
                 sshUser = "root";
+                remoteBuild = true;
                 path = deploy-rs.lib.x86_64-linux.activate.nixos
                   self.nixosConfigurations.alexandria;
               };
               user = {
                 user = "user";
+                remoteBuild = true;
                 path = deploy-rs.lib.x86_64-linux.activate.home-manager
                   self.homeConfigurations.server;
               };
@@ -152,11 +154,13 @@
               system = {
                 user = "root";
                 sshUser = "root";
+                remoteBuild = true;
                 path = deploy-rs.lib.x86_64-linux.activate.nixos
                   self.nixosConfigurations.io;
               };
               user = {
                 user = "user";
+                remoteBuild = true;
                 path = deploy-rs.lib.x86_64-linux.activate.home-manager
                   self.homeConfigurations.desktop;
               };
