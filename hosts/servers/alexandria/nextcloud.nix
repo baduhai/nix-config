@@ -10,7 +10,7 @@
       configureRedis = true;
       https = true;
       autoUpdateApps.enable = true;
-      secretFile = config.age.secrets.nextcloud-secrets.path;
+      secretFile = config.age.secrets."nextcloud-secrets.json".path;
       database.createLocally = true;
       caching = {
         apcu = true;
@@ -32,7 +32,7 @@
   };
 
   age.secrets = {
-    nextcloud-secrets = {
+    "nextcloud-secrets.json" = {
       file = ../../../secrets/nextcloud-secrets.json.age;
       owner = "nextcloud";
       group = "hosted";
