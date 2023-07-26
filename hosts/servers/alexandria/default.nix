@@ -17,6 +17,7 @@
     ./security.nix
     ./services.nix
     ./pairdrop.nix
+    ./podsync.nix
     ./shiori.nix
     ./users.nix
     ./variables.nix

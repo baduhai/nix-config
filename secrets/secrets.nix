@@ -23,4 +23,5 @@ in {
   "nextcloud-adminpass.age".publicKeys = all-hosts;
   "cloudflare.age".publicKeys = all-hosts;
   "paperless.age".publicKeys = all-hosts;
+  "podsync.toml.age".publicKeys = all-hosts;
 }

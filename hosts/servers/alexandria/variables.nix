@@ -23,6 +23,7 @@ in {
     qbittorrent = mkStringOption "8008";
     actual = mkStringOption "8009";
     pairdrop = mkStringOption "8010";
+    podsync = mkStringOption "8011";
     jellyfin = mkStringOption "8096";
     sonarr = mkStringOption "8989";
     jackett = mkStringOption "9117";
