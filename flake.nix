@@ -51,11 +51,16 @@
       url = "github:Infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    yousable = {
+      url = "github:t184256/yousable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, baduhai-nur, kmonad
     , nixpkgs-stable, deploy-rs, agenix, nixos-generators, homepage, dotfiles
-    , pre-commit-hooks, nix-minecraft, ... }: {
+    , pre-commit-hooks, nix-minecraft, yousable, ... }: {
       nixosConfigurations = {
         rotterdam = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -91,6 +96,7 @@
           modules = [
             ./hosts/servers/alexandria.nix
             agenix.nixosModules.default
+            yousable.nixosModules.default
             self.nixosModules.qbittorrent
             ({ config, pkgs, ... }:
               let

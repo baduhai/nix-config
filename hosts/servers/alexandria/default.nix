@@ -17,7 +17,6 @@
     ./security.nix
     ./services.nix
     ./pairdrop.nix
-    ./podsync.nix
     ./users.nix
     ./variables.nix
     ./vaultwarden.nix

@@ -16,7 +16,6 @@ in {
     cinny = mkStringOption "8002";
     librespeed = mkStringOption "8003";
     paperless = mkStringOption "8004";
-    podsync = mkStringOption "8005";
     cinny2 = mkStringOption "8006";
     searx = mkStringOption "8007";
     qbittorrent = mkStringOption "8008";
