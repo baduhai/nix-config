@@ -110,26 +110,26 @@
       };
 
       homeConfigurations = {
-        server = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = { inherit inputs; };
-          modules = [ ./users/servers/user.nix ];
-        };
-
         desktop = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs; };
           modules = [ ./users/desktops/user.nix ];
+        };
+
+        server = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = { inherit inputs; };
+          modules = [ ./users/servers/user.nix ];
         };
       };
 
       deploy = {
         autoRollback = true;
         magicRollback = false;
-        profilesOrder = [ "system" "user" ];
         nodes = {
           alexandria = {
             hostname = "alexandria";
+            profilesOrder = [ "system" "user" ];
             profiles = {
               system = {
                 user = "root";
@@ -143,6 +143,26 @@
                 remoteBuild = true;
                 path = deploy-rs.lib.x86_64-linux.activate.home-manager
                   self.homeConfigurations.server;
+              };
+            };
+          };
+
+          io = {
+            hostname = "io";
+            profilesOrder = [ "system" "user" ];
+            profiles = {
+              system = {
+                user = "root";
+                sshUser = "root";
+                remoteBuild = true;
+                path = deploy-rs.lib.x86_64-linux.activate.nixos
+                  self.nixosConfigurations.io;
+              };
+              user = {
+                user = "user";
+                remoteBuild = true;
+                path = deploy-rs.lib.x86_64-linux.activate.home-manager
+                  self.homeConfigurations.desktop;
               };
             };
           };
