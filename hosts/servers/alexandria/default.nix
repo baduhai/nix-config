@@ -20,5 +20,6 @@
     ./users.nix
     ./variables.nix
     ./vaultwarden.nix
+    ./yousable.nix
   ];
 }
