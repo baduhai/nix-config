@@ -35,35 +35,43 @@ let
 
       feeds:
         TL:
-          url: https://www.youtube.com/channel/UCeeFfhMcJa1kjtfZAGskOCA
+          url: https://www.youtube.com/channel/UCeeFfhMcJa1kjtfZAGskOCA/videos
+          sponsorblock_remove: [ sponsor ]
           overrides:
             title: TechLinked
         GL:
-          url: https://www.youtube.com/channel/UCHDxYLv8iovIbhrfl16CNyg
+          url: https://www.youtube.com/channel/UCHDxYLv8iovIbhrfl16CNyg/videos
+          sponsorblock_remove: [ sponsor ]
           overrides:
             title: GameLinked
         JS:
-          url: https://www.youtube.com/channel/UC-2YHgc363EdcusLIBbgxzg
+          url: https://www.youtube.com/channel/UC-2YHgc363EdcusLIBbgxzg/videos
+          sponsorblock_remove: [ sponsor ]
           overrides:
             title: Answers with Joe
         HOTU:
-          url: https://www.youtube.com/channel/UCtRFmSyL4fSLQkn-wMqlmdA
+          url: https://www.youtube.com/channel/UCtRFmSyL4fSLQkn-wMqlmdA/videos
+          sponsorblock_remove: [ sponsor ]
           overrides:
             title: History of the Universe
         SEA:
-          url: https://www.youtube.com/channel/UCG9ShGbASoiwHwFcLcAh9EA
+          url: https://www.youtube.com/channel/UCG9ShGbASoiwHwFcLcAh9EA/videos
+          sponsorblock_remove: [ sponsor ]
           overrides:
             title: SEA
         TH:
-          url: https://www.youtube.com/channel/UCSwFnHpDt-lZgR_7Sqisi6A
+          url: https://www.youtube.com/channel/UCSwFnHpDt-lZgR_7Sqisi6A/videos
+          sponsorblock_remove: [ sponsor ]
           overrides:
             title: The Histocrat
         L1T:
-          url: https://www.youtube.com/channel/UC4w1YQAJMWOz4qtxinq55LQ
+          url: https://www.youtube.com/channel/UC4w1YQAJMWOz4qtxinq55LQ/videos
+          sponsorblock_remove: [ sponsor ]
           overrides:
             title: Level 1 News
         TSR:
-          url: https://www.youtube.com/channel/UCeMcDx6-rOq_RlKSPehk2tQ
+          url: https://www.youtube.com/channel/UCeMcDx6-rOq_RlKSPehk2tQ/videos
+          sponsorblock_remove: [ sponsor ]
           overrides:
             title: The Space Race
     '';
