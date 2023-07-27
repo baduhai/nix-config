@@ -62,6 +62,10 @@ let
           url: https://www.youtube.com/channel/UC4w1YQAJMWOz4qtxinq55LQ
           overrides:
             title: Level 1 News
+        TSR:
+          url: https://www.youtube.com/channel/UCeMcDx6-rOq_RlKSPehk2tQ
+          overrides:
+            title: The Space Race
     '';
   };
 
