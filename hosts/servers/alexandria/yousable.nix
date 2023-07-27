@@ -26,7 +26,7 @@ let
               format_sort: [ 'acodec:opus' ]
 
       feed_defaults:
-        load_entries: 20                 # query only the last L videos from youtube
+        load_entries: 10                 # query only the last L videos from youtube
         keep_entries: 10                 # keep at least the last K videos on disk
         keep_entries_seconds: 1000000000 # keep videos that are less than M seconds old
         live_slice_seconds: 1200         # fill paths.live with fragments N seconds long
@@ -58,7 +58,10 @@ let
           url: https://www.youtube.com/channel/UCSwFnHpDt-lZgR_7Sqisi6A
           overrides:
             title: The Histocrat
-
+        L1T:
+          url: https://www.youtube.com/channel/UC4w1YQAJMWOz4qtxinq55LQ
+          overrides:
+            title: Level 1 News
     '';
   };
 
