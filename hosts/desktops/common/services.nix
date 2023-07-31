@@ -7,8 +7,11 @@ let
 
 in {
   services = {
-    printing.enable = true;
     flatpak.enable = true;
+    printing = {
+      enable = true;
+      drivers = with pkgs; [ epson-escpr ];
+    };
     pipewire = {
       enable = true;
       alsa.enable = true;
