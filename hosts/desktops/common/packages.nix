@@ -91,4 +91,7 @@
 
   environment.plasma5.excludePackages =
     (with pkgs.plasma5Packages; [ elisa gwenview oxygen khelpcenter konsole ]);
+
+  nixpkgs.config.permittedInsecurePackages =
+    [ "openssl-1.1.1u" ]; # Exception for appflowy
 }
