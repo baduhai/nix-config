@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    appflowy
     ark
     aspell
     aspellDicts.de
@@ -35,7 +36,6 @@
     mpv
     nixfmt
     nix-init
-    obsidian
     obs-studio
     p7zip
     prismlauncher-qt5
