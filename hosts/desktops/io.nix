@@ -44,4 +44,38 @@
       };
     };
   };
+
+  nixpkgs.overlays = with pkgs;
+    [
+      (final: prev: {
+        alsa-ucm-conf = prev.alsa-ucm-conf.overrideAttrs (old: {
+          srcs = [
+            (fetchurl {
+              url = "mirror://alsa/lib/alsa-ucm-conf-1.2.9.tar.bz2";
+              hash = "sha256-N09oM7/XfQpGdeSqK/t53v6FDlpGpdRUKkWWL0ueJyo=";
+            })
+            (fetchurl {
+              url =
+                "https://github.com/WeirdTreeThing/chromebook-ucm-conf/archive/refs/heads/main.tar.gz";
+              hash = "sha256-vXFixh2HZD5zs0wARxAHmwtvk1R8/7gBs2y+delCnGc=";
+            })
+          ];
+          unpackPhase = ''
+            runHook preUnpacl
+            for _src in $srcs; do
+              tar xf "$_src"
+            done
+            runHook postUnpack
+          '';
+          installPhase = ''
+            runHook preInstall
+            mkdir -p $out/share/alsa
+            cp -r alsa-ucm-conf-1.2.9/ucm alsa-ucm-conf-1.2.9/ucm2 $out/share/alsa
+            mkdir -p $out/share/alsa/ucm2/conf.d
+            cp -r chromebook-ucm-conf-main/hdmi-common chromebook-ucm-conf-main/dmic-common chromebook-ucm-conf-main/tgl/* $out/share/alsa/ucm2/conf.d
+            runHook postInstall
+          '';
+        });
+      })
+    ];
 }
