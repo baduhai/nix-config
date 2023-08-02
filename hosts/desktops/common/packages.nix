@@ -2,7 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    anytype
     ark
     aspell
     aspellDicts.de
@@ -31,12 +30,12 @@
     libreoffice-qt
     libsForQt5.audiotube
     lite-xl
-    logseq
     lutris
     mangohud
     mpv
     nixfmt
     nix-init
+    obsidian
     obs-studio
     p7zip
     prismlauncher-qt5
