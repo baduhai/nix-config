@@ -35,6 +35,7 @@
     lutris
     mangohud
     mpv
+    nextcloud-client
     nixfmt
     nix-init
     obs-studio
