@@ -15,6 +15,7 @@
     sysz
     tmux
     tree
+    neovim
     wget
   ];
 

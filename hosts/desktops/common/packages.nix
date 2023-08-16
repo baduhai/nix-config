@@ -38,7 +38,6 @@
     nextcloud-client
     nixfmt
     nix-init
-    nvim
     obs-studio
     p7zip
     prismlauncher-qt5
