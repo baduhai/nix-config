@@ -57,7 +57,7 @@
       interactiveShellInit = "nix-your-shell fish | source";
       loginShellInit = "nix-your-shell fish | source";
       shellAliases = {
-        nano = "micro";
+        emacs = "${config.home.sessionVariables.EDITOR} -nw";
         wget = ''wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'';
       };
       functions = {
