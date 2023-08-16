@@ -5,10 +5,7 @@
     username = "user";
     homeDirectory = "/home/user";
     stateVersion = "22.05";
-    sessionVariables = {
-      EDITOR = "micro";
-      TZ = ":/etc/localtime";
-    };
+    sessionVariables = { TZ = ":/etc/localtime"; };
     file = {
       ".config/starship.toml".source =
         "${inputs.dotfiles}/.config/starship.toml";
