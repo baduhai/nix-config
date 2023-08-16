@@ -5,5 +5,6 @@
     enable = true;
     defaultEditor = true;
     socketActivation.enable = true;
+    client.enable = true;
   };
 }
