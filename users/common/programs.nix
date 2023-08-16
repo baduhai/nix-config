@@ -47,9 +47,8 @@
         mkparents = true;
         scrollbar = true;
         tabstospaces = true;
-        tabsize = 4;
+        tabsize = 2;
         colorscheme = "simple";
-        relativeruler = true;
       };
     };
     fish = {
@@ -57,7 +56,8 @@
       interactiveShellInit = "nix-your-shell fish | source";
       loginShellInit = "nix-your-shell fish | source";
       shellAliases = {
-        emacs = "${config.home.sessionVariables.EDITOR} -nw";
+        vi = "nvim";
+        vim = "nvim";
         wget = ''wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'';
       };
       functions = {
