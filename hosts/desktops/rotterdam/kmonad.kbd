@@ -9,7 +9,7 @@
 )
 
 (defalias
-  cps (tap-hold 200 esc caps)
+  cps (tap-hold 150 esc caps)
 )
 
 (defsrc
@@ -20,7 +20,7 @@
   lctl lmet lalt                spc                 ralt left down rght
 )
 
-(defsrc
+(defsrc default
   esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   @cps a    s    d    f    g    h    j    k    l    ;    '         ret
