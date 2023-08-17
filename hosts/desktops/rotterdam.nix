@@ -12,7 +12,16 @@
 
   networking.hostName = "rotterdam";
 
-  services.hardware.openrgb.enable = true;
+  services = {
+    hardware.openrgb.enable = true;
+    kmonad = {
+      enable = true;
+      keyboards.default = {
+        device = "/dev/input/by-path/pci-0000:0a:00.3-usb-0:2:1.0-event-kbd";
+        config = builtins.readFile ./rotterdam/kmonad.kbd;
+      };
+    };
+  };
 
   systemd.targets.hibernate.enable = false; # disable non-functional hibernate
 
