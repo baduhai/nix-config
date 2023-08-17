@@ -7,7 +7,7 @@
     stateVersion = "22.05";
     sessionVariables = {
       TZ = ":/etc/localtime";
-      EDITOR = "nvim";
+      EDITOR = "hx";
     };
     file = {
       ".config/starship.toml".source =

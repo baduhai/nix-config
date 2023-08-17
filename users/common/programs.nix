@@ -1,6 +1,4 @@
-{ inputs, config, pkgs, lib, ... }:
-
-{
+{ inputs, config, pkgs, lib, ... }: {
   programs = {
     password-store.enable = true;
     bash = {
@@ -56,8 +54,6 @@
       interactiveShellInit = "nix-your-shell fish | source";
       loginShellInit = "nix-your-shell fish | source";
       shellAliases = {
-        vi = "nvim";
-        vim = "nvim";
         wget = ''wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'';
       };
       functions = {

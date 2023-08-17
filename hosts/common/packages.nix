@@ -9,13 +9,13 @@
     btop
     comma
     git
+    helix
     micro
     neofetch
     # nix-your-shell # Currently only available in unstable
     sysz
     tmux
     tree
-    neovim
     wget
   ];
 
