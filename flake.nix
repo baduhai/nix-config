@@ -68,7 +68,7 @@
           modules = [
             ./hosts/desktops/rotterdam.nix
             agenix.nixosModules.default
-            kmonad.nixosMofules.default
+            kmonad.nixosModules.default
             {
               nixpkgs.overlays =
                 [ baduhai-nur.overlay agenix.overlays.default ];
