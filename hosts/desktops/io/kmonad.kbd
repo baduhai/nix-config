@@ -11,7 +11,7 @@
 (defalias
   ovrvw   M-w #|Overview button|#
   fsc     (multi-tap 150 M-pgup M-f11)
-  cps     (multi-tap 150 rsft caps) #|Caps lock replacement|#
+  cps     (tap-hold 400 caps lmet) #|Caps lock replacement|#
   medkey  (multi-tap 200 KeyNextSong KeyPreviousSong) #|Play-pause key|#
   mute    (multi-tap 200 KeyMute M-KeyMute) #|Mute audio and mic|#
 
@@ -37,8 +37,8 @@
   esc   KeyBack KeyForward KeyRefresh @fsc @ovrvw brdn brup  @mute  pp   @medkey  del
   grv   1     2     3     4     5     6     7     8     9     0     -     =       bspc
   tab   q     w     e     r     t     y     u     i     o     p     [     ]       ret
-  lmet  a     s     d     f     g     h     j     k     l     ;     '     \
-  lsft  @fks  z     x     c     v     b     n     m     ,     .     /             @cps
+  @cps  a     s     d     f     g     h     j     k     l     ;     '     \
+  lsft  @fks  z     x     c     v     b     n     m     ,     .     /             lsft
   lctl        lalt              spc                     ralt  rctl          up
                                                                       left down rght
 )

@@ -9,7 +9,7 @@
 )
 
 (defalias
-  cps (tap-hold 150 esc caps)
+  cps (tap-hold 400 esc caps)
 )
 
 (defsrc
