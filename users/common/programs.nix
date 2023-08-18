@@ -22,6 +22,7 @@
           line-number = "relative";
           cursor-shape.insert = "bar";
           mouse = false;
+          softwrap.enable = true;
         };
         keys.normal.space = {
           space = "file_picker";
