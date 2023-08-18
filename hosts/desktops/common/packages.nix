@@ -84,7 +84,7 @@
   fonts = {
     fontDir.enable = true;
     fontconfig.enable = true;
-    fonts = with pkgs; [
+    packages = with pkgs; [
       inter
       roboto
       (nerdfonts.override { fonts = [ "Hack" ]; })
