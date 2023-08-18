@@ -9,6 +9,27 @@
       enable = true;
       enableFishIntegration = true;
     };
+    helix = {
+      enable = true;
+      settings = {
+        theme = "catppuccin-mocha_transparent";
+        editor = {
+          line-number = "relative";
+          cursor-shape.insert = "bar";
+          mouse = false;
+        };
+        keys.normal.space = {
+          space = "file_picker";
+          w = ":w";
+          q = ":q";
+          esc = [ "collapse_selection" "keep_primary_selection" ];
+        };
+      };
+      themes.catppuccin-mocha_transparent = {
+        inherits = "catppuccin_mocha";
+        "ui.background" = "{}";
+      };
+    };
     direnv = {
       enable = true;
       nix-direnv.enable = true;
