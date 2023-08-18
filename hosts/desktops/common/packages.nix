@@ -29,8 +29,6 @@
     kolourpaint
     libfido2
     libreoffice-qt
-    libsForQt5.audiotube
-    lite-xl
     logseq
     lutris
     mangohud
