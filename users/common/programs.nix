@@ -1,14 +1,19 @@
-{ inputs, config, pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }:
+
+{
   programs = {
     password-store.enable = true;
+
     bash = {
       enable = true;
       historyFile = "~/.cache/bash_history";
     };
+
     nix-index = {
       enable = true;
       enableFishIntegration = true;
     };
+
     helix = {
       enable = true;
       settings = {
@@ -30,26 +35,110 @@
         "ui.background" = "{}";
       };
     };
+
     direnv = {
       enable = true;
       nix-direnv.enable = true;
     };
+
     tmux = {
       enable = true;
       clock24 = true;
       extraConfig = "set -g mouse on";
     };
+
     starship = {
       enable = true;
       enableBashIntegration = true;
       enableFishIntegration = true;
+      settings = {
+        add_newline = false;
+        format = ''
+          [░▒▓](text)$os[](fg:text bg:prim)$directory[](fg:prim bg:seco)$git_branch$git_status[](fg:seco bg:tert)$nix_shell$rust[](fg:tert bg:quar)$time[](fg:quar)$fill[](fg:quar)$cmd_duration[](fg:tert bg:quar)[](fg:seco bg:tert)[](fg:prim bg:seco)$hostname[▓▒░](text)
+          [  ](seco)'';
+        palette = "night";
+        os = {
+          disabled = false;
+          style = "bg:text fg:bg";
+          symbols.NixOS = "  ";
+        };
+        directory = {
+          format = "[ $path ]($style)";
+          style = "fg:bg bg:prim";
+          truncation_length = 3;
+          truncation_symbol = "󰇘 ";
+          substitutions = {
+            Documents = " ";
+            Downloads = " ";
+            Music = " ";
+            Pictures = " ";
+            Videos = " ";
+          };
+        };
+        git_branch = {
+          format = "[[ $symbol $branch ](fg:bg bg:seco)]($style)";
+          style = "bg:seco";
+          symbol = "";
+        };
+        git_status = {
+          format = "[[($all_status$ahead_behind )](fg:bg bg:seco)]($style)";
+          style = "bg:seco";
+        };
+        right_format = "$character";
+        nix_shell = {
+          format = "[[ $symbol ](fg:bg bg:tert)]($style)";
+          heuristic = true;
+          style = "bg:tert";
+          symbol = "󱄅";
+        };
+        rust = {
+          format = "[[ $symbol ($version) ](fg:bg bg:tert)]($style)";
+          style = "bg:tert";
+          symbol = "";
+        };
+        time = {
+          disabled = false;
+          format = "[[  $time ](fg:seco bg:quar)]($style)";
+          style = "bg:quar";
+          time_format = "%R";
+        };
+        fill.symbol = " ";
+        cmd_duration = {
+          format = "[[ $duration  ](fg:seco bg:quar)]($style)";
+          min_time = 0;
+          style = "bg:quar";
+        };
+        hostname = {
+          format =
+            "[[$ssh_symbol](fg:bg bg:prim)[](bg:prim fg:text)$hostname ]($style)";
+          ssh_only = false;
+          ssh_symbol = "  ";
+          style = "fg:bg bg:text";
+        };
+        character = {
+          error_symbol = "[✗](bold red) ";
+          success_symbol = "[󱐋](bold green) ";
+        };
+        palettes.night = {
+          bg = "#1E1E2E";
+          green = "#a6e3a1";
+          prim = "#a2b3e6";
+          quar = "#303062";
+          red = "#f38ba8";
+          seco = "#738cd9";
+          tert = "#4566cd";
+          text = "#d0d9f2";
+        };
+      };
     };
+
     git = {
       enable = true;
       diff-so-fancy.enable = true;
       userName = "William";
       userEmail = "baduhai@proton.me";
     };
+
     btop = {
       enable = true;
       settings = {
@@ -59,6 +148,7 @@
         update_ms = 500;
       };
     };
+
     micro = {
       enable = true;
       settings = {
@@ -70,6 +160,7 @@
         colorscheme = "simple";
       };
     };
+
     fish = {
       enable = true;
       interactiveShellInit = "nix-your-shell fish | source";

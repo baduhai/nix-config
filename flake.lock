@@ -84,22 +84,6 @@
         "type": "github"
       }
     },
-    "dotfiles": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1692370340,
-        "narHash": "sha256-NkLUrGAOj804gukbWxAr4A1djsshFT8pc3gdS8OCunY=",
-        "owner": "baduhai",
-        "repo": "dotfiles",
-        "rev": "0fa1b89b7c9269a8411b6f50c1109a306b55efef",
-        "type": "github"
-      },
-      "original": {
-        "owner": "baduhai",
-        "repo": "dotfiles",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -454,7 +438,6 @@
         "agenix": "agenix",
         "baduhai-nur": "baduhai-nur",
         "deploy-rs": "deploy-rs",
-        "dotfiles": "dotfiles",
         "home-manager": "home-manager_2",
         "homepage": "homepage",
         "kmonad": "kmonad",

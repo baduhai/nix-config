@@ -37,11 +37,6 @@
       flake = false;
     };
 
-    dotfiles = {
-      url = "github:baduhai/dotfiles";
-      flake = false;
-    };
-
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -59,7 +54,7 @@
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, baduhai-nur, kmonad
-    , nixpkgs-stable, deploy-rs, agenix, nixos-generators, homepage, dotfiles
+    , nixpkgs-stable, deploy-rs, agenix, nixos-generators, homepage
     , pre-commit-hooks, nix-minecraft, yousable, ... }: {
       nixosConfigurations = {
         rotterdam = nixpkgs.lib.nixosSystem {
