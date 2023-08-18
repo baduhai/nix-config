@@ -11,7 +11,7 @@
 (defalias
   ovrvw   M-w #|Overview button|#
   fsc     (multi-tap 150 M-pgup M-f11)
-  cps     (tap-hold 400 caps lmet) #|Caps lock replacement|#
+  cps     (tap-hold 400 esc caps) #|Caps lock replacement|#
   medkey  (multi-tap 200 KeyNextSong KeyPreviousSong) #|Play-pause key|#
   mute    (multi-tap 200 KeyMute M-KeyMute) #|Mute audio and mic|#
 
