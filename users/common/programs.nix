@@ -23,6 +23,7 @@
           cursor-shape.insert = "bar";
           mouse = false;
           soft-wrap.enable = true;
+          auto-format = true;
         };
         keys.normal.space = {
           space = "file_picker";
@@ -30,6 +31,13 @@
           q = ":q";
           esc = [ "collapse_selection" "keep_primary_selection" ];
         };
+      };
+      languages = {
+        language = [{
+          name = "nix";
+          auto-format = true;
+          formatter.command = "nixfmt";
+        }];
       };
       themes.catppuccin-mocha_transparent = {
         inherits = "catppuccin_mocha";
@@ -150,24 +158,13 @@
       };
     };
 
-    micro = {
-      enable = true;
-      settings = {
-        clipboard = "terminal";
-        mkparents = true;
-        scrollbar = true;
-        tabstospaces = true;
-        tabsize = 2;
-        colorscheme = "simple";
-      };
-    };
-
     fish = {
       enable = true;
       interactiveShellInit = "nix-your-shell fish | source";
       loginShellInit = "nix-your-shell fish | source";
       shellAliases = {
         wget = ''wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'';
+        h = "hx";
       };
       functions = {
         fish_greeting = "";

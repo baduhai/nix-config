@@ -34,7 +34,6 @@
     mangohud
     mpv
     nextcloud-client
-    nixfmt
     nix-init
     obs-studio
     p7zip
