@@ -37,11 +37,6 @@
       flake = false;
     };
 
-    pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-minecraft = {
       url = "github:Infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,7 +50,7 @@
 
   outputs = inputs@{ self, nixpkgs, home-manager, baduhai-nur, kmonad
     , nixpkgs-stable, deploy-rs, agenix, nixos-generators, homepage
-    , pre-commit-hooks, nix-minecraft, yousable, ... }: {
+    , nix-minecraft, yousable, ... }: {
       nixosConfigurations = {
         rotterdam = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -170,28 +165,16 @@
         };
       };
 
-      checks = {
-        "x86_64-linux" = {
-          pre-commit-check = pre-commit-hooks.lib."x86_64-linux".run {
-            src = ./.;
-            hooks = { nixfmt.enable = true; };
-          };
-        };
-        "aarch64-linux" = {
-          pre-commit-check = pre-commit-hooks.lib."aarch64-linux".run {
-            src = ./.;
-            hooks = { nixfmt.enable = true; };
-          };
-        };
-      };
-
       devShells = {
         "x86_64-linux".default = nixpkgs.legacyPackages."x86_64-linux".mkShell {
-          inherit (self.checks."x86_64-linux".pre-commit-check) shellHook;
+          packages = with nixpkgs.legacyPackages."x86_64-linux"; [ nil nixfmt ];
         };
         "aarch64-linux".default =
           nixpkgs.legacyPackages."aarch64-linux".mkShell {
-            inherit (self.checks."aarch64-linux".pre-commit-check) shellHook;
+            packages = with nixpkgs.legacyPackages."aarch64-linux"; [
+              nil
+              nixfmt
+            ];
           };
       };
 
