@@ -95,6 +95,7 @@
     wezterm = {
       enable = true;
       extraConfig = ''
+        local act = wezterm.action
         function scheme_for_appearance(appearance)
           if appearance:find "Dark" then
             return "Catppuccin Mocha"
@@ -102,19 +103,54 @@
             return "Catppuccin Macchiato"
           end
         end
-        return {
-          font_size = 11,
-          color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
-          hide_tab_bar_if_only_one_tab = true,
-          font = wezterm.font_with_fallback ({
-            "Hack Nerd Font",
-            "Noto Color Emoji",
-          }),
-          initial_cols = 108,
-          initial_rows = 32,
-          enable_tab_bar = false,
-          enable_scroll_bar = true,
+        local config = {}
+        if wezterm.config_builder then config = wezterm.config_builder() end
+        config.color_scheme = "Catppuccin Mocha"
+        config.font = wezterm.font_with_fallback ({
+          {family = "Hack Nerd Font", scale = 1},
+          {family = "Noto Color Emoji", scale = 1},
+        })
+        config.initial_cols = 108
+        config.initial_rows = 32
+        config.enable_scroll_bar = true
+        config.inactive_pane_hsb = {
+          saturation = 0.7,
+          brightness = 0.5
         }
+        config.show_new_tab_button_in_tab_bar = false
+        wezterm.plugin.require("https://github.com/nekowinston/wezterm-bar").apply_to_config(config, {
+          position = "bottom",
+          max_width = 32,
+          dividers = "slant_right", -- "slant_right", "slant_left", "arrows", "rounded", false
+          indicator = {
+            leader = {
+              enabled = false,
+              off = " ",
+              on = " ",
+            },
+            mode = {
+              enabled = false,
+              names = {
+                resize_mode = "RESIZE",
+                copy_mode = "VISUAL",
+                search_mode = "SEARCH",
+              },
+            },
+          },
+          tabs = {
+            numerals = "roman", -- "roman", "arabic"
+            pane_count = false, -- "superscript", "subscript", false
+            brackets = {
+              active = { "", ":" },
+              inactive = { "", ":" },
+            },
+          },
+          clock = { -- note that this overrides the whole set_right_status
+            enabled = false,
+            format = "%H:%M", -- use https://wezfurlong.org/wezterm/config/lua/wezterm.time/Time/format.html
+          },
+        })
+        return config
       '';
     };
   };
