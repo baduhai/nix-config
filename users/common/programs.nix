@@ -19,11 +19,17 @@
       settings = {
         theme = "catppuccin-mocha_transparent";
         editor = {
+          idle-timeout = 0;
           line-number = "relative";
-          cursor-shape.insert = "bar";
+          cursor-shape = {
+            normal = "block";
+            insert = "bar";
+            select = "underline";
+          };
           mouse = false;
           soft-wrap.enable = true;
           auto-format = true;
+          indent-guides.render = true;
         };
         keys.normal.space = {
           space = "file_picker";
