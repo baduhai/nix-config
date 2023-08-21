@@ -100,13 +100,6 @@
       enable = true;
       extraConfig = ''
         local act = wezterm.action
-        function scheme_for_appearance(appearance)
-          if appearance:find "Dark" then
-            return "Catppuccin Mocha"
-          else
-            return "Catppuccin Macchiato"
-          end
-        end
         local config = {}
         if wezterm.config_builder then config = wezterm.config_builder() end
         config.color_scheme = "Catppuccin Mocha"
@@ -121,39 +114,29 @@
           saturation = 0.7,
           brightness = 0.5
         }
+        config.window_frame = {
+          font = wezterm.font_with_fallback ({
+            {family = "Hack Nerd Font", scale = 1},
+            {family = "Noto Color Emoji", scale = 1},
+          }),
+          active_titlebar_bg = '#303446',
+          inactive_titlebar_bg = '#303446',
+        }
         config.show_new_tab_button_in_tab_bar = false
-        wezterm.plugin.require("https://github.com/nekowinston/wezterm-bar").apply_to_config(config, {
-          position = "bottom",
-          max_width = 32,
-          dividers = "slant_right", -- "slant_right", "slant_left", "arrows", "rounded", false
-          indicator = {
-            leader = {
-              enabled = false,
-              off = " ",
-              on = " ",
+        config.colors = {
+          tab_bar = {
+            background = '#303446',
+            active_tab = {
+              bg_color = '#1e1e2e',
+              fg_color = '#9197b0',
             },
-            mode = {
-              enabled = false,
-              names = {
-                resize_mode = "RESIZE",
-                copy_mode = "VISUAL",
-                search_mode = "SEARCH",
-              },
+            inactive_tab = {
+              bg_color = '#303446',
+              fg_color = '#9197b0'
             },
-          },
-          tabs = {
-            numerals = "roman", -- "roman", "arabic"
-            pane_count = false, -- "superscript", "subscript", false
-            brackets = {
-              active = { "", ":" },
-              inactive = { "", ":" },
-            },
-          },
-          clock = { -- note that this overrides the whole set_right_status
-            enabled = false,
-            format = "%H:%M", -- use https://wezfurlong.org/wezterm/config/lua/wezterm.time/Time/format.html
-          },
-        })
+            inactive_tab_edge = '#303062',
+          }
+        }
         return config
       '';
     };
