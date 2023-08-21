@@ -89,6 +89,10 @@
           "nix flake update --commit-lock-file /home/user/Projects/personal/nix-config";
         hm-rebuild =
           "rm ~/.gtkrc-2.0; nix run '/home/user/Projects/personal/nix-config#homeConfigurations.desktop.activationPackage'";
+        code = ''
+          wezterm cli split-pane --top --percent=75 -- hx
+          wezterm cli activate-pane-direction up          
+        '';
       };
     };
 
