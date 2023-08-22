@@ -18,10 +18,7 @@
       enable = true;
       keyboards.main = {
         settings = {
-          main = {
-            capslock = "overload(meta, esc)";
-            meta = "overload(M-A, meta)";
-          };
+          main = { capslock = "overload(meta, esc)"; };
           shift = {
             leftshift = "capslock";
             rightshift = "capslock";
@@ -43,7 +40,7 @@
     "clearcpuid=514"
   ];
 
-  environment.sessionVariables = rec {
+  environment.sessionVariables = {
     KWIN_DRM_NO_AMS =
       "1"; # RDNA2 colour/gamma modesetting bug workaround for kwin wayland
   };
