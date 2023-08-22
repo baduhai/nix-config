@@ -17,6 +17,7 @@
     keyd = {
       enable = true;
       keyboards.main = {
+        ids = [ "1ea7:0907" ];
         settings = {
           main = { capslock = "overload(meta, esc)"; };
           shift = {
@@ -24,7 +25,6 @@
             rightshift = "capslock";
           };
         };
-        ids = [ "1ea7:0907" ];
       };
     };
   };

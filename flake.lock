@@ -210,28 +210,6 @@
         "type": "github"
       }
     },
-    "kmonad": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "dir": "nix",
-        "lastModified": 1691843304,
-        "narHash": "sha256-aLAMpvbQPLkpjJDUWYTYRmEclAQTo+IVzqPQYOfmxfw=",
-        "owner": "kmonad",
-        "repo": "kmonad",
-        "rev": "a05e93c62ca2c25cc81d76d9cf36880fe0bf183a",
-        "type": "github"
-      },
-      "original": {
-        "dir": "nix",
-        "owner": "kmonad",
-        "repo": "kmonad",
-        "type": "github"
-      }
-    },
     "nix-minecraft": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -345,7 +323,6 @@
         "deploy-rs": "deploy-rs",
         "home-manager": "home-manager_2",
         "homepage": "homepage",
-        "kmonad": "kmonad",
         "nix-minecraft": "nix-minecraft",
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs_2",

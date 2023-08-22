@@ -12,11 +12,6 @@
 
     baduhai-nur.url = "github:baduhai/nur";
 
-    kmonad = {
-      url = "github:kmonad/kmonad?dir=nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,9 +43,9 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, baduhai-nur, kmonad
-    , nixpkgs-stable, deploy-rs, agenix, nixos-generators, homepage
-    , nix-minecraft, yousable, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, baduhai-nur, nixpkgs-stable
+    , deploy-rs, agenix, nixos-generators, homepage, nix-minecraft, yousable
+    , ... }: {
       nixosConfigurations = {
         rotterdam = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -58,7 +53,6 @@
           modules = [
             ./hosts/desktops/rotterdam.nix
             agenix.nixosModules.default
-            kmonad.nixosModules.default
             {
               nixpkgs.overlays =
                 [ baduhai-nur.overlay agenix.overlays.default ];
@@ -72,7 +66,6 @@
           modules = [
             ./hosts/desktops/io.nix
             agenix.nixosModules.default
-            kmonad.nixosModules.default
             {
               nixpkgs.overlays =
                 [ baduhai-nur.overlay agenix.overlays.default ];
@@ -166,7 +159,8 @@
       };
 
       devShells = {
-        "x86_64-linux".default = nixpkgs.legacyPackages."x86_64-linux".mkShell { packages = with nixpkgs.legacyPackages."x86_64-linux"; [ nil nixfmt ];
+        "x86_64-linux".default = nixpkgs.legacyPackages."x86_64-linux".mkShell {
+          packages = with nixpkgs.legacyPackages."x86_64-linux"; [ nil nixfmt ];
         };
         "aarch64-linux".default =
           nixpkgs.legacyPackages."aarch64-linux".mkShell {
