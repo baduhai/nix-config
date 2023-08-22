@@ -9,7 +9,8 @@
 )
 
 (defalias
-  cps (tap-hold 400 esc caps)
+  cps (tap-hold 200 esc lmet)
+  mts (around lmet lsft)
 )
 
 (defsrc
@@ -25,5 +26,5 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   @cps a    s    d    f    g    h    j    k    l    ;    '         ret
   lsft z    x    c    v    b    n    m    ,    .    /    del  up   rsft
-  lctl lmet lalt                spc                 ralt left down rght
+  lctl @mts lalt                spc                 ralt left down rght
 )

@@ -14,11 +14,20 @@
 
   services = {
     hardware.openrgb.enable = true;
-    kmonad = {
+    keyd = {
       enable = true;
-      keyboards.default = {
-        device = "/dev/input/by-path/pci-0000:0a:00.3-usb-0:2:1.0-event-kbd";
-        config = builtins.readFile ./rotterdam/kmonad.kbd;
+      keyboards.main = {
+        settings = {
+          main = {
+            capslock = "overload(meta, esc)";
+            meta = "overload(M-A, meta)";
+          };
+          shift = {
+            leftshift = "capslock";
+            rightshift = "capslock";
+          };
+        };
+        ids = [ "1ea7:0907" ];
       };
     };
   };
