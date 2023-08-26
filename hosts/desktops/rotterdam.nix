@@ -40,15 +40,9 @@
     "clearcpuid=514"
   ];
 
-  environment.sessionVariables = {
-    KWIN_DRM_NO_AMS =
-      "1"; # RDNA2 colour/gamma modesetting bug workaround for kwin wayland
-  };
-
   programs = {
     corectrl.enable = true;
     steam.dedicatedServer.openFirewall = true;
-    droidcam.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
