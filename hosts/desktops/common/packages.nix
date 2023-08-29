@@ -24,6 +24,7 @@
     heroic
     inkscape
     # itch # Currently using unsafe electron version
+    joplin-desktop
     junction
     kate
     kolourpaint
