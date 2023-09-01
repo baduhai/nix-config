@@ -30,33 +30,33 @@
     };
 
     nginx.virtualHosts = {
-      "bazarr.baduhai.me" = {
-        useACMEHost = "baduhai.me";
+      "bazarr.baduhai.dev" = {
+        useACMEHost = "baduhai.dev";
         forceSSL = true;
         kTLS = true;
         locations."/".proxyPass = "http://127.0.0.1:${config.ports.bazaar}";
       };
-      "jackett.baduhai.me" = {
-        useACMEHost = "baduhai.me";
+      "jackett.baduhai.dev" = {
+        useACMEHost = "baduhai.dev";
         forceSSL = true;
         kTLS = true;
         locations."/".proxyPass = "http://127.0.0.1:${config.ports.jackett}";
       };
-      "qbittorrent.baduhai.me" = {
-        useACMEHost = "baduhai.me";
+      "qbittorrent.baduhai.dev" = {
+        useACMEHost = "baduhai.dev";
         forceSSL = true;
         kTLS = true;
         locations."/".proxyPass =
           "http://127.0.0.1:${config.ports.qbittorrent}";
       };
-      "radarr.baduhai.me" = {
-        useACMEHost = "baduhai.me";
+      "radarr.baduhai.dev" = {
+        useACMEHost = "baduhai.dev";
         forceSSL = true;
         kTLS = true;
         locations."/".proxyPass = "http://127.0.0.1:${config.ports.radarr}";
       };
-      "sonarr.baduhai.me" = {
-        useACMEHost = "baduhai.me";
+      "sonarr.baduhai.dev" = {
+        useACMEHost = "baduhai.dev";
         forceSSL = true;
         kTLS = true;
         locations."/".proxyPass = "http://127.0.0.1:${config.ports.sonarr}";

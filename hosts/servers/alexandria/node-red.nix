@@ -9,8 +9,8 @@
       userDir = "/data/node-red";
     };
 
-    nginx.virtualHosts."node-red.baduhai.me" = {
-      useACMEHost = "baduhai.me";
+    nginx.virtualHosts."node-red.baduhai.dev" = {
+      useACMEHost = "baduhai.dev";
       forceSSL = true;
       kTLS = true;
       locations."/".proxyPass =

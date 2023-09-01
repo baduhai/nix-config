@@ -8,8 +8,8 @@
     extraOptions = [ "--label=io.containers.autoupdate=registry" ];
   };
 
-  services.nginx.virtualHosts."actual.baduhai.me" = {
-    useACMEHost = "baduhai.me";
+  services.nginx.virtualHosts."actual.baduhai.dev" = {
+    useACMEHost = "baduhai.dev";
     forceSSL = true;
     kTLS = true;
     locations."/".proxyPass = "http://127.0.0.1:${config.ports.actual}";

@@ -6,7 +6,7 @@
       enable = true;
       package = pkgs.nextcloud27;
       datadir = "/data/nextcloud";
-      hostName = "nextcloud.baduhai.me";
+      hostName = "nextcloud.baduhai.dev";
       configureRedis = true;
       https = true;
       autoUpdateApps.enable = true;
@@ -25,7 +25,7 @@
     };
 
     nginx.virtualHosts.${config.services.nextcloud.hostName} = {
-      useACMEHost = "baduhai.me";
+      useACMEHost = "baduhai.dev";
       forceSSL = true;
       kTLS = true;
     };

@@ -9,7 +9,7 @@
       dnsProvider = "cloudflare";
       credentialsFile = config.age.secrets.cloudflare.path;
     };
-    certs."baduhai.me" = { extraDomainNames = [ "*.baduhai.me" ]; };
+    certs."baduhai.dev" = { extraDomainNames = [ "*.baduhai.dev" ]; };
   };
 
   boot.kernel.sysctl = {

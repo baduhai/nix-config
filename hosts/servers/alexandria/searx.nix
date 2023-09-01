@@ -13,8 +13,8 @@
       };
     };
 
-    nginx.virtualHosts."searx.baduhai.me" = {
-      useACMEHost = "baduhai.me";
+    nginx.virtualHosts."searx.baduhai.dev" = {
+      useACMEHost = "baduhai.dev";
       forceSSL = true;
       kTLS = true;
       locations."/".proxyPass = "http://127.0.0.1:${config.ports.searx}";

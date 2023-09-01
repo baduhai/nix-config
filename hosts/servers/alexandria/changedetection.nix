@@ -8,11 +8,11 @@
       behindProxy = true;
       datastorePath = "/data/changedetection";
       port = lib.toInt "${config.ports.changedetection-io}";
-      baseURL = "https://detect.baduhai.me";
+      baseURL = "https://detect.baduhai.dev";
     };
 
-    nginx.virtualHosts."detect.baduhai.me" = {
-      useACMEHost = "baduhai.me";
+    nginx.virtualHosts."detect.baduhai.dev" = {
+      useACMEHost = "baduhai.dev";
       forceSSL = true;
       kTLS = true;
       locations."/".proxyPass =

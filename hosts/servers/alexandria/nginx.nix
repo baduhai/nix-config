@@ -8,8 +8,8 @@
     recommendedOptimisation = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
-    virtualHosts."baduhai.me" = {
-      useACMEHost = "baduhai.me";
+    virtualHosts."baduhai.dev" = {
+      useACMEHost = "baduhai.dev";
       forceSSL = true;
       kTLS = true;
       root = inputs.homepage;
