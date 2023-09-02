@@ -135,6 +135,7 @@ in {
           inactive_titlebar_bg = '#303446',
         }
         config.show_new_tab_button_in_tab_bar = false
+        config.hide_tab_bar_if_only_one_tab = true
         config.colors = {
           tab_bar = {
             background = '#303446',
