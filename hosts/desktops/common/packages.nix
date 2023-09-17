@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    arduino
     ark
     aspell
     aspellDicts.de
@@ -45,6 +46,8 @@
     quickemu
     qview
     signal-desktop
+    gnome-solanum
+    reaper
     solvespace
     space-cadet-pinball
     steamtinkerlaunch

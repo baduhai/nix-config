@@ -14,6 +14,8 @@
     kernelParams = [
       "quiet"
       "splash"
+      "i2c-dev"
+      "i2c-piix4"
       "loglevel=3"
       "udev.log_priority=3"
       "rd.udev.log_level=3"
