@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -26,13 +26,18 @@
     '';
   };
 
-  environment.systemPackages = with pkgs; [
-    gnome-network-displays
-    maliit-keyboard
-    rnote
-    write_stylus
-  ];
-
+  environment = {
+    systemPackages = with pkgs; [
+      alsa-ucm-conf
+      gnome-network-displays
+      maliit-keyboard
+      rnote
+      write_stylus
+    ];
+    sessionVariables = {
+      ALSA_CONFIG_UCM2 = "${pkgs.alsa-ucm-conf}/share/alsa/ucm2";
+    };
+  };
   services.keyd = {
     enable = true;
     keyboards.main = {
@@ -115,7 +120,7 @@
             mkdir -p $out/share/alsa/ucm2/conf.d
             cp -r chromebook-ucm-conf-792a6d5ef0d70ac1f0b4861f3d29da4fe9acaed1/hdmi-common \
             chromebook-ucm-conf-792a6d5ef0d70ac1f0b4861f3d29da4fe9acaed1/dmic-common \
-            chromebook-ucm-conf-792a6d5ef0d70ac1f0b4861f3d29da4fe9acaed1/GENERATION/* \
+            chromebook-ucm-conf-792a6d5ef0d70ac1f0b4861f3d29da4fe9acaed1/cml/* \
             $out/share/alsa/ucm2/conf.d
 
             runHook postInstall
