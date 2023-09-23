@@ -2,7 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    arduino
     ark
     aspell
     aspellDicts.de
@@ -11,7 +10,6 @@
     aspellDicts.pt_BR
     bat
     bitwarden
-    crun
     deploy-rs
     distrobox
     fd
@@ -24,8 +22,7 @@
     helvum
     heroic
     inkscape
-    # itch # Currently using unsafe electron version
-    joplin-desktop
+    itch # Currently using unsafe electron version
     junction
     kate
     kolourpaint
@@ -39,15 +36,14 @@
     nix-init
     obs-studio
     p7zip
+    platformio
     prismlauncher-qt5
     protontricks
     protonup
     qbittorrent
     quickemu
     qview
-    signal-desktop
     gnome-solanum
-    reaper
     solvespace
     space-cadet-pinball
     steamtinkerlaunch

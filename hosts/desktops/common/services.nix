@@ -12,6 +12,7 @@ in {
       enable = true;
       drivers = with pkgs; [ epson-escpr ];
     };
+    udev.packages = [ pkgs.platformio pkgs.openocd ];
     pipewire = {
       enable = true;
       alsa.enable = true;
