@@ -22,7 +22,7 @@
     helvum
     heroic
     inkscape
-    itch # Currently using unsafe electron version
+    # itch # Currently using unsafe electron version
     junction
     kate
     kolourpaint
