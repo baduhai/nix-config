@@ -19,7 +19,12 @@
     memoryPercent = 100;
   };
 
-  boot.kernelParams = [ "nosgx" "i915.fastboot=1" "mem_sleep_default=deep" ];
+  boot = {
+    kernelParams = [ "nosgx" "i915.fastboot=1" "mem_sleep_default=deep" ];
+    extraModprobeConfig = ''
+      options snd-intel-dspcfg dsp_driver=3
+    '';
+  };
 
   environment.systemPackages = with pkgs; [
     gnome-network-displays
@@ -86,23 +91,33 @@
             })
             (fetchurl {
               url =
-                "https://github.com/WeirdTreeThing/chromebook-ucm-conf/archive/refs/heads/main.tar.gz";
-              hash = "sha256-vXFixh2HZD5zs0wARxAHmwtvk1R8/7gBs2y+delCnGc=";
+                "https://github.com/WeirdTreeThing/chromebook-ucm-conf/archive/792a6d5ef0d70ac1f0b4861f3d29da4fe9acaed1.tar.gz";
+              hash = "sha256-Ae/k9vA5lWiomSa6WCfp+ROqEij11FPwlHAIG6L19JI=";
             })
           ];
           unpackPhase = ''
-            runHook preUnpacl
+            runHook preUnpack
+
             for _src in $srcs; do
               tar xf "$_src"
             done
+
+            ls
+
             runHook postUnpack
           '';
           installPhase = ''
             runHook preInstall
+
             mkdir -p $out/share/alsa
             cp -r alsa-ucm-conf-1.2.9/ucm alsa-ucm-conf-1.2.9/ucm2 $out/share/alsa
+
             mkdir -p $out/share/alsa/ucm2/conf.d
-            cp -r chromebook-ucm-conf-main/hdmi-common chromebook-ucm-conf-main/dmic-common chromebook-ucm-conf-main/tgl/* $out/share/alsa/ucm2/conf.d
+            cp -r chromebook-ucm-conf-792a6d5ef0d70ac1f0b4861f3d29da4fe9acaed1/hdmi-common \
+            chromebook-ucm-conf-792a6d5ef0d70ac1f0b4861f3d29da4fe9acaed1/dmic-common \
+            chromebook-ucm-conf-792a6d5ef0d70ac1f0b4861f3d29da4fe9acaed1/GENERATION/* \
+            $out/share/alsa/ucm2/conf.d
+
             runHook postInstall
           '';
         });
