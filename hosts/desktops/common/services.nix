@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   plasma = pkgs.writeScriptBin "plasma" ''
@@ -12,7 +12,7 @@ in {
       enable = true;
       drivers = with pkgs; [ epson-escpr ];
     };
-    udev.packages = [ pkgs.platformio pkgs.openocd ];
+    udev.packages = with pkgs; [ platformio openocd yubikey-personalization ];
     pipewire = {
       enable = true;
       alsa.enable = true;
