@@ -27,13 +27,7 @@
   };
 
   environment = {
-    systemPackages = with pkgs; [
-      alsa-ucm-conf
-      gnome-network-displays
-      maliit-keyboard
-      rnote
-      write_stylus
-    ];
+    systemPackages = with pkgs; [ alsa-ucm-conf maliit-keyboard ];
     sessionVariables = {
       ALSA_CONFIG_UCM2 = "${pkgs.alsa-ucm-conf}/share/alsa/ucm2";
     };

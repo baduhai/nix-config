@@ -28,7 +28,6 @@
     kolourpaint
     libfido2
     libreoffice-qt
-    logseq
     lutris
     mangohud
     mpv
@@ -56,7 +55,6 @@
     ventoy
     virt-manager
     wezterm
-    whatsapp-for-linux
     # Package overrides
     (appimage-run.override { extraPkgs = pkgs: [ libthai ]; })
     # Packages from 3rd party
@@ -90,4 +88,6 @@
 
   environment.plasma5.excludePackages =
     (with pkgs.plasma5Packages; [ elisa gwenview oxygen khelpcenter konsole ]);
+
+  nixpkgs.config.permittedInsecurePackages = [ "electron-24.8.6" ];
 }
