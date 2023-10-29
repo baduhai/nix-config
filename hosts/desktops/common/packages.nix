@@ -18,6 +18,7 @@
     foliate
     fzf
     gimp
+    gnome-solanum
     gocryptfs
     helvum
     # heroic # Currently using unsafe electron version
@@ -42,7 +43,7 @@
     qbittorrent
     quickemu
     qview
-    gnome-solanum
+    ripgrep
     solvespace
     space-cadet-pinball
     steamtinkerlaunch
