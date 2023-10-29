@@ -20,7 +20,7 @@
     gimp
     gocryptfs
     helvum
-    heroic
+    # heroic # Currently using unsafe electron version
     inkscape
     # itch # Currently using unsafe electron version
     junction
@@ -88,6 +88,4 @@
 
   environment.plasma5.excludePackages =
     (with pkgs.plasma5Packages; [ elisa gwenview oxygen khelpcenter konsole ]);
-
-  nixpkgs.config.permittedInsecurePackages = [ "electron-24.8.6" ];
 }
