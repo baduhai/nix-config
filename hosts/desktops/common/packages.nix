@@ -54,6 +54,7 @@
     unrar
     vagrant
     ventoy
+    vial
     virt-manager
     wezterm
     # Package overrides
