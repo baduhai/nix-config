@@ -27,7 +27,6 @@
     junction
     kate
     kolourpaint
-    ktouch
     libfido2
     libreoffice-qt
     lutris
