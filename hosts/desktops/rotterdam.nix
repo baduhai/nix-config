@@ -17,9 +17,12 @@
     keyd = {
       enable = true;
       keyboards.main = {
-        ids = [ "1ea7:0907" ];
+        ids = [ "*" ];
         settings = {
-          main = { capslock = "overload(meta, esc)"; };
+          main = {
+            capslock = "overload(meta, esc)";
+            esc = "overload(meta, esc)";
+          };
           shift = {
             leftshift = "capslock";
             rightshift = "capslock";

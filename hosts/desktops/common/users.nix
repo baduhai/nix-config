@@ -16,6 +16,7 @@
       "libvirt"
       "libvirtd"
       "adbusers"
+      "i2c"
     ];
   };
 }
