@@ -23,26 +23,32 @@ in {
     };
     xserver = {
       enable = true;
-      autorun = false;
-      layout = "us";
-      xkbVariant = "altgr-intl";
+      xkb = {
+        layout = "us";
+        variant = "altgr-intl";
+      };
       exportConfiguration = true;
       excludePackages = (with pkgs; [ xterm ]);
-      displayManager.startx.enable = true;
-      desktopManager.plasma5.enable = true;
-    };
-    greetd = {
-      enable = true;
-      settings = {
-        default_session.command = ''
-          ${pkgs.greetd.tuigreet}/bin/tuigreet --remember --user-menu --asterisks --time --greeting "Welcome to NixOS" --cmd ${plasma}/bin/plasma'';
-        initial_session = {
-          command = "${plasma}/bin/plasma";
-          user = "user";
+      displayManager = {
+        defaultSession = "plasmawayland";
+        sddm = {
+          enable = true;
+          wayland = {
+            enable = true;
+            compositorCommand =
+              "${pkgs.kwin}/bin/kwin_wayland --no-global-shortcuts --no-lockscreen --locale1";
+          };
+          settings.General = {
+            GreeterEnvironment =
+              "QT_PLUGIN_PATH=${pkgs.plasma5Packages.layer-shell-qt}/${pkgs.plasma5Packages.qtbase.qtPluginPrefix},QT_WAYLAND_SHELL_INTEGRATION=layer-shell,XKB_DEFAULT_KEYMAP=en";
+            InputMethod = "";
+          };
         };
       };
+      desktopManager.plasma5.enable = true;
     };
   };
+
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
