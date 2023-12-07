@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  environment.persistent.main = {
+  environment.persistence.main = {
     persistentStoragePath = "/persistent";
     files = [
       "/etc/machine-id"
