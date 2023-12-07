@@ -39,7 +39,6 @@
 
       btrfs subvolume create /btrfs_tmp/@root
       umount /btrfs_tmp
-      rmdir btrfs_tmp
     '';
   };
 }
