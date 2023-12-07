@@ -5,7 +5,8 @@
 
   boot = {
     initrd = {
-      availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "sd_mod" ];
+      availableKernelModules =
+        [ "amdgpu" "nvme" "xhci_pci" "ahci" "usbhid" "sd_mod" ];
       luks.devices."cryptroot".device =
         "/dev/disk/by-uuid/f7dd4142-7109-4493-834d-4a831777f08d";
     };

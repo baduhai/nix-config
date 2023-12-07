@@ -31,6 +31,10 @@ in {
       excludePackages = (with pkgs; [ xterm ]);
       displayManager = {
         defaultSession = "plasmawayland";
+        autoLogin = {
+          enable = true;
+          user = "user";
+        };
         sddm = {
           enable = true;
           wayland = {
