@@ -42,6 +42,7 @@ in {
             GreeterEnvironment =
               "QT_PLUGIN_PATH=${pkgs.plasma5Packages.layer-shell-qt}/${pkgs.plasma5Packages.qtbase.qtPluginPrefix},QT_WAYLAND_SHELL_INTEGRATION=layer-shell,XKB_DEFAULT_KEYMAP=en";
             InputMethod = "";
+            CursorTheme = "breeze_cursors";
           };
         };
       };
