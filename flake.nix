@@ -12,6 +12,8 @@
 
     baduhai-nur.url = "github:baduhai/nur";
 
+    impermanence.url = "github:nix-community/impermanence";
+
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,11 +43,12 @@
       url = "github:t184256/yousable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, baduhai-nur, nixpkgs-stable
     , deploy-rs, agenix, nixos-generators, homepage, nix-minecraft, yousable
-    , ... }: {
+    , impermanence, ... }: {
       nixosConfigurations = {
         rotterdam = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -53,6 +56,8 @@
           modules = [
             ./hosts/desktops/rotterdam.nix
             agenix.nixosModules.default
+            home-manager.nixosModules.default
+            impermanence.nixosModules.impermanence
             {
               nixpkgs.overlays =
                 [ baduhai-nur.overlay agenix.overlays.default ];
