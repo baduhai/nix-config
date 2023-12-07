@@ -4,6 +4,7 @@
   imports = [
     ./boot.nix
     ./hardware.nix
+    ./impermanence.nix
     ./nix.nix
     ./packages.nix
     ./services.nix
