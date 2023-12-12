@@ -18,8 +18,6 @@
     foliate
     fzf
     gimp
-    gnome-solanum
-    gocryptfs
     helvum
     # heroic # Currently using unsafe electron version
     inkscape
@@ -35,11 +33,9 @@
     nextcloud-client
     nix-init
     obs-studio
-    onlyoffice-bin_7_5
     p7zip
     platformio
     prismlauncher-qt5
-    protontricks
     protonup
     qbittorrent
     quickemu
@@ -47,10 +43,7 @@
     ripgrep
     solvespace
     space-cadet-pinball
-    steamtinkerlaunch
     steam-run
-    tdesktop
-    thunderbird
     ungoogled-chromium
     unrar
     vagrant
