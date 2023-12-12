@@ -19,10 +19,4 @@
       "i2c"
     ];
   };
-
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users.user = import ../../../users/desktops/user.nix;
-  };
 }
