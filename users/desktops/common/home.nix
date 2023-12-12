@@ -9,11 +9,5 @@
       name = "breeze_cursors";
       package = pkgs.breeze-icons;
     };
-    file = {
-      # Autostart programs
-      ".config/autostart/koi.desktop".source =
-        config.lib.file.mkOutOfStoreSymlink
-        "/var/run/current-system/sw/share/applications/koi.desktop";
-    };
   };
 }

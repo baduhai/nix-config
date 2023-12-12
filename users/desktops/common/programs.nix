@@ -57,47 +57,47 @@
     wezterm = {
       enable = true;
       extraConfig = ''
-              local act = wezterm.action
-              local config = {}
-              if wezterm.config_builder then config = wezterm.config_builder() end
-              config.disable_default_key_bindings = true
-              config.color_scheme = "Catppuccin Mocha"
-              config.font = wezterm.font_with_fallback ({
-                {family = "Hack Nerd Font", scale = 1},
-                {family = "Noto Color Emoji", scale = 1},
-              })
-              config.initial_cols = 108
-              config.initial_rows = 32
-              config.enable_scroll_bar = true
-              config.inactive_pane_hsb = {
-                saturation = 0.7,
-                brightness = 0.5
-              }
-              config.window_frame = {
-                font = wezterm.font_with_fallback ({
-                  {family = "Hack Nerd Font", scale = 1},
-                  {family = "Noto Color Emoji", scale = 1},
-                }),
-                active_titlebar_bg = '#303446',
-                inactive_titlebar_bg = '#303446',
-              }
-              config.show_new_tab_button_in_tab_bar = false
-              config.hide_tab_bar_if_only_one_tab = true
-              config.colors = {
-                tab_bar = {
-                  background = '#303446',
-                  active_tab = {
-                    bg_color = '#1e1e2e',
-                    fg_color = '#9197b0',
-                  },
-                  inactive_tab = {
-                    bg_color = '#303446',
-                    fg_color = '#9197b0'
-                  },
-                  inactive_tab_edge = '#303062',
-                }
-              }
-              config.keys = {
+        local act = wezterm.action
+        local config = {}
+        if wezterm.config_builder then config = wezterm.config_builder() end
+        config.disable_default_key_bindings = true
+        config.color_scheme = "Catppuccin Mocha"
+        config.font = wezterm.font_with_fallback ({
+          {family = "Hack Nerd Font", scale = 1},
+          {family = "Noto Color Emoji", scale = 1},
+        })
+        config.initial_cols = 108
+        config.initial_rows = 32
+        config.enable_scroll_bar = true
+        config.inactive_pane_hsb = {
+          saturation = 0.7,
+          brightness = 0.5
+        }
+        config.window_frame = {
+          font = wezterm.font_with_fallback ({
+            {family = "Hack Nerd Font", scale = 1},
+            {family = "Noto Color Emoji", scale = 1},
+          }),
+          active_titlebar_bg = '#303446',
+          inactive_titlebar_bg = '#303446',
+        }
+        config.show_new_tab_button_in_tab_bar = false
+        config.hide_tab_bar_if_only_one_tab = true
+        config.colors = {
+          tab_bar = {
+            background = '#303446',
+            active_tab = {
+              bg_color = '#1e1e2e',
+              fg_color = '#9197b0',
+            },
+            inactive_tab = {
+              bg_color = '#303446',
+              fg_color = '#9197b0'
+            },
+            inactive_tab_edge = '#303062',
+          }
+        }
+        config.keys = {
           { key = 'Tab', mods = 'CTRL', action = act.ActivateTabRelative(1) },
           { key = 'Tab', mods = 'SHIFT|CTRL', action = act.ActivateTabRelative(-1) },
           { key = 'Enter', mods = 'ALT', action = act.ToggleFullScreen },
