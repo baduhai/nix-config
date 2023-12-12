@@ -2,7 +2,11 @@
 
 {
   boot = {
-    plymouth.enable = true;
+    plymouth = {
+      enable = true;
+      themePackages = with pkgs; [ nixos-bgrt-plymouth ];
+      theme = "nixos-bgrt";
+    };
     initrd.systemd.enable = true;
     supportedFilesystems = [ "ntfs" ];
     loader.efi.efiSysMountPoint = "/boot/efi";
