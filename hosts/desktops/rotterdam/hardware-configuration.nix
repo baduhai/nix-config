@@ -19,6 +19,11 @@
       fsType = "btrfs";
       options = [ "subvol=@root" "noatime" "compress=zstd" ];
     };
+    "/home" = {
+      device = "/dev/disk/by-uuid/3287dbc3-c0fa-4096-a0b3-59b017cfecc8";
+      fsType = "btrfs";
+      options = [ "subvol=@home" "noatime" "compress=zstd" ];
+    };
     "/boot/efi" = {
       device = "/dev/disk/by-uuid/1F5A-8945";
       fsType = "vfat";
