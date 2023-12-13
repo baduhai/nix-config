@@ -4,8 +4,8 @@
   boot = {
     plymouth = {
       enable = true;
-      themePackages = with pkgs; [ nixos-bgrt-plymouth ];
-      theme = "nixos-bgrt";
+      themePackages = with pkgs; [ adi1090x-plymouth-themes ];
+      theme = "colorful";
     };
     initrd.systemd.enable = true;
     supportedFilesystems = [ "ntfs" ];

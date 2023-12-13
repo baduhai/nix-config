@@ -53,7 +53,6 @@
     wezterm
     # Package overrides
     (appimage-run.override { extraPkgs = pkgs: [ libthai ]; })
-    # Packages from 3rd party
   ];
 
   programs = {
