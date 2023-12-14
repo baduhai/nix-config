@@ -9,5 +9,11 @@
       name = "breeze_cursors";
       package = pkgs.breeze-icons;
     };
+    activation.removeExistingGtk =
+      lib.hm.dag.entryBefore [ "checkLinkTargets" ] ''
+        rm -rf ~/.gtkrc-2.0
+        rm -rf ~/.config/gtk-3.0
+        rm -rf ~/.config/gtk-4.0
+      '';
   };
 }
