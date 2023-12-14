@@ -17,6 +17,7 @@
     firefox
     foliate
     fzf
+    gamescope
     gimp
     helvum
     heroic
@@ -76,6 +77,7 @@
     packages = with pkgs; [
       inter
       roboto
+      maple-mono
       (nerdfonts.override { fonts = [ "Hack" ]; })
     ];
   };
