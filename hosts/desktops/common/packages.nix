@@ -19,7 +19,7 @@
     fzf
     gimp
     helvum
-    # heroic # Currently using unsafe electron version
+    heroic
     inkscape
     # itch # Currently using unsafe electron version
     junction
