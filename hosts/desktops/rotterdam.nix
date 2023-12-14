@@ -36,7 +36,7 @@
 
   nix.nixPath = [ "nixos-config=${./rotterdam.nix}" ];
 
-  users.users.user.extraGroups = [ "corectrl" ];
+  # users.users.user.extraGroups = [ "corectrl" ];
 
   boot.kernelParams = [
     "processor.max_cstate=1" # Fixes bug where ryzen cpus freeze when in highest C state
@@ -44,7 +44,7 @@
   ];
 
   programs = {
-    corectrl.enable = true;
+    # corectrl.enable = true;
     steam.dedicatedServer.openFirewall = true;
   };
 
