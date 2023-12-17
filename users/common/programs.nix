@@ -39,10 +39,37 @@
         };
       };
       languages = {
-        language = [{
-          name = "nix";
-          auto-format = true;
-          formatter.command = "nixfmt";
+        language = [
+          {
+            name = "nix";
+            # scope = "source.nix";
+            auto-format = true;
+            formatter.command = "nixfmt";
+          }
+          {
+            name = "typst";
+            scope = "source.typ";
+            file-types = [ "typ" ];
+            roots = [ ];
+            injection-regex = "^typst$";
+            auto-format = true;
+            comment-token = "//";
+            indent = {
+              tab-width = 2;
+              unit = " ";
+            };
+            formatter = {
+              command = "prettypst";
+              args = [ "--use-std-in" "--use-std-out" ];
+            };
+          }
+        ];
+        grammar = [{
+          name = "typst";
+          source = {
+            git = "https://github.com/SeniorMars/tree-sitter-typst";
+            rev = "2e66ef4b798a26f0b82144143711f3f7a9e8ea35";
+          };
         }];
       };
       themes.catppuccin-mocha_transparent = {

@@ -16,6 +16,7 @@
       "/var/lib/nixos"
       "/var/lib/flatpak"
       "/var/lib/tailscale"
+      "/var/lib/waydroid"
       "/var/lib/systemd/coredump"
       "/etc/NetworkManager/system-connections"
     ];
