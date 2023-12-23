@@ -153,7 +153,7 @@
       position=top-left
       control=mangohud
       offset_x=4
-      offset_y=-6
+      offset_y=4
       table_columns=20
       time_format=%H:%M
       toggle_hud=End
