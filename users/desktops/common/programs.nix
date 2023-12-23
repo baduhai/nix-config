@@ -149,16 +149,16 @@
       horizontal
       horizontal_stretch=0
       legacy_layout=0
-      background_alpha=0
+      background_alpha=0.6
       position=top-left
       control=mangohud
       offset_x=4
-      offset_y=4
+      offset_y=-6
       table_columns=20
       time_format=%H:%M
-      toggle_hud=Shift_R+F12
-      media_player_format={title} - {artist}
-      font_scale_media_player=1
+      toggle_hud=End
+      #media_player_format={title} - {artist}
+      #font_scale_media_player=1
 
       core_load_change
       cpu_color=ffffff

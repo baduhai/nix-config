@@ -32,6 +32,8 @@
     };
   };
 
+  hardware.opengl.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
+
   systemd.targets.hibernate.enable = false; # disable non-functional hibernate
 
   nix.nixPath = [ "nixos-config=${./rotterdam.nix}" ];
@@ -50,6 +52,7 @@
 
   environment.systemPackages = with pkgs; [
     cemu
+    ollama
     # retroarchFull
     rpcs3
     yuzu-ea
