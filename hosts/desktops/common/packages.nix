@@ -15,6 +15,7 @@
     fd
     filelight
     firefox
+    floorp
     foliate
     fzf
     gamescope
@@ -38,6 +39,7 @@
     platformio
     prismlauncher-qt5
     protonup
+    pulseaudio
     qbittorrent
     quickemu
     qview

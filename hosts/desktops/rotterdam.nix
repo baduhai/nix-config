@@ -52,6 +52,7 @@
 
   environment.systemPackages = with pkgs; [
     cemu
+    citrix_workspace
     ollama
     # retroarchFull
     rpcs3

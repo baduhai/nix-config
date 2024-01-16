@@ -1,5 +1,9 @@
 { config, pkgs, lib, ... }:
 
+# let
+#   pkgs.writeShellScriptBin "toggle-audio-output" ''
+#   '';
+
 {
   home = {
     pointerCursor = {
