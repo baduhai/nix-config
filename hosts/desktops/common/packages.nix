@@ -44,6 +44,7 @@
     quickemu
     qview
     ripgrep
+    rnote
     solvespace
     space-cadet-pinball
     steam-run

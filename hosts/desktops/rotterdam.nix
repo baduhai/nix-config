@@ -19,10 +19,7 @@
       keyboards.main = {
         ids = [ "*" ];
         settings = {
-          main = {
-            capslock = "overload(meta, esc)";
-            esc = "overload(meta, esc)";
-          };
+          main = { esc = "overload(meta, esc)"; };
           shift = {
             leftshift = "capslock";
             rightshift = "capslock";
@@ -51,14 +48,13 @@
   };
 
   environment.systemPackages = with pkgs; [
-    cemu
-    citrix_workspace
+    # cemu
     ollama
     # retroarchFull
     rpcs3
     yuzu-ea
     # Packages from 3rd party overlays
-    emulationstation-de
+    # emulationstation-de
   ];
 
   networking.firewall = {
