@@ -39,14 +39,7 @@
       fsType = "btrfs";
       options = [ "subvol=@persistent" "noatime" "compress=zstd" ];
     };
-    "/swap" = {
-      device = "/dev/disk/by_uuid/ef1916a9-e15c-450e-8100-4b2af9f6e1a5";
-      fsType = "btrfs";
-      options = [ "subvol=@swap" "noatime" ];
-    };
   };
-
-  swapDevices = [{ "/swap/swapfile"; }];
 
   networking.useDHCP = lib.mkDefault true;
 
