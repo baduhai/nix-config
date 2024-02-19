@@ -71,6 +71,8 @@
           modules = [
             ./hosts/desktops/io.nix
             agenix.nixosModules.default
+            home-manager.nixosModules.default
+            impermanence.nixosModules.impermanence
             {
               nixpkgs.overlays =
                 [ baduhai-nur.overlay agenix.overlays.default ];
