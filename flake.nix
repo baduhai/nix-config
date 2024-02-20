@@ -144,7 +144,7 @@
           };
 
           io = {
-            hostname = "io";
+            hostname = "192.168.1.5";
             profilesOrder = [ "system" "user" ];
             profiles = {
               system = {

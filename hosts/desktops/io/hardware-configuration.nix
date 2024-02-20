@@ -15,12 +15,12 @@
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by_uuid/ef1916a9-e15c-450e-8100-4b2af9f6e1a5";
+      device = "/dev/disk/by_uuid/1ce9c049-0736-4305b21e-34244004acf50";
       fsType = "btrfs";
       options = [ "subvol=@root" "noatime" "compress=zstd" ];
     };
     "/home" = {
-      device = "/dev/disk/by_uuid/ef1916a9-e15c-450e-8100-4b2af9f6e1a5";
+      device = "/dev/disk/by_uuid/1ce9c049-0736-4305b21e-34244004acf50 ";
       fsType = "btrfs";
       options = [ "subvol=@home" "noatime" "compress=zstd" ];
     };
@@ -30,12 +30,12 @@
       options = [ "noatime" "fmask=0077" "dmask=0077" ];
     };
     "/nix" = {
-      device = "/dev/disk/by_uuid/ef1916a9-e15c-450e-8100-4b2af9f6e1a5";
+      device = "/dev/disk/by_uuid/1ce9c049-0736-4305b21e-34244004acf50 ";
       fsType = "btrfs";
       options = [ "subvol=@nix" "noatime" "compress=zstd" ];
     };
     "/persistent" = {
-      device = "/dev/disk/by_uuid/ef1916a9-e15c-450e-8100-4b2af9f6e1a5";
+      device = "/dev/disk/by_uuid/1ce9c049-0736-4305b21e-34244004acf50 ";
       fsType = "btrfs";
       options = [ "subvol=@persistent" "noatime" "compress=zstd" ];
     };
