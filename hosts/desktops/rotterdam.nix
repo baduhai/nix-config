@@ -46,25 +46,4 @@
     # corectrl.enable = true;
     steam.dedicatedServer.openFirewall = true;
   };
-
-  environment.systemPackages = with pkgs; [
-    # cemu
-    ollama
-    # retroarchFull
-    rpcs3
-    yuzu-ea
-    # Packages from 3rd party overlays
-    # emulationstation-de
-  ];
-
-  networking.firewall = {
-    allowedTCPPorts = [
-      27036 # Steam remote play
-      27037 # Steam remote play
-    ];
-    allowedUDPPorts = [
-      27031 # Steam remote play
-      27036 # Steam remote play
-    ];
-  };
 }
