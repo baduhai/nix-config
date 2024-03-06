@@ -2,7 +2,7 @@
 
 let
   plasma = pkgs.writeScriptBin "plasma" ''
-    ${pkgs.plasma-workspace}/bin/startplasma-wayland &> /dev/null
+    ${pkgs.kdePackages.plasma-workspace}/bin/startplasma-wayland &> /dev/null
   '';
 
 in {
@@ -29,33 +29,19 @@ in {
       };
       exportConfiguration = true;
       excludePackages = (with pkgs; [ xterm ]);
-      displayManager = {
-        defaultSession = "plasma";
-        autoLogin = {
-          enable = true;
+      displayManager.startx.enable = true;
+      desktopManager.plasma6.enable = true;
+    };
+    greetd = {
+      enable = true;
+      settings = {
+        default_session.command = ''
+          ${pkgs.greetd.tuigreet}/bin/tuigreet --remember --asterisks --time --greeting "Welcome to NixOS" --cmd ${plasma}/bin/plasma'';
+        initial_session = {
+          command = "${plasma}/bin/plasma";
           user = "user";
         };
-        sddm = {
-          enable = true;
-          wayland = {
-            enable = true;
-            compositorCommand =
-              "${pkgs.kwin}/bin/kwin_wayland --no-global-shortcuts --no-lockscreen --locale1";
-          };
-          settings = {
-            Theme = {
-              CursorTheme = "breeze_cursors";
-              CursorSize = "24";
-            };
-            General = {
-              GreeterEnvironment =
-                "QT_PLUGIN_PATH=${pkgs.plasma5Packages.layer-shell-qt}/${pkgs.plasma5Packages.qtbase.qtPluginPrefix},QT_WAYLAND_SHELL_INTEGRATION=layer-shell,XKB_DEFAULT_KEYMAP=us,XKB_DEFAULT_VARIANT=altgr-intl";
-              InputMethod = "";
-            };
-          };
-        };
       };
-      desktopManager.plasma6.enable = true;
     };
   };
 

@@ -85,6 +85,6 @@
     ];
   };
 
-  environment.plasma5.excludePackages =
-    (with pkgs.plasma5Packages; [ elisa gwenview oxygen khelpcenter konsole ]);
+  environment.plasma6.excludePackages =
+    (with pkgs.kdePackages; [ elisa gwenview oxygen khelpcenter konsole ]);
 }
