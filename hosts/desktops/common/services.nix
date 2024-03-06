@@ -30,7 +30,7 @@ in {
       exportConfiguration = true;
       excludePackages = (with pkgs; [ xterm ]);
       displayManager = {
-        defaultSession = "plasmawayland";
+        defaultSession = "plasma";
         autoLogin = {
           enable = true;
           user = "user";
@@ -55,7 +55,7 @@ in {
           };
         };
       };
-      desktopManager.plasma5.enable = true;
+      desktopManager.plasma6.enable = true;
     };
   };
 
