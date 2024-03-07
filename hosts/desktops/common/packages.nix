@@ -35,6 +35,7 @@
     nextcloud-client
     nix-init
     obs-studio
+    ocs-url
     p7zip
     platformio
     prismlauncher-qt5
