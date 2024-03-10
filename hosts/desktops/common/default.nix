@@ -3,7 +3,6 @@
 {
   imports = [
     ./boot.nix
-    ./flatpakfix.nix
     ./hardware.nix
     ./home-manager.nix
     ./impermanence.nix
