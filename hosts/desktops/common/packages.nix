@@ -25,7 +25,8 @@
     inkscape
     # itch # Currently using unsafe electron version
     junction
-    kate
+    kdePackages.kate
+    kdePackages.merkuro
     kolourpaint
     libfido2
     libreoffice-qt
