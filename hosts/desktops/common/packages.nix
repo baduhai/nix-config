@@ -70,11 +70,6 @@
     kdeconnect.enable = true;
     partition-manager.enable = true;
     gamemode.enable = true;
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
-      pinentryFlavor = "qt";
-    };
   };
 
   fonts = {
