@@ -1,9 +1,5 @@
 { config, pkgs, lib, ... }:
 
-# let
-#   pkgs.writeShellScriptBin "toggle-audio-output" ''
-#   '';
-
 {
   home = {
     pointerCursor = {
@@ -11,7 +7,7 @@
       gtk.enable = true;
       x11.enable = true;
       name = "Breeze_Light";
-      package = pkgs.breeze-icons;
+      package = pkgs.kdePackages.breeze-icons;
     };
     activation.removeExistingGtk =
       lib.hm.dag.entryBefore [ "checkLinkTargets" ] ''

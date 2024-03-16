@@ -10,11 +10,11 @@
       size = 10;
     };
     theme = {
-      package = pkgs.breeze-gtk;
+      package = pkgs.kdePackages.breeze-gtk;
       name = "Breeze";
     };
     iconTheme = {
-      package = pkgs.breeze-icons;
+      package = pkgs.kdePackages.breeze-icons;
       name = "Breeze";
     };
   };
@@ -32,7 +32,7 @@
       enable = true;
       plugins = [
         pkgs.obs-studio-plugins.obs-vkcapture
-        # pkgs.obs-studio-plugins.obs-backgroundremoval
+        pkgs.obs-studio-plugins.obs-backgroundremoval
         pkgs.obs-studio-plugins.obs-pipewire-audio-capture
       ];
     };
