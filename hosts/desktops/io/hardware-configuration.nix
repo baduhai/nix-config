@@ -1,4 +1,4 @@
-{ config, lib, modulesPath, ... }:
+{ config, lib, pkgs, modulesPath, ... }:
 
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
@@ -7,46 +7,47 @@
     initrd = {
       availableKernelModules =
         [ "xhci_pci" "ahci" "usb_storage" "sd_mod" "sdhci_pci" ];
-      luks.devices."cryptroot".device =
-        "/dev/disk/by-uuid/37c930c5-2b31-4d18-a1c4-7f13e0412656";
+      luks.devices."enc".device =
+        "/dev/disk/by-uuid/8018720e-42dd-453c-b374-adaa02eb48c9";
     };
     kernelModules = [ "kvm-intel" ];
+    extraModulePackages = [ ];
   };
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by_uuid/1ce9c049-0736-4305b21e-34244004acf50";
+      device = "/dev/disk/by-uuid/3638cea6-5503-43cc-aa4f-3d37ebedad2f";
       fsType = "btrfs";
-      options = [ "subvol=@root" "noatime" "compress=zstd" ];
+      options = [ "subvol=@root" ];
     };
     "/home" = {
-      device = "/dev/disk/by_uuid/1ce9c049-0736-4305b21e-34244004acf50 ";
+      device = "/dev/disk/by-uuid/3638cea6-5503-43cc-aa4f-3d37ebedad2f";
       fsType = "btrfs";
-      options = [ "subvol=@home" "noatime" "compress=zstd" ];
-    };
-    "/boot/efi" = {
-      device = "/dev/disk/by-uuid/36B4-C473";
-      fsType = "vfat";
-      options = [ "noatime" "fmask=0077" "dmask=0077" ];
+      options = [ "subvol=@home" ];
     };
     "/nix" = {
-      device = "/dev/disk/by_uuid/1ce9c049-0736-4305b21e-34244004acf50 ";
+      device = "/dev/disk/by-uuid/3638cea6-5503-43cc-aa4f-3d37ebedad2f";
       fsType = "btrfs";
-      options = [ "subvol=@nix" "noatime" "compress=zstd" ];
+      options = [ "subvol=@nix" ];
     };
     "/persistent" = {
-      device = "/dev/disk/by_uuid/1ce9c049-0736-4305b21e-34244004acf50 ";
+      device = "/dev/disk/by-uuid/3638cea6-5503-43cc-aa4f-3d37ebedad2f";
       fsType = "btrfs";
-      options = [ "subvol=@persistent" "noatime" "compress=zstd" ];
+      options = [ "subvol=@persistent" ];
+    };
+    "/boot/efi" = {
+      device = "/dev/disk/by-uuid/34AD-002A";
+      fsType = "vfat";
     };
   };
+
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
   networking.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-
   hardware.cpu.intel.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
+
