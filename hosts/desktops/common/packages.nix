@@ -25,6 +25,8 @@
     inkscape
     # itch # Currently using unsafe electron version
     junction
+    kdePackages.kaccounts-integration
+    kdePackages.kaccounts-providers
     kdePackages.kate
     kdePackages.merkuro
     kolourpaint
@@ -46,7 +48,6 @@
     quickemu
     qview
     ripgrep
-    rnote
     solvespace
     space-cadet-pinball
     steam-run
