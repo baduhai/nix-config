@@ -8,7 +8,6 @@
       theme = "colorful_sliced";
     };
     initrd.systemd.enable = true;
-    supportedFilesystems = [ "ntfs" ];
     loader.efi.efiSysMountPoint = "/boot/efi";
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     extraModprobeConfig = ''

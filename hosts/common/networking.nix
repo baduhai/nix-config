@@ -5,7 +5,7 @@
     networkmanager.enable = true;
     firewall = {
       enable = true;
-      checkReversePath = "loose"; # Tailscale mail fail without this
+      checkReversePath = "loose"; # Tailscale may fail without this
     };
   };
 }
