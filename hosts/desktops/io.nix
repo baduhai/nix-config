@@ -56,6 +56,7 @@
       };
     in "${cml-ucm-conf}/share/alsa/ucm2";
   };
+
   services.keyd = {
     enable = true;
     keyboards.main = {
