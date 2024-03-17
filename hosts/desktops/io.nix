@@ -54,11 +54,6 @@ in {
     sessionVariables.ALSA_CONFIG_UCM2 = "${cml-ucm-conf}/share/alsa/ucm2";
   };
 
-  system.replaceRuntimeDependencies = [({
-    original = pkgs.alsa-ucm-conf;
-    replacement = cml-ucm-conf;
-  })];
-
   services.keyd = {
     enable = true;
     keyboards.main = {
