@@ -179,17 +179,5 @@
       };
 
       nixosModules.qbittorrent = import ./modules/qbittorrent.nix;
-
-      packages.x86_64-linux = {
-        install-iso = nixos-generators.nixosGenerate {
-          system = "x86_64-linux";
-          modules = [{
-            users.users.nixos.openssh.authorizedKeys.keys = [
-              "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKcwF1yuWEfYGScNocEbs0AmGxyTIzGc4/IhpU587SJE"
-            ];
-          }];
-          format = "install-iso";
-        };
-      };
     };
 }

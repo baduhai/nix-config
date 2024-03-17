@@ -8,7 +8,10 @@
       theme = "colorful_sliced";
     };
     initrd.systemd.enable = true;
-    loader.efi.efiSysMountPoint = "/boot/efi";
+    loader = {
+      efi.efiSysMountPoint = "/boot/efi";
+      systemd-boot.sortKey = "a_nixos";
+    };
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     extraModprobeConfig = ''
       options bluetooth disable_ertm=1

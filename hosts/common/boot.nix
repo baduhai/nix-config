@@ -8,7 +8,6 @@
       systemd-boot = {
         enable = true;
         editor = false;
-        sortKey = "a_nixos";
         netbootxyz.enable = true;
       };
     };
