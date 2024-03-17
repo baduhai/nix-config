@@ -1,6 +1,29 @@
 { config, pkgs, lib, ... }:
 
-{
+let
+  cml-ucm-conf = pkgs.alsa-ucm-conf.overrideAttrs {
+    wttsrc = pkgs.fetchurl {
+      url =
+        "https://github.com/WeirdTreeThing/chromebook-ucm-conf/archive/2b2f3a7c993fd38a24aa81394e29ee530b890658.tar.gz";
+      hash = "sha256-WeLkxWB174Hwb11xnIxsvRm5NpM528IVEYH4K32pLwg=";
+    };
+    unpackPhase = ''
+      runHook preUnpack
+      tar xf "$src"
+      tar xf "$wttsrc"
+      runHook postUnpack
+    '';
+    installPhase = ''
+      runHook preInstall
+      mkdir -p $out/share/alsa
+      cp -r alsa-ucm*/{ucm,ucm2} $out/share/alsa
+      cp -r chromebook-ucm*/{common,codecs,platforms} $out/share/alsa/ucm2
+      cp -r chromebook-ucm*/{sof-rt5682,sof-cs42l42} $out/share/alsa/ucm2/conf.d
+      cp -r chromebook-ucm*/cml/* $out/share/alsa/ucm2/conf.d
+      runHook postInstall
+    '';
+  };
+in {
   imports = [
     # Host-common imports
     ../common
@@ -28,34 +51,13 @@
 
   environment = {
     systemPackages = with pkgs; [ maliit-keyboard ];
-    sessionVariables.ALSA_CONFIG_UCM2 = let
-      cml-ucm-conf = pkgs.alsa-ucm-conf.overrideAttrs {
-        wttsrc = pkgs.fetchurl {
-          url =
-            "https://github.com/WeirdTreeThing/chromebook-ucm-conf/archive/2b2f3a7c993fd38a24aa81394e29ee530b890658.tar.gz";
-          hash = "sha256-WeLkxWB174Hwb11xnIxsvRm5NpM528IVEYH4K32pLwg=";
-        };
-        unpackPhase = ''
-          runHook preUnpack
-          tar xf "$src"
-          tar xf "$wttsrc"
-          runHook postUnpack
-        '';
-        installPhase = ''
-          runHook preInstall
-          mkdir -p $out/share/alsa
-          cp -r alsa-ucm*/{ucm,ucm2} $out/share/alsa
-          cp -r chromebook-ucm*/common $out/share/alsa/ucm2/common
-          cp -r chromebook-ucm*/codecs $out/share/alsa/ucm2/codecs
-          cp -r chromebook-ucm*/platforms $out/share/alsa/ucm2/platforms
-          cp -r chromebook-ucm*/sof-rt5682 $out/share/alsa/ucm2/conf.d/sof-rt5682
-          cp -r chromebook-ucm*/sof-cs42l42 $out/share/alsa/ucm2/conf.d/sof-cs42l42
-          cp -r chromebook-ucm*/cml/* $out/share/alsa/ucm2/conf.d
-          runHook postInstall
-        '';
-      };
-    in "${cml-ucm-conf}/share/alsa/ucm2";
+    sessionVariables.ALSA_CONFIG_UCM2 = "${cml-ucm-conf}/share/alsa/ucm2";
   };
+
+  system.replaceRuntimeDependencies = [({
+    original = pkgs.alsa-ucm-conf;
+    replacement = cml-ucm-conf;
+  })];
 
   services.keyd = {
     enable = true;
@@ -103,32 +105,4 @@
       };
     };
   };
-
-  # nixpkgs.overlays = [
-  #   (self: super: {
-  #     alsa-ucm-conf = super.alsa-ucm-conf.override {
-  #       src2 = pkgs.fetchurl {
-  #         url =
-  #           "https://github.com/WeirdTreeThing/chromebook-ucm-conf/archive/792a6d5ef0d70ac1f0b4861f3d29da4fe9acaed1.tar.gz";
-  #         hash = "";
-  #       };
-  #       unpackPhase = ''
-  #         runHook preUnpack
-  #         tar xf "$src"
-  #         tar xf "$src2"
-  #         runHook postUnpack
-  #       '';
-  #       installPhase = ''
-  #         runHook preInstall
-  #         mkdir -p $out/share/alsa
-  #         cp -r alsa-ucm*/ucm alsa-ucm*/ucm2 $out/share/alsa
-  #         cp -r chromebook-ucm*/hdmi-common \
-  #               chromebook-ucm*/dmic-common \
-  #               chromebook-ucm*/cml/* \
-  #               $out/share/alsa/ucm2/conf.d
-  #         runHook postInstall
-  #       '';
-  #     };
-  #   })
-  # ];
 }
