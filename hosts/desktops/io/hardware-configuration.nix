@@ -18,26 +18,27 @@
     "/" = {
       device = "/dev/disk/by-uuid/3638cea6-5503-43cc-aa4f-3d37ebedad2f";
       fsType = "btrfs";
-      options = [ "subvol=@root" ];
+      options = [ "subvol=@root" "noatime" "compress=zstd" ];
     };
     "/home" = {
       device = "/dev/disk/by-uuid/3638cea6-5503-43cc-aa4f-3d37ebedad2f";
       fsType = "btrfs";
-      options = [ "subvol=@home" ];
+      options = [ "subvol=@home" "noatime" "compress=zstd" ];
     };
     "/nix" = {
       device = "/dev/disk/by-uuid/3638cea6-5503-43cc-aa4f-3d37ebedad2f";
       fsType = "btrfs";
-      options = [ "subvol=@nix" ];
+      options = [ "subvol=@nix" "noatime" "compress=zstd" ];
     };
     "/persistent" = {
       device = "/dev/disk/by-uuid/3638cea6-5503-43cc-aa4f-3d37ebedad2f";
       fsType = "btrfs";
-      options = [ "subvol=@persistent" ];
+      options = [ "subvol=@persistent" "noatime" "compress=zstd" ];
     };
     "/boot/efi" = {
       device = "/dev/disk/by-uuid/34AD-002A";
       fsType = "vfat";
+      options = [ "noatime" "fmask=0077" "dmask=0077" ];
     };
   };
 
