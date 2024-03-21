@@ -12,6 +12,7 @@
     bitwarden
     deploy-rs
     distrobox
+    element-desktop-wayland
     fd
     filelight
     firefox
@@ -50,6 +51,7 @@
     ripgrep
     solvespace
     space-cadet-pinball
+    sparrow
     steam-run
     ungoogled-chromium
     unrar
@@ -57,6 +59,7 @@
     ventoy
     vial
     virt-manager
+    yad
     wezterm
     # Package overrides
     (appimage-run.override { extraPkgs = pkgs: [ libthai ]; })
