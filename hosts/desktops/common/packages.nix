@@ -8,6 +8,7 @@
     aspellDicts.en-computers
     aspellDicts.pt_BR
     bat
+    beeper
     bitwarden
     deploy-rs
     distrobox
