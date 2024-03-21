@@ -2,7 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    ark
     aspell
     aspellDicts.de
     aspellDicts.en
@@ -26,6 +25,7 @@
     inkscape
     # itch # Currently using unsafe electron version
     junction
+    kdePackages.ark
     kdePackages.kaccounts-integration
     kdePackages.kaccounts-providers
     kdePackages.kate
