@@ -29,7 +29,8 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ ollama ];
+  environment.systemPackages = with pkgs;
+    [ (ollama.override { acceleration = "rocm"; }) ];
 
   hardware.opengl.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
 
