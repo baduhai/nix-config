@@ -37,7 +37,6 @@ in {
       kolourpaint
       libfido2
       libreoffice-qt
-      lutris
       mangohud
       mpv
       nextcloud-client
