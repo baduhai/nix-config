@@ -18,7 +18,6 @@ in {
       bat
       beeper
       bitwarden
-      cantor
       deploy-rs
       distrobox
       element-desktop-wayland
