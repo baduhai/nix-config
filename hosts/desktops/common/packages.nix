@@ -62,7 +62,6 @@ in {
       unrar
       vagrant
       ventoy
-      vial
       virt-manager
       yad
       wezterm
