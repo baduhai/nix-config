@@ -125,7 +125,6 @@
         nodes = {
           alexandria = {
             hostname = "alexandria";
-            profilesOrder = [ "system" "user" ];
             profiles = {
               system = {
                 user = "root";
@@ -134,18 +133,11 @@
                 path = deploy-rs.lib.x86_64-linux.activate.nixos
                   self.nixosConfigurations.alexandria;
               };
-              user = {
-                user = "user";
-                remoteBuild = true;
-                path = deploy-rs.lib.x86_64-linux.activate.home-manager
-                  self.homeConfigurations.server;
-              };
             };
           };
 
           io = {
-            hostname = "192.168.1.5";
-            profilesOrder = [ "system" "user" ];
+            hostname = "io";
             profiles = {
               system = {
                 user = "root";
@@ -153,12 +145,6 @@
                 remoteBuild = true;
                 path = deploy-rs.lib.x86_64-linux.activate.nixos
                   self.nixosConfigurations.io;
-              };
-              user = {
-                user = "user";
-                remoteBuild = true;
-                path = deploy-rs.lib.x86_64-linux.activate.home-manager
-                  self.homeConfigurations.desktop;
               };
             };
           };
