@@ -1,70 +1,73 @@
 { inputs, config, pkgs, lib, ... }:
-
-{
-  environment.systemPackages = with pkgs; [
-    aspell
-    aspellDicts.de
-    aspellDicts.en
-    aspellDicts.en-computers
-    aspellDicts.pt_BR
-    bat
-    beeper
-    bitwarden
-    deploy-rs
-    distrobox
-    element-desktop-wayland
-    fd
-    filelight
-    firefox
-    floorp
-    foliate
-    fzf
-    gamescope
-    gimp
-    helvum
-    heroic
-    inkscape
-    # itch # Currently using unsafe electron version
-    junction
-    kdePackages.ark
-    kdePackages.kaccounts-integration
-    kdePackages.kaccounts-providers
-    kdePackages.kate
-    kdePackages.merkuro
-    kolourpaint
-    libfido2
-    libreoffice-qt
-    lutris
-    mangohud
-    mpv
-    nextcloud-client
-    nix-init
-    obs-studio
-    ocs-url
-    p7zip
-    platformio
-    prismlauncher-qt5
-    protonup
-    pulseaudio
-    qbittorrent
-    quickemu
-    qview
-    ripgrep
-    solvespace
-    space-cadet-pinball
-    sparrow
-    steam-run
-    ungoogled-chromium
-    unrar
-    vagrant
-    ventoy
-    vial
-    virt-manager
-    yad
-    wezterm
-    # Package overrides
-    (appimage-run.override { extraPkgs = pkgs: [ libthai ]; })
+let
+  kdepkgs = with pkgs.kdePackages; [
+    ark
+    kaccounts-integration
+    kaccounts-providers
+    kate
+    merkuro
   ];
+in {
+  environment.systemPackages = with pkgs;
+    [
+      aspell
+      aspellDicts.de
+      aspellDicts.en
+      aspellDicts.en-computers
+      aspellDicts.pt_BR
+      bat
+      beeper
+      bitwarden
+      cantor
+      deploy-rs
+      distrobox
+      element-desktop-wayland
+      fd
+      filelight
+      firefox
+      floorp
+      foliate
+      fzf
+      gamescope
+      gimp
+      helvum
+      heroic
+      inkscape
+      # itch # Currently using unsafe electron version
+      junction
+      kolourpaint
+      libfido2
+      libreoffice-qt
+      lutris
+      mangohud
+      mpv
+      nextcloud-client
+      nix-init
+      obs-studio
+      ocs-url
+      octaveFull
+      p7zip
+      platformio
+      prismlauncher-qt5
+      protonup
+      pulseaudio
+      qbittorrent
+      quickemu
+      qview
+      ripgrep
+      solvespace
+      space-cadet-pinball
+      sparrow
+      steam-run
+      ungoogled-chromium
+      unrar
+      vagrant
+      ventoy
+      vial
+      virt-manager
+      yad
+      wezterm
+    ] ++ kdepkgs;
 
   programs = {
     adb.enable = true;
