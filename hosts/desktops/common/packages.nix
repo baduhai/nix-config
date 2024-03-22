@@ -55,7 +55,7 @@ in {
       qview
       ripgrep
       solvespace
-      space-cadet-pinball
+      # space-cadet-pinball # Broken
       sparrow
       steam-run
       ungoogled-chromium
