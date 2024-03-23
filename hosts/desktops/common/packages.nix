@@ -19,6 +19,7 @@ in {
       bat
       beeper
       bitwarden
+      cemu-ti
       deploy-rs
       distrobox
       element-desktop-wayland
