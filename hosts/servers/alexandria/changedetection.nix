@@ -4,7 +4,6 @@
   services = {
     changedetection-io = {
       enable = true;
-      group = "hosted";
       behindProxy = true;
       datastorePath = "/data/changedetection";
       port = lib.toInt "${config.ports.changedetection-io}";

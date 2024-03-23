@@ -23,8 +23,8 @@
         adminpassFile = config.age.secrets.nextcloud-adminpass.path;
       };
       phpOptions = {
-        upload_max_filesize = "8G";
-        post_max_size = "8G";
+        upload_max_filesize = lib.mkDefault "8G";
+        post_max_size = lib.mkDefault "8G";
         "opcache.interned_strings_buffer" = "16";
       };
     };
