@@ -2,6 +2,7 @@
 let
   kdepkgs = with pkgs.kdePackages; [
     ark
+    dolphin-plugins
     kaccounts-integration
     kaccounts-providers
     kate
