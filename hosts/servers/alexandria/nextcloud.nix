@@ -23,17 +23,14 @@
         trustedProxies = [ "127.0.0.1" ];
         adminpassFile = config.age.secrets.nextcloud-adminpass.path;
       };
-      phpOptions = {
-        upload_max_filesize = lib.mkDefault "8G";
-        post_max_size = lib.mkDefault "8G";
-        "opcache.interned_strings_buffer" = "16";
-      };
+      phpOptions = { "opcache.interned_strings_buffer" = "16"; };
     };
 
     nginx.virtualHosts.${config.services.nextcloud.hostName} = {
       useACMEHost = "baduhai.dev";
       forceSSL = true;
       kTLS = true;
+      extraConfig = "client_max_body_size 8G";
     };
   };
 
