@@ -6,6 +6,7 @@ let
     kaccounts-integration
     kaccounts-providers
     kate
+    kcalc
     merkuro
   ];
 in {
