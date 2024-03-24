@@ -8,7 +8,6 @@
       systemd-boot = {
         enable = true;
         editor = false;
-        netbootxyz.enable = true;
       };
     };
   };

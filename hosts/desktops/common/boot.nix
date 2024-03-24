@@ -10,7 +10,13 @@
     initrd.systemd.enable = true;
     loader = {
       efi.efiSysMountPoint = "/boot/efi";
-      systemd-boot.sortKey = "a_nixos";
+      systemd-boot = {
+        sortKey = "a_nixos";
+        netbootxyz = {
+          enable = true;
+          sortKey = "z_netbootxyz";
+        };
+      };
     };
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     extraModprobeConfig = ''
