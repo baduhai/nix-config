@@ -39,12 +39,14 @@
 
     fish = {
       functions = {
-        rebuild =
+        sysrebuild =
           "sudo nixos-rebuild switch --flake '/home/user/Projects/personal/nix-config#'";
-        rebuild-boot =
+        sysrebuild-boot =
           "sudo nixos-rebuild boot --flake '/home/user/Projects/personal/nix-config#'";
-        update =
+        sysupdate =
           "nix flake update --commit-lock-file /home/user/Projects/personal/nix-config";
+        syscleanup =
+          "sudo nix-collect-garbage -d; sudo nix store optimise; sudo /run/current-system/bin/switch-to-configuration boot";
         code = ''
           wezterm cli split-pane --top --percent=75 -- hx
           wezterm cli activate-pane-direction up          
