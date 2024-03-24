@@ -12,7 +12,7 @@
       autoUpdateApps.enable = true;
       secretFile = config.age.secrets."nextcloud-secrets.json".path;
       database.createLocally = true;
-      maxUploadSize = "8G";
+      maxUploadSize = "16G";
       caching = {
         apcu = true;
         redis = true;
@@ -30,7 +30,6 @@
       useACMEHost = "baduhai.dev";
       forceSSL = true;
       kTLS = true;
-      extraConfig = "client_max_body_size 8G";
     };
   };
 
