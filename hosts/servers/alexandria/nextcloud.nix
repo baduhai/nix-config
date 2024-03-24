@@ -12,6 +12,7 @@
       autoUpdateApps.enable = true;
       secretFile = config.age.secrets."nextcloud-secrets.json".path;
       database.createLocally = true;
+      maxUploadSize = "8G";
       caching = {
         apcu = true;
         redis = true;
