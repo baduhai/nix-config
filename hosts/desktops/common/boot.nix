@@ -11,10 +11,10 @@
     loader = {
       efi.efiSysMountPoint = "/boot/efi";
       systemd-boot = {
-        sortKey = "a_nixos";
+        sortKey = "aa";
         netbootxyz = {
           enable = true;
-          sortKey = "z_netbootxyz";
+          sortKey = "zz";
         };
       };
     };
