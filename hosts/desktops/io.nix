@@ -4,8 +4,8 @@ let
   cml-ucm-conf = pkgs.alsa-ucm-conf.overrideAttrs {
     wttsrc = pkgs.fetchurl {
       url =
-        "https://github.com/WeirdTreeThing/chromebook-ucm-conf/archive/2b2f3a7c993fd38a24aa81394e29ee530b890658.tar.gz";
-      hash = "sha256-WeLkxWB174Hwb11xnIxsvRm5NpM528IVEYH4K32pLwg=";
+        "https://github.com/WeirdTreeThing/chromebook-ucm-conf/archive/1328e46bfca6db2c609df9c68d37bb418e6fe279.tar.gz";
+      hash = "sha256-eTP++vdS7cKtc8Mq4qCzzKtTRM/gsLme4PLkN0ZWveo=";
     };
     unpackPhase = ''
       runHook preUnpack
@@ -17,8 +17,7 @@ let
       runHook preInstall
       mkdir -p $out/share/alsa
       cp -r alsa-ucm*/{ucm,ucm2} $out/share/alsa
-      cp -r chromebook-ucm*/{common,codecs,platforms} $out/share/alsa/ucm2
-      cp -r chromebook-ucm*/{sof-rt5682,sof-cs42l42} $out/share/alsa/ucm2/conf.d
+      cp -r chromebook-ucm*/common $out/share/alsa/ucm2
       cp -r chromebook-ucm*/cml/* $out/share/alsa/ucm2/conf.d
       runHook postInstall
     '';
@@ -50,7 +49,7 @@ in {
   };
 
   environment = {
-    systemPackages = with pkgs; [ maliit-keyboard ];
+    systemPackages = with pkgs; [ maliit-keyboard sof-firmware ];
     sessionVariables.ALSA_CONFIG_UCM2 = "${cml-ucm-conf}/share/alsa/ucm2";
   };
 
@@ -100,4 +99,9 @@ in {
       };
     };
   };
+
+  # system.replaceRuntimeDependencies = [({
+  #   original = pkgs.alsa-ucm-conf;
+  #   replacement = cml-ucm-conf;
+  # })];
 }
