@@ -46,7 +46,7 @@
         sysupdate =
           "nix flake update --commit-lock-file /home/user/Projects/personal/nix-config";
         syscleanup =
-          "sudo nix-collect-garbage -d; sudo nix store optimise; sudo /run/current-system/bin/switch-to-configuration boot";
+          "sudo nix-collect-garbage -d; sudo /run/current-system/bin/switch-to-configuration boot";
         code = ''
           wezterm cli split-pane --top --percent=75 -- hx
           wezterm cli activate-pane-direction up          
