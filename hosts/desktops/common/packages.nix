@@ -22,7 +22,6 @@ in {
       bitwarden
       deploy-rs
       distrobox
-      element-desktop-wayland
       fd
       filelight
       firefox
