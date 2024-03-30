@@ -5,7 +5,7 @@
     image = "docker.io/actualbudget/actual-server:latest";
     ports = [ "${config.ports.actual}:5006" ];
     volumes = [ "/data/actual:/data" ];
-    extraOptions = [ "--label=io.containers.autoupdate=registry" ];
+    extraOptions = [ "--pull=newer --label=io.containers.autoupdate=registry" ];
   };
 
   services.nginx.virtualHosts."actual.baduhai.dev" = {

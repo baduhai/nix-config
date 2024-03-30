@@ -5,7 +5,7 @@
     image = "lscr.io/linuxserver/librespeed:latest";
     environment = { TZ = "America/Bahia"; };
     ports = [ "${config.ports.librespeed}:80" ];
-    extraOptions = [ "--label=io.containers.autoupdate=registry" ];
+    extraOptions = [ "--pull=newer --label=io.containers.autoupdate=registry" ];
   };
 
   services.nginx.virtualHosts."librespeed.baduhai.dev" = {

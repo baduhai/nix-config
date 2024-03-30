@@ -9,7 +9,6 @@
     ./hardware-configuration.nix
     ./jellyfin.nix
     ./librespeed.nix
-    ./logseq.nix
     ./minecraft.nix
     ./nextcloud.nix
     ./nginx.nix
