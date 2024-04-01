@@ -18,7 +18,6 @@ in {
       aspellDicts.pt_BR
       bat
       beeper
-      bitwarden
       deploy-rs
       distrobox
       fd
