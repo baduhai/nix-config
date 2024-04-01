@@ -6,7 +6,6 @@ let
     kaccounts-integration
     kaccounts-providers
     kate
-    kcalc
     merkuro
   ];
 in {
@@ -50,6 +49,7 @@ in {
       prismlauncher-qt5
       protonup
       pulseaudio
+      qalculate-qt
       qbittorrent
       quickemu
       qview
