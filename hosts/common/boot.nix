@@ -3,11 +3,12 @@
 {
   boot = {
     loader = {
-      timeout = 1;
+      timeout = 2;
       efi.canTouchEfiVariables = true;
       systemd-boot = {
         enable = true;
         editor = false;
+        consoleMode = "max";
       };
     };
   };
