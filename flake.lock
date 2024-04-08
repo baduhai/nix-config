@@ -23,24 +23,6 @@
         "type": "github"
       }
     },
-    "baduhai-nur": {
-      "inputs": {
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1710144438,
-        "narHash": "sha256-rs6YZDV3mizuSK1ib0i+HhGG9aPDMVErX3Fmyi9i2QU=",
-        "owner": "baduhai",
-        "repo": "nur",
-        "rev": "97f42e122b39a172c9280e32af87386d8fb29755",
-        "type": "github"
-      },
-      "original": {
-        "owner": "baduhai",
-        "repo": "nur",
-        "type": "github"
-      }
-    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -335,7 +317,6 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "baduhai-nur": "baduhai-nur",
         "deploy-rs": "deploy-rs",
         "home-manager": "home-manager_2",
         "homepage": "homepage",

@@ -10,8 +10,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    baduhai-nur.url = "github:baduhai/nur";
-
     impermanence.url = "github:nix-community/impermanence";
 
     deploy-rs = {
@@ -46,9 +44,9 @@
 
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, baduhai-nur, nixpkgs-stable
-    , deploy-rs, agenix, nixos-generators, homepage, nix-minecraft, yousable
-    , impermanence, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, nixpkgs-stable, deploy-rs
+    , agenix, nixos-generators, homepage, nix-minecraft, yousable, impermanence
+    , ... }: {
       nixosConfigurations = {
         rotterdam = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -58,10 +56,7 @@
             agenix.nixosModules.default
             home-manager.nixosModules.default
             impermanence.nixosModules.impermanence
-            {
-              nixpkgs.overlays =
-                [ baduhai-nur.overlay agenix.overlays.default ];
-            }
+            { nixpkgs.overlays = [ agenix.overlays.default ]; }
           ];
         };
 
@@ -73,10 +68,7 @@
             agenix.nixosModules.default
             home-manager.nixosModules.default
             impermanence.nixosModules.impermanence
-            {
-              nixpkgs.overlays =
-                [ baduhai-nur.overlay agenix.overlays.default ];
-            }
+            { nixpkgs.overlays = [ agenix.overlays.default ]; }
           ];
         };
 
