@@ -7,6 +7,7 @@ let
     kaccounts-providers
     kate
     merkuro
+    qtwebengine
   ];
 in {
   environment.systemPackages = with pkgs;
