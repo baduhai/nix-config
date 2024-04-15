@@ -3,21 +3,12 @@
 let
   modpack = (pkgs.fetchPackwizModpack {
     url =
-      "https://raw.githubusercontent.com/baduhai/FFS/06d253f0cd262b8d4a178d4db8e1a7188051e8d0/pack.toml";
-    packHash = "sha256-UXjUqDLVUIIUoucHLz9qTqZ7wXOVriCuAcSmeevNz+Q=";
-  }).addFiles {
-    "mods/FabricProxy-lite.jar" = pkgs.fetchurl rec {
-      pname = "fabrictailor";
-      version = "2.1.2";
-      url =
-        "https://cdn.modrinth.com/data/g8w1NapE/versions/MNgY2xFj/${pname}-${version}.jar";
-      hash = "sha256-oYM29Mcon9GTTyLcim85CPiWCdyB48nweVA+0Xq3PIY=";
-    };
-  };
+      "https://raw.githubusercontent.com/baduhai/FFS/000a28196d5ec5e90222d69cfadb97311bb6f2c3/pack.toml";
+    packHash = "sha256-EHL/rCkqcRzVvvnDZsP2s7S30ZBsG9r9L4Tn1dzjzWM=";
+  });
   mcVersion = modpack.manifest.versions.minecraft;
   fabricVersion = modpack.manifest.versions.fabric;
-  serverVersion =
-    lib.replaceStrings [ "." ] [ "_" ] "fabric-${mcVersion}-${fabricVersion}";
+  serverVersion = lib.replaceStrings [ "." ] [ "_" ] "fabric-${mcVersion}";
 
 in {
   services.minecraft-servers = {
@@ -26,7 +17,9 @@ in {
     dataDir = "/data/minecraft";
     servers."seridor" = {
       enable = true;
-      package = pkgs.fabricServers.${serverVersion};
+      package = pkgs.fabricServers.${serverVersion}.override {
+        loaderVersion = fabricVersion;
+      };
       openFirewall = true;
       serverProperties = {
         difficulty = "hard";
