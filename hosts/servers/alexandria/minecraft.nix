@@ -3,8 +3,8 @@
 let
   modpack = (pkgs.fetchPackwizModpack {
     url =
-      "https://raw.githubusercontent.com/baduhai/FFS/000a28196d5ec5e90222d69cfadb97311bb6f2c3/pack.toml";
-    packHash = "sha256-EHL/rCkqcRzVvvnDZsP2s7S30ZBsG9r9L4Tn1dzjzWM=";
+      "https://raw.githubusercontent.com/baduhai/FFS/7d49a4209f1b13b23433079147340a5cad226f65/pack.toml";
+    packHash = "";
   });
   mcVersion = modpack.manifest.versions.minecraft;
   fabricVersion = modpack.manifest.versions.fabric;
@@ -24,7 +24,7 @@ in {
       serverProperties = {
         difficulty = "hard";
         gamemode = "survival";
-        motd = "O Seridor";
+        motd = "Prominence II";
         online-mode = false;
         spawn-protection = false;
       };
