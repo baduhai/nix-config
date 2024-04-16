@@ -18,12 +18,12 @@ in {
       aspellDicts.en-computers
       aspellDicts.pt_BR
       bat
-      beeper
       deploy-rs
       distrobox
       fd
       filelight
       firefox
+      # floorp
       foliate
       fzf
       gamescope
@@ -31,7 +31,7 @@ in {
       helvum
       heroic
       inkscape
-      # itch # Currently using unsafe electron version
+      # itch # Currently broken
       junction
       kolourpaint
       libfido2
