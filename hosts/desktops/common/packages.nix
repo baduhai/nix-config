@@ -24,7 +24,6 @@ in {
       fd
       filelight
       firefox
-      floorp
       foliate
       fzf
       gamescope
