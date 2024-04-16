@@ -13,6 +13,7 @@ in {
       drivers = with pkgs; [ epson-escpr ];
     };
     udev.packages = with pkgs; [ platformio openocd yubikey-personalization ];
+    desktopManager.plasma6.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -30,7 +31,6 @@ in {
       exportConfiguration = true;
       excludePackages = (with pkgs; [ xterm ]);
       displayManager.startx.enable = true;
-      desktopManager.plasma6.enable = true;
     };
     greetd = {
       enable = true;
