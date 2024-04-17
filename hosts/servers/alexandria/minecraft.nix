@@ -3,8 +3,8 @@
 let
   modpack = (pkgs.fetchPackwizModpack {
     url =
-      "https://raw.githubusercontent.com/baduhai/FFS/7d49a4209f1b13b23433079147340a5cad226f65/pack.toml";
-    packHash = "sha256-VelG2l2eD2jsJD+e7lNi9bqolRZTa9pkri6jClJuqsQ=";
+      "https://raw.githubusercontent.com/baduhai/FFS/11a82acc9c67929f2130e03e3fc397a11d9cd809/pack.toml";
+    packHash = "";
   });
   mcVersion = modpack.manifest.versions.minecraft;
   fabricVersion = modpack.manifest.versions.fabric;
@@ -17,8 +17,8 @@ in {
     dataDir = "/data/minecraft";
     servers."seridor" = {
       enable = true;
-      package = pkgs.fabricServers."fabric-1_20_1".override {
-        loaderVersion = "0.15.3";
+      package = pkgs.fabricServers.${serverVersion}.override {
+        loaderVersion = fabricVersion;
       };
       openFirewall = true;
       serverProperties = {
@@ -28,7 +28,7 @@ in {
         online-mode = false;
         spawn-protection = false;
       };
-      # symlinks."mods" = "${modpack}/mods";
+      symlinks."mods" = "${modpack}/mods";
     };
   };
 }
