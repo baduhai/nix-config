@@ -3,8 +3,8 @@
 let
   modpack = (pkgs.fetchPackwizModpack {
     url =
-      "https://raw.githubusercontent.com/baduhai/FFS/11a82acc9c67929f2130e03e3fc397a11d9cd809/pack.toml";
-    packHash = "";
+      "https://raw.githubusercontent.com/baduhai/FFS/9544cadf6700c0a3eb743888150c5dfb971641a3/pack.toml";
+    packHash = "sha256-JXqyRnfz10RQPYrXUFpg/T8F9eT7y+/LTflIWMrRHS8=";
   });
   mcVersion = modpack.manifest.versions.minecraft;
   fabricVersion = modpack.manifest.versions.fabric;
@@ -15,7 +15,7 @@ in {
     enable = true;
     eula = true;
     dataDir = "/data/minecraft";
-    servers."seridor" = {
+    servers."expansion" = {
       enable = true;
       package = pkgs.fabricServers.${serverVersion}.override {
         loaderVersion = fabricVersion;
@@ -24,7 +24,7 @@ in {
       serverProperties = {
         difficulty = "hard";
         gamemode = "survival";
-        motd = "Another RPG";
+        motd = "Expansion";
         online-mode = false;
         spawn-protection = false;
       };
