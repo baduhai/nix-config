@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 let
   plasma = pkgs.writeScriptBin "plasma" ''
@@ -14,6 +14,10 @@ in {
     };
     udev.packages = with pkgs; [ platformio openocd yubikey-personalization ];
     desktopManager.plasma6.enable = true;
+    nginx = {
+      enable = true;
+      virtualHosts."localhost".root = inputs.homepage;
+    };
     pipewire = {
       enable = true;
       alsa.enable = true;

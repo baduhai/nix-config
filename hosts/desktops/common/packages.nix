@@ -23,7 +23,6 @@ in {
       fd
       filelight
       firefox
-      # floorp
       foliate
       fzf
       gamescope
@@ -45,7 +44,7 @@ in {
       octaveFull
       p7zip
       platformio
-      prismlauncher-qt5
+      prismlauncher
       protonup
       pulseaudio
       qalculate-qt
