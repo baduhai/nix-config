@@ -33,6 +33,7 @@ in {
       # itch # Currently broken
       junction
       kolourpaint
+      krita
       libfido2
       libreoffice-qt
       mangohud
