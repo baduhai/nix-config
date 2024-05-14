@@ -6,8 +6,6 @@ let
     kaccounts-integration
     kaccounts-providers
     kate
-    merkuro
-    qtwebengine
   ];
 in {
   environment.systemPackages = with pkgs;
@@ -40,6 +38,7 @@ in {
       mpv
       nextcloud-client
       nix-init
+      nix-output-monitor
       obs-studio
       ocs-url
       octaveFull

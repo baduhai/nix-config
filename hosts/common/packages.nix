@@ -14,6 +14,7 @@
     # nix-your-shell # Currently only available in unstable
     sysz
     tmux
+    toolbox
     tree
     wget
   ];

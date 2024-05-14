@@ -40,9 +40,9 @@
     fish = {
       functions = {
         sysrebuild =
-          "sudo nixos-rebuild switch --flake '/home/user/Projects/personal/nix-config#'";
+          "sudo nixos-rebuild switch --flake '/home/user/Projects/personal/nix-config#' |& nom";
         sysrebuild-boot =
-          "sudo nixos-rebuild boot --flake '/home/user/Projects/personal/nix-config#'";
+          "sudo nixos-rebuild boot --flake '/home/user/Projects/personal/nix-config#' |& nom";
         sysupdate =
           "nix flake update --commit-lock-file /home/user/Projects/personal/nix-config";
         syscleanup =
