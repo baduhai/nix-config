@@ -2,24 +2,16 @@
 
 let
   cml-ucm-conf = pkgs.alsa-ucm-conf.overrideAttrs {
-    wttsrc = pkgs.fetchurl {
-      url =
-        "https://github.com/WeirdTreeThing/chromebook-ucm-conf/archive/2b2f3a7c993fd38a24aa81394e29ee530b890658.tar.gz";
-      hash = "sha256-WeLkxWB174Hwb11xnIxsvRm5NpM528IVEYH4K32pLwg=";
+    wttsrc = pkgs.fetchFromGitHub {
+      owner = "WeirdTreeThing";
+      repo = "chromebook-ucm-conf";
+      rev = "b6ce2a7";
+      hash = "sha256-QRUKHd3RQmg1tnZU8KCW0AmDtfw/daOJ/H3XU5qWTCc=";
     };
-    unpackPhase = ''
-      runHook preUnpack
-      tar xf "$src"
-      tar xf "$wttsrc"
-      runHook postUnpack
-    '';
-    installPhase = ''
-      runHook preInstall
-      mkdir -p $out/share/alsa
-      cp -r alsa-ucm*/{ucm,ucm2} $out/share/alsa
-      cp -r chromebook-ucm*/{common,codecs,platforms} $out/share/alsa/ucm2
-      cp -r chromebook-ucm*/{cml,sof-rt5682,sof-cs42l42} $out/share/alsa/ucm2/conf.d
-      runHook postInstall
+    postInstall = ''
+      echo "v0.4.1" > $out/chromebook.patched
+      cp -R $wttsrc/{common,codecs,platforms} $out/share/alsa/ucm2
+      cp -R $wttsrc/{cml,sof-rt5682} $out/share/alsa/ucm2/conf.d
     '';
   };
 in {
