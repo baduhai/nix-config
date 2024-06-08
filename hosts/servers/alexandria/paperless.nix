@@ -9,7 +9,7 @@
       passwordFile = config.age.secrets.paperless.path;
       port = lib.toInt "${config.ports.paperless}";
       consumptionDirIsPublic = true;
-      extraConfig = { PAPERLESS_OCR_LANGUAGE = "eng+por+deu"; };
+      settings = { PAPERLESS_OCR_LANGUAGE = "eng+por+deu"; };
     };
 
     nginx.virtualHosts."paperless.baduhai.dev" = {

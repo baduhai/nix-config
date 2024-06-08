@@ -4,7 +4,7 @@
   services = {
     nextcloud = {
       enable = true;
-      package = pkgs.nextcloud27;
+      package = pkgs.nextcloud29;
       datadir = "/data/nextcloud";
       hostName = "nextcloud.baduhai.dev";
       configureRedis = true;
@@ -17,10 +17,12 @@
         apcu = true;
         redis = true;
       };
+      settings = {
+        trusted_proxies = [ "127.0.0.1" ];
+        default_phone_region = "BR";
+      };
       config = {
         dbtype = "pgsql";
-        defaultPhoneRegion = "BR";
-        trustedProxies = [ "127.0.0.1" ];
         adminpassFile = config.age.secrets.nextcloud-adminpass.path;
       };
       phpOptions = { "opcache.interned_strings_buffer" = "16"; };
