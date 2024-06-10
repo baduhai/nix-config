@@ -20,7 +20,6 @@
   };
 
   programs = {
-
     password-store.package = pkgs.pass-wayland;
 
     mangohud = {
@@ -40,9 +39,9 @@
     fish = {
       functions = {
         sysrebuild =
-          "sudo nixos-rebuild switch --flake '/home/user/Projects/personal/nix-config#' 2>&1 | nom";
+          "nh os switch --ask /home/user/Projects/personal/nix-config";
         sysrebuild-boot =
-          "sudo nixos-rebuild boot --flake '/home/user/Projects/personal/nix-config#' 2>&1 | nom";
+          "nh os boot --ask /home/user/Projects/personal/nix-config";
         sysupdate =
           "nix flake update --commit-lock-file /home/user/Projects/personal/nix-config";
         syscleanup =

@@ -56,6 +56,7 @@ in {
       # space-cadet-pinball # Broken
       sparrow
       steam-run
+      thunderbird
       ungoogled-chromium
       unrar
       vagrant
@@ -73,6 +74,14 @@ in {
     kdeconnect.enable = true;
     partition-manager.enable = true;
     gamemode.enable = true;
+    nh = {
+      enable = true;
+      clean = {
+        enable = true;
+        extraArgs = "--keep-since 7d";
+      };
+      flake = "/home/user/Projects/nix-config";
+    };
   };
 
   fonts = {
