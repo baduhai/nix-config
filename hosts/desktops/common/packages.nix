@@ -30,10 +30,11 @@ in {
       inkscape
       # itch # Currently broken
       junction
+      kde-rounded-corners
       kolourpaint
       krita
       libfido2
-      libreoffice-qt
+      # libreoffice-qt
       mangohud
       mpv
       nextcloud-client
@@ -42,6 +43,7 @@ in {
       obs-studio
       ocs-url
       octaveFull
+      onlyoffice-bin_latest
       p7zip
       platformio
       prismlauncher
@@ -88,9 +90,10 @@ in {
     fontDir.enable = true;
     fontconfig.enable = true;
     packages = with pkgs; [
+      corefonts
       inter
-      roboto
       maple-mono
+      roboto
       (nerdfonts.override { fonts = [ "Hack" ]; })
     ];
   };

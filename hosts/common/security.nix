@@ -3,8 +3,11 @@
 {
   security = {
     unprivilegedUsernsClone = true; # Needed for rootless podman
-    sudo.extraConfig = ''
-      Defaults lecture = never
-    '';
+    sudo = {
+      wheelNeedsPassword = false;
+      extraConfig = ''
+        Defaults lecture = never
+      '';
+    };
   };
 }
