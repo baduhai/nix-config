@@ -98,5 +98,5 @@ in {
   };
 
   environment.plasma6.excludePackages =
-    (with pkgs.kdePackages; [ elisa gwenview oxygen khelpcenter konsole ]);
+    (with pkgs.kdePackages; [ elisa gwenview oxygen khelpcenter ]);
 }
