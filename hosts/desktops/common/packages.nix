@@ -34,7 +34,7 @@ in {
       kolourpaint
       krita
       libfido2
-      # libreoffice-qt
+      libreoffice-qt
       mangohud
       mpv
       nextcloud-client
@@ -43,7 +43,6 @@ in {
       obs-studio
       ocs-url
       octaveFull
-      onlyoffice-bin_latest
       p7zip
       platformio
       prismlauncher
@@ -59,7 +58,7 @@ in {
       sparrow
       steam-run
       thunderbird
-      ungoogled-chromium
+      # ungoogled-chromium
       unrar
       vagrant
       ventoy
