@@ -54,11 +54,11 @@ in {
       qview
       ripgrep
       solvespace
-      # space-cadet-pinball # Broken
+      space-cadet-pinball
       sparrow
       steam-run
       thunderbird
-      # ungoogled-chromium
+      ungoogled-chromium
       unrar
       vagrant
       ventoy
