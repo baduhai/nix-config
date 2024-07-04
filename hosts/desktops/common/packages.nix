@@ -2,6 +2,7 @@
 let
   kdepkgs = with pkgs.kdePackages; [
     ark
+    discover
     dolphin-plugins
     kaccounts-integration
     kaccounts-providers
@@ -42,13 +43,12 @@ in {
       nix-output-monitor
       obs-studio
       ocs-url
-      octaveFull
+      openscad
       p7zip
       platformio
       prismlauncher
       protonup
       pulseaudio
-      qalculate-qt
       qbittorrent
       quickemu
       qview
@@ -60,7 +60,6 @@ in {
       thunderbird
       ungoogled-chromium
       unrar
-      vagrant
       ventoy
       virt-manager
       yad

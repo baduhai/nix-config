@@ -35,7 +35,7 @@
           active_titlebar_bg = '#303446',
           inactive_titlebar_bg = '#303446',
         },
-        hide_tab_bar_if_only_one_tab = true,
+        hide_tab_bar_if_only_one_tab = false,
         show_new_tab_button_in_tab_bar = false,
         colors = {
           tab_bar = {
@@ -79,6 +79,7 @@
           { key = 'L', mods = 'SHIFT|CTRL', action = act.ActivatePaneDirection 'Right' },
           { key = 'K', mods = 'SHIFT|CTRL', action = act.ActivatePaneDirection 'Up' },
           { key = 'J', mods = 'SHIFT|CTRL', action = act.ActivatePaneDirection 'Down' },
+          { key = 'P', mods = 'SHIFT|CTRL', action = act.ActivateCommandPalette },
         },
       }
     '';
