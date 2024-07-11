@@ -17,6 +17,7 @@ in {
       aspellDicts.en-computers
       aspellDicts.pt_BR
       bat
+      blender
       deploy-rs
       distrobox
       fd
