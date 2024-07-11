@@ -17,7 +17,7 @@ in {
       aspellDicts.en-computers
       aspellDicts.pt_BR
       bat
-      (blender.withPackages (p: [ python312Packages.py-slvs ]))
+      (blender-hip.withPackages (p: [ python311Packages.py-slvs ]))
       deploy-rs
       distrobox
       fd
