@@ -17,7 +17,7 @@ in {
       aspellDicts.en-computers
       aspellDicts.pt_BR
       bat
-      blender
+      (blender.withPackages (p: [ python312Packages.py-slvs ]))
       deploy-rs
       distrobox
       fd
@@ -75,6 +75,7 @@ in {
     kdeconnect.enable = true;
     partition-manager.enable = true;
     gamemode.enable = true;
+    nix-index-database.comma.enable = true;
     nh = {
       enable = true;
       clean = {

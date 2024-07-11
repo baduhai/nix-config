@@ -42,11 +42,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-index-db = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, nixpkgs-stable, deploy-rs
     , agenix, nixos-generators, homepage, nix-minecraft, yousable, impermanence
-    , ... }: {
+    , nix-index-db, ... }: {
       nixosConfigurations = {
         rotterdam = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -56,6 +60,7 @@
             agenix.nixosModules.default
             home-manager.nixosModules.default
             impermanence.nixosModules.impermanence
+            nix-index-db.nixosModules.nix-index
             { nixpkgs.overlays = [ agenix.overlays.default ]; }
           ];
         };
@@ -68,6 +73,7 @@
             agenix.nixosModules.default
             home-manager.nixosModules.default
             impermanence.nixosModules.impermanence
+            nix-index-db.nixosModules.default
             { nixpkgs.overlays = [ agenix.overlays.default ]; }
           ];
         };

@@ -7,7 +7,6 @@
     agenix
     bind
     btop
-    comma
     git
     helix
     neofetch
