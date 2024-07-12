@@ -37,11 +37,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    yousable = {
-      url = "github:t184256/yousable";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-index-db = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,7 +44,7 @@
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, nixpkgs-stable, deploy-rs
-    , agenix, nixos-generators, homepage, nix-minecraft, yousable, impermanence
+    , agenix, nixos-generators, homepage, nix-minecraft, impermanence
     , nix-index-db, ... }: {
       nixosConfigurations = {
         rotterdam = nixpkgs.lib.nixosSystem {
@@ -73,7 +68,7 @@
             agenix.nixosModules.default
             home-manager.nixosModules.default
             impermanence.nixosModules.impermanence
-            nix-index-db.nixosModules.default
+            nix-index-db.nixosModules.nix-index
             { nixpkgs.overlays = [ agenix.overlays.default ]; }
           ];
         };
@@ -84,7 +79,6 @@
           modules = [
             ./hosts/servers/alexandria.nix
             agenix.nixosModules.default
-            yousable.nixosModules.default
             self.nixosModules.qbittorrent
             ({ config, pkgs, ... }:
               let
