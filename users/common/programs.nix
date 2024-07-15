@@ -33,6 +33,15 @@
           esc = [ "collapse_selection" "keep_primary_selection" ];
         };
       };
+      languages = {
+        language = [
+          {
+            name = "nix";
+            auto-format = true;
+            formatter.command = "nixfmt";
+          }
+        ];
+      };
       themes.catppuccin-mocha_transparent = {
         inherits = "catppuccin_mocha";
         "ui.background" = "{}";
