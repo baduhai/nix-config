@@ -67,7 +67,6 @@
       frame_timing
       battery_icon
       gamepad_battery_icon
-      #media_player
 
       horizontal
       horizontal_stretch=0
@@ -80,8 +79,6 @@
       table_columns=20
       time_format=%H:%M
       toggle_hud=End
-      #media_player_format={title} - {artist}
-      #font_scale_media_player=1
 
       core_load_change
       cpu_color=ffffff
@@ -103,6 +100,8 @@
       vram_color=ffffff
       engine_color=ffffff
       frametime_color=ffffff
+
+      blacklist=zed
     '';
     ".mozilla/native-messaging-hosts/org.kde.plasma.browser_integration.json".source =
       "${pkgs.plasma-browser-integration}/lib/mozilla/native-messaging-hosts/org.kde.plasma.browser_integration.json";

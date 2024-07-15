@@ -9,11 +9,6 @@
       historyFile = "~/.cache/bash_history";
     };
 
-    nix-index = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-
     helix = {
       enable = true;
       settings = {
@@ -37,40 +32,6 @@
           q = ":q";
           esc = [ "collapse_selection" "keep_primary_selection" ];
         };
-      };
-      languages = {
-        language = [
-          {
-            name = "nix";
-            # scope = "source.nix";
-            auto-format = true;
-            formatter.command = "nixfmt";
-          }
-          {
-            name = "typst";
-            scope = "source.typ";
-            file-types = [ "typ" ];
-            roots = [ ];
-            injection-regex = "^typst$";
-            auto-format = true;
-            comment-token = "//";
-            indent = {
-              tab-width = 2;
-              unit = " ";
-            };
-            formatter = {
-              command = "prettypst";
-              args = [ "--use-std-in" "--use-std-out" ];
-            };
-          }
-        ];
-        grammar = [{
-          name = "typst";
-          source = {
-            git = "https://github.com/SeniorMars/tree-sitter-typst";
-            rev = "2e66ef4b798a26f0b82144143711f3f7a9e8ea35";
-          };
-        }];
       };
       themes.catppuccin-mocha_transparent = {
         inherits = "catppuccin_mocha";
