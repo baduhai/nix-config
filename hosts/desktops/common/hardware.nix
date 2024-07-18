@@ -10,8 +10,6 @@
     i2c.enable = true;
   };
 
-  sound.enable = true;
-
   security.rtkit.enable =
     true; # Needed for pipewire to acquire realtime priority
 }
