@@ -31,7 +31,7 @@ in {
       helvum
       heroic
       inkscape
-      itch # Currently broken
+      itch
       junction
       kde-rounded-corners
       kolourpaint
