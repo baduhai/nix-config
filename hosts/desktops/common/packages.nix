@@ -46,7 +46,7 @@ in {
       obs-studio
       ocs-url
       openscad
-      orcaslicer
+      orca-slicer
       p7zip
       platformio
       prismlauncher
