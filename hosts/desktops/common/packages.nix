@@ -48,6 +48,7 @@ in {
       openscad
       orca-slicer
       p7zip
+      plasticity
       platformio
       prismlauncher
       protonup
@@ -65,7 +66,6 @@ in {
       unrar
       ventoy
       virt-manager
-      yad
       wezterm
       zed-editor
     ] ++ kdepkgs;
