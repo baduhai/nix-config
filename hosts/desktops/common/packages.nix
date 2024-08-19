@@ -17,18 +17,13 @@ in {
       aspellDicts.en-computers
       aspellDicts.pt_BR
       bat
-      (blender-hip.withPackages (p: [ python311Packages.py-slvs ]))
       deploy-rs
       distrobox
       fd
       filelight
       firefox
-      floorp
-      foliate
       fzf
-      gamescope
       gimp
-      helvum
       heroic
       inkscape
       itch
@@ -45,7 +40,6 @@ in {
       nix-output-monitor
       obs-studio
       ocs-url
-      openscad
       orca-slicer
       p7zip
       plasticity
@@ -55,19 +49,16 @@ in {
       pulseaudio
       qbittorrent
       quickemu
-      qview
       ripgrep
       solvespace
       space-cadet-pinball
       sparrow
       steam-run
-      thunderbird
       ungoogled-chromium
       unrar
       ventoy
       virt-manager
       wezterm
-      zed-editor
     ] ++ kdepkgs;
 
   programs = {

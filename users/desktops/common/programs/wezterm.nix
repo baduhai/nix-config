@@ -6,13 +6,6 @@
     extraConfig = ''
         local act = wezterm.action
 
-        wezterm.on('update-right-status', function(window, pane)
-          local date = wezterm.strftime '%H:%M'
-          window:set_right_status(wezterm.format {
-            { Text = date .. ' '},
-          })
-        end)
-        
         return {
         disable_default_key_bindings = true,
         color_scheme = "Catppuccin Mocha",
@@ -35,7 +28,7 @@
           active_titlebar_bg = '#303446',
           inactive_titlebar_bg = '#303446',
         },
-        hide_tab_bar_if_only_one_tab = false,
+        hide_tab_bar_if_only_one_tab = true,
         show_new_tab_button_in_tab_bar = false,
         colors = {
           tab_bar = {
