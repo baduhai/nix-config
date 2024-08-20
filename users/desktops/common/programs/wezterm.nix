@@ -6,6 +6,18 @@
     extraConfig = ''
         local act = wezterm.action
 
+        local function get_initial_cols_by_hostname()
+          local hostname = wezterm.hostname()
+
+          if hostname == "rotterdam" then
+            return 110
+          elseif hostname == "io" then
+            return 94
+          else
+            return 108
+          end
+        end
+
         return {
         disable_default_key_bindings = true,
         color_scheme = "Catppuccin Mocha",
@@ -13,7 +25,7 @@
           {family = "Hack Nerd Font", scale = 1},
           {family = "Noto Color Emoji", scale = 1},
         }),
-        initial_cols = 108,
+        initial_cols = get_initial_cols_by_hostname(),
         initial_rows = 32,
         enable_scroll_bar = true,
         inactive_pane_hsb = {
