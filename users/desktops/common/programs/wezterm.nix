@@ -10,7 +10,7 @@
           local hostname = wezterm.hostname()
 
           if hostname == "rotterdam" then
-            return 110
+            return 108
           elseif hostname == "io" then
             return 91
           else
