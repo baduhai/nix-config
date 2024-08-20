@@ -48,7 +48,6 @@ in {
       protonup
       pulseaudio
       qbittorrent
-      quickemu
       ripgrep
       solvespace
       space-cadet-pinball
