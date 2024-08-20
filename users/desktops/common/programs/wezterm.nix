@@ -30,6 +30,7 @@
         },
         hide_tab_bar_if_only_one_tab = true,
         show_new_tab_button_in_tab_bar = false,
+        front_end = "WebGpu",
         colors = {
           tab_bar = {
             background = '#303446',

@@ -22,10 +22,7 @@
   programs = {
     password-store.package = pkgs.pass-wayland;
 
-    mangohud = {
-      enable = true;
-      enableSessionWide = true;
-    };
+    mangohud.enable = true;
 
     obs-studio = {
       enable = true;
@@ -101,7 +98,7 @@
       engine_color=ffffff
       frametime_color=ffffff
 
-      blacklist=zed
+      blacklist=zed,org.wezfurlong.wezterm
     '';
     ".mozilla/native-messaging-hosts/org.kde.plasma.browser_integration.json".source =
       "${pkgs.plasma-browser-integration}/lib/mozilla/native-messaging-hosts/org.kde.plasma.browser_integration.json";

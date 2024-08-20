@@ -71,10 +71,6 @@ in {
     nix-index-database.comma.enable = true;
     nh = {
       enable = true;
-      clean = {
-        enable = true;
-        extraArgs = "--keep-since 7d";
-      };
       flake = "/home/user/Projects/nix-config";
     };
   };

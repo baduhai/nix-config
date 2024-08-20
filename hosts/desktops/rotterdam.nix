@@ -36,7 +36,7 @@ in {
 
   environment.systemPackages = with pkgs; [ ollama ];
 
-  hardware.opengl.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
+  hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
 
   systemd.targets.hibernate.enable = false; # disable non-functional hibernate
 

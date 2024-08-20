@@ -6,7 +6,7 @@
     bluetooth.enable = true;
     pulseaudio.enable = false; # Use pipewire instead
     steam-hardware.enable = true; # Allow steam client to manage controllers
-    opengl.driSupport32Bit = true; # For OpenGL games
+    graphics.enable32Bit = true; # For OpenGL games
     i2c.enable = true;
   };
 
