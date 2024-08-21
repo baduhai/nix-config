@@ -59,7 +59,6 @@ in {
       virt-manager
       yad
       wezterm
-      inputs.zen-browser.packages."${system}".default
     ] ++ kdepkgs;
 
   programs = {
