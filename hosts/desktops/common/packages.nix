@@ -57,7 +57,9 @@ in {
       unrar
       ventoy
       virt-manager
+      yad
       wezterm
+      inputs.zen-browser.packages."${system}".default
     ] ++ kdepkgs;
 
   programs = {
@@ -69,6 +71,10 @@ in {
     partition-manager.enable = true;
     gamemode.enable = true;
     nix-index-database.comma.enable = true;
+    appimage = {
+      enable = true;
+      binfmt = true;
+    };
     nh = {
       enable = true;
       flake = "/home/user/Projects/nix-config";
