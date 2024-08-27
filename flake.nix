@@ -95,21 +95,40 @@
               })
           ];
         };
+
+        shanghai = nixpkgs-stable.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/servers/shanghai.nix
+            agenix.nixosModules.default
+            self.nixosModules.qbittorrent
+            ({ config, pkgs, ... }:
+              let
+                unstable-overlay = final: prev: {
+                  unstable = nixpkgs.legacyPackages.x86_64-linux;
+                };
+              in {
+                nixpkgs.overlays = [ unstable-overlay agenix.overlays.default ];
+                imports = [ ];
+              })
+          ];
+        };
       };
 
-      homeConfigurations = {
-        desktop = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = { inherit inputs; };
-          modules = [ ./users/desktops/user.nix ];
-        };
+      # homeConfigurations = {
+      #   desktop = home-manager.lib.homeManagerConfiguration {
+      #     pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      #     extraSpecialArgs = { inherit inputs; };
+      #     modules = [ ./users/desktops/user.nix ];
+      #   };
 
-        server = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = { inherit inputs; };
-          modules = [ ./users/servers/user.nix ];
-        };
-      };
+      #   server = home-manager.lib.homeManagerConfiguration {
+      #     pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      #     extraSpecialArgs = { inherit inputs; };
+      #     modules = [ ./users/servers/user.nix ];
+      #   };
+      # };
 
       deploy = {
         autoRollback = true;
@@ -124,6 +143,19 @@
                 remoteBuild = true;
                 path = deploy-rs.lib.x86_64-linux.activate.nixos
                   self.nixosConfigurations.alexandria;
+              };
+            };
+          };
+
+          shanghai = {
+            hostname = "shanghai";
+            profiles = {
+              system = {
+                user = "root";
+                sshUser = "root";
+                remoteBuild = true;
+                plath = deploy-rs.lib.x86_64-linux.activate.nixos
+                  self.nixosConfigurations.shanghai;
               };
             };
           };
