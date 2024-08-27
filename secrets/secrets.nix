@@ -15,8 +15,11 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK95QueW+jp1ZmF299Xr3XkgHJ6dL7aZVsfWxqbOKVKA";
   alexandria = [ alexandria-host ];
 
+  taipei-host = "";
+  taipei = [ taipei-host ];
+
   desktops = io ++ rotterdam;
-  servers = alexandria;
+  servers = alexandria ++ taipei;
   all-hosts = desktops ++ servers;
 in {
   "nextcloud-secrets.json.age".publicKeys = all-hosts;
