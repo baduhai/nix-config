@@ -57,7 +57,6 @@ in {
       unrar
       ventoy
       virt-manager
-      yad
       wezterm
     ] ++ kdepkgs;
 
