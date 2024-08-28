@@ -41,6 +41,7 @@ in {
       obs-studio
       ocs-url
       orca-slicer
+      openscad
       p7zip
       plasticity
       platformio
