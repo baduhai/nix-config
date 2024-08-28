@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  imports = [ ./home.nix ./programs.nix ./programs/wezterm.nix ];
+  imports = [ ./home.nix ./programs.nix ./programs ];
 }
