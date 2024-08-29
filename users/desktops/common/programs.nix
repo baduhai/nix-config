@@ -19,6 +19,58 @@
     };
   };
 
+  home.packages = with pkgs;
+    [
+      (symlinkJoin {
+        name = "firefoxWork";
+        paths = [
+          (pkgs.makeDesktopItem {
+            name = "firefoxWorkDesktopItem";
+            desktopName = "Firefox Work";
+            genericName = "Web Browser - Work Profile";
+            categories = [ "Network" "WebBrowser" ];
+            icon = "firefoxWork";
+            exec =
+              ''firefox --name firefoxWork --class="firefoxWork" -P Work %U'';
+            startupNotify = true;
+            startupWMClass = "firefoxWork";
+            terminal = false;
+            type = "Application";
+          })
+          (stdenv.mkDerivation {
+            name = "firefoxWorkIcon";
+            src = pkgs.fetchurl {
+              url =
+                "https://hg.mozilla.org/mozilla-central/raw-file/tip/browser/branding/aurora/content/about-logo.svg";
+              sha256 = "sha256-dHuMm4ZdnihpgvSpbC4xPQIidN22LmbgDC8h7MJV0Tk=";
+            };
+            dontUnpack = true;
+            installPhase = ''
+              mkdir -p $out/share/icons/hicolor/scalable/apps/
+              cp $src $out/share/icons/hicolor/scalable/apps/firefoxWork.svg
+            '';
+          })
+        ];
+      })
+    ];
+
+  # xdg.desktopEntries = {
+  #   firefoxWork = {
+  #     name = "Firefox Work";
+  #     genericName = "Web Browser - Work Profile";
+  #     categories = [ "Network" "WebBrowser" ];
+  #     icon = pkgs.fetchurl {
+  #       url =
+  #         "https://hg.mozilla.org/mozilla-central/raw-file/tip/browser/branding/aurora/content/about-logo.svg";
+  #       sha256 = "sha256-dHuMm4ZdnihpgvSpbC4xPQIidN22LmbgDC8h7MJV0Tk=";
+  #     };
+  #     exec = ''firefox --name firefoxWork --class="firefoxWork" -P Work %U'';
+  #     startupNotify = true;
+  #     terminal = false;
+  #     type = "Application";
+  #   };
+  # };
+
   programs = {
     password-store.package = pkgs.pass-wayland;
 
