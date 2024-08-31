@@ -6,7 +6,6 @@ let
     dolphin-plugins
     kaccounts-integration
     kaccounts-providers
-    kate
   ];
 in {
   environment.systemPackages = with pkgs;
@@ -17,6 +16,7 @@ in {
       aspellDicts.en-computers
       aspellDicts.pt_BR
       bat
+      clonehero
       deploy-rs
       distrobox
       fd
