@@ -14,8 +14,6 @@ let
       cp -R $wttsrc/{cml,sof-rt5682} $out/share/alsa/ucm2/conf.d
     '';
   };
-
-  ectool = (pkgs.callPackage ../../packages/chromeos-ectool.nix { });
 in {
   imports = [
     # Host-common imports
@@ -43,7 +41,11 @@ in {
   };
 
   environment = {
-    systemPackages = with pkgs; [ maliit-keyboard sof-firmware ectool ];
+    systemPackages = with pkgs; [
+      maliit-keyboard
+      sof-firmware
+      custom.chormeos-ectool
+    ];
     sessionVariables.ALSA_CONFIG_UCM2 = "${cml-ucm-conf}/share/alsa/ucm2";
   };
 

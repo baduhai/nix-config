@@ -56,7 +56,10 @@
             home-manager.nixosModules.default
             impermanence.nixosModules.impermanence
             nix-index-db.nixosModules.nix-index
-            { nixpkgs.overlays = [ agenix.overlays.default ]; }
+            {
+              nixpkgs.overlays =
+                [ agenix.overlays.default self.overlays.custom ];
+            }
           ];
         };
 
@@ -69,7 +72,10 @@
             home-manager.nixosModules.default
             impermanence.nixosModules.impermanence
             nix-index-db.nixosModules.nix-index
-            { nixpkgs.overlays = [ agenix.overlays.default ]; }
+            {
+              nixpkgs.overlays =
+                [ agenix.overlays.default self.overlays.custom ];
+            }
           ];
         };
 
@@ -129,6 +135,19 @@
       #     modules = [ ./users/servers/user.nix ];
       #   };
       # };
+
+      packages."x86_64-linux" = {
+        sgdboop = nixpkgs.legacyPackages."x86_64-linux".callPackage
+          ./packages/sgdboop.nix { };
+        chromeos-ectool = nixpkgs.legacyPackages."x86_64-linux".callPackage
+          ./packages/chromeos-ectool.nix { };
+      };
+
+      overlays = {
+        custom = final: prev: {
+          inherit (self.packages."x86_64-linux") sgdboop chromeos-ectool;
+        };
+      };
 
       deploy = {
         autoRollback = true;
