@@ -137,15 +137,13 @@
       # };
 
       packages."x86_64-linux" = {
-        sgdboop = nixpkgs.legacyPackages."x86_64-linux".callPackage
-          ./packages/sgdboop.nix { };
         chromeos-ectool = nixpkgs.legacyPackages."x86_64-linux".callPackage
           ./packages/chromeos-ectool.nix { };
       };
 
       overlays = {
         custom = final: prev: {
-          inherit (self.packages."x86_64-linux") sgdboop chromeos-ectool;
+          inherit (self.packages."x86_64-linux") chromeos-ectool;
         };
       };
 

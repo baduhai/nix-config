@@ -50,7 +50,6 @@ in {
       pulseaudio
       qbittorrent
       ripgrep
-      sgdboop
       solvespace
       space-cadet-pinball
       sparrow
