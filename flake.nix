@@ -41,11 +41,13 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, nixpkgs-stable, deploy-rs
     , agenix, nixos-generators, homepage, nix-minecraft, impermanence
-    , nix-index-db, ... }: {
+    , nix-flatpak, nix-index-db, ... }: {
       nixosConfigurations = {
         rotterdam = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -56,6 +58,7 @@
             home-manager.nixosModules.default
             impermanence.nixosModules.impermanence
             nix-index-db.nixosModules.nix-index
+            nix-flatpak.nixosModules.nix-flatpak
             {
               nixpkgs.overlays =
                 [ agenix.overlays.default self.overlays.custom ];
@@ -72,6 +75,7 @@
             home-manager.nixosModules.default
             impermanence.nixosModules.impermanence
             nix-index-db.nixosModules.nix-index
+            nix-flatpak.nixosModules.nix-flatpak
             {
               nixpkgs.overlays =
                 [ agenix.overlays.default self.overlays.custom ];
@@ -121,20 +125,6 @@
           ];
         };
       };
-
-      # homeConfigurations = {
-      #   desktop = home-manager.lib.homeManagerConfiguration {
-      #     pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      #     extraSpecialArgs = { inherit inputs; };
-      #     modules = [ ./users/desktops/user.nix ];
-      #   };
-
-      #   server = home-manager.lib.homeManagerConfiguration {
-      #     pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      #     extraSpecialArgs = { inherit inputs; };
-      #     modules = [ ./users/servers/user.nix ];
-      #   };
-      # };
 
       packages."x86_64-linux" = {
         chromeos-ectool = nixpkgs.legacyPackages."x86_64-linux".callPackage

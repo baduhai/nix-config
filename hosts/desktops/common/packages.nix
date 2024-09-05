@@ -61,6 +61,13 @@ in {
       wezterm
     ] ++ kdepkgs;
 
+  services.flatpak = {
+    enable = true;
+    packages = [ "com.github.flxzt.rnote" "com.github.tchx84.Flatseal" ];
+    uninstallUnmanaged = true;
+    update.auto.enable = true;
+  };
+
   programs = {
     adb.enable = true;
     steam.enable = true;

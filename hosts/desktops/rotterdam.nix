@@ -42,6 +42,7 @@ in {
 
   services = {
     hardware.openrgb.enable = true;
+    flatpak.packages = [ "net.retrodeck.retrodeck" ];
     keyd = {
       enable = true;
       keyboards.main = {
