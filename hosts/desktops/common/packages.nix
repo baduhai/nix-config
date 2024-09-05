@@ -6,6 +6,8 @@ let
     dolphin-plugins
     kaccounts-integration
     kaccounts-providers
+    kolourpaint
+    merkuro
   ];
 in {
   environment.systemPackages = with pkgs;
@@ -29,7 +31,6 @@ in {
       itch
       junction
       kde-rounded-corners
-      kolourpaint
       krita
       libfido2
       libreoffice-qt
@@ -44,10 +45,8 @@ in {
       openscad
       p7zip
       plasticity
-      platformio
       prismlauncher
       protonup
-      pulseaudio
       qbittorrent
       ripgrep
       solvespace
