@@ -8,6 +8,7 @@ let
     kaccounts-providers
     kolourpaint
     merkuro
+    kdepim-addons
   ];
 in {
   environment.systemPackages = with pkgs;
