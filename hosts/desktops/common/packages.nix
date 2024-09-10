@@ -63,7 +63,11 @@ in {
 
   services.flatpak = {
     enable = true;
-    packages = [ "com.github.flxzt.rnote" "com.github.tchx84.Flatseal" ];
+    packages = [
+      "com.github.flxzt.rnote"
+      "com.github.tchx84.Flatseal"
+      "com.steamgriddb.SGDBoop"
+    ];
     uninstallUnmanaged = true;
     update.auto.enable = true;
   };
