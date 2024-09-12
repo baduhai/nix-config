@@ -50,7 +50,6 @@ in {
   };
 
   services = {
-    flatpak.packages = [ "com.github.scrivanolabs.scrivano" ];
     keyd = {
       enable = true;
       keyboards.main = {
