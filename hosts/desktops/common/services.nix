@@ -1,17 +1,12 @@
 { inputs, config, pkgs, lib, ... }:
 
-let
-  plasma = pkgs.writeScriptBin "plasma" ''
-    ${pkgs.kdePackages.plasma-workspace}/bin/startplasma-wayland &> /dev/null
-  '';
-
-in {
+{
   services = {
     printing = {
       enable = true;
       drivers = with pkgs; [ epson-escpr ];
     };
-    udev.packages = with pkgs; [ platformio openocd yubikey-personalization ];
+    udev.packages = with pkgs; [ yubikey-personalization ];
     desktopManager.plasma6.enable = true;
     nginx = {
       enable = true;
@@ -25,23 +20,26 @@ in {
       jack.enable = true;
       wireplumber.enable = true;
     };
-    xserver = {
-      enable = true;
-      xkb = {
-        layout = "us";
-        variant = "altgr-intl";
-      };
-      exportConfiguration = true;
-      excludePackages = (with pkgs; [ xterm ]);
-      displayManager.startx.enable = true;
-    };
     greetd = {
       enable = true;
       settings = {
-        default_session.command = ''
-          ${pkgs.greetd.tuigreet}/bin/tuigreet --remember --asterisks --time --greeting "Welcome to NixOS" --cmd ${plasma}/bin/plasma'';
+        default_session.command = let
+          xSessions =
+            "${config.services.displayManager.sessionData.desktops}/share/xsessions";
+          wlSessions =
+            "${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
+        in ''
+          ${pkgs.greetd.tuigreet}/bin/tuigreet \
+          --remember \
+          --asterisks \
+          --time \
+          --greeting "NixOS" \
+          --sessions ${xSessions}:${wlSessions}
+        '';
         initial_session = {
-          command = "${plasma}/bin/plasma";
+          command = ''
+            ${pkgs.kdePackages.plasma-workspace}/bin/startplasma-wayland &> /dev/null
+          '';
           user = "user";
         };
       };

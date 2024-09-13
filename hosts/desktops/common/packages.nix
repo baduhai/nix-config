@@ -45,7 +45,7 @@ in {
       orca-slicer
       openscad
       p7zip
-      plasticity
+      # plasticity
       prismlauncher
       protonup
       qbittorrent
