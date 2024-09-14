@@ -2,7 +2,6 @@
 let
   kdepkgs = with pkgs.kdePackages; [
     ark
-    discover
     dolphin-plugins
     kaccounts-integration
     kaccounts-providers
@@ -49,6 +48,7 @@ in {
       prismlauncher
       protonup
       qbittorrent
+      qview
       ripgrep
       solvespace
       space-cadet-pinball
@@ -104,5 +104,5 @@ in {
   };
 
   environment.plasma6.excludePackages =
-    (with pkgs.kdePackages; [ elisa oxygen khelpcenter ]);
+    (with pkgs.kdePackages; [ elisa gwenview khelpcenter konsole oxygen ]);
 }
