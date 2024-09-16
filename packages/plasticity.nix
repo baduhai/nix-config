@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
   src = fetchurl {
     url =
       "https://github.com/nkallen/plasticity/releases/download/v${version}/Plasticity-${version}-1.x86_64.rpm";
-    hash = "sha256-3dHS7chTgoD35AV/q8DHIYl43KbCsoFYEqSQHXm05tg=";
+    hash = "sha256-iiVh4k5r5PXN1/VJZcropTMu36N2B/ECq2L5e59QxJY=";
   };
 
   passthru.updateScript = ./update.sh;
@@ -92,7 +92,6 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     description = "CAD for artists";
     homepage = "https://www.plasticity.xyz";
-    license = licenses.unfree;
     mainProgram = "Plasticity";
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
     maintainers = with maintainers; [ imadnyc ];
