@@ -68,6 +68,7 @@ in {
       "com.github.tchx84.Flatseal"
       "com.microsoft.Edge"
       "com.steamgriddb.SGDBoop"
+      "io.github.zen_browser.zen"
     ];
     uninstallUnmanaged = true;
     update.auto.enable = true;
