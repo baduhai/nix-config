@@ -35,6 +35,7 @@ in {
       libfido2
       libreoffice-qt
       mangohud
+      mission-center
       mpv
       nextcloud-client
       nix-init
@@ -44,12 +45,13 @@ in {
       orca-slicer
       openscad
       p7zip
-      # plasticity
+      plasticity
       prismlauncher
       protonup
       qbittorrent
       qview
       ripgrep
+      rnote
       solvespace
       space-cadet-pinball
       sparrow
@@ -64,7 +66,6 @@ in {
   services.flatpak = {
     enable = true;
     packages = [
-      "com.github.flxzt.rnote"
       "com.github.tchx84.Flatseal"
       "com.microsoft.Edge"
       "com.steamgriddb.SGDBoop"

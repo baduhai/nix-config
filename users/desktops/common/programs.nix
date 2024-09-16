@@ -9,14 +9,6 @@
       name = "Inter";
       size = 10;
     };
-    theme = {
-      package = pkgs.kdePackages.breeze-gtk;
-      name = "Breeze";
-    };
-    iconTheme = {
-      package = pkgs.kdePackages.breeze-icons;
-      name = "Breeze";
-    };
   };
 
   home.packages = with pkgs;
