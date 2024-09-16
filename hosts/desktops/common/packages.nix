@@ -66,6 +66,7 @@ in {
     packages = [
       "com.github.flxzt.rnote"
       "com.github.tchx84.Flatseal"
+      "com.microsoft.Edge"
       "com.steamgriddb.SGDBoop"
     ];
     uninstallUnmanaged = true;
