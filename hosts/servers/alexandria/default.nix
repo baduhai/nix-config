@@ -2,8 +2,6 @@
 
 {
   imports = [
-    ./actual.nix
-    ./arr.nix
     ./changedetection.nix
     ./cinny.nix
     ./hardware-configuration.nix

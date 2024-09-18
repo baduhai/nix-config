@@ -46,13 +46,10 @@ in {
     keyd = {
       enable = true;
       keyboards.main = {
-        ids = [ "*" ];
-        settings = {
-          main = { esc = "overload(meta, esc)"; };
-          shift = {
-            leftshift = "capslock";
-            rightshift = "capslock";
-          };
+        ids = [ "5653:0001" ];
+        settings.main = {
+          esc = "overload(meta, esc)";
+          shift = "oneshot(shift)";
         };
       };
     };
@@ -70,11 +67,13 @@ in {
     kernelParams = [
       "processor.max_cstate=1" # Fixes bug where ryzen cpus freeze when in highest C state
       "clearcpuid=514"
+      # Fixes amdgpu freezing
       "amdgpu.noretry=0"
       "amdgpu.ppfeaturemask=0xfffd3fff"
       "amdgpu.gpu_recovery=1"
       "amdgpu.lockup_timeout=1000"
     ];
+    # QubesOS boot entry
     loader.systemd-boot = {
       extraFiles = {
         "efi/edk2-shell/shell.efi" = "${pkgs.edk2-uefi-shell}/shell.efi";

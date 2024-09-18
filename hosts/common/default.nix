@@ -13,5 +13,6 @@
     ./users.nix
     ./virtualisation.nix
     ./stylix.nix
+    ./environment.nix
   ];
 }

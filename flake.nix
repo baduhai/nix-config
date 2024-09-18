@@ -109,35 +109,10 @@
               })
           ];
         };
-
-        shanghai = nixpkgs-stable.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./hosts/servers/shanghai.nix
-            agenix.nixosModules.default
-            self.nixosModules.qbittorrent
-            ({ config, pkgs, ... }:
-              let
-                unstable-overlay = final: prev: {
-                  unstable = nixpkgs.legacyPackages.x86_64-linux;
-                };
-              in {
-                nixpkgs.overlays = [ unstable-overlay agenix.overlays.default ];
-                imports = [ ];
-              })
-          ];
-        };
       };
-
-      # packages."x86_64-linux" = {
-      #   chromeos-ectool = nixpkgs.legacyPackages."x86_64-linux".callPackage
-      #     ./packages/chromeos-ectool.nix { };
-      # };
 
       overlays = {
         custom = final: prev: {
-          # inherit (self.packages."x86_64-linux") chromeos-ectool;
           chromeos-ectool = nixpkgs.legacyPackages."x86_64-linux".callPackage
             ./packages/chromeos-ectool.nix { };
           plasticity = nixpkgs.legacyPackages."x86_64-linux".callPackage
@@ -158,19 +133,6 @@
                 remoteBuild = true;
                 path = deploy-rs.lib.x86_64-linux.activate.nixos
                   self.nixosConfigurations.alexandria;
-              };
-            };
-          };
-
-          shanghai = {
-            hostname = "shanghai";
-            profiles = {
-              system = {
-                user = "root";
-                sshUser = "root";
-                remoteBuild = true;
-                plath = deploy-rs.lib.x86_64-linux.activate.nixos
-                  self.nixosConfigurations.shanghai;
               };
             };
           };

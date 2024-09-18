@@ -4,16 +4,7 @@
   boot = {
     plymouth.enable = true;
     initrd.systemd.enable = true;
-    loader = {
-      efi.efiSysMountPoint = "/boot/efi";
-      systemd-boot = {
-        sortKey = "aa";
-        netbootxyz = {
-          enable = true;
-          sortKey = "zz";
-        };
-      };
-    };
+    loader.efi.efiSysMountPoint = "/boot/efi";
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     extraModprobeConfig = ''
       options bluetooth disable_ertm=1

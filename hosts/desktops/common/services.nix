@@ -2,10 +2,7 @@
 
 {
   services = {
-    printing = {
-      enable = true;
-      drivers = with pkgs; [ epson-escpr ];
-    };
+    printing.enable = true;
     udev.packages = with pkgs; [ yubikey-personalization ];
     desktopManager.plasma6.enable = true;
     nginx = {

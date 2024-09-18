@@ -7,9 +7,9 @@
     agenix
     bind
     btop
+    fastfetch
     git
     helix
-    neofetch
     sysz
     tmux
     tree

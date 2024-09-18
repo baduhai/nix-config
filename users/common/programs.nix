@@ -166,7 +166,6 @@
         tsh = "ssh -o RequestTTY=yes $argv tmux -u -CC new -A -s tmux-main";
       };
       shellInit = ''
-        set -g -x NNN_OPTS H
         set -g -x FONTCONFIG_FILE ${pkgs.fontconfig.out}/etc/fonts/fonts.conf
       '';
       plugins = [

@@ -9,6 +9,11 @@
         enable = true;
         editor = false;
         consoleMode = "max";
+        sortKey = "aa";
+        netbootxyz = {
+          enable = true;
+          sortKey = "zz";
+        };
       };
     };
   };

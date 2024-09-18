@@ -34,6 +34,7 @@ in {
       krita
       libfido2
       libreoffice-qt
+      lilipod
       mangohud
       microsoft-edge
       mission-center
@@ -92,7 +93,7 @@ in {
     };
     nh = {
       enable = true;
-      flake = "/home/user/Projects/nix-config";
+      flake = "/home/user/Projects/personal/nix-config";
     };
   };
 
