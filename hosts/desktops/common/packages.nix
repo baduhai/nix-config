@@ -35,6 +35,7 @@ in {
       libfido2
       libreoffice-qt
       mangohud
+      microsoft-edge
       mission-center
       mpv
       nextcloud-client
@@ -67,9 +68,10 @@ in {
     enable = true;
     packages = [
       "com.github.tchx84.Flatseal"
-      "com.microsoft.Edge"
       "com.steamgriddb.SGDBoop"
       "io.github.zen_browser.zen"
+      "org.gtk.Gtk3theme.adw-gtk3"
+      "org.gtk.Gtk3theme.adw-gtk3-dark"
     ];
     uninstallUnmanaged = true;
     update.auto.enable = true;

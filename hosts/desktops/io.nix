@@ -49,6 +49,11 @@ in {
     sessionVariables.ALSA_CONFIG_UCM2 = "${cml-ucm-conf}/share/alsa/ucm2";
   };
 
+  # TODO: remove once gmodena/nix-flatpak/issues/45 fixed
+  systemd.services."flatpak-managed-install" = {
+    serviceConfig = { ExecStartPre = "${pkgs.coreutils}/bin/sleep 5"; };
+  };
+
   services = {
     keyd = {
       enable = true;
