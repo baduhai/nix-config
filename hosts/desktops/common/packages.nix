@@ -96,14 +96,7 @@ in {
 
   fonts = {
     fontDir.enable = true;
-    fontconfig.enable = true;
-    packages = with pkgs; [
-      corefonts
-      inter
-      maple-mono
-      roboto
-      (nerdfonts.override { fonts = [ "Hack" ]; })
-    ];
+    packages = with pkgs; [ corefonts maple-mono noto-fonts-cjk roboto ];
   };
 
   environment.plasma6.excludePackages =

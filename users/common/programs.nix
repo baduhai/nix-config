@@ -12,7 +12,6 @@
     helix = {
       enable = true;
       settings = {
-        theme = "catppuccin-mocha_transparent";
         editor = {
           idle-timeout = 0;
           line-number = "relative";
@@ -34,17 +33,11 @@
         };
       };
       languages = {
-        language = [
-          {
-            name = "nix";
-            auto-format = true;
-            formatter.command = "nixfmt";
-          }
-        ];
-      };
-      themes.catppuccin-mocha_transparent = {
-        inherits = "catppuccin_mocha";
-        "ui.background" = "{}";
+        language = [{
+          name = "nix";
+          auto-format = true;
+          formatter.command = "nixfmt";
+        }];
       };
     };
 
@@ -154,7 +147,6 @@
     btop = {
       enable = true;
       settings = {
-        color_theme = "catppuccin_mocha.theme";
         theme_background = false;
         proc_sorting = "cpu direct";
         update_ms = 500;

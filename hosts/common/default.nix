@@ -12,5 +12,6 @@
     ./services.nix
     ./users.nix
     ./virtualisation.nix
+    ./stylix.nix
   ];
 }

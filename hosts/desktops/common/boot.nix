@@ -2,11 +2,7 @@
 
 {
   boot = {
-    plymouth = {
-      enable = true;
-      themePackages = with pkgs; [ adi1090x-plymouth-themes ];
-      theme = "colorful_sliced";
-    };
+    plymouth.enable = true;
     initrd.systemd.enable = true;
     loader = {
       efi.efiSysMountPoint = "/boot/efi";

@@ -43,11 +43,13 @@
     };
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
+
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, nixpkgs-stable, deploy-rs
     , agenix, nixos-generators, homepage, nix-minecraft, impermanence
-    , nix-flatpak, nix-index-db, ... }: {
+    , nix-flatpak, nix-index-db, stylix, ... }: {
       nixosConfigurations = {
         rotterdam = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -59,6 +61,7 @@
             impermanence.nixosModules.impermanence
             nix-index-db.nixosModules.nix-index
             nix-flatpak.nixosModules.nix-flatpak
+            stylix.nixosModules.stylix
             {
               nixpkgs.overlays =
                 [ agenix.overlays.default self.overlays.custom ];
@@ -76,6 +79,7 @@
             impermanence.nixosModules.impermanence
             nix-index-db.nixosModules.nix-index
             nix-flatpak.nixosModules.nix-flatpak
+            stylix.nixosModules.stylix
             {
               nixpkgs.overlays =
                 [ agenix.overlays.default self.overlays.custom ];
