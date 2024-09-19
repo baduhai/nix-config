@@ -12,9 +12,9 @@ in {
             local function get_initial_cols_by_hostname()
               local hostname = wezterm.hostname()
               if hostname == "rotterdam" then
-                return 110
+                return 116
               elseif hostname == "io" then
-                return 89
+                return 93
               else
                 return 110
               end

@@ -121,8 +121,8 @@
           style = "fg:bg bg:text";
         };
         character = {
-          error_symbol = "[✗](bold red) ";
-          success_symbol = "[󱐋](bold green) ";
+          error_symbol = "[✗](bold red)";
+          success_symbol = "[󱐋](bold green)";
         };
         palettes.night = {
           bg = "#1E1E2E";
