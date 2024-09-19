@@ -367,15 +367,15 @@
     "homepage": {
       "flake": false,
       "locked": {
-        "lastModified": 1722611836,
-        "narHash": "sha256-TtEBTPtDSD/u80aq+cJRhoLbqhgR3rWRFSs3ziE0QcI=",
-        "owner": "AlexW00",
+        "lastModified": 1726755253,
+        "narHash": "sha256-nfslP2axYecb5xXS+C9dVzRbRkYZKfHfu0m4pPNsF4A=",
+        "owner": "baduhai",
         "repo": "StartTreeV2",
-        "rev": "7bfb82edf6e789f07135b0f1c44b04aaff9f6f42",
+        "rev": "90231f06b57d848d68996345a88b958040614736",
         "type": "github"
       },
       "original": {
-        "owner": "AlexW00",
+        "owner": "baduhai",
         "repo": "StartTreeV2",
         "type": "github"
       }
@@ -570,15 +570,16 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1726497442,
-        "narHash": "sha256-fieyqmLEJQqqnuJcg2CAnQ8kHapXHhg9rL48NNWjnPw=",
-        "owner": "danth",
+        "lastModified": 1726750968,
+        "narHash": "sha256-lvLSZlgMbJ03UXp8UA+m23tCVqp9qTUvouOhAwc21MY=",
+        "owner": "baduhai",
         "repo": "stylix",
-        "rev": "149b313ddf91c3cc94309170498b162cec666675",
+        "rev": "82d216cdc2389de52cb20f5f1c89aed0a50cab71",
         "type": "github"
       },
       "original": {
-        "owner": "danth",
+        "owner": "baduhai",
+        "ref": "wezterm-fancy-tab-bar",
         "repo": "stylix",
         "type": "github"
       }

@@ -27,8 +27,9 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
+    # TODO change to original once merge reques accepted
     homepage = {
-      url = "github:AlexW00/StartTreeV2";
+      url = "github:baduhai/StartTreeV2";
       flake = false;
     };
 
@@ -44,7 +45,8 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
 
-    stylix.url = "github:danth/stylix";
+    # TODO change to original once merge reques accepted
+    stylix.url = "github:baduhai/stylix/wezterm-fancy-tab-bar";
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, nixpkgs-stable, deploy-rs
