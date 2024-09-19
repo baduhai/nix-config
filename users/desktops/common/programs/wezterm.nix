@@ -21,6 +21,12 @@ in {
             end
             return {
             disable_default_key_bindings = true,
+            window_padding = {
+              left = 0,
+              right = 0,
+              bottom = 0,
+              top = 0,
+            },
             colors = {
               tab_bar = {
                 background = '${tabbar-background}',
