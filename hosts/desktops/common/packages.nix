@@ -34,7 +34,7 @@ in {
       krita
       libfido2
       libreoffice-qt
-      lilipod
+      # lilipod
       mangohud
       microsoft-edge
       mission-center
