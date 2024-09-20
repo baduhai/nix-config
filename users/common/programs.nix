@@ -62,7 +62,6 @@
       settings = {
         add_newline = false;
         format = "$git_branch$git_status$nix_shell[ ](bold green)";
-        palette = "stylix";
         git_branch.symbol = " ";
         nix_shell = {
           format = "via [$symbol $state]($style) ";
@@ -78,19 +77,6 @@
         character = {
           error_symbol = "[✗](bold red)";
           success_symbol = "[󱐋](bold green)";
-        };
-        palettes.stylix = {
-          background = config.lib.stylix.colors.withHashtag.base00;
-          backgroundAlt = config.lib.stylix.colors.withHashtag.base01;
-          green = config.lib.stylix.colors.withHashtag.base0B;
-          cyan = config.lib.stylix.colors.withHashtag.base0C;
-          yellow = config.lib.stylix.colors.withHashtag.base0A;
-          red = config.lib.stylix.colors.withHashtag.base08;
-          blue = config.lib.stylix.colors.withHashtag.base0D;
-          purple = config.lib.stylix.colors.withHashtag.base0E;
-          main = config.lib.stylix.colors.withHashtag.base05;
-          seco = config.lib.stylix.colors.withHashtag.base04;
-          tert = config.lib.stylix.colors.withHashtag.base06;
         };
       };
     };
