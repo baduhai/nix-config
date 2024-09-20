@@ -16,6 +16,11 @@
             return 100
           end
         end
+        wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
+          -- Tab indices are 0-based, so add 1
+          local tab_index = tab.tab_index + 1
+          return " :" .. tab_index .. ": "
+        end)
         wezterm.on('update-right-status', function(window, pane)
           -- Each element holds the text for a cell in a "powerline" style << fade
           local cells = {}
@@ -25,12 +30,28 @@
           -- shell is using OSC 7 on the remote host.
           local cwd_uri = pane:get_current_working_dir()
           if cwd_uri then
-            local cwd = ""
-            local hostname = ""
+            local cwd = cwd_uri.file_path
+            local home_dir = os.getenv("HOME")
+            -- Replace the home directory path with ~
+            if cwd:sub(1, #home_dir) == home_dir then
+                cwd = "~" .. cwd:sub(#home_dir + 1)
+            end
+            local function shorten_path(cwd)
+              local parts = {}
+              -- Split the cwd by '/'
+              for part in string.gmatch(cwd, "[^/]+") do
+                table.insert(parts, part)
+              end
+              -- Shorten all directory names except the last one
+              for i = 1, #parts - 1 do
+                parts[i] = parts[i]:sub(1, 1)
+              end
+              -- Rebuild the shortened path
+              return table.concat(parts, "/")
+            end
+            cwd = shorten_path(cwd)
 
-            cwd = cwd_uri.file_path
-            hostname = cwd_uri.host or wezterm.hostname()
-
+            local hostname = cwd_uri.host or wezterm.hostname()
             -- Remove the domain name portion of the hostname
             local dot = hostname:find '[.]'
             if dot then
@@ -59,7 +80,6 @@
             '${config.lib.stylix.colors.withHashtag.base01}',
             '${config.lib.stylix.colors.withHashtag.base02}',
             '${config.lib.stylix.colors.withHashtag.base03}',
-            '${config.lib.stylix.colors.withHashtag.base04}',
             '${config.lib.stylix.colors.withHashtag.base04}',
           }
 
