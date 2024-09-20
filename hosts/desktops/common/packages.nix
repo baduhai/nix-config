@@ -63,6 +63,7 @@ in {
       ventoy
       virt-manager
       wezterm
+      inputs.zen-browser.packages."${system}".specific
     ] ++ kdepkgs;
 
   services.flatpak = {
@@ -70,7 +71,6 @@ in {
     packages = [
       "com.github.tchx84.Flatseal"
       "com.steamgriddb.SGDBoop"
-      "io.github.zen_browser.zen"
       "org.gtk.Gtk3theme.adw-gtk3"
       "org.gtk.Gtk3theme.adw-gtk3-dark"
     ];
