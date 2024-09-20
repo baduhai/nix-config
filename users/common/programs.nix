@@ -50,17 +50,9 @@
     tmux = {
       enable = true;
       clock24 = true;
-      terminal = "tmux-256color";
+      terminal = "xterm-256color";
       mouse = true;
       keyMode = "vi";
-      extraConfig = ''
-        set-option -ga terminal-overrides ",alacritty:Tc"
-      '';
-    };
-
-    zellij = {
-      enable = true;
-      enableBashIntegration = true;
     };
 
     starship = {
@@ -69,68 +61,19 @@
       enableFishIntegration = true;
       settings = {
         add_newline = false;
-        format = ''
-          [░▒▓](main)$os[](fg:main bg:cyan)$directory[](fg:cyan bg:blue)$git_branch$git_status[](fg:blue bg:purple)$nix_shell$rust[](fg:purple bg:yellow)$time[](fg:yellow)$fill[](fg:yellow)$cmd_duration[](fg:purple bg:yellow)[](fg:blue bg:purple)[](fg:cyan bg:blue)$hostname[▓▒░](main)
-          [  ](blue)'';
+        format = "$git_branch$git_status$nix_shell[ ](bold green)";
         palette = "stylix";
-        os = {
-          disabled = false;
-          style = "bg:main fg:background";
-          symbols.NixOS = "  ";
-        };
-        directory = {
-          format = "[ $path ]($style)";
-          style = "fg:background bg:cyan";
-          truncation_length = 3;
-          truncation_symbol = "󰇘 ";
-          substitutions = {
-            Documents = " ";
-            Downloads = " ";
-            Music = " ";
-            Pictures = " ";
-            Videos = " ";
-          };
-        };
-        git_branch = {
-          format = "[[ $symbol $branch ](fg:background bg:blue)]($style)";
-          style = "bg:blue";
-          symbol = "";
-        };
-        git_status = {
-          format =
-            "[[($all_status$ahead_behind )](fg:background bg:blue)]($style)";
-          style = "bg:blue";
-        };
-        right_format = "$character";
+        git_branch.symbol = " ";
         nix_shell = {
-          format = "[[ $symbol ](fg:background bg:purple)]($style)";
+          format = "via [$symbol $state]($style) ";
           heuristic = true;
-          style = "bg:purple";
           symbol = "󱄅";
         };
-        rust = {
-          format = "[[ $symbol ($version) ](fg:background bg:purple)]($style)";
-          style = "bg:purple";
-          symbol = "";
-        };
-        time = {
-          disabled = false;
-          format = "[[  $time ](fg:background bg:yellow)]($style)";
-          style = "bg:yellow";
-          time_format = "%R";
-        };
-        fill.symbol = " ";
+        right_format = "$cmd_duration$character";
         cmd_duration = {
-          format = "[[ $duration  ](fg:background bg:yellow)]($style)";
-          min_time = 0;
-          style = "bg:yellow";
-        };
-        hostname = {
-          format =
-            "[[$ssh_symbol](fg:background bg:cyan)[](bg:cyan fg:main)$hostname ]($style)";
-          ssh_only = false;
-          ssh_symbol = "  ";
-          style = "fg:background bg:main";
+          format = "[ $duration ]($style)";
+          style = "yellow";
+          min_time = 10;
         };
         character = {
           error_symbol = "[✗](bold red)";
@@ -138,6 +81,7 @@
         };
         palettes.stylix = {
           background = config.lib.stylix.colors.withHashtag.base00;
+          backgroundAlt = config.lib.stylix.colors.withHashtag.base01;
           green = config.lib.stylix.colors.withHashtag.base0B;
           cyan = config.lib.stylix.colors.withHashtag.base0C;
           yellow = config.lib.stylix.colors.withHashtag.base0A;
@@ -145,6 +89,8 @@
           blue = config.lib.stylix.colors.withHashtag.base0D;
           purple = config.lib.stylix.colors.withHashtag.base0E;
           main = config.lib.stylix.colors.withHashtag.base05;
+          seco = config.lib.stylix.colors.withHashtag.base04;
+          tert = config.lib.stylix.colors.withHashtag.base06;
         };
       };
     };
