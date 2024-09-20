@@ -47,9 +47,6 @@
 
     # TODO change to original once merge reques accepted
     stylix.url = "github:baduhai/stylix/wezterm-fancy-tab-bar";
-
-    # TODO remove once in nixpkgs
-    zen-browser.url = "github:baduhai/zen-browser-flake";
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, nixpkgs-stable, deploy-rs
