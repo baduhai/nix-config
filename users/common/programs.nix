@@ -50,7 +50,17 @@
     tmux = {
       enable = true;
       clock24 = true;
-      extraConfig = "set -g mouse on";
+      terminal = "tmux-256color";
+      mouse = true;
+      keyMode = "vi";
+      extraConfig = ''
+        set-option -ga terminal-overrides ",alacritty:Tc"
+      '';
+    };
+
+    zellij = {
+      enable = true;
+      enableBashIntegration = true;
     };
 
     starship = {
@@ -60,17 +70,17 @@
       settings = {
         add_newline = false;
         format = ''
-          [░▒▓](text)$os[](fg:text bg:prim)$directory[](fg:prim bg:seco)$git_branch$git_status[](fg:seco bg:tert)$nix_shell$rust[](fg:tert bg:quar)$time[](fg:quar)$fill[](fg:quar)$cmd_duration[](fg:tert bg:quar)[](fg:seco bg:tert)[](fg:prim bg:seco)$hostname[▓▒░](text)
-          [  ](seco)'';
-        palette = "night";
+          [░▒▓](main)$os[](fg:main bg:cyan)$directory[](fg:cyan bg:blue)$git_branch$git_status[](fg:blue bg:purple)$nix_shell$rust[](fg:purple bg:yellow)$time[](fg:yellow)$fill[](fg:yellow)$cmd_duration[](fg:purple bg:yellow)[](fg:blue bg:purple)[](fg:cyan bg:blue)$hostname[▓▒░](main)
+          [  ](blue)'';
+        palette = "stylix";
         os = {
           disabled = false;
-          style = "bg:text fg:bg";
+          style = "bg:main fg:background";
           symbols.NixOS = "  ";
         };
         directory = {
           format = "[ $path ]($style)";
-          style = "fg:bg bg:prim";
+          style = "fg:background bg:cyan";
           truncation_length = 3;
           truncation_symbol = "󰇘 ";
           substitutions = {
@@ -82,58 +92,59 @@
           };
         };
         git_branch = {
-          format = "[[ $symbol $branch ](fg:bg bg:seco)]($style)";
-          style = "bg:seco";
+          format = "[[ $symbol $branch ](fg:background bg:blue)]($style)";
+          style = "bg:blue";
           symbol = "";
         };
         git_status = {
-          format = "[[($all_status$ahead_behind )](fg:bg bg:seco)]($style)";
-          style = "bg:seco";
+          format =
+            "[[($all_status$ahead_behind )](fg:background bg:blue)]($style)";
+          style = "bg:blue";
         };
         right_format = "$character";
         nix_shell = {
-          format = "[[ $symbol ](fg:bg bg:tert)]($style)";
+          format = "[[ $symbol ](fg:background bg:purple)]($style)";
           heuristic = true;
-          style = "bg:tert";
+          style = "bg:purple";
           symbol = "󱄅";
         };
         rust = {
-          format = "[[ $symbol ($version) ](fg:bg bg:tert)]($style)";
-          style = "bg:tert";
+          format = "[[ $symbol ($version) ](fg:background bg:purple)]($style)";
+          style = "bg:purple";
           symbol = "";
         };
         time = {
           disabled = false;
-          format = "[[  $time ](fg:seco bg:quar)]($style)";
-          style = "bg:quar";
+          format = "[[  $time ](fg:background bg:yellow)]($style)";
+          style = "bg:yellow";
           time_format = "%R";
         };
         fill.symbol = " ";
         cmd_duration = {
-          format = "[[ $duration  ](fg:seco bg:quar)]($style)";
+          format = "[[ $duration  ](fg:background bg:yellow)]($style)";
           min_time = 0;
-          style = "bg:quar";
+          style = "bg:yellow";
         };
         hostname = {
           format =
-            "[[$ssh_symbol](fg:bg bg:prim)[](bg:prim fg:text)$hostname ]($style)";
+            "[[$ssh_symbol](fg:background bg:cyan)[](bg:cyan fg:main)$hostname ]($style)";
           ssh_only = false;
           ssh_symbol = "  ";
-          style = "fg:bg bg:text";
+          style = "fg:background bg:main";
         };
         character = {
           error_symbol = "[✗](bold red)";
           success_symbol = "[󱐋](bold green)";
         };
-        palettes.night = {
-          bg = "#1E1E2E";
-          green = "#a6e3a1";
-          prim = "#a2b3e6";
-          quar = "#303062";
-          red = "#f38ba8";
-          seco = "#738cd9";
-          tert = "#4566cd";
-          text = "#d0d9f2";
+        palettes.stylix = {
+          background = config.lib.stylix.colors.withHashtag.base00;
+          green = config.lib.stylix.colors.withHashtag.base0B;
+          cyan = config.lib.stylix.colors.withHashtag.base0C;
+          yellow = config.lib.stylix.colors.withHashtag.base0A;
+          red = config.lib.stylix.colors.withHashtag.base08;
+          blue = config.lib.stylix.colors.withHashtag.base0D;
+          purple = config.lib.stylix.colors.withHashtag.base0E;
+          main = config.lib.stylix.colors.withHashtag.base05;
         };
       };
     };
