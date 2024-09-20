@@ -21,7 +21,6 @@
             insert = "bar";
             select = "underline";
           };
-          mouse = false;
           soft-wrap.enable = true;
           auto-format = true;
           indent-guides.render = true;

@@ -17,9 +17,21 @@
           end
         end
         wezterm.on('format-tab-title', function(tab, tabs, panes, config, hover, max_width)
-          -- Tab indices are 0-based, so add 1
+          local left_sep = ""
+          local right_sep = ""
+          -- Define the tab title format using the Powerline separator
           local tab_index = tab.tab_index + 1
-          return " :" .. tab_index .. ": "
+          return {
+            { Background = { Color = "${config.lib.stylix.colors.withHashtag.base01}" } },
+            { Foreground = { Color = tab.is_active and "${config.lib.stylix.colors.withHashtag.base04}" or "${config.lib.stylix.colors.withHashtag.base01}" } },
+            { Text = left_sep },
+            { Background = { Color = tab.is_active and "${config.lib.stylix.colors.withHashtag.base04}" or "${config.lib.stylix.colors.withHashtag.base01}" } },
+            { Foreground = { Color = "${config.lib.stylix.colors.withHashtag.base05}" } },
+            { Text = " " .. tab_index .. " " },
+            { Background = { Color = "${config.lib.stylix.colors.withHashtag.base01}" } },
+            { Foreground = { Color = tab.is_active and "${config.lib.stylix.colors.withHashtag.base04}" or "${config.lib.stylix.colors.withHashtag.base01}" } },
+            { Text = right_sep },
+          }
         end)
         wezterm.on('update-right-status', function(window, pane)
           -- Each element holds the text for a cell in a "powerline" style << fade
