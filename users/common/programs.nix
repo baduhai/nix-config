@@ -13,6 +13,7 @@
       enable = true;
       settings = {
         editor = {
+          file-picker.hidden = false;
           idle-timeout = 0;
           line-number = "relative";
           cursor-shape = {
