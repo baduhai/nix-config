@@ -60,22 +60,27 @@
       enableFishIntegration = true;
       settings = {
         add_newline = false;
-        format = "$git_branch$git_status$nix_shell[ ](bold green)";
-        git_branch.symbol = " ";
-        nix_shell = {
-          format = "via [$symbol $state]($style) ";
-          heuristic = true;
-          symbol = "󱄅";
-        };
-        right_format = "$cmd_duration$character";
-        cmd_duration = {
-          format = "[ $duration ]($style)";
-          style = "yellow";
-          min_time = 10;
-        };
+        format = "$character[❯ ](green)";
         character = {
-          error_symbol = "[✗](bold red)";
-          success_symbol = "[󱐋](bold green)";
+          error_symbol = "[✗](red)";
+          success_symbol = "[󱐋](green)";
+        };
+        right_format = "$cmd_duration$git_branch$git_status$nix_shell";
+        cmd_duration = {
+          format = "[󰄉 $duration ]($style)";
+          style = "yellow";
+          min_time = 500;
+        };
+        git_branch = {
+          symbol = " ";
+          style = "purple";
+        };
+        git_status.style = "red";
+        nix_shell = {
+          format = "via [$symbol$state]($style)";
+          heuristic = true;
+          style = "blue";
+          symbol = "󱄅 ";
         };
       };
     };
@@ -108,9 +113,6 @@
         fish_greeting = "";
         tsh = "ssh -o RequestTTY=yes $argv tmux -u -CC new -A -s tmux-main";
       };
-      shellInit = ''
-        set -g -x FONTCONFIG_FILE ${pkgs.fontconfig.out}/etc/fonts/fonts.conf
-      '';
       plugins = [
         {
           name = "bang-bang";
@@ -122,12 +124,21 @@
           };
         }
         {
-          name = "fzf.fish";
+          name = "z";
           src = pkgs.fetchFromGitHub {
-            owner = "PatrickF1";
-            repo = "fzf.fish";
-            rev = "v9.2";
-            sha256 = "sha256-XmRGe39O3xXmTvfawwT2mCwLIyXOlQm7f40mH5tzz+s=";
+            owner = "jethrokuan";
+            repo = "z";
+            rev = "85f863f20f24faf675827fb00f3a4e15c7838d76";
+            sha256 = "sha256-+FUBM7CodtZrYKqU542fQD+ZDGrd2438trKM0tIESs0=";
+          };
+        }
+        {
+          name = "sponge";
+          src = pkgs.fetchFromGitHub {
+            owner = "meaningful-ooo";
+            repo = "sponge";
+            rev = "384299545104d5256648cee9d8b117aaa9a6d7be";
+            sha256 = "sha256-MdcZUDRtNJdiyo2l9o5ma7nAX84xEJbGFhAVhK+Zm1w=";
           };
         }
       ];
