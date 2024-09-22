@@ -10,6 +10,7 @@
     fastfetch
     git
     helix
+    killall
     sysz
     tmux
     tree
