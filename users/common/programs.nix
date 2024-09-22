@@ -60,10 +60,10 @@
       enableFishIntegration = true;
       settings = {
         add_newline = false;
-        format = "$character[❯ ](green)";
+        format = "$character";
         character = {
-          error_symbol = "[✗](red)";
-          success_symbol = "[󱐋](green)";
+          error_symbol = "[ 󱐋](red)";
+          success_symbol = "[ 󱐋](green)";
         };
         right_format = "$cmd_duration$git_branch$git_status$nix_shell";
         cmd_duration = {
