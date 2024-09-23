@@ -1,13 +1,23 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   virtualisation.oci-containers.containers."cinny" = {
     image = "ghcr.io/cinnyapp/cinny:latest";
     ports = [ "${config.ports.cinny}:80" ];
-    environment = { TZ = "America/Bahia"; };
+    environment = {
+      TZ = "America/Bahia";
+    };
     volumes = [ "/data/matrix/cinny-config.json:/app/config.json" ];
-    extraOptions =
-      [ "--pull=newer" "--label=io.containers.autoupdate=registry" ];
+    extraOptions = [
+      "--pull=newer"
+      "--label=io.containers.autoupdate=registry"
+    ];
   };
 
   services.nginx.virtualHosts."cinny.baduhai.dev" = {

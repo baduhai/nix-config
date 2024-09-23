@@ -1,4 +1,10 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   qubesnsh = pkgs.writeTextFile {
@@ -9,8 +15,7 @@ let
   reboot-into-qubes = pkgs.makeDesktopItem {
     name = "reboot-into-qubes";
     icon = pkgs.fetchurl {
-      url =
-        "https://raw.githubusercontent.com/vinceliuice/Qogir-icon-theme/31f267e1f5fd4e9596bfd78dfb41a03d3a9f33ee/src/scalable/apps/distributor-logo-qubes.svg";
+      url = "https://raw.githubusercontent.com/vinceliuice/Qogir-icon-theme/31f267e1f5fd4e9596bfd78dfb41a03d3a9f33ee/src/scalable/apps/distributor-logo-qubes.svg";
       sha256 = "sha256-QbHr7s5Wcs7uFtfqZctMyS0iDbMfiiZOKy2nHhDOfn0=";
     };
     desktopName = "Qubes OS";
@@ -28,7 +33,8 @@ let
       fi
     '';
   };
-in {
+in
+{
   imports = [
     # Host-common imports
     ../common

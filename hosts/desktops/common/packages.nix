@@ -1,4 +1,10 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   kdepkgs = with pkgs.kdePackages; [
     ark
@@ -9,8 +15,10 @@ let
     merkuro
     kdepim-addons
   ];
-in {
-  environment.systemPackages = with pkgs;
+in
+{
+  environment.systemPackages =
+    with pkgs;
     [
       aspell
       aspellDicts.de
@@ -64,7 +72,8 @@ in {
       ventoy
       virt-manager
       wezterm
-    ] ++ kdepkgs;
+    ]
+    ++ kdepkgs;
 
   services.flatpak = {
     enable = true;
@@ -100,9 +109,22 @@ in {
 
   fonts = {
     fontDir.enable = true;
-    packages = with pkgs; [ corefonts maple-mono noto-fonts-cjk roboto ];
+    packages = with pkgs; [
+      corefonts
+      maple-mono
+      noto-fonts-cjk
+      roboto
+    ];
   };
 
-  environment.plasma6.excludePackages =
-    (with pkgs.kdePackages; [ elisa gwenview khelpcenter konsole oxygen ]);
+  environment.plasma6.excludePackages = (
+    with pkgs.kdePackages;
+    [
+      elisa
+      gwenview
+      khelpcenter
+      konsole
+      oxygen
+    ]
+  );
 }

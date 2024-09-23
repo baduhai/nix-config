@@ -1,5 +1,8 @@
 { ... }:
 
 {
-  imports = [ ./boot.nix ./nix.nix ];
+  imports = [
+    ./boot.nix
+    ./nix.nix
+  ];
 }

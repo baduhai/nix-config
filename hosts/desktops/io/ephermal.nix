@@ -1,10 +1,18 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   boot.initrd.systemd.services.recreate-root = {
     description = "Rolling over and creating new filesystem root";
     requires = [ "initrd-root-device.target" ];
-    after = [ "local-fs-pre.target" "initrd-root-device.target" ];
+    after = [
+      "local-fs-pre.target"
+      "initrd-root-device.target"
+    ];
     requiredBy = [ "initrd-root-fs.target" ];
     before = [ "sysroot.mount" ];
     unitConfig = {

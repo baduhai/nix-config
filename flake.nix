@@ -49,13 +49,30 @@
     stylix.url = "github:baduhai/stylix/wezterm-fancy-tab-bar";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nixpkgs-stable, deploy-rs
-    , agenix, nixos-generators, homepage, nix-minecraft, impermanence
-    , nix-flatpak, nix-index-db, stylix, ... }: {
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      home-manager,
+      nixpkgs-stable,
+      deploy-rs,
+      agenix,
+      nixos-generators,
+      homepage,
+      nix-minecraft,
+      impermanence,
+      nix-flatpak,
+      nix-index-db,
+      stylix,
+      ...
+    }:
+    {
       nixosConfigurations = {
         rotterdam = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+          };
           modules = [
             ./hosts/desktops/rotterdam.nix
             agenix.nixosModules.default
@@ -65,15 +82,19 @@
             nix-flatpak.nixosModules.nix-flatpak
             stylix.nixosModules.stylix
             {
-              nixpkgs.overlays =
-                [ agenix.overlays.default self.overlays.custom ];
+              nixpkgs.overlays = [
+                agenix.overlays.default
+                self.overlays.custom
+              ];
             }
           ];
         };
 
         io = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+          };
           modules = [
             ./hosts/desktops/io.nix
             agenix.nixosModules.default
@@ -83,42 +104,49 @@
             nix-flatpak.nixosModules.nix-flatpak
             stylix.nixosModules.stylix
             {
-              nixpkgs.overlays =
-                [ agenix.overlays.default self.overlays.custom ];
+              nixpkgs.overlays = [
+                agenix.overlays.default
+                self.overlays.custom
+              ];
             }
           ];
         };
 
         alexandria = nixpkgs-stable.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+          };
           modules = [
             ./hosts/servers/alexandria.nix
             agenix.nixosModules.default
             self.nixosModules.qbittorrent
-            ({ config, pkgs, ... }:
+            (
+              { config, pkgs, ... }:
               let
                 unstable-overlay = final: prev: {
                   unstable = nixpkgs.legacyPackages.x86_64-linux;
                 };
-              in {
+              in
+              {
                 nixpkgs.overlays = [
                   unstable-overlay
                   agenix.overlays.default
                   nix-minecraft.overlay
                 ];
                 imports = [ nix-minecraft.nixosModules.minecraft-servers ];
-              })
+              }
+            )
           ];
         };
       };
 
       overlays = {
         custom = final: prev: {
-          chromeos-ectool = nixpkgs.legacyPackages."x86_64-linux".callPackage
-            ./packages/chromeos-ectool.nix { };
-          plasticity = nixpkgs.legacyPackages."x86_64-linux".callPackage
-            ./packages/plasticity.nix { };
+          chromeos-ectool =
+            nixpkgs.legacyPackages."x86_64-linux".callPackage ./packages/chromeos-ectool.nix
+              { };
+          plasticity = nixpkgs.legacyPackages."x86_64-linux".callPackage ./packages/plasticity.nix { };
         };
       };
 
@@ -133,8 +161,7 @@
                 user = "root";
                 sshUser = "root";
                 remoteBuild = true;
-                path = deploy-rs.lib.x86_64-linux.activate.nixos
-                  self.nixosConfigurations.alexandria;
+                path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.alexandria;
               };
             };
           };
@@ -146,25 +173,20 @@
                 user = "root";
                 sshUser = "root";
                 remoteBuild = true;
-                path = deploy-rs.lib.x86_64-linux.activate.nixos
-                  self.nixosConfigurations.io;
+                path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.io;
               };
             };
           };
         };
       };
 
-      devShells = {
-        "x86_64-linux".default = nixpkgs.legacyPackages."x86_64-linux".mkShell {
-          packages = with nixpkgs.legacyPackages."x86_64-linux"; [ nil nixfmt ];
-        };
-        "aarch64-linux".default =
-          nixpkgs.legacyPackages."aarch64-linux".mkShell {
-            packages = with nixpkgs.legacyPackages."aarch64-linux"; [
-              nil
-              nixfmt
-            ];
-          };
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
+
+      devShells."x86_64-linux".default = nixpkgs.legacyPackages."x86_64-linux".mkShell {
+        packages = with nixpkgs.legacyPackages."x86_64-linux"; [
+          nil
+          nixfmt-rfc-style
+        ];
       };
 
       nixosModules.qbittorrent = import ./modules/qbittorrent.nix;

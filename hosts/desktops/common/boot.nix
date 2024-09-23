@@ -1,4 +1,10 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   boot = {
@@ -9,7 +15,9 @@
     extraModprobeConfig = ''
       options bluetooth disable_ertm=1
     '';
-    kernel.sysctl = { "net.ipv4.tcp_mtu_probing" = 1; };
+    kernel.sysctl = {
+      "net.ipv4.tcp_mtu_probing" = 1;
+    };
     kernelParams = [
       "quiet"
       "splash"

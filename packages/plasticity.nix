@@ -1,21 +1,54 @@
-{ alsa-lib, at-spi2-atk, autoPatchelfHook, cairo, cups, dbus, desktop-file-utils
-, expat, fetchurl, gdk-pixbuf, gtk3, gvfs, hicolor-icon-theme, lib, libdrm
-, libglvnd, libnotify, libsForQt5, libxkbcommon, mesa, nspr, nss, openssl, pango
-, rpmextract, stdenv, systemd, trash-cli, vulkan-loader, wrapGAppsHook3
-, xdg-utils, xorg }:
+{
+  alsa-lib,
+  at-spi2-atk,
+  autoPatchelfHook,
+  cairo,
+  cups,
+  dbus,
+  desktop-file-utils,
+  expat,
+  fetchurl,
+  gdk-pixbuf,
+  gtk3,
+  gvfs,
+  hicolor-icon-theme,
+  lib,
+  libdrm,
+  libglvnd,
+  libnotify,
+  libsForQt5,
+  libxkbcommon,
+  mesa,
+  nspr,
+  nss,
+  openssl,
+  pango,
+  rpmextract,
+  stdenv,
+  systemd,
+  trash-cli,
+  vulkan-loader,
+  wrapGAppsHook3,
+  xdg-utils,
+  xorg,
+}:
 stdenv.mkDerivation rec {
   pname = "plasticity";
   version = "24.2.3";
 
   src = fetchurl {
-    url =
-      "https://github.com/nkallen/plasticity/releases/download/v${version}/Plasticity-${version}-1.x86_64.rpm";
+    url = "https://github.com/nkallen/plasticity/releases/download/v${version}/Plasticity-${version}-1.x86_64.rpm";
     hash = "sha256-iiVh4k5r5PXN1/VJZcropTMu36N2B/ECq2L5e59QxJY=";
   };
 
   passthru.updateScript = ./update.sh;
 
-  nativeBuildInputs = [ wrapGAppsHook3 autoPatchelfHook rpmextract mesa ];
+  nativeBuildInputs = [
+    wrapGAppsHook3
+    autoPatchelfHook
+    rpmextract
+    mesa
+  ];
 
   buildInputs = [
     alsa-lib

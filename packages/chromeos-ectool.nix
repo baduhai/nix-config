@@ -1,8 +1,18 @@
-{ stdenv, pkgs, lib }:
+{
+  stdenv,
+  pkgs,
+  lib,
+}:
 
 pkgs.stdenv.mkDerivation rec {
   name = "cros-ectool";
-  nativeBuildInputs = with pkgs; [ cmake ninja pkg-config libusb libftdi1 ];
+  nativeBuildInputs = with pkgs; [
+    cmake
+    ninja
+    pkg-config
+    libusb
+    libftdi1
+  ];
   src = pkgs.fetchFromGitLab {
     domain = "gitlab.howett.net";
     owner = "DHowett";

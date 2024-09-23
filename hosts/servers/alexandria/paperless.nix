@@ -1,4 +1,10 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   services = {
@@ -9,7 +15,9 @@
       passwordFile = config.age.secrets.paperless.path;
       port = lib.toInt "${config.ports.paperless}";
       consumptionDirIsPublic = true;
-      settings = { PAPERLESS_OCR_LANGUAGE = "eng+por+deu"; };
+      settings = {
+        PAPERLESS_OCR_LANGUAGE = "eng+por+deu";
+      };
     };
 
     nginx.virtualHosts."paperless.baduhai.dev" = {

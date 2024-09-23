@@ -1,4 +1,10 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   hardware = {
@@ -10,6 +16,5 @@
     i2c.enable = true;
   };
 
-  security.rtkit.enable =
-    true; # Needed for pipewire to acquire realtime priority
+  security.rtkit.enable = true; # Needed for pipewire to acquire realtime priority
 }

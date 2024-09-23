@@ -1,5 +1,8 @@
 { ... }:
 
 {
-  imports = [ ./ephermal.nix ./hardware-configuration.nix ];
+  imports = [
+    ./ephermal.nix
+    ./hardware-configuration.nix
+  ];
 }

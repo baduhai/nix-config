@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   programs = {
@@ -29,15 +34,20 @@
           space = "file_picker";
           w = ":w";
           q = ":q";
-          esc = [ "collapse_selection" "keep_primary_selection" ];
+          esc = [
+            "collapse_selection"
+            "keep_primary_selection"
+          ];
         };
       };
       languages = {
-        language = [{
-          name = "nix";
-          auto-format = true;
-          formatter.command = "nixfmt";
-        }];
+        language = [
+          {
+            name = "nix";
+            auto-format = true;
+            formatter.command = "nixfmt";
+          }
+        ];
       };
     };
 

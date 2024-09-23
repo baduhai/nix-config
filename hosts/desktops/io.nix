@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   cml-ucm-conf = pkgs.alsa-ucm-conf.overrideAttrs {
@@ -14,7 +19,8 @@ let
       cp -R $wttsrc/{cml,sof-rt5682} $out/share/alsa/ucm2/conf.d
     '';
   };
-in {
+in
+{
   imports = [
     # Host-common imports
     ../common
@@ -34,7 +40,11 @@ in {
   };
 
   boot = {
-    kernelParams = [ "nosgx" "i915.fastboot=1" "mem_sleep_default=deep" ];
+    kernelParams = [
+      "nosgx"
+      "i915.fastboot=1"
+      "mem_sleep_default=deep"
+    ];
     extraModprobeConfig = ''
       options snd-intel-dspcfg dsp_driver=3
     '';
@@ -51,7 +61,9 @@ in {
 
   # TODO: remove once gmodena/nix-flatpak/issues/45 fixed
   systemd.services."flatpak-managed-install" = {
-    serviceConfig = { ExecStartPre = "${pkgs.coreutils}/bin/sleep 5"; };
+    serviceConfig = {
+      ExecStartPre = "${pkgs.coreutils}/bin/sleep 5";
+    };
   };
 
   services = {

@@ -1,4 +1,10 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   security.acme = {
@@ -9,7 +15,9 @@
       dnsProvider = "cloudflare";
       credentialsFile = config.age.secrets.cloudflare.path;
     };
-    certs."baduhai.dev" = { extraDomainNames = [ "*.baduhai.dev" ]; };
+    certs."baduhai.dev" = {
+      extraDomainNames = [ "*.baduhai.dev" ];
+    };
   };
 
   boot.kernel.sysctl = {

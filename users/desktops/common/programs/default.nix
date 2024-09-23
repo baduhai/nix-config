@@ -1,5 +1,8 @@
 { ... }:
 
 {
-  imports = [ ./wezterm.nix ./webapps.nix ];
+  imports = [
+    ./wezterm.nix
+    ./webapps.nix
+  ];
 }

@@ -1,13 +1,21 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
-  mkStringOption = default:
+  mkStringOption =
+    default:
     lib.mkOption {
       inherit default;
       type = lib.types.str;
     };
 
-in {
+in
+{
   options.ports = {
     bazaar = mkStringOption "6767";
     radarr = mkStringOption "7878";

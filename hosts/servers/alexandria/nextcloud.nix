@@ -1,4 +1,10 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   services = {
@@ -25,7 +31,9 @@
         dbtype = "pgsql";
         adminpassFile = config.age.secrets.nextcloud-adminpass.path;
       };
-      phpOptions = { "opcache.interned_strings_buffer" = "16"; };
+      phpOptions = {
+        "opcache.interned_strings_buffer" = "16";
+      };
     };
 
     nginx.virtualHosts.${config.services.nextcloud.hostName} = {

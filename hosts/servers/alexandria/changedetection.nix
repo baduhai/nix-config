@@ -1,4 +1,10 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   services = {
@@ -14,8 +20,7 @@
       useACMEHost = "baduhai.dev";
       forceSSL = true;
       kTLS = true;
-      locations."/".proxyPass =
-        "http://127.0.0.1:${config.ports.changedetection-io}";
+      locations."/".proxyPass = "http://127.0.0.1:${config.ports.changedetection-io}";
     };
   };
 }

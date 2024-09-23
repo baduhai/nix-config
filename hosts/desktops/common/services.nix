@@ -1,4 +1,10 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   services = {
@@ -20,19 +26,19 @@
     greetd = {
       enable = true;
       settings = {
-        default_session.command = let
-          xSessions =
-            "${config.services.displayManager.sessionData.desktops}/share/xsessions";
-          wlSessions =
-            "${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
-        in ''
-          ${pkgs.greetd.tuigreet}/bin/tuigreet \
-          --remember \
-          --asterisks \
-          --time \
-          --greeting "NixOS" \
-          --sessions ${xSessions}:${wlSessions}
-        '';
+        default_session.command =
+          let
+            xSessions = "${config.services.displayManager.sessionData.desktops}/share/xsessions";
+            wlSessions = "${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
+          in
+          ''
+            ${pkgs.greetd.tuigreet}/bin/tuigreet \
+            --remember \
+            --asterisks \
+            --time \
+            --greeting "NixOS" \
+            --sessions ${xSessions}:${wlSessions}
+          '';
         initial_session = {
           command = ''
             ${pkgs.kdePackages.plasma-workspace}/bin/startplasma-wayland &> /dev/null
@@ -46,6 +52,9 @@
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-kde xdg-desktop-portal-gtk ];
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-kde
+      xdg-desktop-portal-gtk
+    ];
   };
 }
