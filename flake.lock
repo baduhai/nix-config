@@ -570,16 +570,15 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1726750968,
-        "narHash": "sha256-lvLSZlgMbJ03UXp8UA+m23tCVqp9qTUvouOhAwc21MY=",
-        "owner": "baduhai",
+        "lastModified": 1727093531,
+        "narHash": "sha256-hsb1bcUvpMecFHOP5F3LEyOnXiZ+5MikR92irJ8o7iE=",
+        "owner": "danth",
         "repo": "stylix",
-        "rev": "82d216cdc2389de52cb20f5f1c89aed0a50cab71",
+        "rev": "eccb9f2d63f4582b1c1ffe97d806156147aeee5f",
         "type": "github"
       },
       "original": {
-        "owner": "baduhai",
-        "ref": "wezterm-fancy-tab-bar",
+        "owner": "danth",
         "repo": "stylix",
         "type": "github"
       }

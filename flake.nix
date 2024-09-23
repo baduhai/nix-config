@@ -45,8 +45,7 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
 
-    # TODO change to original once merge reques accepted
-    stylix.url = "github:baduhai/stylix/wezterm-fancy-tab-bar";
+    stylix.url = "github:danth/stylix";
   };
 
   outputs =
