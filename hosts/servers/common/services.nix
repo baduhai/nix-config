@@ -1,5 +1,8 @@
 { ... }:
 
 {
-  services.tailscale.extraSetFlags = [ "--advertise-exit-node" ];
+  services.tailscale = {
+    extraSetFlags = [ "--advertise-exit-node" ];
+    useRoutingFeatures = "server";
+  };
 }

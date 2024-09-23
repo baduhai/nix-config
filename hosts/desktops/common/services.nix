@@ -11,6 +11,7 @@
     printing.enable = true;
     udev.packages = with pkgs; [ yubikey-personalization ];
     desktopManager.plasma6.enable = true;
+    tailscale.useRoutingFeatures = "client";
     nginx = {
       enable = true;
       virtualHosts."localhost".root = inputs.homepage;
