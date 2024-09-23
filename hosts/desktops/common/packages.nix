@@ -58,6 +58,7 @@ in {
       space-cadet-pinball
       sparrow
       steam-run
+      tor-browser
       ungoogled-chromium
       unrar
       ventoy
