@@ -367,15 +367,15 @@
     "homepage": {
       "flake": false,
       "locked": {
-        "lastModified": 1726755253,
-        "narHash": "sha256-nfslP2axYecb5xXS+C9dVzRbRkYZKfHfu0m4pPNsF4A=",
-        "owner": "baduhai",
+        "lastModified": 1727121984,
+        "narHash": "sha256-sbpLXaFeyIBrGbuw58jwxDcMupFqlqmPGO5/QUgI9eg=",
+        "owner": "AlexW00",
         "repo": "StartTreeV2",
-        "rev": "90231f06b57d848d68996345a88b958040614736",
+        "rev": "cfb8b97b14b23b094878867bef94e3c17a144f3f",
         "type": "github"
       },
       "original": {
-        "owner": "baduhai",
+        "owner": "AlexW00",
         "repo": "StartTreeV2",
         "type": "github"
       }

@@ -27,9 +27,8 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    # TODO change to original once merge reques accepted
     homepage = {
-      url = "github:baduhai/StartTreeV2";
+      url = "github:AlexW00/StartTreeV2";
       flake = false;
     };
 
