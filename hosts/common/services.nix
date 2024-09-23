@@ -10,7 +10,10 @@
   services = {
     fwupd.enable = true;
     fstrim.enable = true;
-    tailscale.enable = true;
+    tailscale = {
+      enable = true;
+      extraUpFlags = [ "--operator=user" ];
+    };
     openssh.enable = true;
     keyd = {
       enable = true;
