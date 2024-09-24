@@ -115,10 +115,6 @@
       enable = true;
       interactiveShellInit = "nix-your-shell fish | source";
       loginShellInit = "nix-your-shell fish | source";
-      shellAliases = {
-        wget = ''wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'';
-        h = "hx";
-      };
       functions = {
         fish_greeting = "";
         tsh = "ssh -o RequestTTY=yes $argv tmux -u -CC new -A -s tmux-main";
