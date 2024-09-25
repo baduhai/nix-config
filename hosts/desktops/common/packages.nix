@@ -110,7 +110,6 @@ in
     fontDir.enable = true;
     packages = with pkgs; [
       corefonts
-      maple-mono
       noto-fonts-cjk
       roboto
     ];
