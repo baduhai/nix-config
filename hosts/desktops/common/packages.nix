@@ -31,7 +31,6 @@ in
       distrobox
       fd
       filelight
-      firefox
       fzf
       gimp
       heroic
