@@ -11,6 +11,7 @@
     enable = true;
     dockerCompat = true;
     autoPrune.enable = true;
+    extraPackages = [ pkgs.podman-compose ];
   };
 
   systemd = {
