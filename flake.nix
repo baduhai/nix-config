@@ -9,16 +9,37 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    home-manager-stable = {
+      url = "github:nix-community/home-manager/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
 
-    impermanence.url = "github:nix-community/impermanence";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    agenix = {
-      url = "github:ryantm/agenix";
+    homepage = {
+      url = "github:AlexW00/StartTreeV2";
+      flake = false;
+    };
+
+    impermanence.url = "github:nix-community/impermanence";
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
+
+    nix-index-db = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-minecraft = {
+      url = "github:Infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -27,23 +48,6 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    homepage = {
-      url = "github:AlexW00/StartTreeV2";
-      flake = false;
-    };
-
-    nix-minecraft = {
-      url = "github:Infinidoge/nix-minecraft";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-index-db = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
-
     stylix.url = "github:danth/stylix";
   };
 
@@ -51,16 +55,17 @@
     inputs@{
       self,
       nixpkgs,
-      home-manager,
       nixpkgs-stable,
-      deploy-rs,
+      home-manager,
+      home-manager-stable,
       agenix,
-      nixos-generators,
+      deploy-rs,
       homepage,
-      nix-minecraft,
       impermanence,
       nix-flatpak,
       nix-index-db,
+      nix-minecraft,
+      nixos-generators,
       stylix,
       ...
     }:
@@ -118,17 +123,18 @@
           modules = [
             ./hosts/servers/alexandria.nix
             agenix.nixosModules.default
+            home-manager-stable.nixosModules.default
             self.nixosModules.qbittorrent
             (
               { config, pkgs, ... }:
               let
-                unstable-overlay = final: prev: {
+                unstable = final: prev: {
                   unstable = nixpkgs.legacyPackages.x86_64-linux;
                 };
               in
               {
                 nixpkgs.overlays = [
-                  unstable-overlay
+                  unstable
                   agenix.overlays.default
                   nix-minecraft.overlay
                 ];

@@ -7,6 +7,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "bkp";
-    users.user = import ../../../users/desktops/user.nix;
+    users.user = import ../../../users/servers/user.nix;
   };
 }
+
