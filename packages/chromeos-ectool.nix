@@ -1,11 +1,8 @@
-{
-  stdenv,
-  pkgs,
-  lib,
-}:
+{ pkgs, lib }:
 
-pkgs.stdenv.mkDerivation rec {
+pkgs.stdenv.mkDerivation {
   name = "cros-ectool";
+
   nativeBuildInputs = with pkgs; [
     cmake
     ninja
@@ -13,6 +10,7 @@ pkgs.stdenv.mkDerivation rec {
     libusb
     libftdi1
   ];
+
   src = pkgs.fetchFromGitLab {
     domain = "gitlab.howett.net";
     owner = "DHowett";
@@ -20,10 +18,12 @@ pkgs.stdenv.mkDerivation rec {
     rev = "39d64fb0e79e874cfe9877af69158fc2520b1a80";
     hash = "sha256-SHRnyqicFlviBDu3aH+uKVUstVxpIhZV6JSuZOgOwXU=";
   };
+
   installPhase = ''
     mkdir -p $out/bin
     cp src/ectool $out/bin/ectool
   '';
+
   meta = with lib; {
     description = "ectool for ChromeOS devices";
     homepage = "https://gitlab.howett.net/DHowett/ectool";

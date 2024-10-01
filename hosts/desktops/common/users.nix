@@ -1,10 +1,4 @@
-{
-  inputs,
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ ... }:
 
 {
   environment.sessionVariables = rec {

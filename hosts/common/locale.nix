@@ -1,10 +1,4 @@
-{
-  inputs,
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ ... }:
 
 {
   time.timeZone = "America/Bahia";

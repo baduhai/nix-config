@@ -1,10 +1,4 @@
-{
-  inputs,
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ inputs, ... }:
 
 {
   environment.etc."channels/nixpkgs".source = inputs.nixpkgs-stable.outPath;

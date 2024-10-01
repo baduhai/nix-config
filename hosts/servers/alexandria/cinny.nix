@@ -1,10 +1,4 @@
-{
-  inputs,
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ config, ... }:
 
 {
   virtualisation.oci-containers.containers."cinny" = {

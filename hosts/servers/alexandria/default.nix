@@ -12,7 +12,6 @@
     ./nginx.nix
     ./paperless.nix
     ./searx.nix
-    ./security.nix
     ./services.nix
     ./pairdrop.nix
     ./users.nix
