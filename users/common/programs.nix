@@ -65,12 +65,15 @@
       enableFishIntegration = true;
       settings = {
         add_newline = false;
-        format = "$character";
+        format = ''
+          $directory$git_branch$git_status$nix_shell
+          [ ❯ ](bold green)
+        '';
+        right_format = "$cmd_duration$character";
         character = {
-          error_symbol = "[ 󱐋](red)";
-          success_symbol = "[ 󱐋](green)";
+          error_symbol = "[](red)";
+          success_symbol = "[󱐋](green)";
         };
-        right_format = "$cmd_duration$git_branch$git_status$nix_shell";
         cmd_duration = {
           format = "[󰄉 $duration ]($style)";
           style = "yellow";
