@@ -23,8 +23,8 @@
         name = "Inter";
       };
       monospace = {
-        package = pkgs.nerdfonts.override { fonts = [ "Hack" ]; };
-        name = "Hack Nerd Font";
+        package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
+        name = "FiraCode Nerd Font";
       };
       emoji = {
         package = pkgs.noto-fonts-emoji;
