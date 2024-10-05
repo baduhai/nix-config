@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ pkgs, ... }:
 
 let
   cml-ucm-conf = pkgs.alsa-ucm-conf.overrideAttrs {
@@ -40,6 +35,8 @@ in
   };
 
   boot = {
+    # TODO check if future kernel versions fix boot issue with systemd initrd with tpm
+    initrd.systemd.tpm2.enable = false;
     kernelParams = [
       "nosgx"
       "i915.fastboot=1"
