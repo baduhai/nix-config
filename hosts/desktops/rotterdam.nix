@@ -49,7 +49,6 @@ in
         ids = [ "5653:0001" ];
         settings.main = {
           esc = "overload(meta, esc)";
-          shift = "oneshot(shift)";
         };
       };
     };
