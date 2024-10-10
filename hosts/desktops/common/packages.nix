@@ -34,7 +34,6 @@ in
       libfido2
       libreoffice-qt
       # lilipod
-      logseq
       mangohud
       microsoft-edge
       mission-center
