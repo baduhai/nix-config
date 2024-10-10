@@ -39,8 +39,10 @@ in
       mission-center
       mpv
       nextcloud-client
+      nixfmt-rfc-style
       nix-init
       nix-output-monitor
+      obsidian
       obs-studio
       ocs-url
       orca-slicer
