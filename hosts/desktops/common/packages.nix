@@ -34,6 +34,7 @@ in
       libfido2
       libreoffice-qt
       # lilipod
+      logseq
       mangohud
       microsoft-edge
       mission-center
@@ -42,7 +43,6 @@ in
       nixfmt-rfc-style
       nix-init
       nix-output-monitor
-      obsidian
       obs-studio
       ocs-url
       orca-slicer
