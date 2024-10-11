@@ -125,22 +125,13 @@
             agenix.nixosModules.default
             home-manager-stable.nixosModules.default
             self.nixosModules.qbittorrent
-            (
-              { config, pkgs, ... }:
-              let
-                unstable = final: prev: {
-                  unstable = nixpkgs.legacyPackages.x86_64-linux;
-                };
-              in
-              {
-                nixpkgs.overlays = [
-                  unstable
-                  agenix.overlays.default
-                  nix-minecraft.overlay
-                ];
-                imports = [ nix-minecraft.nixosModules.minecraft-servers ];
-              }
-            )
+            ({
+              nixpkgs.overlays = [
+                agenix.overlays.default
+                nix-minecraft.overlay
+              ];
+              imports = [ nix-minecraft.nixosModules.minecraft-servers ];
+            })
           ];
         };
       };
