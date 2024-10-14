@@ -20,6 +20,7 @@
       settings = {
         trusted_proxies = [ "127.0.0.1" ];
         default_phone_region = "BR";
+        maintenance_window_start = "4";
       };
       config = {
         dbtype = "pgsql";
