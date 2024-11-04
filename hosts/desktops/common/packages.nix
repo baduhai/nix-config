@@ -103,7 +103,7 @@ in
     fontDir.enable = true;
     packages = with pkgs; [
       corefonts
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       roboto
     ];
   };
