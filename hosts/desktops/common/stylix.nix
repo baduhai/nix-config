@@ -4,8 +4,8 @@
   stylix = {
     enable = true;
     image = pkgs.fetchurl {
-      url = "https://github.com/notAxon/wallpapers/blob/main/Nature/Pink_Flowers_Photograph_by_Lisa_Fotios.jpeg?raw=true";
-      sha256 = "sha256-PyK/LuR7IR+FpGFZXdpYkShjKrwaqCtu64SY/wl/RvY=";
+      url = "https://redlib.tux.pizza/img/z7t5x3p9olud1.png";
+      sha256 = "sha256-MKPh/DHBWkXhmWJRShMCFtaN6uL4/opQ6flINQdQWeM=";
     };
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     cursor = {
