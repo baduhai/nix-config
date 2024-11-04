@@ -7,7 +7,7 @@ pkgs.stdenv.mkDerivation {
     cmake
     ninja
     pkg-config
-    libusb
+    libusb1
     libftdi1
   ];
 
