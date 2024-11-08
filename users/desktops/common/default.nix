@@ -3,6 +3,7 @@
 {
   imports = [
     ./programs.nix
-    ./programs
+    ./hyprland.nix
+    ./wezterm.nix
   ];
 }

@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }:
@@ -21,7 +20,6 @@
       luks.devices."enc".device = "/dev/disk/by-uuid/8018720e-42dd-453c-b374-adaa02eb48c9";
     };
     kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [ ];
   };
 
   fileSystems = {
