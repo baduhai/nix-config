@@ -13,6 +13,12 @@
       name = "Breeze_Light";
       size = 24;
     };
+    opacity = {
+      applications = 1.0;
+      desktop = 0.8;
+      popups = config.stylix.opacity.desktop;
+      terminal = 1.0;
+    };
     fonts = {
       serif = {
         package = pkgs.source-serif;

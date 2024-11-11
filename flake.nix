@@ -49,6 +49,11 @@
     };
 
     stylix.url = "github:danth/stylix";
+
+    kwin-effects-forceblur = {
+      url = "github:taj-ny/kwin-effects-forceblur";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
