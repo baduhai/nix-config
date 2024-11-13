@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 let
   kdepkgs = with pkgs.kdePackages; [
     ark
@@ -33,7 +33,7 @@ in
       krita
       libfido2
       libreoffice-qt
-      # lilipod
+      # lilipod BROKEN
       mangohud
       microsoft-edge
       mission-center
@@ -44,7 +44,7 @@ in
       nix-output-monitor
       obs-studio
       ocs-url
-      orca-slicer
+      # orca-slicer BROKEN
       openscad
       p7zip
       plasticity
@@ -62,9 +62,11 @@ in
       ungoogled-chromium
       unrar
       ventoy
+      vesktop
       virt-manager
       wezterm
     ]
+    ++ [ inputs.kwin-effects-forceblur.packages.${pkgs.system}.default ]
     ++ kdepkgs;
 
   services.flatpak = {
@@ -73,7 +75,6 @@ in
       "com.github.tchx84.Flatseal"
       "com.steamgriddb.SGDBoop"
       "io.github.zen_browser.zen"
-      "org.gtk.Gtk3theme.adw-gtk3"
       "org.gtk.Gtk3theme.adw-gtk3-dark"
     ];
     uninstallUnmanaged = true;
