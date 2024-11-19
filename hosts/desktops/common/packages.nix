@@ -36,7 +36,7 @@ in
       # lilipod BROKEN
       mangohud
       microsoft-edge
-      mission-center
+      # mission-center BROKEN
       mpv
       nextcloud-client
       nixfmt-rfc-style
@@ -44,7 +44,7 @@ in
       nix-output-monitor
       obs-studio
       ocs-url
-      # orca-slicer BROKEN
+      orca-slicer
       openscad
       p7zip
       plasticity
@@ -66,7 +66,6 @@ in
       virt-manager
       wezterm
     ]
-    ++ [ inputs.kwin-effects-forceblur.packages.${pkgs.system}.default ]
     ++ kdepkgs;
 
   services.flatpak = {

@@ -21,7 +21,7 @@
       functions = {
         sysrebuild = "nh os switch --ask";
         sysrebuild-boot = "nh os boot --ask";
-        sysupdate = "nix flake update --commit-lock-file /home/user/Projects/personal/nix-config";
+        sysupdate = "nix flake update --commit-lock-file --flake /home/user/Projects/personal/nix-config";
       };
     };
   };
