@@ -71,7 +71,6 @@ in
   services.flatpak = {
     enable = true;
     packages = [
-      "com.github.tchx84.Flatseal"
       "com.steamgriddb.SGDBoop"
       "io.github.zen_browser.zen"
       "org.gtk.Gtk3theme.adw-gtk3-dark"
