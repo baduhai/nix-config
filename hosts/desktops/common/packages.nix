@@ -28,7 +28,6 @@ in
       gimp
       heroic
       inkscape
-      itch
       junction
       kde-rounded-corners
       krita
@@ -37,7 +36,7 @@ in
       # lilipod BROKEN
       mangohud
       microsoft-edge
-      # mission-center BROKEN
+      mission-center
       mpv
       nextcloud-client
       nixfmt-rfc-style
@@ -45,7 +44,7 @@ in
       nix-output-monitor
       obs-studio
       ocs-url
-      orca-slicer
+      # orca-slicer BROKEN
       openscad
       p7zip
       plasticity
@@ -74,6 +73,7 @@ in
     packages = [
       "com.steamgriddb.SGDBoop"
       "io.github.zen_browser.zen"
+      "io.itch.itch"
       "org.gtk.Gtk3theme.adw-gtk3-dark"
     ];
     uninstallUnmanaged = true;
