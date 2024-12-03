@@ -27,6 +27,7 @@ in
       fzf
       gimp
       heroic
+      # itch BROKEN
       inkscape
       junction
       kde-rounded-corners
@@ -73,7 +74,6 @@ in
     packages = [
       "com.steamgriddb.SGDBoop"
       "io.github.zen_browser.zen"
-      "io.itch.itch"
       "org.gtk.Gtk3theme.adw-gtk3-dark"
     ];
     uninstallUnmanaged = true;
