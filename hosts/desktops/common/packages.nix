@@ -50,6 +50,7 @@ in
       p7zip
       plasticity
       prismlauncher
+      protonmail-desktop
       protonup
       qbittorrent
       qview
