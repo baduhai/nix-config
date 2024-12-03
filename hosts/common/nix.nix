@@ -17,5 +17,12 @@
     };
   };
 
+  nixpkgs.config = {
+    allowUnfree = true;
+    enableParallelBuilding = true;
+    buildManPages = false;
+    buildDocs = false;
+  };
+
   system.stateVersion = "22.11";
 }
