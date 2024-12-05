@@ -45,7 +45,7 @@ in
       nix-output-monitor
       obs-studio
       ocs-url
-      # orca-slicer BROKEN
+      orca-slicer
       openscad
       p7zip
       plasticity
