@@ -21,13 +21,14 @@ in
       clonehero
       deploy-rs
       distrobox
+      exhibit
       fd
       filelight
       firefox
       fzf
       gimp
       heroic
-      # itch BROKEN
+      itch
       inkscape
       junction
       kde-rounded-corners
