@@ -143,6 +143,9 @@
             nixpkgs.legacyPackages."x86_64-linux".callPackage ./packages/chromeos-ectool.nix
               { };
           plasticity = nixpkgs.legacyPackages."x86_64-linux".callPackage ./packages/plasticity.nix { };
+          creality-print =
+            nixpkgs.legacyPackages."x86_64-linux".callPackage ./packages/creality-print.nix
+              { };
         };
       };
 

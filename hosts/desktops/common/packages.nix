@@ -19,6 +19,7 @@ in
       aspellDicts.pt_BR
       bat
       clonehero
+      creality-print
       deploy-rs
       distrobox
       exhibit
