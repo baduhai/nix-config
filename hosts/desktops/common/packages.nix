@@ -74,6 +74,7 @@ in
   services.flatpak = {
     enable = true;
     packages = [
+      "com.beavernotes.beavernotes"
       "com.steamgriddb.SGDBoop"
       "io.github.zen_browser.zen"
       "org.gtk.Gtk3theme.adw-gtk3-dark"
