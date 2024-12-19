@@ -54,6 +54,7 @@ in
       plasticity
       prismlauncher
       protonup
+      # quickgui
       qbittorrent
       qview
       ripgrep
@@ -67,7 +68,6 @@ in
       unrar
       ventoy
       vesktop
-      virt-manager
       wezterm
     ]
     ++ kdepkgs;
