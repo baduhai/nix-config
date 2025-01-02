@@ -10,7 +10,7 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     cursor = {
       package = pkgs.kdePackages.breeze-icons;
-      name = "Breeze_Snow";
+      name = "Breeze_Light";
       size = 24;
     };
     opacity = {

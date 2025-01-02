@@ -7,6 +7,4 @@
     # Desktop-common imports
     ./common
   ];
-
-  stylix.targets.gtk.flatpakSupport.enable = false;
 }
