@@ -19,55 +19,29 @@ in
       aspellDicts.pt_BR
       bat
       clonehero
-      creality-print
       deploy-rs
       distrobox
-      exhibit
       fd
-      filelight
-      firefox
       fzf
-      gimp
-      heroic
-      itch
-      inkscape
-      junction
-      kde-rounded-corners
-      krita
+      ghostty
+      gnome-tweaks
       libfido2
-      libreoffice-qt
       # lilipod BROKEN
       mangohud
-      microsoft-edge
       mission-center
-      mpv
-      nextcloud-client
       nixfmt-rfc-style
       nix-init
       nix-output-monitor
-      obsidian
-      obs-studio
       ocs-url
-      orca-slicer
-      openscad
+      # orca-slicer BROKEN
       p7zip
       plasticity
-      prismlauncher
       protonup
-      # quickgui
-      qbittorrent
-      qview
+      # quickgui BROKEN
       ripgrep
-      rnote
-      solvespace
-      space-cadet-pinball
       sparrow
-      steam-run
-      tor-browser
-      ungoogled-chromium
       unrar
       ventoy
-      vesktop
       wezterm
     ]
     ++ kdepkgs;
@@ -75,9 +49,29 @@ in
   services.flatpak = {
     enable = true;
     packages = [
+      "com.github.flxzt.rnote"
+      "com.github.k4zmu2a.spacecadetpinball"
+      "com.heroicgameslauncher.hgl"
+      "com.mattjakeman.ExtensionManager"
+      "com.microsoft.Edge"
+      "com.modrinth.ModrinthApp"
+      "com.nextcloud.desktopclient.nextcloud"
+      "com.obsproject.Studio"
       "com.steamgriddb.SGDBoop"
+      "dev.vencord.Vesktop"
+      "io.github.giantpinkrobots.varia"
+      "io.github.ungoogled_software.ungoogled_chromium"
       "io.github.zen_browser.zen"
-      "org.gtk.Gtk3theme.adw-gtk3-dark"
+      "io.itch.itch"
+      "md.obsidian.Obsidian"
+      "org.gimp.GIMP"
+      "org.gnome.Showtime"
+      "org.inkscape.Inkscape"
+      "org.kde.krita"
+      "org.libreoffice.LibreOffice"
+      "org.mozilla.firefox"
+      "org.torproject.torbrowser-launcher"
+      "re.sonny.Junction"
     ];
     uninstallUnmanaged = true;
     update.auto.enable = true;
@@ -117,7 +111,6 @@ in
       elisa
       gwenview
       khelpcenter
-      konsole
       oxygen
     ]
   );
