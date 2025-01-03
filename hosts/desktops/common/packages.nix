@@ -57,6 +57,7 @@ in
       sparrow
       steam-run
       tor-browser
+      transmission_4-qt6
       ungoogled-chromium
       unrar
       ventoy
@@ -72,7 +73,6 @@ in
       "com.heroicgameslauncher.hgl"
       "com.modrinth.ModrinthApp"
       "com.steamgriddb.SGDBoop"
-      "io.github.giantpinkrobots.varia"
       "io.github.zen_browser.zen"
       "io.itch.itch"
       "md.obsidian.Obsidian"
