@@ -12,6 +12,7 @@ in
   environment.systemPackages =
     with pkgs;
     [
+      adwaita-icon-theme
       aspell
       aspellDicts.de
       aspellDicts.en
@@ -44,6 +45,7 @@ in
       nixfmt-rfc-style
       nix-init
       nix-output-monitor
+      obsidian
       obs-studio
       ocs-url
       # orca-slicer BROKEN
@@ -76,7 +78,6 @@ in
       "com.steamgriddb.SGDBoop"
       "io.github.zen_browser.zen"
       "io.itch.itch"
-      "md.obsidian.Obsidian"
     ];
     uninstallUnmanaged = true;
     update.auto.enable = true;
