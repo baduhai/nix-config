@@ -51,7 +51,6 @@ in
     systemPackages = with pkgs; [
       maliit-keyboard
       sof-firmware
-      chromeos-ectool
     ];
     sessionVariables.ALSA_CONFIG_UCM2 = "${cml-ucm-conf}/share/alsa/ucm2";
   };

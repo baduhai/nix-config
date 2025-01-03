@@ -19,7 +19,6 @@ in
       aspellDicts.pt_BR
       bat
       clonehero
-      creality-print
       deploy-rs
       distrobox
       exhibit
@@ -28,8 +27,6 @@ in
       firefox
       fzf
       gimp
-      heroic
-      itch
       inkscape
       junction
       kde-rounded-corners
@@ -45,22 +42,18 @@ in
       nixfmt-rfc-style
       nix-init
       nix-output-monitor
-      obsidian
       obs-studio
       ocs-url
-      orca-slicer
+      # orca-slicer BROKEN
       openscad
       p7zip
       plasticity
-      prismlauncher
       protonup
-      # quickgui
-      qbittorrent
+      # quickgui BROKEN
       qview
       ripgrep
       rnote
       solvespace
-      space-cadet-pinball
       sparrow
       steam-run
       tor-browser
@@ -75,9 +68,14 @@ in
   services.flatpak = {
     enable = true;
     packages = [
+      "com.github.k4zmu2a.spacecadetpinball"
+      "com.heroicgameslauncher.hgl"
+      "com.modrinth.ModrinthApp"
       "com.steamgriddb.SGDBoop"
+      "io.github.giantpinkrobots.varia"
       "io.github.zen_browser.zen"
-      "org.gtk.Gtk3theme.adw-gtk3-dark"
+      "io.itch.itch"
+      "md.obsidian.Obsidian"
     ];
     uninstallUnmanaged = true;
     update.auto.enable = true;
