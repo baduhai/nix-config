@@ -26,6 +26,7 @@ in
       filelight
       firefox
       fzf
+      ghostty
       gimp
       inkscape
       junction
