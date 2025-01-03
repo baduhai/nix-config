@@ -41,7 +41,6 @@ in
   networking.hostName = "rotterdam";
 
   services = {
-    hardware.openrgb.enable = true;
     flatpak.packages = [ "net.retrodeck.retrodeck" ];
     keyd = {
       enable = true;

@@ -18,6 +18,7 @@ in
       aspellDicts.en-computers
       aspellDicts.pt_BR
       bat
+      bitwarden-desktop
       clonehero
       deploy-rs
       distrobox
@@ -46,7 +47,6 @@ in
       obs-studio
       ocs-url
       # orca-slicer BROKEN
-      openscad
       p7zip
       plasticity
       protonup
