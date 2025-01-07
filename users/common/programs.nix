@@ -111,6 +111,7 @@
 
     fish = {
       enable = true;
+      enableCompletion = false;
       interactiveShellInit = "nix-your-shell fish | source";
       loginShellInit = "nix-your-shell fish | source";
       functions = {
