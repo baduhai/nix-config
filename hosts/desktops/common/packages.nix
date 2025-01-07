@@ -30,6 +30,7 @@ in
       fzf
       ghostty
       gimp
+      heroic
       inkscape
       junction
       kde-rounded-corners
@@ -74,7 +75,6 @@ in
     packages = [
       "com.github.k4zmu2a.spacecadetpinball"
       "com.github.tchx84.Flatseal"
-      "com.heroicgameslauncher.hgl"
       "com.modrinth.ModrinthApp"
       "com.steamgriddb.SGDBoop"
       "io.github.zen_browser.zen"
