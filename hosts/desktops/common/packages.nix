@@ -73,6 +73,7 @@ in
     enable = true;
     packages = [
       "com.github.k4zmu2a.spacecadetpinball"
+      "com.github.tchx84.Flatseal"
       "com.heroicgameslauncher.hgl"
       "com.modrinth.ModrinthApp"
       "com.steamgriddb.SGDBoop"
