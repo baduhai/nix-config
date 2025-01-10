@@ -18,7 +18,10 @@
         "usbhid"
         "sd_mod"
       ];
-      luks.devices."cryptroot".device = "/dev/disk/by-uuid/f7dd4142-7109-4493-834d-4a831777f08d";
+      luks.devices."cryptroot" = {
+        device = "/dev/disk/by-uuid/f7dd4142-7109-4493-834d-4a831777f08d";
+        keyFile = "/dev/disk/by-partuuid/add5fc14-e20f-48be-8b2a-0799ef04d3cb";
+      };
     };
     kernelModules = [ "kvm-amd" ];
   };
@@ -43,7 +46,7 @@
       ];
     };
     "/boot/efi" = {
-      device = "/dev/disk/by-uuid/1F5A-8945";
+      device = "/dev/disk/by-uuid/F2A2-CF5A";
       fsType = "vfat";
       options = [
         "noatime"
