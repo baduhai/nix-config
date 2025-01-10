@@ -17,7 +17,10 @@
         "sd_mod"
         "sdhci_pci"
       ];
-      luks.devices."enc".device = "/dev/disk/by-uuid/8018720e-42dd-453c-b374-adaa02eb48c9";
+      luks.devices."enc" = {
+        device = "/dev/disk/by-uuid/8018720e-42dd-453c-b374-adaa02eb48c9";
+        keyFile = "/dev/disk/by-partuuid/cbc7e305-d32d-4250-b6ae-6a8264ea096e";
+      };
     };
     kernelModules = [ "kvm-intel" ];
   };
@@ -60,7 +63,7 @@
       ];
     };
     "/boot/efi" = {
-      device = "/dev/disk/by-uuid/34AD-002A";
+      device = "/dev/disk/by-uuid/31C9-08FF";
       fsType = "vfat";
       options = [
         "noatime"
