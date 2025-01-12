@@ -42,6 +42,11 @@
             auto-format = true;
             formatter.command = "nixfmt";
           }
+          {
+            name = "typst";
+            auto-format = true;
+            formatter.command = "typstyle -c 1000 -i";
+          }
         ];
       };
     };

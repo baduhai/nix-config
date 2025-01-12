@@ -79,7 +79,7 @@ in
       "com.steamgriddb.SGDBoop"
       "io.github.zen_browser.zen"
       "io.itch.itch"
-      "org.freedesktop.Platform.VulkanLayer.MangoHud"
+      "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/24.08"
     ];
     uninstallUnmanaged = true;
     update.auto.enable = true;
