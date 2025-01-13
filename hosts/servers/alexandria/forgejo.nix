@@ -14,9 +14,9 @@ in
         server = {
           PROTOCOL = "http+unix";
           DOMAIN = domain;
-          SSH_DOMAIN = config.networking.domain;
           ROOT_URL = "https://${domain}";
           OFFLINE_MODE = true; # disable use of CDNs
+          SSH_DOMAIN = "baduhai.dev";
         };
         log.LEVEL = "Warn";
         mailer.ENABLED = false;
