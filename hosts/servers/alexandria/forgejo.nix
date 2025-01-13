@@ -8,6 +8,7 @@ in
   services = {
     forgejo = {
       enable = true;
+      repositoryRoot = "/data/forgejo";
       settings = {
         session.COOKIE_SECURE = true;
         server = {
