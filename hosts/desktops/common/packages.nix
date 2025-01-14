@@ -55,13 +55,13 @@ in
       protonup
       quickgui
       qview
+      qbittorrent
       ripgrep
       rnote
       solvespace
       sparrow
       steam-run
       tor-browser
-      transmission_4-qt6
       ungoogled-chromium
       unrar
       ventoy
