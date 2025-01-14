@@ -49,11 +49,11 @@ in
       obsidian
       obs-studio
       ocs-url
-      # orca-slicer BROKEN
+      orca-slicer
       p7zip
       plasticity
       protonup
-      # quickgui BROKEN
+      quickgui
       qview
       ripgrep
       rnote
