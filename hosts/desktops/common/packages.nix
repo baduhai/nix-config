@@ -51,6 +51,7 @@ in
       ocs-url
       orca-slicer
       p7zip
+      plasma-panel-colorizer
       plasticity
       protonup
       quickgui
