@@ -4,8 +4,8 @@
   stylix = {
     enable = true;
     image = pkgs.fetchurl {
-      url = "https://redlib.tux.pizza/img/z7t5x3p9olud1.png";
-      sha256 = "sha256-MKPh/DHBWkXhmWJRShMCFtaN6uL4/opQ6flINQdQWeM=";
+      url = "https://images.unsplash.com/photo-1701453831008-ea11046da960?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=nat-uN9OSpSsw4A-unsplash.jpg";
+      sha256 = "sha256-89o5VYI4cMP/O33oCaHi61hUYmIWEdyr8uGf/b2DMUk=";
     };
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     cursor = {
