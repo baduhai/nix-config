@@ -33,6 +33,7 @@ in
       heroic
       inkscape
       junction
+      kara
       kde-rounded-corners
       krita
       libfido2
