@@ -14,7 +14,7 @@
       };
     };
 
-    nginx.virtualHosts."paperless.baduhai.dev" = {
+    nginx.virtualHosts."docs.baduhai.dev" = {
       useACMEHost = "baduhai.dev";
       forceSSL = true;
       kTLS = true;

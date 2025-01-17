@@ -13,7 +13,7 @@
     ];
   };
 
-  services.nginx.virtualHosts."librespeed.baduhai.dev" = {
+  services.nginx.virtualHosts."speed.baduhai.dev" = {
     useACMEHost = "baduhai.dev";
     forceSSL = true;
     kTLS = true;

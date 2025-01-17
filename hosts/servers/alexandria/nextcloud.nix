@@ -6,7 +6,7 @@
       enable = true;
       package = pkgs.nextcloud30;
       datadir = "/data/nextcloud";
-      hostName = "nextcloud.baduhai.dev";
+      hostName = "cloud.baduhai.dev";
       configureRedis = true;
       https = true;
       autoUpdateApps.enable = true;

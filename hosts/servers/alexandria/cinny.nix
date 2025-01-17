@@ -14,7 +14,7 @@
     ];
   };
 
-  services.nginx.virtualHosts."cinny.baduhai.dev" = {
+  services.nginx.virtualHosts."matrix.baduhai.dev" = {
     useACMEHost = "baduhai.dev";
     forceSSL = true;
     kTLS = true;

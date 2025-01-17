@@ -18,7 +18,7 @@
       };
     };
 
-    nginx.virtualHosts."searx.baduhai.dev" = {
+    nginx.virtualHosts."search.baduhai.dev" = {
       useACMEHost = "baduhai.dev";
       forceSSL = true;
       kTLS = true;
