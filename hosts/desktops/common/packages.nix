@@ -4,8 +4,6 @@ let
     ark
     dolphin-plugins
     kolourpaint
-    merkuro
-    kdepim-addons
   ];
 in
 {
@@ -23,10 +21,9 @@ in
       clonehero
       deploy-rs
       distrobox
-      exhibit
       fd
-      filelight
       firefox
+      freecad-wayland
       fzf
       ghostty
       gimp
@@ -35,7 +32,6 @@ in
       junction
       kara
       kde-rounded-corners
-      krita
       libfido2
       libreoffice-qt
       # lilipod BROKEN
@@ -45,11 +41,11 @@ in
       mpv
       nextcloud-client
       nixfmt-rfc-style
+      nixos-firewall-tool
       nix-init
       nix-output-monitor
       obsidian
       obs-studio
-      ocs-url
       orca-slicer
       p7zip
       plasma-panel-colorizer
@@ -60,15 +56,12 @@ in
       qbittorrent
       ripgrep
       rnote
-      solvespace
-      sparrow
       steam-run
       tor-browser
       ungoogled-chromium
       unrar
       ventoy
       vesktop
-      wezterm
     ]
     ++ kdepkgs;
 
@@ -79,7 +72,7 @@ in
       "com.github.tchx84.Flatseal"
       "com.modrinth.ModrinthApp"
       "com.steamgriddb.SGDBoop"
-      "io.github.zen_browser.zen"
+      "app.zen_browser.zen"
       "io.itch.itch"
       "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/24.08"
     ];
@@ -118,8 +111,10 @@ in
   environment.plasma6.excludePackages = (
     with pkgs.kdePackages;
     [
+      discover
       elisa
       gwenview
+      kate
       khelpcenter
       konsole
       oxygen
