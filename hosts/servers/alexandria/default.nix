@@ -18,13 +18,13 @@ in
     ./hardware-configuration.nix
     ./jellyfin.nix
     ./librespeed.nix
+    ./memos.nix
     ./minecraft.nix
     ./nextcloud.nix
     ./nginx.nix
     ./paperless.nix
     ./searx.nix
     ./services.nix
-    ./pairdrop.nix
     ./users.nix
     ./vaultwarden.nix
   ];
@@ -43,7 +43,7 @@ in
     qbittorrent = mkStringOption "8008";
     actual = mkStringOption "8009";
     pairdrop = mkStringOption "8010";
-    logseq = mkStringOption "8011";
+    memos = mkStringOption "8011";
     jellyfin = mkStringOption "8096";
     sonarr = mkStringOption "8989";
     jackett = mkStringOption "9117";
