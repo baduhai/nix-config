@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   services = {
@@ -21,6 +26,31 @@
         trusted_proxies = [ "127.0.0.1" ];
         default_phone_region = "BR";
         maintenance_window_start = "4";
+        enabledPreviewProviders = [
+          "OC\\Preview\\BMP"
+          "OC\\Preview\\EMF"
+          "OC\\Preview\\Font"
+          "OC\\Preview\\GIF"
+          "OC\\Preview\\HEIC"
+          "OC\\Preview\\Illustrator"
+          "OC\\Preview\\JPEG"
+          "OC\\Preview\\Krita"
+          "OC\\Preview\\MarkDown"
+          "OC\\Preview\\Movie"
+          "OC\\Preview\\MP3"
+          "OC\\Preview\\MSOffice2003"
+          "OC\\Preview\\MSOffice2007"
+          "OC\\Preview\\MSOfficeDoc"
+          "OC\\Preview\\OpenDocument"
+          "OC\\Preview\\PDF"
+          "OC\\Preview\\Photoshop"
+          "OC\\Preview\\PNG"
+          "OC\\Preview\\Postscript"
+          "OC\\Preview\\SVG"
+          "OC\\Preview\\TIFF"
+          "OC\\Preview\\TXT"
+          "OC\\Preview\\XBitmap"
+        ];
       };
       config = {
         dbtype = "pgsql";
@@ -31,10 +61,30 @@
       };
     };
 
-    nginx.virtualHosts.${config.services.nextcloud.hostName} = {
-      useACMEHost = "baduhai.dev";
-      forceSSL = true;
-      kTLS = true;
+    collabora-online = {
+      enable = true;
+      port = lib.strings.toInt config.ports.collabora;
+      settings.ssl = {
+        enable = false;
+        termination = true;
+      };
+    };
+
+    nginx.virtualHosts = {
+      ${config.services.nextcloud.hostName} = {
+        useACMEHost = "baduhai.dev";
+        forceSSL = true;
+        kTLS = true;
+      };
+      "office.baduhai.dev" = {
+        useACMEHost = "baduhai.dev";
+        forceSSL = true;
+        kTLS = true;
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:${config.ports.collabora}";
+          proxyWebsockets = true;
+        };
+      };
     };
   };
 
