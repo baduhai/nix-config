@@ -51,6 +51,7 @@ in
       plasma-panel-colorizer
       plasticity
       protonup
+      quickemu
       quickgui
       qview
       qbittorrent

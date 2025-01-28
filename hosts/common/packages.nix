@@ -11,7 +11,6 @@
     killall
     sysz
     tmux
-    tree
     wget
   ];
 
