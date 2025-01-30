@@ -5,6 +5,19 @@ let
     dolphin-plugins
     kolourpaint
   ];
+  kwrite = pkgs.symlinkJoin {
+    name = "kwrite";
+    paths = [ pkgs.kdePackages.kate ];
+    postBuild = ''
+      rm -rf $out/bin/kate \
+             $out/bin/.kate-wrapped \
+             $out/share/applications/org.kde.kate.desktop \
+             $out/share/man \
+             $out/share/icons/hicolor/*/apps/kate.png \
+             $out/share/icons/hicolor/scalable/apps/kate.svg \
+             $out/share/appdata/org.kde.kate.appdata.xml
+    '';
+  };
 in
 {
   environment.systemPackages =
@@ -25,13 +38,13 @@ in
       firefox
       freecad-wayland
       fzf
-      ghostty
       gimp
       heroic
       inkscape
       junction
       kara
       kde-rounded-corners
+      kwrite
       libfido2
       libreoffice-qt
       # lilipod BROKEN
@@ -74,6 +87,7 @@ in
       "com.modrinth.ModrinthApp"
       "com.steamgriddb.SGDBoop"
       "app.zen_browser.zen"
+      "io.github.Foldex.AdwSteamGtk"
       "io.itch.itch"
       "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/24.08"
     ];
@@ -117,7 +131,6 @@ in
       gwenview
       kate
       khelpcenter
-      konsole
       oxygen
     ]
   );
