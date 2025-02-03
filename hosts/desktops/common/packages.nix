@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 let
   kdepkgs = with pkgs.kdePackages; [
     ark
@@ -30,7 +30,6 @@ in
       aspellDicts.en-computers
       aspellDicts.pt_BR
       bat
-      bitwarden-desktop
       clonehero
       deploy-rs
       distrobox
@@ -38,6 +37,7 @@ in
       firefox
       freecad-wayland
       fzf
+      ghostty
       gimp
       heroic
       inkscape
@@ -73,6 +73,7 @@ in
       steam-run
       tor-browser
       ungoogled-chromium
+      ulauncher
       unrar
       ventoy
       vesktop
@@ -103,6 +104,7 @@ in
     kdeconnect.enable = true;
     partition-manager.enable = true;
     gamemode.enable = true;
+    hyprland.enable = true;
     nix-index-database.comma.enable = true;
     appimage = {
       enable = true;
