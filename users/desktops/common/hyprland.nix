@@ -1,4 +1,29 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
+
+let
+  heightfittr = pkgs.writeShellApplication {
+    name = "heightfittr";
+    runtimeInputs = with pkgs; [
+      socat
+      hyprland
+    ];
+    text = ''
+      function handle {
+        case "$1" in
+          *openwindow*)
+            hyprctl dispatch scroller:fitheight all > /dev/null
+            ;;
+          *closewindow*)
+            hyprctl dispatch scroller:fitheight all > /dev/null
+            ;;
+        esac
+      }
+      socat - "UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock" | while read -r line; do
+        handle "$line"
+      done
+    '';
+  };
+in
 
 {
   wayland.windowManager.hyprland = {
@@ -14,6 +39,7 @@
       ### AUTOSTART ###
       #################
       exec-once = ulauncher --hide-window
+      exec-once = ${lib.getExe heightfittr}
       # exec-once = ${pkgs.swaynotificationcenter}/bin/swaync
       # exec-once = ${pkgs.ironbar}/bin/ironbar
       env = XCURSOR_SIZE,24
@@ -29,6 +55,9 @@
         resize_on_border = true
         allow_tearing = false
         layout = scroller
+      }
+      misc {
+        font_family = Inter
       }
       plugin {
         scroller {
@@ -62,22 +91,20 @@
         bezier = linear,0,0,1,1
         bezier = almostLinear,0.5,0.5,0.75,1.0
         bezier = quick,0.15,0,0.1,1
-        animation = global, 1, 10, default
-        animation = border, 1, 5.39, easeOutQuint
-        animation = windows, 1, 4.79, easeOutQuint
-        animation = windowsIn, 1, 4.1, easeOutQuint, popin 87%
-        animation = windowsOut, 1, 1.49, linear, popin 87%
-        animation = fadeIn, 1, 1.73, almostLinear
-        animation = fadeOut, 1, 1.46, almostLinear
-        animation = fade, 1, 3.03, quick
-        animation = layers, 1, 3.81, easeOutQuint
-        animation = layersIn, 1, 4, easeOutQuint, fade
-        animation = layersOut, 1, 1.5, linear, fade
-        animation = fadeLayersIn, 1, 1.79, almostLinear
-        animation = fadeLayersOut, 1, 1.39, almostLinear
-        animation = workspaces, 1, 1.94, almostLinear, fade
-        animation = workspacesIn, 1, 1.21, almostLinear, fade
-        animation = workspacesOut, 1, 1.94, almostLinear, fade
+        animation = global, 1, 1, default
+        animation = border, 1, 1, easeOutQuint
+        animation = windows, 1, 1, easeOutQuint
+        animation = windowsIn, 1, 1, easeOutQuint, popin 87%
+        animation = windowsOut, 1, 1, linear, popin 87%
+        animation = fadeIn, 1, 1, almostLinear
+        animation = fadeOut, 1, 1, almostLinear
+        animation = fade, 1, 1, quick
+        animation = layers, 1, 1, easeOutQuint
+        animation = layersIn, 1, 1, easeOutQuint, fade
+        animation = layersOut, 1, 1, linear, fade
+        animation = fadeLayersIn, 1, 1, almostLinear
+        animation = fadeLayersOut, 1, 1, almostLinear
+        animation = workspaces, 1, 1, almostLinear, slidevert
       }
       misc {
         force_default_wallpaper = 0
@@ -111,20 +138,22 @@
       bind = $mainMod, RETURN, exec, $terminal
       # SESSION MANAGEMENT
       bind = CTRL ALT, DELETE, exit,
-      bind = $mainMod CTRL, mouse_down, workspace, e+1
-      bind = $mainMod CTRL, mouse_up, workspace, e-1
-      bind = $mainMod CTRL, j, workspace, e+1
-      bind = $mainMod CTRL, k, workspace, e-1
+      bind = $mainMod, mouse_up, exec, hyprnome
+      bind = $mainMod, mouse_down, exec, hyprnome --previous
+      bind = CTRL ALT, j, exec, hyprnome
+      bind = CTRL ALT, k, exec, hyprnome --previous
+      bind = $mainMod CTRL ALT, j, exec, hyprnome --move
+      bind = $mainMod CTRL ALT, k, exec, hyprnome --move --previous
       bindel = ,XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
       bindel = ,XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
       bindel = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
       bindel = ,XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
       bindel = ,XF86MonBrightnessUp, exec, brightnessctl s 10%+
       bindel = ,XF86MonBrightnessDown, exec, brightnessctl s 10%-
-      bindl = , XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next
-      bindl = , XF86AudioPause, exec, ${pkgs.playerctl}/bin/playerctl play-pause
-      bindl = , XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause
-      bindl = , XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous
+      bindl = , XF86AudioNext, exec, playerctl next
+      bindl = , XF86AudioPause, exec, playerctl play-pause
+      bindl = , XF86AudioPlay, exec, playerctl play-pause
+      bindl = , XF86AudioPrev, exec, playerctl previous
       # WINDOW MANAGEMENT
       bind = ALT, F4, killactive,
       bind = $mainMod, space, togglefloating,
@@ -140,12 +169,12 @@
       bind = $mainMod CTRL, k, movewindow, u
       bind = $mainMod CTRL, j, movewindow, d
       bind = $mainMod, bracketleft, scroller:setmode, row
-      bind = $mainMod, bracketright, scroller:setmode, col
-      bind = $mainMod, slash, scroller:jump,
+      bind = $mainMod CTRL, bracketleft, scroller:setmode, col
       bind = $mainMod, r, scroller:cyclewidth, next
       bind = $mainMod CTRL, r, scroller:cyclewidth, prev
       bind = $mainMod, p, scroller:pin,
       bind = $mainMod, c, scroller:alignwindow, center
+      bind = $mainMod CTRL, f, scroller:fitsize, all
 
       ####################
       ### WINDOW RULES ###
