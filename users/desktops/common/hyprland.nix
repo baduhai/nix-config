@@ -13,9 +13,9 @@
       #################
       ### AUTOSTART ###
       #################
-      exec-once = ${pkgs.ulauncher}/bin/ulauncher --hide-window
-      exec-once = ${pkgs.swaynotificationcenter}/bin/swaync
-      exec-once = ${pkgs.ironbar}/bin/ironbar
+      exec-once = ulauncher --hide-window
+      # exec-once = ${pkgs.swaynotificationcenter}/bin/swaync
+      # exec-once = ${pkgs.ironbar}/bin/ironbar
       env = XCURSOR_SIZE,24
       env = HYPRCURSOR_SIZE,24
 
@@ -105,7 +105,7 @@
       ###################
       $mainMod = SUPER
       $terminal = ghostty
-      $menu = ${pkgs.ulauncher}/bin/ulauncher-toggle
+      $menu = ulauncher-toggle
       # APP SHORTCUTS
       bind = ALT, SPACE, exec, $menu
       bind = $mainMod, RETURN, exec, $terminal
@@ -164,4 +164,11 @@
       windowrulev2 = plugin:scroller:columnwidth onehalf, class:(firefox)
     '';
   };
+
+  home.packages = with pkgs; [
+    hyprnome
+    playerctl
+    brightnessctl
+    ulauncher
+  ];
 }
