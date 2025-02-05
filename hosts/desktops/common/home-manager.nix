@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, ... }:
 
 {
   home-manager = {
@@ -6,7 +6,9 @@
     useUserPackages = true;
     backupFileExtension = "bkp";
     users.user = {
-      imports = [ ../../../users/desktops/user.nix ];
+      imports = [
+        ../../../users/desktops/user.nix
+      ];
     };
   };
 }

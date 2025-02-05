@@ -73,7 +73,6 @@ in
       steam-run
       tor-browser
       ungoogled-chromium
-      ulauncher
       unrar
       ventoy
       vesktop
@@ -122,6 +121,7 @@ in
       corefonts
       noto-fonts-cjk-sans
       roboto
+      nerd-fonts.jetbrains-mono
     ];
   };
 

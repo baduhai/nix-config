@@ -48,11 +48,9 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    stylix.url = "github:danth/stylix";
-
-    hyprpanel = {
-      url = "github:Jas-SinghFSU/HyprPanel";
-      inputs.nixpkgs.follows = "nixpkgs";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
   };
 
@@ -72,7 +70,6 @@
       nix-minecraft,
       nixos-generators,
       stylix,
-      hyprpanel,
       ...
     }:
     {
@@ -94,7 +91,6 @@
               nixpkgs.overlays = [
                 agenix.overlays.default
                 self.overlays.custom
-                hyprpanel.overlay
               ];
             }
           ];
