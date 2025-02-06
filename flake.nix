@@ -52,6 +52,8 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+
+    mithrill-shell.url = "github:andreashgk/mithril-shell";
   };
 
   outputs =
@@ -70,6 +72,7 @@
       nix-minecraft,
       nixos-generators,
       stylix,
+      mithrill-shell,
       ...
     }:
     {

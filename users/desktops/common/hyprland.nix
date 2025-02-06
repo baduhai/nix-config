@@ -23,6 +23,20 @@ let
       done
     '';
   };
+
+  scrollermodetoggle = pkgs.writeShellApplication {
+    name = "scrollermodetoggle";
+    runtimeInputs = with pkgs; [ hyprland ];
+    text = ''
+      if [ -f "$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/colmode" ]; then
+        rm "$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/colmode"
+        hyprctl --batch 'dispatch scroller:setmode row; notify 2 1000 0 "Row Mode"'
+      else
+        touch "$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/colmode"
+        hyprctl --batch 'dispatch scroller:setmode col; notify 2 1000 0 "Column Mode"'
+      fi
+    '';
+  };
 in
 
 {
@@ -40,8 +54,6 @@ in
       #################
       exec-once = ulauncher --hide-window
       exec-once = ${lib.getExe heightfittr}
-      # exec-once = ${pkgs.swaynotificationcenter}/bin/swaync
-      # exec-once = ${pkgs.ironbar}/bin/ironbar
       env = XCURSOR_SIZE,24
       env = HYPRCURSOR_SIZE,24
 
@@ -154,6 +166,7 @@ in
       bindl = , XF86AudioPause, exec, playerctl play-pause
       bindl = , XF86AudioPlay, exec, playerctl play-pause
       bindl = , XF86AudioPrev, exec, playerctl previous
+      bind = CTRL ALT SHIFT, a, exec, bash /home/user/.local/bin/toggle-audio-output.sh
       # WINDOW MANAGEMENT
       bind = ALT, F4, killactive,
       bind = $mainMod, space, togglefloating,
@@ -168,8 +181,7 @@ in
       bind = $mainMod CTRL, l, movewindow, r
       bind = $mainMod CTRL, k, movewindow, u
       bind = $mainMod CTRL, j, movewindow, d
-      bind = $mainMod, bracketleft, scroller:setmode, row
-      bind = $mainMod CTRL, bracketleft, scroller:setmode, col
+      bind = $mainMod, v, exec, ${lib.getExe scrollermodetoggle}
       bind = $mainMod, r, scroller:cyclewidth, next
       bind = $mainMod CTRL, r, scroller:cyclewidth, prev
       bind = $mainMod, p, scroller:pin,
@@ -194,10 +206,87 @@ in
     '';
   };
 
+  services = {
+    # mithril-shell = {
+    #   enable = true;
+    #   integrations.hyprland.enable = true;
+    #   settings = {
+    #     animations.activeWorkspace = "smooth";
+    #     minWorkspaces = 2;
+    #     lockCommand = "hyprlock";
+    #   };
+    # };
+    swaync = {
+      enable = true;
+      settings = {
+        positionX = "left";
+        positionY = "top";
+        layer = "overlay";
+        control-center-layer = "top";
+        layer-shell = true;
+        cssPriority = "application";
+        control-center-margin-top = 20;
+        control-center-margin-bottom = 20;
+        control-center-margin-right = 20;
+        control-center-margin-left = 20;
+        notification-2fa-action = true;
+        notification-inline-replies = false;
+        notification-icon-size = 64;
+        notification-body-image-height = 100;
+        notification-body-image-width = 200;
+        timeout = 10;
+        timeout-low = 5;
+        timeout-critical = 0;
+        fit-to-screen = true;
+        relative-timestamps = true;
+        control-center-width = 500;
+        control-center-height = 600;
+        notification-window-width = 500;
+        keyboard-shortcuts = true;
+        image-visibility = "when-available";
+        transition-time = 200;
+        hide-on-clear = false;
+        hide-on-action = true;
+        script-fail-notify = true;
+        widgets = [
+          "inhibitors"
+          "title"
+          "dnd"
+          "notifications"
+          "mpris"
+        ];
+        widget-config = {
+          inhibitors = {
+            text = "Inhibitors";
+            button-text = "Clear All";
+            clear-all-button = true;
+          };
+          title = {
+            text = "Notifications";
+            clear-all-button = true;
+            button-text = "Clear All";
+          };
+          dnd = {
+            text = "Do Not Disturb";
+          };
+          mpris = {
+            image-size = 96;
+            image-radius = 12;
+          };
+        };
+      };
+    };
+  };
+
+  programs = {
+    hyprlock.enable = true;
+  };
+
   home.packages = with pkgs; [
+    brightnessctl
     hyprnome
     playerctl
-    brightnessctl
+    swaynotificationcenter
     ulauncher
   ];
 }
