@@ -4,8 +4,8 @@
   stylix = {
     enable = true;
     image = pkgs.fetchurl {
-      url = "https://images.unsplash.com/photo-1701453831008-ea11046da960?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&dl=nat-uN9OSpSsw4A-unsplash.jpg";
-      sha256 = "sha256-89o5VYI4cMP/O33oCaHi61hUYmIWEdyr8uGf/b2DMUk=";
+      url = "https://w.wallhaven.cc/full/dp/wallhaven-dpwvl3.jpg";
+      sha256 = "sha256-h9UeYj8jSRgSv8XL+zgds4KtooLlJ+IqwxZbQEXdCh4=";
     };
     base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     cursor = {
