@@ -207,15 +207,17 @@ in
   };
 
   services = {
-    # mithril-shell = {
-    #   enable = true;
-    #   integrations.hyprland.enable = true;
-    #   settings = {
-    #     animations.activeWorkspace = "smooth";
-    #     minWorkspaces = 2;
-    #     lockCommand = "hyprlock";
-    #   };
-    # };
+    tritanium-shell = {
+      enable = true;
+      integrations.hyprland.enable = true;
+      settings = {
+        vertical = true;
+        animations.activeWorkspace = "smooth";
+        minWorkspaces = 1;
+        lockCommand = "hyprlock";
+        bar.modules.workspacesIndicator.reverseScrollDirection = true;
+      };
+    };
     swaync = {
       enable = true;
       settings = {

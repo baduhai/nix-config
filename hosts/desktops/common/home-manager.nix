@@ -8,7 +8,7 @@
     users.user = {
       imports = [
         ../../../users/desktops/user.nix
-        inputs.mithrill-shell.homeManagerModules.default
+        inputs.tritanium-shell.homeManagerModules.default
       ];
     };
   };

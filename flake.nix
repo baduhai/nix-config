@@ -53,7 +53,7 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    mithrill-shell.url = "github:andreashgk/mithril-shell";
+    tritanium-shell.url = "github:baduhai/tritanium-shell";
   };
 
   outputs =
@@ -72,7 +72,7 @@
       nix-minecraft,
       nixos-generators,
       stylix,
-      mithrill-shell,
+      tritanium-shell,
       ...
     }:
     {
