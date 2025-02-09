@@ -25,4 +25,13 @@
       };
     };
   };
+
+  gtk = {
+    gtk3.extraConfig = {
+      gtk-decoration-layout = "appmenu:none";
+    };
+    gtk4.extraConfig = {
+      gtk-decoration-layout = "appmenu:none";
+    };
+  };
 }

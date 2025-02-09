@@ -63,6 +63,7 @@ in
       p7zip
       plasma-panel-colorizer
       plasticity
+      prismlauncher
       protonup
       quickemu
       quickgui
@@ -84,7 +85,6 @@ in
     packages = [
       "com.github.k4zmu2a.spacecadetpinball"
       "com.github.tchx84.Flatseal"
-      "com.modrinth.ModrinthApp"
       "com.steamgriddb.SGDBoop"
       "app.zen_browser.zen"
       "io.github.Foldex.AdwSteamGtk"

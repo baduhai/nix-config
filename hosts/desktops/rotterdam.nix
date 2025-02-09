@@ -55,7 +55,13 @@ in
 
   environment.systemPackages = with pkgs; [ reboot-into-qubes ];
 
-  # hardware.graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
+  hardware = {
+    amdgpu = {
+      opencl.enable = true;
+      amdvlk.enable = true;
+    };
+    graphics.extraPackages = with pkgs; [ rocmPackages.clr.icd ];
+  };
 
   systemd.targets.hibernate.enable = false; # disable non-functional hibernate
 
