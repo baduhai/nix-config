@@ -11,13 +11,14 @@
       "/etc/ssh/ssh_host_rsa_key.pub"
     ];
     directories = [
-      "/var/log"
-      "/var/lib/bluetooth"
-      "/var/lib/nixos"
-      "/var/lib/flatpak"
-      "/var/lib/tailscale"
-      "/var/lib/systemd/coredump"
       "/etc/NetworkManager/system-connections"
+      "/var/lib/bluetooth"
+      "/var/lib/flatpak"
+      "/var/lib/nixos"
+      "/var/lib/systemd/coredump"
+      "/var/lib/systemd/timers"
+      "/var/lib/tailscale"
+      "/var/log"
     ];
   };
 }
