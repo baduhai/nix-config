@@ -59,6 +59,7 @@ in
       nix-output-monitor
       obsidian
       obs-studio
+      onlyoffice-desktopeditors
       orca-slicer
       p7zip
       plasma-panel-colorizer

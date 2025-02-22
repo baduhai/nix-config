@@ -100,7 +100,7 @@ in
             f9 = "f10";
             f10 = "f11";
             f13 = "f12";
-            u = "sysrq";
+            y = "sysrq";
             k = "home";
             l = "pageup";
             "," = "end";
