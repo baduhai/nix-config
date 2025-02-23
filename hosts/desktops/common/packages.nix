@@ -63,7 +63,6 @@ in
       orca-slicer
       p7zip
       plasma-panel-colorizer
-      plasticity
       prismlauncher
       protonup
       quickemu
