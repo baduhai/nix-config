@@ -82,7 +82,7 @@
             };
           };
           modules = [
-            ./hosts/desktops/rotterdam.nix
+            ./hosts/rotterdam.nix
             agenix.nixosModules.default
             home-manager.nixosModules.default
             impermanence.nixosModules.impermanence
@@ -108,7 +108,7 @@
             };
           };
           modules = [
-            ./hosts/desktops/io.nix
+            ./hosts/io.nix
             agenix.nixosModules.default
             home-manager.nixosModules.default
             impermanence.nixosModules.impermanence
@@ -134,7 +134,7 @@
             };
           };
           modules = [
-            ./hosts/servers/alexandria.nix
+            ./hosts/alexandria.nix
             agenix.nixosModules.default
             home-manager-stable.nixosModules.default
             self.nixosModules.qbittorrent

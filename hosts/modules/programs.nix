@@ -32,6 +32,7 @@
         ls = "${pkgs.eza}/bin/eza --icons --group-directories-first";
         neofetch = "fastfetch";
         tree = "ls --tree";
+        tsh = "ssh -o RequestTTY=yes $argv tmux -u -CC new -A -s tmux-main";
         syscleanup = "sudo nix-collect-garbage -d; sudo /run/current-system/bin/switch-to-configuration boot";
       };
     }
