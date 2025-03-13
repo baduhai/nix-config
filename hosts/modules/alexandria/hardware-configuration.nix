@@ -23,15 +23,23 @@
     extraModulePackages = [ ];
   };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/31289617-1d84-4432-a833-680b52e88525";
-    fsType = "ext4";
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/31289617-1d84-4432-a833-680b52e88525";
+      fsType = "ext4";
+    };
+    "/boot" = {
+      device = "/dev/disk/by-uuid/4130-BE54";
+      fsType = "vfat";
+    };
   };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/4130-BE54";
-    fsType = "vfat";
-  };
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 8192;
+    }
+  ];
 
   networking.useDHCP = lib.mkDefault true;
 

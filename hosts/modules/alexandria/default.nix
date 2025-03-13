@@ -22,7 +22,6 @@ in
     ./minecraft.nix
     ./nextcloud.nix
     ./nginx.nix
-    ./paperless.nix
     ./searx.nix
     ./services.nix
     ./users.nix

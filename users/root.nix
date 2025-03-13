@@ -9,6 +9,6 @@
 
   imports = [
     ./modules
-    ./root
+    ./modules/root
   ];
 }

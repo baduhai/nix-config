@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./boot
+    ./boot.nix
     ./ephermal.nix
     ./hardware-configuration.nix
     ./programs.nix

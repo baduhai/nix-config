@@ -129,21 +129,6 @@
           ]
           ++ kdepkgs;
 
-        services.flatpak = {
-          enable = true;
-          packages = [
-            "com.github.k4zmu2a.spacecadetpinball"
-            "com.github.tchx84.Flatseal"
-            "com.steamgriddb.SGDBoop"
-            "app.zen_browser.zen"
-            "io.github.Foldex.AdwSteamGtk"
-            "io.itch.itch"
-            "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/24.08"
-          ];
-          uninstallUnmanaged = true;
-          update.auto.enable = true;
-        };
-
         programs = {
           adb.enable = true;
           steam.enable = true;
@@ -152,7 +137,6 @@
           kdeconnect.enable = true;
           partition-manager.enable = true;
           gamemode.enable = true;
-          nix-index-database.comma.enable = true;
           appimage = {
             enable = true;
             binfmt = true;

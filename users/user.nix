@@ -9,6 +9,6 @@
 
   imports = [
     ./modules
-    ./user
+    ./modules/user
   ];
 }

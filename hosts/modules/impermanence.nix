@@ -1,4 +1,8 @@
-{ hostType, lib, ... }:
+{
+  hostType,
+  lib,
+  ...
+}:
 
 {
   config = lib.mkMerge [

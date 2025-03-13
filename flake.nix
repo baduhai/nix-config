@@ -33,11 +33,6 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
 
-    nix-index-db = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-minecraft = {
       url = "github:Infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -64,7 +59,6 @@
       homepage,
       impermanence,
       nix-flatpak,
-      nix-index-db,
       nix-minecraft,
       nixos-generators,
       stylix,
@@ -86,7 +80,6 @@
             agenix.nixosModules.default
             home-manager.nixosModules.default
             impermanence.nixosModules.impermanence
-            nix-index-db.nixosModules.nix-index
             nix-flatpak.nixosModules.nix-flatpak
             stylix.nixosModules.stylix
             {
@@ -112,7 +105,6 @@
             agenix.nixosModules.default
             home-manager.nixosModules.default
             impermanence.nixosModules.impermanence
-            nix-index-db.nixosModules.nix-index
             nix-flatpak.nixosModules.nix-flatpak
             stylix.nixosModules.stylix
             {
