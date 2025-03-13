@@ -76,6 +76,10 @@
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs;
+            hostType = {
+              isServer = false;
+              isWorkstation = true;
+            };
           };
           modules = [
             ./hosts/desktops/rotterdam.nix
@@ -98,6 +102,10 @@
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs;
+            hostType = {
+              isServer = false;
+              isWorkstation = true;
+            };
           };
           modules = [
             ./hosts/desktops/io.nix
@@ -120,6 +128,10 @@
           system = "x86_64-linux";
           specialArgs = {
             inherit inputs;
+            hostType = {
+              isServer = true;
+              isWorkstation = false;
+            };
           };
           modules = [
             ./hosts/servers/alexandria.nix

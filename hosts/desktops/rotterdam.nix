@@ -31,7 +31,7 @@ in
 {
   imports = [
     # Host-common imports
-    ../common
+    ../modules
     # Desktop-common imports
     ./common
     # Host-specific imports
