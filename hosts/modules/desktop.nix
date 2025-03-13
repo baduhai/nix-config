@@ -25,13 +25,6 @@
             compositor = "kwin";
           };
         };
-        keyd = {
-          enable = true;
-          keyboards.all = {
-            ids = [ "*" ];
-            settings.main.capslock = "overload(meta, esc)";
-          };
-        };
         desktopManager.plasma6.enable = true;
         pipewire = {
           enable = true;

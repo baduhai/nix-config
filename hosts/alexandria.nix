@@ -2,11 +2,7 @@
 
 {
   imports = [
-    # Host-common imports
-    ../common
-    # Server-common imports
-    ./common
-    # Host-specific imports
+    ./modules
     ./alexandria
   ];
 

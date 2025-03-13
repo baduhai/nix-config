@@ -72,17 +72,7 @@
         "compress=zstd"
       ];
     };
-    "/swap" = {
-      device = "/dev/disk/by-uuid/3287dbc3-c0fa-4096-a0b3-59b017cfecc8";
-      fsType = "btrfs";
-      options = [
-        "subvol=@swap"
-        "noatime"
-      ];
-    };
   };
-
-  swapDevices = [ { device = "/swap/swapfile"; } ];
 
   networking.useDHCP = lib.mkDefault true;
 
