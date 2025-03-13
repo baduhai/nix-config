@@ -17,10 +17,7 @@ let
 in
 {
   imports = [
-    # Host-common imports
-    ../common
-    # Desktop-common imports
-    ./common
+    ../modules
     # Host-specific imports
     ./io
   ];

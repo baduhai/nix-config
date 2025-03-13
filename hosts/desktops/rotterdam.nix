@@ -30,12 +30,8 @@ let
 in
 {
   imports = [
-    # Host-common imports
-    ../modules
-    # Desktop-common imports
-    ./common
-    # Host-specific imports
     ./rotterdam
+    ../modules
   ];
 
   networking.hostName = "rotterdam";

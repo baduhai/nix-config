@@ -33,10 +33,17 @@
           hashedPassword = "!";
         };
       };
+
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        backupFileExtension = "bkp";
+      };
     }
 
     # Server specific configuration
     (lib.mkIf hostType.isServer {
+      home-manager.users.user = import ../../users/servers/user.nix;
     })
 
     # Workstation specific configuration
@@ -66,6 +73,8 @@
           hashedPassword = "$y$j9T$yHLUDvj6bDIP19dchU.aA/$OY4qeFNtx/GvI.VUYx4LapHiiVwi0MEvs8AT0HN7j58";
         };
       };
+
+      home-manager.users.user = import ../../users/desktops/user.nix;
     })
   ];
 }
