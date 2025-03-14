@@ -38,13 +38,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-
     stylix.url = "github:danth/stylix?ref=b00c9f46ae6c27074d24d2db390f0ac5ebcc329f";
-
   };
 
   outputs =
@@ -60,7 +54,6 @@
       impermanence,
       nix-flatpak,
       nix-minecraft,
-      nixos-generators,
       stylix,
       ...
     }:
