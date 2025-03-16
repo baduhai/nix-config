@@ -92,6 +92,7 @@
             kwrite
             libreoffice-qt
             obsidian
+            octaveFull
             onlyoffice-desktopeditors
             rnote
             ### Graphics & Design ###
