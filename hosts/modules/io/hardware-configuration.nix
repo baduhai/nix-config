@@ -73,6 +73,11 @@
     };
   };
 
+  zramSwap = {
+    enable = true;
+    memoryPercent = 100;
+  };
+
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
   networking.useDHCP = lib.mkDefault true;
