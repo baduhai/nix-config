@@ -38,6 +38,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    mithril.url = "github:andreashgk/mithril-shell?ref=7c1a609b86e875c854c5bf8a7da55cb405f43c6c";
+
     stylix.url = "github:danth/stylix?ref=b00c9f46ae6c27074d24d2db390f0ac5ebcc329f";
   };
 

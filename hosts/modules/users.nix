@@ -1,6 +1,7 @@
 {
-  lib,
   hostType,
+  inputs,
+  lib,
   pkgs,
   ...
 }:
@@ -44,6 +45,7 @@
         };
         extraSpecialArgs = {
           inherit hostType;
+          inherit inputs;
         };
       };
     }

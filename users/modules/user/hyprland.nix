@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   heightfittr = pkgs.writeShellApplication {
@@ -52,8 +57,9 @@ in
       #################
       ### AUTOSTART ###
       #################
-      exec-once = ulauncher --hide-window
+      exec-once = ${pkgs.gnome-settings-daemon}/libexec/gsd-rfkill
       exec-once = waybar
+      exec-once = syshud
       exec-once = ${lib.getExe heightfittr}
       env = XCURSOR_SIZE,24
       env = HYPRCURSOR_SIZE,24
@@ -206,6 +212,7 @@ in
       windowrule = noblur, ulauncher
       windowrulev2 = animation slide top, class:^(ulauncher)$
       # firefox
+      windowrulev2 = float, class:^(firefox)$,title:^(Extension.*)$
       windowrulev2 = plugin:scroller:columnwidth onehalf, class:(firefox)
     '';
   };
@@ -271,6 +278,40 @@ in
         };
       };
     };
+    clipman.enable = true;
+  };
+
+  systemd.user.services.ulauncher = {
+    Unit = {
+      "Description" = "Ulauncher Application Launcher";
+      "PartOf" = [ "graphical-session.target" ];
+    };
+    Install.WantedBy = [ "graphical-session.target" ];
+    Service = {
+      Type = "simple";
+      Environment =
+        let
+          pydeps = pkgs.python3.withPackages (
+            pp: with pp; [
+              parsedatetime # https://github.com/tchar/ulauncher-albert-calculate-anything
+              pint # https://github.com/tchar/ulauncher-albert-calculate-anything
+              pydbus
+              pygobject3
+              pytz # https://github.com/tchar/ulauncher-albert-calculate-anything
+              requests # https://github.com/tchar/ulauncher-albert-calculate-anything
+              simpleeval # https://github.com/tchar/ulauncher-albert-calculate-anything
+            ]
+          );
+        in
+        [
+          "PYTHONPATH=${pydeps}/${pydeps.sitePackages}"
+        ];
+      ExecStart = pkgs.writeShellScript "ulauncher-env-wrapper.sh" ''
+        export PATH="''${XDG_BIN_HOME}:$HOME/.nix-profile/bin:/etc/profiles/per-user/$USER/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
+        export GDK_BACKEND=wayland
+        exec ${pkgs.ulauncher}/bin/ulauncher --hide-window
+      '';
+    };
   };
 
   programs = {
@@ -283,7 +324,9 @@ in
     hyprnome
     playerctl
     swaynotificationcenter
+    syshud
     ulauncher
     waybar
+    inputs.mithril.packages.${pkgs.system}.mithril-control-center
   ];
 }
