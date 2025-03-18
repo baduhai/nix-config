@@ -152,6 +152,7 @@
           fontDir.enable = true;
           packages = with pkgs; [
             corefonts
+            material-icons
             noto-fonts-cjk-sans
             roboto
           ];
