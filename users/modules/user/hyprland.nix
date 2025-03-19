@@ -52,7 +52,7 @@ in
       ################
       ### MONITORS ###
       ################
-      monitor=,preferred,auto,auto
+      monitor=,preferred,auto,1
 
       #################
       ### AUTOSTART ###
@@ -279,39 +279,6 @@ in
       };
     };
     clipman.enable = true;
-  };
-
-  systemd.user.services.ulauncher = {
-    Unit = {
-      "Description" = "Ulauncher Application Launcher";
-      "PartOf" = [ "graphical-session.target" ];
-    };
-    Install.WantedBy = [ "graphical-session.target" ];
-    Service = {
-      Type = "simple";
-      Environment =
-        let
-          pydeps = pkgs.python3.withPackages (
-            pp: with pp; [
-              parsedatetime # https://github.com/tchar/ulauncher-albert-calculate-anything
-              pint # https://github.com/tchar/ulauncher-albert-calculate-anything
-              pydbus
-              pygobject3
-              pytz # https://github.com/tchar/ulauncher-albert-calculate-anything
-              requests # https://github.com/tchar/ulauncher-albert-calculate-anything
-              simpleeval # https://github.com/tchar/ulauncher-albert-calculate-anything
-            ]
-          );
-        in
-        [
-          "PYTHONPATH=${pydeps}/${pydeps.sitePackages}"
-        ];
-      ExecStart = pkgs.writeShellScript "ulauncher-env-wrapper.sh" ''
-        export PATH="''${XDG_BIN_HOME}:$HOME/.nix-profile/bin:/etc/profiles/per-user/$USER/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
-        export GDK_BACKEND=wayland
-        exec ${pkgs.ulauncher}/bin/ulauncher --hide-window
-      '';
-    };
   };
 
   programs = {
