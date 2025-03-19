@@ -77,6 +77,7 @@
             nix-output-monitor
             ripgrep
             ### Internet Browsers & Communication ###
+            brave
             firefox
             microsoft-edge
             nextcloud-client
