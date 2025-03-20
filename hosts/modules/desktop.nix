@@ -46,8 +46,6 @@
 
       security.rtkit.enable = true; # Needed for pipewire to acquire realtime priority
 
-      programs.hyprland.enable = true;
-
       xdg.portal = {
         enable = true;
         xdgOpenUsePortal = true;
