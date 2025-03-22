@@ -16,7 +16,6 @@
     ./modules/programs.nix
     ./modules/security.nix
     ./modules/services.nix
-    ./modules/stylix.nix
     ./modules/users.nix
     ./modules/virtualisation.nix
   ];

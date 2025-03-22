@@ -37,8 +37,6 @@
       url = "github:Infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    stylix.url = "github:danth/stylix?ref=b00c9f46ae6c27074d24d2db390f0ac5ebcc329f";
   };
 
   outputs =
@@ -54,7 +52,6 @@
       impermanence,
       nix-flatpak,
       nix-minecraft,
-      stylix,
       ...
     }:
     {
@@ -74,7 +71,6 @@
             home-manager.nixosModules.default
             impermanence.nixosModules.impermanence
             nix-flatpak.nixosModules.nix-flatpak
-            stylix.nixosModules.stylix
             {
               nixpkgs.overlays = [
                 agenix.overlays.default
@@ -99,7 +95,6 @@
             home-manager.nixosModules.default
             impermanence.nixosModules.impermanence
             nix-flatpak.nixosModules.nix-flatpak
-            stylix.nixosModules.stylix
             {
               nixpkgs.overlays = [
                 agenix.overlays.default
