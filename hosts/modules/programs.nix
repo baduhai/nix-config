@@ -153,7 +153,8 @@
           fontDir.enable = true;
           packages = with pkgs; [
             corefonts
-            material-icons
+            inter
+            nerd-fonts.hack
             noto-fonts-cjk-sans
             roboto
           ];

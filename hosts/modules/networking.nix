@@ -1,6 +1,5 @@
 {
   hostType,
-  inputs,
   lib,
   ...
 }:
@@ -33,13 +32,6 @@
 
     # Workstation specific configuration
     (lib.mkIf hostType.isWorkstation {
-      services = {
-        tailscale.useRoutingFeatures = "client";
-        nginx = {
-          enable = true;
-          virtualHosts."localhost".root = inputs.homepage;
-        };
-      };
     })
   ];
 }

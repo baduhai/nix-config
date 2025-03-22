@@ -19,7 +19,6 @@ in
     ./jellyfin.nix
     ./librespeed.nix
     ./memos.nix
-    ./minecraft.nix
     ./nextcloud.nix
     ./nginx.nix
     ./searx.nix
