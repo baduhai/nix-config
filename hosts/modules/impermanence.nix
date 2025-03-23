@@ -33,6 +33,7 @@
           "/var/lib/systemd/coredump"
           "/var/lib/systemd/timers"
           "/var/lib/tailscale"
+          "/var/lib/waydroid"
           "/var/log"
         ];
       };

@@ -1,5 +1,4 @@
 {
-  inputs,
   lib,
   pkgs,
   ...
@@ -57,9 +56,9 @@ in
       #################
       ### AUTOSTART ###
       #################
-      exec-once = ${pkgs.gnome-settings-daemon}/libexec/gsd-rfkill
-      exec-once = waybar
-      exec-once = syshud
+      # exec-once = ${pkgs.gnome-settings-daemon}/libexec/gsd-rfkill
+      # exec-once = waybar
+      # exec-once = syshud
       exec-once = ${lib.getExe heightfittr}
       env = XCURSOR_SIZE,24
       env = HYPRCURSOR_SIZE,24
@@ -218,72 +217,72 @@ in
   };
 
   services = {
-    swaync = {
-      enable = true;
-      settings = {
-        positionX = "left";
-        positionY = "top";
-        layer = "overlay";
-        control-center-layer = "top";
-        layer-shell = true;
-        cssPriority = "application";
-        control-center-margin-top = 20;
-        control-center-margin-bottom = 20;
-        control-center-margin-right = 20;
-        control-center-margin-left = 20;
-        notification-2fa-action = true;
-        notification-inline-replies = false;
-        notification-icon-size = 64;
-        notification-body-image-height = 100;
-        notification-body-image-width = 200;
-        timeout = 10;
-        timeout-low = 5;
-        timeout-critical = 0;
-        fit-to-screen = true;
-        relative-timestamps = true;
-        control-center-width = 500;
-        control-center-height = 600;
-        notification-window-width = 500;
-        keyboard-shortcuts = true;
-        image-visibility = "when-available";
-        transition-time = 200;
-        hide-on-clear = false;
-        hide-on-action = true;
-        script-fail-notify = true;
-        widgets = [
-          "inhibitors"
-          "title"
-          "dnd"
-          "notifications"
-          "mpris"
-        ];
-        widget-config = {
-          inhibitors = {
-            text = "Inhibitors";
-            button-text = "Clear All";
-            clear-all-button = true;
-          };
-          title = {
-            text = "Notifications";
-            clear-all-button = true;
-            button-text = "Clear All";
-          };
-          dnd = {
-            text = "Do Not Disturb";
-          };
-          mpris = {
-            image-size = 96;
-            image-radius = 12;
-          };
-        };
-      };
-    };
-    clipman.enable = true;
+    # swaync = {
+    #   enable = true;
+    #   settings = {
+    #     positionX = "left";
+    #     positionY = "top";
+    #     layer = "overlay";
+    #     control-center-layer = "top";
+    #     layer-shell = true;
+    #     cssPriority = "application";
+    #     control-center-margin-top = 20;
+    #     control-center-margin-bottom = 20;
+    #     control-center-margin-right = 20;
+    #     control-center-margin-left = 20;
+    #     notification-2fa-action = true;
+    #     notification-inline-replies = false;
+    #     notification-icon-size = 64;
+    #     notification-body-image-height = 100;
+    #     notification-body-image-width = 200;
+    #     timeout = 10;
+    #     timeout-low = 5;
+    #     timeout-critical = 0;
+    #     fit-to-screen = true;
+    #     relative-timestamps = true;
+    #     control-center-width = 500;
+    #     control-center-height = 600;
+    #     notification-window-width = 500;
+    #     keyboard-shortcuts = true;
+    #     image-visibility = "when-available";
+    #     transition-time = 200;
+    #     hide-on-clear = false;
+    #     hide-on-action = true;
+    #     script-fail-notify = true;
+    #     widgets = [
+    #       "inhibitors"
+    #       "title"
+    #       "dnd"
+    #       "notifications"
+    #       "mpris"
+    #     ];
+    #     widget-config = {
+    #       inhibitors = {
+    #         text = "Inhibitors";
+    #         button-text = "Clear All";
+    #         clear-all-button = true;
+    #       };
+    #       title = {
+    #         text = "Notifications";
+    #         clear-all-button = true;
+    #         button-text = "Clear All";
+    #       };
+    #       dnd = {
+    #         text = "Do Not Disturb";
+    #       };
+    #       mpris = {
+    #         image-size = 96;
+    #         image-radius = 12;
+    #       };
+    #     };
+    #   };
+    # };
+    # clipman.enable = true;
   };
 
-  programs = {
-    hyprlock.enable = true;
-  };
+  # programs = {
+  #   hyprlock.enable = true;
+  # };
 
   home.packages = with pkgs; [
     brightnessctl
@@ -294,6 +293,6 @@ in
     syshud
     ulauncher
     waybar
-    inputs.mithril.packages.${pkgs.system}.mithril-control-center
+    # inputs.mithril.packages.${pkgs.system}.mithril-control-center
   ];
 }

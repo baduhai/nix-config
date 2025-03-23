@@ -36,6 +36,8 @@
         };
       };
 
+      # programs.hyprland.enable = true;
+
       hardware = {
         xpadneo.enable = true;
         bluetooth.enable = true;
