@@ -81,7 +81,6 @@
             microsoft-edge
             nextcloud-client
             tor-browser
-            ungoogled-chromium
             vesktop
             ### Office & Productivity ###
             aspell
