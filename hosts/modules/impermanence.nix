@@ -27,6 +27,7 @@
         ];
         directories = [
           "/etc/NetworkManager/system-connections"
+          "/etc/waydroid-extra/images/"
           "/var/lib/bluetooth"
           "/var/lib/flatpak"
           "/var/lib/nixos"
