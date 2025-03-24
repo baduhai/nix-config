@@ -210,9 +210,10 @@ in
       windowrule = nomaxsize, ulauncher
       windowrule = noblur, ulauncher
       windowrulev2 = animation slide top, class:^(ulauncher)$
-      # firefox
-      windowrulev2 = float, class:^(firefox)$,title:^(Extension.*)$
+      # browsers
       windowrulev2 = plugin:scroller:columnwidth onehalf, class:(firefox)
+      windowrulev2 = plugin:scroller:columnwidth onehalf, class:(zen)
+      windowrulev2 = plugin:scroller:columnwidth onehalf, class:(brave)
     '';
   };
 

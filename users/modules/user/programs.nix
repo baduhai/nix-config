@@ -159,7 +159,7 @@
             let
               pydeps = pkgs.python3.withPackages (
                 pp: with pp; [
-                  # https://github.com/tchar/ulauncher-albert-calculate-anything
+                  # dependencies for ulauncher-albert-calculate-anything
                   parsedatetime
                   pint
                   pytz
@@ -178,7 +178,6 @@
           '';
         };
       };
-
     })
   ];
 }

@@ -78,7 +78,6 @@
             ripgrep
             ### Internet Browsers & Communication ###
             brave
-            firefox
             microsoft-edge
             nextcloud-client
             tor-browser
