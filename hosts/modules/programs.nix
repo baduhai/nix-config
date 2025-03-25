@@ -115,7 +115,6 @@
             # lilipod BROKEN
             mission-center
             p7zip
-            plasma-panel-colorizer
             qbittorrent
             quickemu
             quickgui

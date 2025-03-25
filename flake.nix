@@ -74,7 +74,7 @@
               workstationModules = [
                 {
                   nixpkgs.overlays = [
-                    self.overlays.custom
+                    self.overlays.workstationOverlay
                   ];
                 }
               ];
@@ -106,81 +106,14 @@
             hostname = "alexandria";
             type = "server";
           };
-          # rotterdam = nixpkgs.lib.nixosSystem {
-          #   system = "x86_64-linux";
-          #   specialArgs = {
-          #     inherit inputs;
-          #     hostType = {
-          #       isServer = false;
-          #       isWorkstation = true;
-          #     };
-          #   };
-          #   modules = [
-          #     ./hosts/rotterdam.nix
-          #     agenix.nixosModules.default
-          #     home-manager.nixosModules.default
-          #     impermanence.nixosModules.impermanence
-          #     nix-flatpak.nixosModules.nix-flatpak
-          #     {
-          #       nixpkgs.overlays = [
-          #         agenix.overlays.default
-          #         self.overlays.custom
-          #       ];
-          #     }
-          #   ];
-          # };
-
-          # io = nixpkgs.lib.nixosSystem {
-          #   system = "x86_64-linux";
-          #   specialArgs = {
-          #     inherit inputs;
-          #     hostType = {
-          #       isServer = false;
-          #       isWorkstation = true;
-          #     };
-          #   };
-          #   modules = [
-          #     ./hosts/io.nix
-          #     agenix.nixosModules.default
-          #     home-manager.nixosModules.default
-          #     impermanence.nixosModules.impermanence
-          #     nix-flatpak.nixosModules.nix-flatpak
-          #     {
-          #       nixpkgs.overlays = [
-          #         agenix.overlays.default
-          #         self.overlays.custom
-          #       ];
-          #     }
-          #   ];
-          # };
-
-          # alexandria = nixpkgs-stable.lib.nixosSystem {
-          #   system = "x86_64-linux";
-          #   specialArgs = {
-          #     inherit inputs;
-          #     hostType = {
-          #       isServer = true;
-          #       isWorkstation = false;
-          #     };
-          #   };
-          #   modules = [
-          #     ./hosts/alexandria.nix
-          #     agenix.nixosModules.default
-          #     home-manager-stable.nixosModules.default
-          #     self.nixosModules.qbittorrent
-          #     ({
-          #       nixpkgs.overlays = [
-          #         agenix.overlays.default
-          #         nix-minecraft.overlay
-          #       ];
-          #       imports = [ nix-minecraft.nixosModules.minecraft-servers ];
-          #     })
-          #   ];
-          # };
         };
 
       overlays = {
-        custom = final: prev: {
+        overlay = final: prev: {
+        };
+        workstationOverlay = final: prev: {
+        };
+        serverOverlay = final: prev: {
         };
       };
 
