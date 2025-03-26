@@ -107,7 +107,6 @@
             protonup
             ### System Utilities ###
             adwaita-icon-theme
-            distrobox
             junction
             kara
             kde-rounded-corners
