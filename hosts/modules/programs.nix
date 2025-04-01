@@ -95,7 +95,6 @@
             onlyoffice-desktopeditors
             rnote
             ### Graphics & Design ###
-            freecad-wayland
             gimp
             inkscape
             orca-slicer
