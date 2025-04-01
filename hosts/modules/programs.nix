@@ -98,6 +98,7 @@
             gimp
             inkscape
             orca-slicer
+            plasticity
             ### Gaming & Entertainment ###
             clonehero
             heroic

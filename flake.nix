@@ -112,6 +112,7 @@
         overlay = final: prev: {
         };
         workstationOverlay = final: prev: {
+          plasticity = nixpkgs.legacyPackages."x86_64-linux".callPackage ./packages/plasticity.nix { };
         };
         serverOverlay = final: prev: {
         };
