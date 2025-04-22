@@ -68,11 +68,9 @@
           with pkgs;
           [
             ### Dev Tools ###
-            arduino-ide
             bat
             deploy-rs
             fd
-            fritzing
             fzf
             nixfmt-rfc-style
             nix-init
