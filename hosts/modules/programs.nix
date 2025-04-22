@@ -91,7 +91,7 @@
             kwrite
             libreoffice-qt
             obsidian
-            octaveFull
+            (octaveFull.withPackages (octavePackages: with octavePackages; [ signal ]))
             onlyoffice-desktopeditors
             rnote
             ### Graphics & Design ###
