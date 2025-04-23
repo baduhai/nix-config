@@ -77,6 +77,7 @@
             nix-output-monitor
             ripgrep
             ### Internet Browsers & Communication ###
+            beeper
             brave
             microsoft-edge
             nextcloud-client
