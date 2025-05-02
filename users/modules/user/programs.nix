@@ -174,6 +174,7 @@
           ExecStart = pkgs.writeShellScript "ulauncher-env-wrapper.sh" ''
             export PATH="''${XDG_BIN_HOME}:$HOME/.nix-profile/bin:/etc/profiles/per-user/$USER/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
             export GDK_BACKEND=wayland
+            sleep 3
             exec ${pkgs.ulauncher}/bin/ulauncher --hide-window
           '';
         };
