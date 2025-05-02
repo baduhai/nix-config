@@ -118,6 +118,7 @@
             qbittorrent
             quickemu
             quickgui
+            rustdesk
             steam-run
             unrar
             ventoy
