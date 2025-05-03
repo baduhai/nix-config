@@ -149,10 +149,9 @@
 
       systemd.user.services.ulauncher = {
         Unit = {
-          "Description" = "Ulauncher Application Launcher";
-          "PartOf" = [ "graphical-session.target" ];
+          Description = "Ulauncher Application Launcher";
+          After = [ "graphical-session.target" ];
         };
-        Install.WantedBy = [ "graphical-session.target" ];
         Service = {
           Type = "simple";
           Environment =
@@ -174,7 +173,6 @@
           ExecStart = pkgs.writeShellScript "ulauncher-env-wrapper.sh" ''
             export PATH="''${XDG_BIN_HOME}:$HOME/.nix-profile/bin:/etc/profiles/per-user/$USER/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
             export GDK_BACKEND=wayland
-            sleep 3
             exec ${pkgs.ulauncher}/bin/ulauncher --hide-window
           '';
         };
