@@ -111,9 +111,9 @@
     (lib.mkIf hostType.isWorkstation {
       fonts.fontconfig.enable = true;
 
-      home.packages = with pkgs; [
-        ulauncher
-      ];
+      # home.packages = with pkgs; [
+      #   ulauncher
+      # ];
 
       programs = {
         password-store.package = pkgs.pass-wayland;
@@ -147,36 +147,36 @@
         };
       };
 
-      systemd.user.services.ulauncher = {
-        Unit = {
-          Description = "Ulauncher Application Launcher";
-          After = [ "graphical-session.target" ];
-        };
-        Service = {
-          Type = "simple";
-          Environment =
-            let
-              pydeps = pkgs.python3.withPackages (
-                pp: with pp; [
-                  # dependencies for ulauncher-albert-calculate-anything
-                  parsedatetime
-                  pint
-                  pytz
-                  requests
-                  simpleeval
-                ]
-              );
-            in
-            [
-              "PYTHONPATH=${pydeps}/${pydeps.sitePackages}"
-            ];
-          ExecStart = pkgs.writeShellScript "ulauncher-env-wrapper.sh" ''
-            export PATH="''${XDG_BIN_HOME}:$HOME/.nix-profile/bin:/etc/profiles/per-user/$USER/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
-            export GDK_BACKEND=wayland
-            exec ${pkgs.ulauncher}/bin/ulauncher --hide-window
-          '';
-        };
-      };
+      # systemd.user.services.ulauncher = {
+      #   Unit = {
+      #     Description = "Ulauncher Application Launcher";
+      #     After = [ "graphical-session.target" ];
+      #   };
+      #   Service = {
+      #     Type = "simple";
+      #     Environment =
+      #       let
+      #         pydeps = pkgs.python3.withPackages (
+      #           pp: with pp; [
+      #             # dependencies for ulauncher-albert-calculate-anything
+      #             parsedatetime
+      #             pint
+      #             pytz
+      #             requests
+      #             simpleeval
+      #           ]
+      #         );
+      #       in
+      #       [
+      #         "PYTHONPATH=${pydeps}/${pydeps.sitePackages}"
+      #       ];
+      #     ExecStart = pkgs.writeShellScript "ulauncher-env-wrapper.sh" ''
+      #       export PATH="''${XDG_BIN_HOME}:$HOME/.nix-profile/bin:/etc/profiles/per-user/$USER/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
+      #       export GDK_BACKEND=wayland
+      #       exec ${pkgs.ulauncher}/bin/ulauncher --hide-window
+      #     '';
+      #   };
+      # };
     })
   ];
 }
