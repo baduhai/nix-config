@@ -19,6 +19,9 @@ in
 {
   environment = {
     systemPackages = with pkgs; [
+      arduino-ide
+      esptool
+      # fritzing
       maliit-keyboard
       sof-firmware
     ];
