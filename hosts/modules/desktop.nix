@@ -18,10 +18,6 @@
     # Workstation specific configuration
     (lib.mkIf hostType.isWorkstation {
       services = {
-        xserver = {
-          displayManager.gdm.enable = true;
-          desktopManager.gnome.enable = true;
-        };
         displayManager.sddm = {
           enable = true;
           wayland = {
