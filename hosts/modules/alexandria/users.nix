@@ -10,7 +10,6 @@
         gid = 1005;
         members = [
           "user"
-          "minecraft"
           "paperless"
           "vaultwarden"
         ];

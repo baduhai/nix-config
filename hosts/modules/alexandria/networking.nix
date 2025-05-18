@@ -4,12 +4,14 @@
   networking = {
     firewall = {
       allowedTCPPorts = [
-        80
-        443
-        8010
-        9666
+        80 # HTTP
+        443 # HTTPS
+        25565 # Minecraft
       ];
-      allowedUDPPorts = [ 24454 ];
+      allowedUDPPorts = [
+        24454 # Minecraft Simple Voice Chat
+        25565 # Minecraft
+      ];
     };
   };
 }

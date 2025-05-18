@@ -18,14 +18,18 @@
     # Workstation specific configuration
     (lib.mkIf hostType.isWorkstation {
       services = {
-        displayManager.sddm = {
-          enable = true;
-          wayland = {
-            enable = true;
-            compositor = "kwin";
-          };
+        xserver = {
+          displayManager.gdm.enable = true;
+          desktopManager.gnome.enable = true;
         };
-        desktopManager.plasma6.enable = true;
+        # displayManager.sddm = {
+        #   enable = true;
+        #   wayland = {
+        #     enable = true;
+        #     compositor = "kwin";
+        #   };
+        # };
+        # desktopManager.plasma6.enable = true;
         pipewire = {
           enable = true;
           alsa.enable = true;

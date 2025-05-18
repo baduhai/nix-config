@@ -157,17 +157,17 @@
           ];
         };
 
-        environment.plasma6.excludePackages = (
-          with pkgs.kdePackages;
-          [
-            discover
-            elisa
-            gwenview
-            kate
-            khelpcenter
-            oxygen
-          ]
-        );
+        # environment.plasma6.excludePackages = (
+        #   with pkgs.kdePackages;
+        #   [
+        #     discover
+        #     elisa
+        #     gwenview
+        #     kate
+        #     khelpcenter
+        #     oxygen
+        #   ]
+        # );
       }
     ))
   ];
