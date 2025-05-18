@@ -121,7 +121,6 @@
             rustdesk
             steam-run
             unrar
-            ventoy
             ### Media ###
             mpv
             obs-studio
