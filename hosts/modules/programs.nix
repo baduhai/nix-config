@@ -46,6 +46,7 @@
       let
         kdepkgs = with pkgs.kdePackages; [
           ark
+          dolphin
           dolphin-plugins
           kolourpaint
         ];
@@ -156,18 +157,6 @@
             roboto
           ];
         };
-
-        environment.plasma6.excludePackages = (
-          with pkgs.kdePackages;
-          [
-            discover
-            elisa
-            gwenview
-            kate
-            khelpcenter
-            oxygen
-          ]
-        );
       }
     ))
   ];

@@ -111,9 +111,9 @@
     (lib.mkIf hostType.isWorkstation {
       fonts.fontconfig.enable = true;
 
-      # home.packages = with pkgs; [
-      #   ulauncher
-      # ];
+      home.packages = with pkgs; [
+        rmenu
+      ];
 
       programs = {
         password-store.package = pkgs.pass-wayland;

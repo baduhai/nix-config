@@ -27,14 +27,12 @@
         ];
         directories = [
           "/etc/NetworkManager/system-connections"
-          "/etc/waydroid-extra/images/"
           "/var/lib/bluetooth"
           "/var/lib/flatpak"
           "/var/lib/nixos"
           "/var/lib/systemd/coredump"
           "/var/lib/systemd/timers"
           "/var/lib/tailscale"
-          "/var/lib/waydroid"
           "/var/log"
         ];
       };

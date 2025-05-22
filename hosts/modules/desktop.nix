@@ -25,7 +25,6 @@
             compositor = "kwin";
           };
         };
-        desktopManager.plasma6.enable = true;
         pipewire = {
           enable = true;
           alsa.enable = true;
@@ -35,8 +34,12 @@
           wireplumber.enable = true;
         };
       };
-
-      # programs.hyprland.enable = true;
+      programs.niri.enable = true;
+      environment.systemPackages = with pkgs; [
+        anyrun
+        foot
+        xwayland-satellite
+      ];
 
       hardware = {
         xpadneo.enable = true;
@@ -52,7 +55,7 @@
         enable = true;
         xdgOpenUsePortal = true;
         extraPortals = with pkgs; [
-          kdePackages.xdg-desktop-portal-kde
+          # kdePackages.xdg-desktop-portal-kde
           xdg-desktop-portal-gtk
           xdg-desktop-portal-gnome
         ];
