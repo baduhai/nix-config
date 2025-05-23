@@ -1,5 +1,6 @@
 {
   hostType,
+  inputs,
   lib,
   pkgs,
   ...
@@ -44,12 +45,6 @@
     # Workstation specific configuration
     (lib.mkIf hostType.isWorkstation (
       let
-        kdepkgs = with pkgs.kdePackages; [
-          ark
-          dolphin
-          dolphin-plugins
-          kolourpaint
-        ];
         kwrite = pkgs.symlinkJoin {
           name = "kwrite";
           paths = [ pkgs.kdePackages.kate ];
@@ -65,69 +60,66 @@
         };
       in
       {
-        environment.systemPackages =
-          with pkgs;
-          [
-            ### Dev Tools ###
-            bat
-            deploy-rs
-            fd
-            fzf
-            nixfmt-rfc-style
-            nix-init
-            nix-output-monitor
-            ripgrep
-            ### Internet Browsers & Communication ###
-            beeper
-            brave
-            microsoft-edge
-            nextcloud-client
-            tor-browser
-            vesktop
-            ### Office & Productivity ###
-            aspell
-            aspellDicts.de
-            aspellDicts.en
-            aspellDicts.en-computers
-            aspellDicts.pt_BR
-            kwrite
-            libreoffice-qt
-            obsidian
-            (octaveFull.withPackages (octavePackages: with octavePackages; [ signal ]))
-            onlyoffice-desktopeditors
-            rnote
-            ### Graphics & Design ###
-            gimp
-            inkscape
-            orca-slicer
-            plasticity
-            ### Gaming & Entertainment ###
-            clonehero
-            heroic
-            mangohud
-            prismlauncher
-            protonup
-            ### System Utilities ###
-            adwaita-icon-theme
-            junction
-            kara
-            kde-rounded-corners
-            libfido2
-            # lilipod BROKEN
-            mission-center
-            p7zip
-            qbittorrent
-            quickemu
-            quickgui
-            rustdesk
-            steam-run
-            unrar
-            ### Media ###
-            mpv
-            obs-studio
-            qview
-          ]
-          ++ kdepkgs;
+        environment.systemPackages = with pkgs; [
+          ### Dev Tools ###
+          bat
+          deploy-rs
+          fd
+          fzf
+          nixfmt-rfc-style
+          nix-init
+          nix-output-monitor
+          ripgrep
+          ### Internet Browsers & Communication ###
+          beeper
+          brave
+          nextcloud-client
+          tor-browser
+          vesktop
+          ### Office & Productivity ###
+          aspell
+          aspellDicts.de
+          aspellDicts.en
+          aspellDicts.en-computers
+          aspellDicts.pt_BR
+          kwrite
+          libreoffice-qt
+          obsidian
+          (octaveFull.withPackages (octavePackages: with octavePackages; [ signal ]))
+          onlyoffice-desktopeditors
+          rnote
+          ### Graphics & Design ###
+          gimp
+          inkscape
+          orca-slicer
+          plasticity
+          ### Gaming & Entertainment ###
+          clonehero
+          heroic
+          mangohud
+          prismlauncher
+          protonup
+          ### System Utilities ###
+          adwaita-icon-theme
+          junction
+          kara
+          kde-rounded-corners
+          libfido2
+          morewaita-icon-theme
+          nautilus
+          mission-center
+          p7zip
+          qbittorrent
+          quickemu
+          quickgui
+          rustdesk
+          steam-run
+          unrar
+          ### Media ###
+          mpv
+          obs-studio
+          qview
+        ];
 
         programs = {
           adb.enable = true;
