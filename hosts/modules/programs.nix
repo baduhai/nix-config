@@ -43,113 +43,96 @@
     })
 
     # Workstation specific configuration
-    (lib.mkIf hostType.isWorkstation (
-      let
-        kwrite = pkgs.symlinkJoin {
-          name = "kwrite";
-          paths = [ pkgs.kdePackages.kate ];
-          postBuild = ''
-            rm -rf $out/bin/kate \
-                   $out/bin/.kate-wrapped \
-                   $out/share/applications/org.kde.kate.desktop \
-                   $out/share/man \
-                   $out/share/icons/hicolor/*/apps/kate.png \
-                   $out/share/icons/hicolor/scalable/apps/kate.svg \
-                   $out/share/appdata/org.kde.kate.appdata.xml
-          '';
+    (lib.mkIf hostType.isWorkstation ({
+      environment.systemPackages = with pkgs; [
+        ### Dev Tools ###
+        bat
+        deploy-rs
+        fd
+        fzf
+        nixfmt-rfc-style
+        nix-init
+        nix-output-monitor
+        ripgrep
+        ### Internet Browsers & Communication ###
+        beeper
+        brave
+        nextcloud-client
+        tor-browser
+        vesktop
+        ### Office & Productivity ###
+        aspell
+        aspellDicts.de
+        aspellDicts.en
+        aspellDicts.en-computers
+        aspellDicts.pt_BR
+        libreoffice-qt
+        obsidian
+        (octaveFull.withPackages (octavePackages: with octavePackages; [ signal ]))
+        onlyoffice-desktopeditors
+        rnote
+        ### Graphics & Design ###
+        gimp
+        inkscape
+        orca-slicer
+        plasticity
+        ### Gaming & Entertainment ###
+        clonehero
+        heroic
+        mangohud
+        prismlauncher
+        protonup
+        ### System Utilities ###
+        adwaita-icon-theme
+        junction
+        kara
+        kde-rounded-corners
+        libfido2
+        morewaita-icon-theme
+        nautilus
+        mission-center
+        p7zip
+        qbittorrent
+        quickemu
+        quickgui
+        rustdesk
+        steam-run
+        toggleaudiosink
+        unrar
+        ### Media ###
+        mpv
+        obs-studio
+        qview
+      ];
+
+      programs = {
+        adb.enable = true;
+        steam.enable = true;
+        dconf.enable = true;
+        nix-ld.enable = true;
+        kdeconnect.enable = true;
+        partition-manager.enable = true;
+        gamemode.enable = true;
+        appimage = {
+          enable = true;
+          binfmt = true;
         };
-      in
-      {
-        environment.systemPackages = with pkgs; [
-          ### Dev Tools ###
-          bat
-          deploy-rs
-          fd
-          fzf
-          nixfmt-rfc-style
-          nix-init
-          nix-output-monitor
-          ripgrep
-          ### Internet Browsers & Communication ###
-          beeper
-          brave
-          nextcloud-client
-          tor-browser
-          vesktop
-          ### Office & Productivity ###
-          aspell
-          aspellDicts.de
-          aspellDicts.en
-          aspellDicts.en-computers
-          aspellDicts.pt_BR
-          kwrite
-          libreoffice-qt
-          obsidian
-          (octaveFull.withPackages (octavePackages: with octavePackages; [ signal ]))
-          onlyoffice-desktopeditors
-          rnote
-          ### Graphics & Design ###
-          gimp
-          inkscape
-          orca-slicer
-          plasticity
-          ### Gaming & Entertainment ###
-          clonehero
-          heroic
-          mangohud
-          prismlauncher
-          protonup
-          ### System Utilities ###
-          adwaita-icon-theme
-          junction
-          kara
-          kde-rounded-corners
-          libfido2
-          morewaita-icon-theme
-          nautilus
-          mission-center
-          p7zip
-          qbittorrent
-          quickemu
-          quickgui
-          rustdesk
-          steam-run
-          unrar
-          ### Media ###
-          mpv
-          obs-studio
-          qview
+        nh = {
+          enable = true;
+          flake = "/home/user/Projects/personal/nix-config";
+        };
+      };
+
+      fonts = {
+        fontDir.enable = true;
+        packages = with pkgs; [
+          corefonts
+          inter
+          nerd-fonts.hack
+          noto-fonts-cjk-sans
+          roboto
         ];
-
-        programs = {
-          adb.enable = true;
-          steam.enable = true;
-          dconf.enable = true;
-          nix-ld.enable = true;
-          kdeconnect.enable = true;
-          partition-manager.enable = true;
-          gamemode.enable = true;
-          appimage = {
-            enable = true;
-            binfmt = true;
-          };
-          nh = {
-            enable = true;
-            flake = "/home/user/Projects/personal/nix-config";
-          };
-        };
-
-        fonts = {
-          fontDir.enable = true;
-          packages = with pkgs; [
-            corefonts
-            inter
-            nerd-fonts.hack
-            noto-fonts-cjk-sans
-            roboto
-          ];
-        };
-      }
-    ))
+      };
+    }))
   ];
 }

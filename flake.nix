@@ -113,6 +113,9 @@
         };
         workstationOverlay = final: prev: {
           plasticity = nixpkgs.legacyPackages."x86_64-linux".callPackage ./packages/plasticity.nix { };
+          toggleaudiosink =
+            nixpkgs.legacyPackages."x86_64-linux".callPackage ./packages/toggleaudiosink.nix
+              { };
         };
         serverOverlay = final: prev: {
         };
