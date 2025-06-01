@@ -58,7 +58,6 @@
         ### Internet Browsers & Communication ###
         beeper
         brave
-        nextcloud-client
         tor-browser
         vesktop
         ### Office & Productivity ###
