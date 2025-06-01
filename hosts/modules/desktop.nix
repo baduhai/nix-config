@@ -18,13 +18,6 @@
     # Workstation specific configuration
     (lib.mkIf hostType.isWorkstation {
       services = {
-        displayManager.sddm = {
-          enable = true;
-          wayland = {
-            enable = true;
-            compositor = "kwin";
-          };
-        };
         pipewire = {
           enable = true;
           alsa.enable = true;
@@ -33,11 +26,16 @@
           jack.enable = true;
           wireplumber.enable = true;
         };
+        greetd = {
+          enable = true;
+          settings.default_session.command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --asterisks --time";
+        };
       };
       programs.niri.enable = true;
       environment.systemPackages = with pkgs; [
         anyrun
         foot
+        gsettings-desktop-schemas
         swaybg
         swww
         xwayland-satellite
