@@ -6,10 +6,11 @@
       allowedTCPPorts = [
         80 # HTTP
         443 # HTTPS
-        # 25565 # Minecraft
+        25565 # Minecraft
       ];
       allowedUDPPorts = [
-        # 25565 # Minecraft
+        19132 # Minecraft Bedrock
+        25565 # Minecraft
       ];
     };
   };
