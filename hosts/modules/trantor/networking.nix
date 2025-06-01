@@ -17,17 +17,17 @@
         {
           sourcePort = 25565;
           proto = "tcp";
-          destination = "alexandria:25565";
+          destination = "100.76.19.50:25565";
         }
         {
           sourcePort = 25565;
           proto = "udp";
-          destination = "alexandria:25565";
+          destination = "100.76.19.50:25565";
         }
         {
           sourcePort = 19132;
           proto = "udp";
-          destination = "alexandria:19132";
+          destination = "100.76.19.50:19132";
         }
       ];
     };
