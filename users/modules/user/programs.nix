@@ -61,6 +61,9 @@
               [ ❯ ](bold green)
             '';
             right_format = "$cmd_duration$character";
+            hostname = {
+              ssh_symbol = ""
+            };
             character = {
               error_symbol = "[](red)";
               success_symbol = "[󱐋](green)";
