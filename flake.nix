@@ -3,14 +3,23 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager-stable = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
+    disko = {
+      url = "github:nix-community/disko?ref=v1.11.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    disko-stable = {
+      url = "github:nix-community/disko?ref=v1.11.0";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
@@ -36,6 +45,8 @@
       nixpkgs-stable,
       home-manager,
       home-manager-stable,
+      disko,
+      disko-stable,
       agenix,
       deploy-rs,
       impermanence,
@@ -55,6 +66,7 @@
             let
               pkgs = if type == "server" then nixpkgs-stable else nixpkgs;
               hm = if type == "server" then home-manager-stable else home-manager;
+              diskoInput = if type == "server" then disko-stable else disko;
               hostTypeFlags = {
                 isServer = type == "server";
                 isWorkstation = type == "workstation";
@@ -62,6 +74,7 @@
               defaultModules = [
                 ./hosts/${hostname}.nix
                 agenix.nixosModules.default
+                diskoInput.nixosModules.default
                 hm.nixosModules.default
                 impermanence.nixosModules.impermanence
                 nix-flatpak.nixosModules.nix-flatpak
@@ -106,6 +119,11 @@
             hostname = "alexandria";
             type = "server";
           };
+          trantor = mkHost {
+            hostname = "trantor";
+            type = "server";
+            system = "aarch64-linux";
+          };
         };
 
       overlays = {
@@ -127,6 +145,18 @@
         nodes = {
           alexandria = {
             hostname = "alexandria";
+            profiles = {
+              system = {
+                user = "root";
+                sshUser = "root";
+                remoteBuild = true;
+                path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.alexandria;
+              };
+            };
+          };
+
+          trantor = {
+            hostname = "trantor";
             profiles = {
               system = {
                 user = "root";
