@@ -57,7 +57,7 @@
           settings = {
             add_newline = false;
             format = ''
-              $directory$git_branch$git_status$nix_shell
+              $hostname$directory$git_branch$git_status$nix_shell
               [ ❯ ](bold green)
             '';
             right_format = "$cmd_duration$character";
