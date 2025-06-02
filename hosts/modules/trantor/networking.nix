@@ -13,6 +13,7 @@
       enable = true;
       externalInterface = "enp0s6";
       internalInterfaces = [ "tailscale0" ];
+      externalIP = null;
       forwardPorts = [
         {
           sourcePort = 25565;
