@@ -29,8 +29,6 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
-
     nix-flatpak.url = "github:gmodena/nix-flatpak/latest";
 
     impermanence.url = "github:nix-community/impermanence";
@@ -46,7 +44,6 @@
       disko,
       agenix,
       deploy-rs,
-      nix-minecraft,
       nix-flatpak,
       impermanence,
       ...
@@ -125,14 +122,6 @@
             hostname = "trantor";
             type = "server";
             system = "aarch64-linux";
-            extraModules = [
-              nix-minecraft.nixosModules.minecraft-servers
-              {
-                nixpkgs.overlays = [
-                  nix-minecraft.overlays.default
-                ];
-              }
-            ];
           };
         };
 
