@@ -18,7 +18,10 @@
           enable = true;
           extraUpFlags = [ "--operator=user" ];
         };
-        openssh.enable = true;
+        openssh = {
+          enable = true;
+          settings.PermitRootLogin = "no";
+        };
       };
     }
 
