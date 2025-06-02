@@ -35,12 +35,11 @@
         tree = "ls --tree";
         syscleanup = "sudo nix-collect-garbage -d; sudo /run/current-system/bin/switch-to-configuration boot";
       };
-
-      services.flatpak.enable = lib.mkForce false;
     }
 
     # Server specific configuration
     (lib.mkIf hostType.isServer {
+      services.flatpak.enable = false;
     })
 
     # Workstation specific configuration
