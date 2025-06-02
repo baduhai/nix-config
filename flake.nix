@@ -16,10 +16,6 @@
 
     disko = {
       url = "github:nix-community/disko?ref=v1.11.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    disko-stable = {
-      url = "github:nix-community/disko?ref=v1.11.0";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
@@ -32,6 +28,8 @@
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
+
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/latest";
 
@@ -46,11 +44,11 @@
       home-manager,
       home-manager-stable,
       disko,
-      disko-stable,
       agenix,
       deploy-rs,
-      impermanence,
+      nix-minecraft,
       nix-flatpak,
+      impermanence,
       ...
     }:
     {
@@ -66,7 +64,6 @@
             let
               pkgs = if type == "server" then nixpkgs-stable else nixpkgs;
               hm = if type == "server" then home-manager-stable else home-manager;
-              diskoInput = if type == "server" then disko-stable else disko;
               hostTypeFlags = {
                 isServer = type == "server";
                 isWorkstation = type == "workstation";
@@ -74,7 +71,7 @@
               defaultModules = [
                 ./hosts/${hostname}.nix
                 agenix.nixosModules.default
-                diskoInput.nixosModules.default
+                disko.nixosModules.default
                 hm.nixosModules.default
                 impermanence.nixosModules.impermanence
                 nix-flatpak.nixosModules.nix-flatpak
@@ -92,7 +89,9 @@
                 }
               ];
               serverModules = [
-                self.nixosModules.qbittorrent
+                  nixpkgs.overlays = [
+                    self.overlays.serverOverlay
+                  ];
               ];
               typeModules = if type == "server" then serverModules else workstationModules;
               allModules = defaultModules ++ typeModules ++ extraModules;
@@ -118,11 +117,13 @@
           alexandria = mkHost {
             hostname = "alexandria";
             type = "server";
+            extraModules = [ self.nixosModules.qbittorrent ];
           };
           trantor = mkHost {
             hostname = "trantor";
             type = "server";
             system = "aarch64-linux";
+            extraModules = [ nix-minecraft.nixosModules.default ];
           };
         };
 

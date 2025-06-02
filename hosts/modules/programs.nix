@@ -33,9 +33,10 @@
         ls = "${pkgs.eza}/bin/eza --icons --group-directories-first";
         neofetch = "fastfetch";
         tree = "ls --tree";
-        tsh = "ssh -o RequestTTY=yes $argv tmux -u -CC new -A -s tmux-main";
         syscleanup = "sudo nix-collect-garbage -d; sudo /run/current-system/bin/switch-to-configuration boot";
       };
+
+      services.flatpak.enable = lib.mkForce false;
     }
 
     # Server specific configuration
@@ -132,6 +133,23 @@
           noto-fonts-cjk-sans
           roboto
         ];
+      };
+
+      services.flatpak = {
+        enable = true;
+        packages = [
+          "com.boxy_svg.BoxySVG"
+          "com.github.k4zmu2a.spacecadetpinball"
+          "com.github.tchx84.Flatseal"
+          "com.steamgriddb.SGDBoop"
+          "app.zen_browser.zen"
+          "io.github.Foldex.AdwSteamGtk"
+          "io.itch.itch"
+          "io.mrarm.mcpelauncher"
+          "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/24.08"
+        ];
+        uninstallUnmanaged = true;
+        update.auto.enable = true;
       };
     }))
   ];
