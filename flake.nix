@@ -89,9 +89,11 @@
                 }
               ];
               serverModules = [
+                {
                   nixpkgs.overlays = [
                     self.overlays.serverOverlay
                   ];
+                }
               ];
               typeModules = if type == "server" then serverModules else workstationModules;
               allModules = defaultModules ++ typeModules ++ extraModules;
@@ -123,7 +125,14 @@
             hostname = "trantor";
             type = "server";
             system = "aarch64-linux";
-            extraModules = [ nix-minecraft.nixosModules.default ];
+            extraModules = [
+              nix-minecraft.nixosModules.minecraft-servers
+              {
+                nixpkgs.overlays = [
+                  nix-minecraft.overlays.default
+                ];
+              }
+            ];
           };
         };
 
