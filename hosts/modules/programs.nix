@@ -82,7 +82,6 @@
         heroic
         mangohud
         prismlauncher
-        protonup
         ### System Utilities ###
         adwaita-icon-theme
         junction
@@ -108,7 +107,10 @@
 
       programs = {
         adb.enable = true;
-        steam.enable = true;
+        steam = {
+          enable = true;
+          extraCompatPackages = [ pkgs.proton-ge-bin ];
+        };
         dconf.enable = true;
         nix-ld.enable = true;
         kdeconnect.enable = true;
@@ -138,15 +140,22 @@
       services.flatpak = {
         enable = true;
         packages = [
-          "com.boxy_svg.BoxySVG"
-          "com.github.k4zmu2a.spacecadetpinball"
-          "com.github.tchx84.Flatseal"
-          "com.steamgriddb.SGDBoop"
+          ### Dev Tools ###
+          ### Internet Browsers & Communication ###
           "app.zen_browser.zen"
-          "io.github.Foldex.AdwSteamGtk"
+          ### Office & Productivity ###
+          ### Graphics & Design ###
+          "com.boxy_svg.BoxySVG"
+          ### Gaming & Entertainment ###
+          "com.github.k4zmu2a.spacecadetpinball"
           "io.itch.itch"
           "io.mrarm.mcpelauncher"
           "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/24.08"
+          ### System Utilities ###
+          "com.github.tchx84.Flatseal"
+          "io.github.Foldex.AdwSteamGtk"
+          "com.steamgriddb.SGDBoop"
+          ### Media ###
         ];
         uninstallUnmanaged = true;
         update.auto.enable = true;
