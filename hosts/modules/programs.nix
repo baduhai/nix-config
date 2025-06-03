@@ -48,7 +48,6 @@
       environment.systemPackages = with pkgs; [
         ### Dev Tools ###
         bat
-        code-cursor
         deploy-rs
         fd
         fzf
