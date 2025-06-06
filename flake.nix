@@ -18,10 +18,6 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix-stable = {
-      url = "github:danth/stylix/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
 
     agenix = {
       url = "github:ryantm/agenix";
@@ -51,7 +47,6 @@
       home-manager,
       home-manager-stable,
       stylix,
-      stylix-stable,
       disko,
       agenix,
       deploy-rs,
@@ -72,7 +67,6 @@
             let
               pkgs = if type == "server" then nixpkgs-stable else nixpkgs;
               hm = if type == "server" then home-manager-stable else home-manager;
-              stlx = if type == "server" then stylix-stable else stylix;
               hostTypeFlags = {
                 isServer = type == "server";
                 isWorkstation = type == "workstation";
@@ -84,7 +78,7 @@
                 hm.nixosModules.default
                 impermanence.nixosModules.impermanence
                 nix-flatpak.nixosModules.nix-flatpak
-                stlx.nixosModules.stylix
+                stylix.nixosModules.stylix
                 {
                   nixpkgs.overlays = [
                     agenix.overlays.default
