@@ -25,7 +25,6 @@
         helix = {
           enable = true;
           settings = {
-            theme = "catppuccin_mocha";
             editor = {
               file-picker.hidden = false;
               idle-timeout = 0;
