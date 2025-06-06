@@ -99,7 +99,6 @@
                 }
               ];
               serverModules = [
-                self.nixosModules.qbittorrent
                 {
                   nixpkgs.overlays = [
                     self.overlays.serverOverlay
