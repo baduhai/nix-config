@@ -167,17 +167,17 @@
             };
           };
 
-          trantor = {
-            hostname = "trantor";
-            profiles = {
-              system = {
-                user = "root";
-                sshUser = "root";
-                remoteBuild = true;
-                path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.alexandria;
-              };
-            };
-          };
+          # trantor = {
+          #   hostname = "trantor";
+          #   profiles = {
+          #     system = {
+          #       user = "root";
+          #       sshUser = "root";
+          #       remoteBuild = true;
+          #       path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.alexandria;
+          #     };
+          #   };
+          # };
 
           io = {
             hostname = "io";
