@@ -9,31 +9,31 @@
   config = lib.mkMerge [
     # Common configuration
     {
-      environment.systemPackages = with pkgs; [
-        ### Dev Tools ###
-        agenix
-        git
-        helix
-        ### System Utilities ###
-        btop
-        fastfetch
-        nixos-firewall-tool
-        sysz
-        wget
-        tmux
-      ];
+      environment = {
+        systemPackages = with pkgs; [
+          ### Dev Tools ###
+          agenix
+          git
+          helix
+          ### System Utilities ###
+          btop
+          fastfetch
+          nixos-firewall-tool
+          sysz
+          wget
+          tmux
+        ];
+        shellAliases = {
+          ls = "${pkgs.eza}/bin/eza --icons --group-directories-first";
+          neofetch = "fastfetch";
+          tree = "ls --tree";
+          syscleanup = "sudo nix-collect-garbage -d; sudo /run/current-system/bin/switch-to-configuration boot";
+        };
+      };
 
       programs = {
         fish.enable = true;
         command-not-found.enable = false;
-      };
-
-      environment.shellAliases = {
-        ls = "${pkgs.eza}/bin/eza --icons --group-directories-first";
-        neofetch = "fastfetch";
-        tree = "ls --tree";
-        tsh = "ssh -o RequestTTY=yes $argv tmux -u -CC new -A -s tmux-main";
-        syscleanup = "sudo nix-collect-garbage -d; sudo /run/current-system/bin/switch-to-configuration boot";
       };
     }
 
@@ -64,73 +64,86 @@
         };
       in
       {
-        environment.systemPackages =
-          with pkgs;
-          [
-            ### Dev Tools ###
-            bat
-            deploy-rs
-            fd
-            fzf
-            nixfmt-rfc-style
-            nix-init
-            nix-output-monitor
-            ripgrep
-            ### Internet Browsers & Communication ###
-            beeper
-            brave
-            microsoft-edge
-            nextcloud-client
-            tor-browser
-            vesktop
-            ### Office & Productivity ###
-            aspell
-            aspellDicts.de
-            aspellDicts.en
-            aspellDicts.en-computers
-            aspellDicts.pt_BR
-            kwrite
-            libreoffice-qt
-            obsidian
-            (octaveFull.withPackages (octavePackages: with octavePackages; [ signal ]))
-            onlyoffice-desktopeditors
-            rnote
-            ### Graphics & Design ###
-            gimp
-            inkscape
-            orca-slicer
-            plasticity
-            ### Gaming & Entertainment ###
-            clonehero
-            heroic
-            mangohud
-            prismlauncher
-            protonup
-            ### System Utilities ###
-            adwaita-icon-theme
-            junction
-            kara
-            kde-rounded-corners
-            libfido2
-            # lilipod BROKEN
-            mission-center
-            p7zip
-            qbittorrent
-            quickemu
-            quickgui
-            rustdesk
-            steam-run
-            unrar
-            ### Media ###
-            mpv
-            obs-studio
-            qview
-          ]
-          ++ kdepkgs;
+        environment = {
+          systemPackages =
+            with pkgs;
+            [
+              ### Dev Tools ###
+              bat
+              deploy-rs
+              fd
+              fzf
+              nixfmt-rfc-style
+              nix-init
+              nix-output-monitor
+              ripgrep
+              ### Internet Browsers & Communication ###
+              beeper
+              brave
+              tor-browser
+              vesktop
+              ### Office & Productivity ###
+              aspell
+              aspellDicts.de
+              aspellDicts.en
+              aspellDicts.en-computers
+              aspellDicts.pt_BR
+              kwrite
+              libreoffice-qt
+              obsidian
+              onlyoffice-desktopeditors
+              rnote
+              ### Graphics & Design ###
+              gimp
+              inkscape
+              orca-slicer
+              plasticity
+              ### Gaming & Entertainment ###
+              clonehero
+              heroic
+              mangohud
+              prismlauncher
+              protonup
+              ### System Utilities ###
+              adwaita-icon-theme
+              junction
+              kara
+              kde-rounded-corners
+              libfido2
+              # lilipod BROKEN
+              mission-center
+              p7zip
+              qbittorrent
+              quickemu
+              quickgui
+              rustdesk
+              steam-run
+              unrar
+              ### Media ###
+              mpv
+              obs-studio
+              qview
+            ]
+            ++ kdepkgs;
+          plasma6.excludePackages = (
+            with pkgs.kdePackages;
+            [
+              discover
+              elisa
+              gwenview
+              kate
+              khelpcenter
+              oxygen
+            ]
+          );
+        };
 
         programs = {
           adb.enable = true;
-          steam.enable = true;
+          steam = {
+            enable = true;
+            extraCompatPackages = [ pkgs.proton-ge-bin ];
+          };
           dconf.enable = true;
           nix-ld.enable = true;
           kdeconnect.enable = true;
@@ -157,17 +170,29 @@
           ];
         };
 
-        environment.plasma6.excludePackages = (
-          with pkgs.kdePackages;
-          [
-            discover
-            elisa
-            gwenview
-            kate
-            khelpcenter
-            oxygen
-          ]
-        );
+        services.flatpak = {
+          enable = true;
+          packages = [
+            ### Dev Tools ###
+            ### Internet Browsers & Communication ###
+            "app.zen_browser.zen"
+            ### Office & Productivity ###
+            ### Graphics & Design ###
+            "com.boxy_svg.BoxySVG"
+            ### Gaming & Entertainment ###
+            "com.github.k4zmu2a.spacecadetpinball"
+            "io.itch.itch"
+            "io.mrarm.mcpelauncher"
+            "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/24.08"
+            ### System Utilities ###
+            "com.github.tchx84.Flatseal"
+            "io.github.Foldex.AdwSteamGtk"
+            "com.steamgriddb.SGDBoop"
+            ### Media ###
+          ];
+          uninstallUnmanaged = true;
+          update.auto.enable = true;
+        };
       }
     ))
   ];

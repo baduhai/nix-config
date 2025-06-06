@@ -5,7 +5,6 @@
     ./boot.nix
     ./console.nix
     ./desktop.nix
-    ./flatpak.nix
     ./impermanence.nix
     ./locale.nix
     ./networking.nix

@@ -3,14 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager-stable = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
@@ -21,6 +21,11 @@
 
     deploy-rs = {
       url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
+    disko = {
+      url = "github:nix-community/disko?ref=v1.11.0";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
@@ -36,10 +41,11 @@
       nixpkgs-stable,
       home-manager,
       home-manager-stable,
+      disko,
       agenix,
       deploy-rs,
-      impermanence,
       nix-flatpak,
+      impermanence,
       ...
     }:
     {
@@ -62,6 +68,7 @@
               defaultModules = [
                 ./hosts/${hostname}.nix
                 agenix.nixosModules.default
+                disko.nixosModules.default
                 hm.nixosModules.default
                 impermanence.nixosModules.impermanence
                 nix-flatpak.nixosModules.nix-flatpak
@@ -80,6 +87,11 @@
               ];
               serverModules = [
                 self.nixosModules.qbittorrent
+                {
+                  nixpkgs.overlays = [
+                    self.overlays.serverOverlay
+                  ];
+                }
               ];
               typeModules = if type == "server" then serverModules else workstationModules;
               allModules = defaultModules ++ typeModules ++ extraModules;
@@ -105,6 +117,12 @@
           alexandria = mkHost {
             hostname = "alexandria";
             type = "server";
+            extraModules = [ self.nixosModules.qbittorrent ];
+          };
+          trantor = mkHost {
+            hostname = "trantor";
+            type = "server";
+            system = "aarch64-linux";
           };
         };
 
@@ -113,6 +131,9 @@
         };
         workstationOverlay = final: prev: {
           plasticity = nixpkgs.legacyPackages."x86_64-linux".callPackage ./packages/plasticity.nix { };
+          toggleaudiosink =
+            nixpkgs.legacyPackages."x86_64-linux".callPackage ./packages/toggleaudiosink.nix
+              { };
         };
         serverOverlay = final: prev: {
         };
@@ -124,6 +145,18 @@
         nodes = {
           alexandria = {
             hostname = "alexandria";
+            profiles = {
+              system = {
+                user = "root";
+                sshUser = "root";
+                remoteBuild = true;
+                path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.alexandria;
+              };
+            };
+          };
+
+          trantor = {
+            hostname = "trantor";
             profiles = {
               system = {
                 user = "root";

@@ -18,11 +18,17 @@
     # Workstation specific configuration
     (lib.mkIf hostType.isWorkstation {
       services = {
-        displayManager.sddm = {
-          enable = true;
-          wayland = {
+        displayManager = {
+          autoLogin = {
             enable = true;
-            compositor = "kwin";
+            user = "user";
+          };
+          sddm = {
+            enable = true;
+            wayland = {
+              enable = true;
+              compositor = "kwin";
+            };
           };
         };
         desktopManager.plasma6.enable = true;
@@ -35,8 +41,6 @@
           wireplumber.enable = true;
         };
       };
-
-      # programs.hyprland.enable = true;
 
       hardware = {
         xpadneo.enable = true;
