@@ -110,13 +110,11 @@
               kara
               kde-rounded-corners
               libfido2
-              # lilipod BROKEN
               mission-center
               p7zip
               qbittorrent
               quickemu
               quickgui
-              rustdesk
               steam-run
               unrar
               ### Media ###
@@ -186,8 +184,9 @@
             "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/24.08"
             ### System Utilities ###
             "com.github.tchx84.Flatseal"
-            "io.github.Foldex.AdwSteamGtk"
+            "com.rustdesk.RustDesk"
             "com.steamgriddb.SGDBoop"
+            "io.github.Foldex.AdwSteamGtk"
             ### Media ###
           ];
           uninstallUnmanaged = true;
