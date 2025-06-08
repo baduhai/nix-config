@@ -34,7 +34,7 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    nix-flatpak.url = "github:gmodena/nix-flatpak/latest";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/main";
 
     impermanence.url = "github:nix-community/impermanence";
   };
