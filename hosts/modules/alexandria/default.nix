@@ -12,7 +12,6 @@ in
 
 {
   imports = [
-    ./changedetection.nix
     ./cinny.nix
     ./forgejo.nix
     ./hardware-configuration.nix
@@ -30,7 +29,6 @@ in
     bazaar = mkStringOption "6767";
     radarr = mkStringOption "7878";
     vaultwarden = mkStringOption "8000";
-    changedetection-io = mkStringOption "8001";
     cinny = mkStringOption "8002";
     librespeed = mkStringOption "8003";
     paperless = mkStringOption "8004";
