@@ -96,7 +96,6 @@
               ### Graphics & Design ###
               gimp
               inkscape
-              # orca-slicer
               plasticity
               ### Gaming & Entertainment ###
               clonehero
