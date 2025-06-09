@@ -96,7 +96,7 @@ in
   age.secrets.cloudflare = {
     file = ../../../secrets/cloudflare.age;
     owner = "nginx";
-    group = "hosted";
+    group = "nginx";
   };
 
   # TODO: remove when bug fix
