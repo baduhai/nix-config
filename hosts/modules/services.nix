@@ -10,6 +10,14 @@
     # Common configuration
     {
       services = {
+        tailscale = {
+          enable = true;
+          extraUpFlags = [ "--operator=user" ];
+        };
+        openssh = {
+          enable = true;
+          settings.PermitRootLogin = "no";
+        };
         fwupd.enable = true;
         fstrim.enable = true;
       };

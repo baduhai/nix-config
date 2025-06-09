@@ -12,17 +12,6 @@
         networkmanager.enable = true;
         firewall.enable = true;
       };
-
-      services = {
-        tailscale = {
-          enable = true;
-          extraUpFlags = [ "--operator=user" ];
-        };
-        openssh = {
-          enable = true;
-          settings.PermitRootLogin = "no";
-        };
-      };
     }
 
     # Server specific configuration
