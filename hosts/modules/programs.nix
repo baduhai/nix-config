@@ -167,42 +167,38 @@
           ];
         };
 
-        services.flatpak =
-          let
-            orcahash = "0hdx5sg6fknj1pfnfxvlfwb5h6y1vjr6fyajbsnjph5gkp97c6p1";
-          in
-          {
-            enable = true;
-            packages = [
-              ### Dev Tools ###
-              ### Internet Browsers & Communication ###
-              "app.zen_browser.zen"
-              ### Office & Productivity ###
-              ### Graphics & Design ###
-              "com.boxy_svg.BoxySVG"
-              {
-                bundle = "${pkgs.fetchurl {
-                  url = "https://github.com/SoftFever/OrcaSlicer/releases/download/v2.3.0/OrcaSlicer-Linux-flatpak_V2.3.0_x86_64.flatpak";
-                  sha256 = orcahash;
-                }}";
-                appId = "io.github.softfever.OrcaSlicer";
-                sha256 = orcahash;
-              }
-              ### Gaming & Entertainment ###
-              "com.github.k4zmu2a.spacecadetpinball"
-              "io.itch.itch"
-              "io.mrarm.mcpelauncher"
-              "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/24.08"
-              ### System Utilities ###
-              "com.github.tchx84.Flatseal"
-              "com.rustdesk.RustDesk"
-              "com.steamgriddb.SGDBoop"
-              "io.github.Foldex.AdwSteamGtk"
-              ### Media ###
-            ];
-            uninstallUnmanaged = true;
-            update.auto.enable = true;
-          };
+        services.flatpak = {
+          enable = true;
+          packages = [
+            ### Dev Tools ###
+            ### Internet Browsers & Communication ###
+            "app.zen_browser.zen"
+            ### Office & Productivity ###
+            ### Graphics & Design ###
+            "com.boxy_svg.BoxySVG"
+            rec {
+              sha256 = "0hdx5sg6fknj1pfnfxvlfwb5h6y1vjr6fyajbsnjph5gkp97c6p1";
+              bundle = "${pkgs.fetchurl {
+                url = "https://github.com/SoftFever/OrcaSlicer/releases/download/v2.3.0/OrcaSlicer-Linux-flatpak_V2.3.0_x86_64.flatpak";
+                sha256 = sha256; # References the sha256 attribute above
+              }}";
+              appId = "io.github.softfever.OrcaSlicer";
+            }
+            ### Gaming & Entertainment ###
+            "com.github.k4zmu2a.spacecadetpinball"
+            "io.itch.itch"
+            "io.mrarm.mcpelauncher"
+            "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/24.08"
+            ### System Utilities ###
+            "com.github.tchx84.Flatseal"
+            "com.rustdesk.RustDesk"
+            "com.steamgriddb.SGDBoop"
+            "io.github.Foldex.AdwSteamGtk"
+            ### Media ###
+          ];
+          uninstallUnmanaged = true;
+          update.auto.enable = true;
+        };
       }
     ))
   ];
