@@ -16,8 +16,11 @@ let
   alexandria-host = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK95QueW+jp1ZmF299Xr3XkgHJ6dL7aZVsfWxqbOKVKA";
   alexandria = [ alexandria-host ];
 
+  trantor-host = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINkGuGLZPnYJbCGY4BhJ9uTupp6ruuR1NZ7FEYEaLPA7";
+  trantor = [ trantor-host ];
+
   desktops = io ++ rotterdam;
-  servers = alexandria;
+  servers = alexandria ++ trantor;
   all-hosts = desktops ++ servers;
 in
 {
