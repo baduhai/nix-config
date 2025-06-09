@@ -63,7 +63,7 @@ in
         DOMAIN = "https://pass.baduhai.dev";
         SIGNUPS_ALLOWED = false;
         ROCKET_ADDRESS = "127.0.0.1";
-        ROCKET_PORT = "${config.ports.vaultwarden}";
+        ROCKET_PORT = "${ports.vaultwarden}";
       };
     };
   };
@@ -73,7 +73,7 @@ in
     environment = {
       TZ = "America/Bahia";
     };
-    ports = [ "${config.ports.librespeed}:80" ];
+    ports = [ "${ports.librespeed}:80" ];
     extraOptions = [
       "--pull=newer"
       "--label=io.containers.autoupdate=registry"
