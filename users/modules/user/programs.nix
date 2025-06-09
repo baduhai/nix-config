@@ -62,7 +62,7 @@
             '';
             right_format = "$cmd_duration$character";
             hostname = {
-              ssh_symbol = "<U+EB3A> ";
+              ssh_symbol = " ";
             };
             character = {
               error_symbol = "[](red)";
