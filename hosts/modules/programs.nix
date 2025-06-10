@@ -115,6 +115,7 @@
               quickemu
               quickgui
               steam-run
+              toggleaudiosink
               unrar
               ### Media ###
               mpv
@@ -177,12 +178,12 @@
             ### Graphics & Design ###
             "com.boxy_svg.BoxySVG"
             rec {
+              appId = "io.github.softfever.OrcaSlicer";
               sha256 = "0hdx5sg6fknj1pfnfxvlfwb5h6y1vjr6fyajbsnjph5gkp97c6p1";
               bundle = "${pkgs.fetchurl {
                 url = "https://github.com/SoftFever/OrcaSlicer/releases/download/v2.3.0/OrcaSlicer-Linux-flatpak_V2.3.0_x86_64.flatpak";
-                sha256 = sha256; # References the sha256 attribute above
+                sha256 = sha256;
               }}";
-              appId = "io.github.softfever.OrcaSlicer";
             }
             ### Gaming & Entertainment ###
             "com.github.k4zmu2a.spacecadetpinball"
