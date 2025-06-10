@@ -12,11 +12,7 @@ in
     kernelParams = [
       "processor.max_cstate=1" # Fixes bug where ryzen cpus freeze when in highest C state
       "clearcpuid=514"
-      # Fixes amdgpu freezing
-      "amdgpu.noretry=0"
-      "amdgpu.ppfeaturemask=0xfffd3fff"
-      "amdgpu.gpu_recovery=1"
-      "amdgpu.lockup_timeout=1000"
+      "amdgpu.ppfeaturemask=0xfffd3fff" # Fixes amdgpu freezing
     ];
     # QubesOS boot entry
     loader.systemd-boot = {
