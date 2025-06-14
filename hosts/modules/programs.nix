@@ -21,7 +21,7 @@
           nixos-firewall-tool
           sysz
           wget
-          tmux
+          zellij
         ];
         shellAliases = {
           ls = "${pkgs.eza}/bin/eza --icons --group-directories-first";
@@ -118,7 +118,6 @@
               steam-run
               toggleaudiosink
               unrar
-              zellij
               ### Media ###
               mpv
               obs-studio
