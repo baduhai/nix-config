@@ -105,6 +105,7 @@
               protonup
               ### System Utilities ###
               adwaita-icon-theme
+              foot
               junction
               kara
               kde-rounded-corners
@@ -117,6 +118,7 @@
               steam-run
               toggleaudiosink
               unrar
+              zellij
               ### Media ###
               mpv
               obs-studio
@@ -131,6 +133,7 @@
               gwenview
               kate
               khelpcenter
+              konsole
               oxygen
             ]
           );
