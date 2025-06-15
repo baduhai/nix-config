@@ -105,7 +105,7 @@
               protonup
               ### System Utilities ###
               adwaita-icon-theme
-              foot
+              alacritty
               junction
               kara
               kde-rounded-corners

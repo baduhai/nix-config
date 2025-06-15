@@ -51,7 +51,7 @@
             name = "Noto Color Emoji";
           };
           sizes = {
-            applications = 10;
+            applications = 11;
             desktop = config.stylix.fonts.sizes.applications;
             popups = config.stylix.fonts.sizes.applications;
             terminal = 12;
