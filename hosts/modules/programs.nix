@@ -20,8 +20,8 @@
           fastfetch
           nixos-firewall-tool
           sysz
+          tmux
           wget
-          zellij
         ];
         shellAliases = {
           ls = "${pkgs.eza}/bin/eza --icons --group-directories-first";
