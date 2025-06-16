@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   boot = {
     # TODO check if future kernel versions fix boot issue with systemd initrd with tpm

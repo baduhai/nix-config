@@ -107,7 +107,7 @@ in
 
     users.users = mkIf (cfg.user == "qbittorrent") {
       qbittorrent = {
-        group = cfg.group;
+        inherit group;
         home = cfg.dataDir;
         createHome = true;
         description = "qBittorrent Daemon user";

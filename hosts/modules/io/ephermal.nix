@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   boot.initrd.systemd.services.recreate-root = {
     description = "Rolling over and creating new filesystem root";
