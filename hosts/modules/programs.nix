@@ -17,7 +17,6 @@
           helix
           ### System Utilities ###
           btop
-          fastfetch
           nixos-firewall-tool
           sysz
           tmux
@@ -25,7 +24,7 @@
         ];
         shellAliases = {
           ls = "${pkgs.eza}/bin/eza --icons --group-directories-first";
-          neofetch = "fastfetch";
+          neofetch = "${pkgs.fastfetch}/bin/fastfetch";
           tree = "ls --tree";
           syscleanup = "sudo nix-collect-garbage -d; sudo /run/current-system/bin/switch-to-configuration boot";
         };
