@@ -67,8 +67,8 @@ in
       settings = {
         server = {
           hosts = [
-            "127.0.0.1:5232"
-            "[::]:5232"
+            "127.0.0.1:${ports.radicale}"
+            "[::]:${ports.radicale}"
           ];
         };
         auth = {
