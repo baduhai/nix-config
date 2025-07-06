@@ -25,4 +25,5 @@ let
 in
 {
   "cloudflare.age".publicKeys = all-hosts;
+  "webdav.env.age".publicKeys = all-hosts;
 }

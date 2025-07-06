@@ -6,6 +6,7 @@ let
     librespeed = "8000";
     radicale = "8001";
     vaultwarden = "8002";
+    webdav = "8003";
   };
 in
 
@@ -36,6 +37,7 @@ in
           "jellyfin.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:${ports.jellyfin}";
           "pass.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:${ports.vaultwarden}";
           "speedtest.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:${ports.librespeed}";
+          "webdav.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:${ports.webdav}";
         };
     };
 
@@ -88,6 +90,25 @@ in
         ROCKET_PORT = "${ports.vaultwarden}";
       };
     };
+
+    webdav = {
+      enable = true;
+      settings = {
+        address = "127.0.0.1";
+        port = lib.toInt ports.webdav;
+        scope = "/data/webdav";
+        modify = true;
+        auth = true;
+        users = [
+          {
+            username = "{env}USERNAME_1";
+            password = "{env}PASSWORD_1";
+            directory = "{env}USERNAME_1";
+          }
+        ];
+      };
+      environmentFile = config.age.secrets."webdav.env".path;
+    };
   };
 
   virtualisation.oci-containers.containers."librespeed" = {
@@ -115,10 +136,17 @@ in
     };
   };
 
-  age.secrets.cloudflare = {
-    file = ../../../secrets/cloudflare.age;
-    owner = "nginx";
-    group = "nginx";
+  age.secrets = {
+    cloudflare = {
+      file = ../../../secrets/cloudflare.age;
+      owner = "nginx";
+      group = "nginx";
+    };
+    "webdav.env" = {
+      file = ../../../secrets/webdav.env.age;
+      owner = "webdav";
+      group = "webdav";
+    };
   };
 
   # TODO: remove when bug fix
