@@ -86,7 +86,7 @@ in
 
     rclone-webdav = {
       enable = true;
-      authFile = config.age.secrets.wevdav.path;
+      authFile = config.age.secrets.webdav.path;
       dataDirectory = "/data/webdav";
       maxFileSize = "5G";
       listenAddresses = [ "0.0.0.0" ];

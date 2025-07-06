@@ -123,7 +123,10 @@
           alexandria = mkHost {
             hostname = "alexandria";
             type = "server";
-            extraModules = [ self.nixosModules.qbittorrent ];
+            extraModules = [
+              self.nixosModules.qbittorrent
+              self.nixosModules.rclone-webdav
+            ];
           };
           trantor = mkHost {
             hostname = "trantor";
@@ -196,6 +199,9 @@
         ];
       };
 
-      nixosModules.qbittorrent = import ./modules/qbittorrent.nix;
+      nixosModules = {
+        qbittorrent = import ./modules/qbittorrent.nix;
+        rclone-webdav = import ./modules/rclone-webdav.nix;
+      };
     };
 }
