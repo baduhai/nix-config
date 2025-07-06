@@ -12,6 +12,29 @@ in
 
 {
   services = {
+    forgejo = {
+      enable = true;
+      repositoryRoot = "/data/forgejo";
+      settings = {
+        session.COOKIE_SECURE = true;
+        server = {
+          PROTOCOL = "http+unix";
+          DOMAIN = "git.baduhai.dev";
+          ROOT_URL = "https://git.baduhai.dev";
+          OFFLINE_MODE = true; # disable use of CDNs
+          SSH_DOMAIN = "baduhai.dev";
+        };
+        log.LEVEL = "Warn";
+        mailer.ENABLED = false;
+        actions.ENABLED = false;
+      };
+    };
+
+    jellyfin = {
+      enable = true;
+      openFirewall = true;
+    };
+
     nginx = {
       enable = true;
       recommendedGzipSettings = true;
@@ -37,31 +60,11 @@ in
           "jellyfin.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:${ports.jellyfin}";
           "pass.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:${ports.vaultwarden}";
           "speedtest.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:${ports.librespeed}";
-          "webdav.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:${ports.webdav}";
+          # "webdav.baduhai.dev".locations."/" = {
+          #   proxyPass = "http://127.0.0.1:${ports.webdav}";
+          #   proxyNoTimeout = true;
+          # };
         };
-    };
-
-    forgejo = {
-      enable = true;
-      repositoryRoot = "/data/forgejo";
-      settings = {
-        session.COOKIE_SECURE = true;
-        server = {
-          PROTOCOL = "http+unix";
-          DOMAIN = "git.baduhai.dev";
-          ROOT_URL = "https://git.baduhai.dev";
-          OFFLINE_MODE = true; # disable use of CDNs
-          SSH_DOMAIN = "baduhai.dev";
-        };
-        log.LEVEL = "Warn";
-        mailer.ENABLED = false;
-        actions.ENABLED = false;
-      };
-    };
-
-    jellyfin = {
-      enable = true;
-      openFirewall = true;
     };
 
     radicale = {
@@ -81,6 +84,15 @@ in
       };
     };
 
+    rclone-webdav = {
+      enable = true;
+      authFile = config.age.secrets.wevdav.path;
+      dataDirectory = "/data/webdav";
+      maxFileSize = "5G";
+      listenAddresses = [ "0.0.0.0" ];
+      port = lib.toInt ports.webdav;
+    };
+
     vaultwarden = {
       enable = true;
       config = {
@@ -89,25 +101,6 @@ in
         ROCKET_ADDRESS = "127.0.0.1";
         ROCKET_PORT = "${ports.vaultwarden}";
       };
-    };
-
-    webdav = {
-      enable = true;
-      settings = {
-        address = "0.0.0.0";
-        port = lib.toInt ports.webdav;
-        behindProxy = true;
-        modify = true;
-        auth = true;
-        users = [
-          {
-            username = "{env}USERNAME_1";
-            password = "{env}PASSWORD_1";
-            directory = "{env}USERNAME_1";
-          }
-        ];
-      };
-      environmentFile = config.age.secrets."webdav.env".path;
     };
   };
 
@@ -142,8 +135,8 @@ in
       owner = "nginx";
       group = "nginx";
     };
-    "webdav.env" = {
-      file = ../../../secrets/webdav.env.age;
+    webdav = {
+      file = ../../../secrets/webdav.age;
       owner = "webdav";
       group = "webdav";
     };
