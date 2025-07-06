@@ -96,7 +96,7 @@ in
       settings = {
         address = "0.0.0.0";
         port = lib.toInt ports.webdav;
-        scope = "/data/webdav";
+        behindProxy = true;
         modify = true;
         auth = true;
         users = [
