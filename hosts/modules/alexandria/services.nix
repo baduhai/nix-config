@@ -94,7 +94,7 @@ in
     webdav = {
       enable = true;
       settings = {
-        address = "127.0.0.1";
+        address = "0.0.0.0";
         port = lib.toInt ports.webdav;
         scope = "/data/webdav";
         modify = true;
