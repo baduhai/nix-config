@@ -170,8 +170,8 @@ in
     };
     webdav = {
       file = ../../../secrets/webdav.age;
-      owner = "webdav";
-      group = "webdav";
+      owner = "user";
+      group = "users";
     };
   };
 
