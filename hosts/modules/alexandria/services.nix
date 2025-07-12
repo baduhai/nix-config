@@ -48,6 +48,7 @@ let
       --addr unix://"$SOCKET_PATH" \
       --user "$USERNAME" \
       --pass "$PASSWORD" \
+      --config="" \
       --verbose
   '';
 in
