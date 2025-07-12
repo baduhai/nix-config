@@ -125,7 +125,6 @@
             type = "server";
             extraModules = [
               self.nixosModules.qbittorrent
-              self.nixosModules.rclone-webdav
             ];
           };
           trantor = mkHost {
@@ -201,7 +200,6 @@
 
       nixosModules = {
         qbittorrent = import ./modules/qbittorrent.nix;
-        rclone-webdav = import ./modules/rclone-webdav.nix;
       };
     };
 }
