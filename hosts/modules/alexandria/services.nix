@@ -219,7 +219,8 @@ in
 
         # Create runtime directory for socket
         RuntimeDirectory = "rclone-webdav";
-        RuntimeDirectoryMode = "0755";
+        RuntimeDirectoryMode = "0750";
+        UMask = "0002";
       };
 
       # Ensure the user exists
@@ -228,6 +229,10 @@ in
         mkdir -p /data/webdav
         chown user:users /data/webdav
         chmod 755 /data/webdav
+        # Ensure nginx can access the socket directory
+        mkdir -p /run/rclone-webdav
+        chown user:nginx /run/rclone-webdav
+        chmod 750 /run/rclone-webdav
       '';
     };
   };
