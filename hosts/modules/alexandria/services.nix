@@ -189,25 +189,17 @@ in
   };
 
   systemd.services = {
-    # TODO: remove when bug fix
-    # serokell/deploy-rs/issues/57
-    # NixOS/nixpkgs/issues/180175
-    # Workaround for upstream bug in NetworkManager-wait-online.service
-    NetworkManager-wait-online.enable = false;
     rclone-webdav = {
       description = "RClone WebDAV Server";
       after = [ "network.target" ];
       wantedBy = [ "multi-user.target" ];
-
       serviceConfig = {
         Type = "exec";
         User = "user";
-        Group = "users";
+        Group = "nginx";
         ExecStart = "${rclone-webdav-start}";
         Restart = "always";
         RestartSec = "10";
-
-        # Security settings
         NoNewPrivileges = true;
         PrivateTmp = true;
         ProtectSystem = "strict";
@@ -216,24 +208,20 @@ in
           "/data/webdav"
           "/run"
         ];
-
-        # Create runtime directory for socket
         RuntimeDirectory = "rclone-webdav";
         RuntimeDirectoryMode = "0750";
         UMask = "0002";
       };
-
-      # Ensure the user exists
       preStart = ''
-        # Create webdav directory if it doesn't exist
         mkdir -p /data/webdav
         chown user:users /data/webdav
         chmod 755 /data/webdav
-        # Ensure nginx can access the socket directory
-        mkdir -p /run/rclone-webdav
-        chown user:nginx /run/rclone-webdav
-        chmod 750 /run/rclone-webdav
       '';
     };
+    # TODO: remove when bug fix
+    # serokell/deploy-rs/issues/57
+    # NixOS/nixpkgs/issues/180175
+    # Workaround for upstream bug in NetworkManager-wait-online.service
+    NetworkManager-wait-online.enable = false;
   };
 }
