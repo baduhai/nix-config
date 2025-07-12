@@ -114,6 +114,7 @@
               qbittorrent
               quickemu
               quickgui
+              rclone
               steam-run
               toggleaudiosink
               unrar
