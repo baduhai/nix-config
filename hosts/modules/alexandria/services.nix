@@ -103,10 +103,22 @@ in
           "jellyfin.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:${ports.jellyfin}";
           "pass.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:${ports.vaultwarden}";
           "speedtest.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:${ports.librespeed}";
-          # "webdav.baduhai.dev".locations."/" = {
-          #   proxyPass = "http://127.0.0.1:${ports.webdav}";
-          #   proxyNoTimeout = true;
-          # };
+          "webdav.baduhai.dev".locations."/" = {
+            proxyPass = "http://unix:/run/rclone-webdav/webdav.sock:/";
+            extraConfig = ''
+              # WebDAV specific headers
+              proxy_pass_header Authorization;
+              # Increase timeouts for large file uploads
+              proxy_connect_timeout 300;
+              proxy_send_timeout 300;
+              proxy_read_timeout 300;
+              # Allow large file uploads
+              client_max_body_size 10G;
+              # Buffer settings for better performance
+              proxy_buffering off;
+              proxy_request_buffering off;
+            '';
+          };
         };
     };
 
