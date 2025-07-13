@@ -111,6 +111,7 @@
               kde-rounded-corners
               libfido2
               mission-center
+              nixos-deploy
               p7zip
               qbittorrent
               quickemu

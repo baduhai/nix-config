@@ -143,6 +143,7 @@
         overlay = final: prev: {
         };
         workstationOverlay = final: prev: {
+          nixos-deploy = nixpkgs.legacyPackages."x86_64-linux".callPackage ./packages/nixos-deploy.nix { };
           plasticity = nixpkgs.legacyPackages."x86_64-linux".callPackage ./packages/plasticity.nix { };
           toggleaudiosink =
             nixpkgs.legacyPackages."x86_64-linux".callPackage ./packages/toggleaudiosink.nix
