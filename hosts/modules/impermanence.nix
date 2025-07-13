@@ -27,6 +27,7 @@
         ];
         directories = [
           "/etc/NetworkManager/system-connections"
+          "/etc/nixos"
           "/var/lib/bluetooth"
           "/var/lib/flatpak"
           "/var/lib/nixos"
