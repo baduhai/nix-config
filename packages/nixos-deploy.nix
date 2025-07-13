@@ -1,24 +1,16 @@
 {
   lib,
   stdenv,
+  writeShellScriptBin,
   nixos-rebuild,
-  openssh,
   coreutils,
-  gnugrep,
-  gawk,
 }:
 
 stdenv.mkDerivation rec {
   pname = "nixos-deploy";
   version = "1.0";
 
-  src = null;
-  dontUnpack = true;
-
-  installPhase = ''
-        mkdir -p $out/bin
-        cat > $out/bin/nixos-deploy << 'EOF'
-    #!/usr/bin/env bash
+  passthru.script = writeShellScriptBin "nixos-deploy" ''
     set -euo pipefail
 
     LOCAL_BUILD=false
@@ -89,10 +81,10 @@ stdenv.mkDerivation rec {
     fi
 
     if [[ "$TARGET_HOST" == *"@"* ]]; then
-        SSH_USER="''${TARGET_HOST%@*}"
-        SSH_HOST="''${TARGET_HOST#*@}"
+        SSH_USER=${"\${TARGET_HOST%@*}"}
+        SSH_HOST=${"\${TARGET_HOST#*@}"}
     else
-        SSH_USER="$("''${coreutils}/bin/whoami")"
+        SSH_USER="$(${coreutils}/bin/whoami)"
         SSH_HOST="$TARGET_HOST"
     fi
 
@@ -102,7 +94,7 @@ stdenv.mkDerivation rec {
         GC_ROOT_PATH="/tmp/nixos-deploy-$SSH_HOST-$$"
     fi
 
-    REBUILD_CMD="''${nixos-rebuild}/bin/nixos-rebuild $ACTION --flake $FLAKE_URI --target-host $TARGET_HOST"
+    REBUILD_CMD="${nixos-rebuild}/bin/nixos-rebuild $ACTION --flake $FLAKE_URI --target-host $TARGET_HOST"
 
     if [[ "$LOCAL_BUILD" == "true" ]]; then
         echo -e "Building locally and deploying to remote host"
@@ -118,14 +110,19 @@ stdenv.mkDerivation rec {
 
     echo -e "Running: $REBUILD_CMD"
     exec $REBUILD_CMD
-    EOF
+  '';
 
-        chmod +x $out/bin/nixos-deploy
+  dontUnpack = true;
+
+  installPhase = ''
+    mkdir -p $out/bin
+    cp ${passthru.script}/bin/nixos-deploy $out/bin/
   '';
 
   meta = with lib; {
-    description = "Tool to deploy a NixOS flake to a remote host using nixos-rebuild";
+    description = "Deploy a NixOS flake to a remote host using nixos-rebuild";
     license = licenses.mit;
     platforms = platforms.unix;
+    maintainers = with maintainers; [ ];
   };
 }
