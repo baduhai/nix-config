@@ -34,6 +34,8 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
+    nixos-cli.url = "github:nix-community/nixos-cli";
+
     nix-flatpak.url = "github:gmodena/nix-flatpak/main";
 
     impermanence.url = "github:nix-community/impermanence";
@@ -50,6 +52,7 @@
       disko,
       agenix,
       deploy-rs,
+      nixos-cli,
       nix-flatpak,
       impermanence,
       ...
@@ -79,6 +82,7 @@
                 impermanence.nixosModules.impermanence
                 nix-flatpak.nixosModules.nix-flatpak
                 stylix.nixosModules.stylix
+                nixos-cli.nixosModules.nixos-cli
                 self.nixosModules.git-pull-timer
                 {
                   nixpkgs.overlays = [

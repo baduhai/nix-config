@@ -27,6 +27,13 @@
           user = "user";
           group = "users";
         };
+        nixos-cli = {
+          enable = true;
+          config = {
+            use_nvd = true;
+            ignore_dirty_tree = true;
+          };
+        };
         fwupd.enable = true;
         fstrim.enable = true;
       };

@@ -18,6 +18,7 @@
           ### System Utilities ###
           btop
           nixos-firewall-tool
+          nvd
           sysz
           tmux
           wget
