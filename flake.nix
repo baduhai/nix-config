@@ -79,6 +79,7 @@
                 impermanence.nixosModules.impermanence
                 nix-flatpak.nixosModules.nix-flatpak
                 stylix.nixosModules.stylix
+                self.nixosModules.git-pull-timer
                 {
                   nixpkgs.overlays = [
                     agenix.overlays.default
@@ -200,6 +201,7 @@
 
       nixosModules = {
         qbittorrent = import ./modules/qbittorrent.nix;
+        git-pull-timer = import ./modules/git-pull-timer.nix;
       };
     };
 }
