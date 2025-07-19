@@ -71,6 +71,7 @@
               ### Dev Tools ###
               bat
               deploy-rs
+              claude-code
               fd
               fzf
               nixfmt-rfc-style
