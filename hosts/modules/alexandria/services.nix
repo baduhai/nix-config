@@ -94,31 +94,29 @@ in
         in
         lib.mapAttrs (_: lib.recursiveUpdate commonVHostConfig) {
           "_".locations."/".return = "444";
-          "dav.baduhai.dev".locations."/" = {
-            proxyPass = "http://127.0.0.1:${ports.radicale}";
-            extraConfig = "proxy_pass_header Authorization;";
+          "dav.baduhai.dev".locations = {
+            "/caldav" = {
+              proxyPass = "http://127.0.0.1:${ports.radicale}";
+              extraConfig = "proxy_pass_header Authorization;";
+            };
+            "/webdav" = {
+              proxyPass = "http://unix:/run/rclone-webdav/webdav.sock:/";
+              extraConfig = ''
+                proxy_pass_header Authorization;
+                proxy_connect_timeout 300; # Increase timeouts for large file uploads
+                proxy_send_timeout 300;
+                proxy_read_timeout 300;
+                client_max_body_size 10G; # Allow large file uploads
+                proxy_buffering off; # Buffer settings for better performance
+                proxy_request_buffering off;
+              '';
+            };
           };
           "git.baduhai.dev".locations."/".proxyPass =
             "http://unix:${config.services.forgejo.settings.server.HTTP_ADDR}:/";
           "jellyfin.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:${ports.jellyfin}";
           "pass.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:${ports.vaultwarden}";
           "speedtest.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:${ports.librespeed}";
-          "webdav.baduhai.dev".locations."/" = {
-            proxyPass = "http://unix:/run/rclone-webdav/webdav.sock:/";
-            extraConfig = ''
-              # WebDAV specific headers
-              proxy_pass_header Authorization;
-              # Increase timeouts for large file uploads
-              proxy_connect_timeout 300;
-              proxy_send_timeout 300;
-              proxy_read_timeout 300;
-              # Allow large file uploads
-              client_max_body_size 10G;
-              # Buffer settings for better performance
-              proxy_buffering off;
-              proxy_request_buffering off;
-            '';
-          };
         };
     };
 
