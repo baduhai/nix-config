@@ -96,12 +96,21 @@ in
           "_".locations."/".return = "444";
           "dav.baduhai.dev".locations = {
             "/caldav" = {
-              proxyPass = "http://127.0.0.1:${ports.radicale}";
-              extraConfig = "proxy_pass_header Authorization;";
+              proxyPass = "http://127.0.0.1:${ports.radicale}/";
+              extraConfig = ''
+                proxy_set_header X-Script-Name /caldav;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Host $host;
+                proxy_set_header X-Forwarded-Port $server_port;
+                proxy_set_header X-Forwarded-Proto $scheme;
+                proxy_set_header Host $http_host;
+                proxy_pass_header Authorization;
+              '';
             };
             "/webdav" = {
               proxyPass = "http://unix:/run/rclone-webdav/webdav.sock:/";
               extraConfig = ''
+                proxy_set_header X-Script-Name /webdav;
                 proxy_pass_header Authorization;
                 proxy_connect_timeout 300; # Increase timeouts for large file uploads
                 proxy_send_timeout 300;
@@ -114,9 +123,9 @@ in
           };
           "git.baduhai.dev".locations."/".proxyPass =
             "http://unix:${config.services.forgejo.settings.server.HTTP_ADDR}:/";
-          "jellyfin.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:${ports.jellyfin}";
-          "pass.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:${ports.vaultwarden}";
-          "speedtest.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:${ports.librespeed}";
+          "jellyfin.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:${ports.jellyfin}/";
+          "pass.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:${ports.vaultwarden}/";
+          "speedtest.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:${ports.librespeed}/";
         };
     };
 
