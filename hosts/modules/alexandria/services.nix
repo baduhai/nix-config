@@ -49,6 +49,7 @@ let
       --user "$USERNAME" \
       --pass "$PASSWORD" \
       --config="" \
+      --baseurl "/webdav" \
       --verbose
   '';
 in
@@ -103,7 +104,7 @@ in
               '';
             };
             "/webdav" = {
-              proxyPass = "http://unix:/run/rclone-webdav/webdav.sock:/";
+              proxyPass = "http://unix:/run/rclone-webdav/webdav.sock:/webdav/";
               extraConfig = ''
                 proxy_set_header X-Script-Name /webdav;
                 proxy_pass_header Authorization;
