@@ -24,11 +24,6 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    deploy-rs = {
-      url = "github:serokell/deploy-rs";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-
     disko = {
       url = "github:nix-community/disko?ref=v1.11.0";
       inputs.nixpkgs.follows = "nixpkgs-stable";
@@ -51,7 +46,6 @@
       stylix,
       disko,
       agenix,
-      deploy-rs,
       nixos-cli,
       nix-flatpak,
       impermanence,
@@ -83,7 +77,6 @@
                 nix-flatpak.nixosModules.nix-flatpak
                 stylix.nixosModules.stylix
                 nixos-cli.nixosModules.nixos-cli
-                self.nixosModules.git-pull-timer
                 {
                   nixpkgs.overlays = [
                     agenix.overlays.default
@@ -143,55 +136,12 @@
         overlay = final: prev: {
         };
         workstationOverlay = final: prev: {
-          nixos-deploy = nixpkgs.legacyPackages."x86_64-linux".callPackage ./packages/nixos-deploy.nix { };
           plasticity = nixpkgs.legacyPackages."x86_64-linux".callPackage ./packages/plasticity.nix { };
           toggleaudiosink =
             nixpkgs.legacyPackages."x86_64-linux".callPackage ./packages/toggleaudiosink.nix
               { };
         };
         serverOverlay = final: prev: {
-        };
-      };
-
-      deploy = {
-        autoRollback = true;
-        magicRollback = false;
-        nodes = {
-          alexandria = {
-            hostname = "alexandria";
-            profiles = {
-              system = {
-                user = "root";
-                sshUser = "root";
-                remoteBuild = true;
-                path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.alexandria;
-              };
-            };
-          };
-
-          # trantor = {
-          #   hostname = "trantor";
-          #   profiles = {
-          #     system = {
-          #       user = "root";
-          #       sshUser = "root";
-          #       remoteBuild = true;
-          #       path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.alexandria;
-          #     };
-          #   };
-          # };
-
-          io = {
-            hostname = "io";
-            profiles = {
-              system = {
-                user = "root";
-                sshUser = "root";
-                remoteBuild = false;
-                path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.io;
-              };
-            };
-          };
         };
       };
 
@@ -206,7 +156,6 @@
 
       nixosModules = {
         qbittorrent = import ./modules/qbittorrent.nix;
-        git-pull-timer = import ./modules/git-pull-timer.nix;
       };
     };
 }

@@ -18,15 +18,6 @@
           enable = true;
           settings.PermitRootLogin = "no";
         };
-        git-pull-timer = {
-          enable = true;
-          remoteAddresses = [
-            "git@github.com:baduhai/nix-config.git"
-            "https://github.com/baduhai/nix-config.git"
-          ];
-          user = "user";
-          group = "users";
-        };
         nixos-cli = {
           enable = true;
           config = {
