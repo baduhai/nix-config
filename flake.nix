@@ -51,6 +51,22 @@
       impermanence,
       ...
     }:
+    let
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
+      forAllSystems = nixpkgs.lib.genAttrs systems;
+      forAllSystemsWithPkgs =
+        f:
+        forAllSystems (
+          system:
+          let
+            pkgs = nixpkgs.legacyPackages.${system};
+          in
+          f system pkgs
+        );
+    in
     {
       nixosConfigurations =
         let
@@ -132,26 +148,36 @@
           };
         };
 
+      devShells = forAllSystemsWithPkgs (
+        system: pkgs: {
+          default = pkgs.mkShell {
+            packages = with pkgs; [
+              nil
+              nixfmt-rfc-style
+            ];
+          };
+        }
+      );
+
+      packages = forAllSystemsWithPkgs (
+        system: pkgs:
+        {
+          toggleaudiosink = pkgs.callPackage ./packages/toggleaudiosink.nix { };
+        }
+        // nixpkgs.lib.optionalAttrs (system == "x86_64-linux") {
+          plasticity = pkgs.callPackage ./packages/plasticity.nix { };
+        }
+      );
+
       overlays = {
         overlay = final: prev: {
         };
         workstationOverlay = final: prev: {
-          plasticity = nixpkgs.legacyPackages."x86_64-linux".callPackage ./packages/plasticity.nix { };
-          toggleaudiosink =
-            nixpkgs.legacyPackages."x86_64-linux".callPackage ./packages/toggleaudiosink.nix
-              { };
+          plasticity = self.packages.${final.system}.plasticity;
+          toggleaudiosink = self.packages.${final.system}.toggleaudiosink;
         };
         serverOverlay = final: prev: {
         };
-      };
-
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
-
-      devShells."x86_64-linux".default = nixpkgs.legacyPackages."x86_64-linux".mkShell {
-        packages = with nixpkgs.legacyPackages."x86_64-linux"; [
-          nil
-          nixfmt-rfc-style
-        ];
       };
 
       nixosModules = {
