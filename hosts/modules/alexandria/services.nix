@@ -221,10 +221,5 @@ in
         chmod 755 /data/webdav
       '';
     };
-    # TODO: remove when bug fix
-    # serokell/deploy-rs/issues/57
-    # NixOS/nixpkgs/issues/180175
-    # Workaround for upstream bug in NetworkManager-wait-online.service
-    NetworkManager-wait-online.enable = false;
   };
 }
