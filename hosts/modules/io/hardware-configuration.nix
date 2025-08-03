@@ -17,59 +17,10 @@
         "sd_mod"
         "sdhci_pci"
       ];
-      luks.devices."enc" = {
-        device = "/dev/disk/by-uuid/8018720e-42dd-453c-b374-adaa02eb48c9";
-        keyFile = "/dev/disk/by-partuuid/cbc7e305-d32d-4250-b6ae-6a8264ea096e";
-      };
     };
     kernelModules = [ "kvm-intel" ];
-  };
-
-  fileSystems = {
-    "/" = {
-      device = "/dev/disk/by-uuid/3638cea6-5503-43cc-aa4f-3d37ebedad2f";
-      fsType = "btrfs";
-      options = [
-        "subvol=@root"
-        "noatime"
-        "compress=zstd"
-      ];
-    };
-    "/home" = {
-      device = "/dev/disk/by-uuid/3638cea6-5503-43cc-aa4f-3d37ebedad2f";
-      fsType = "btrfs";
-      options = [
-        "subvol=@home"
-        "noatime"
-        "compress=zstd"
-      ];
-    };
-    "/nix" = {
-      device = "/dev/disk/by-uuid/3638cea6-5503-43cc-aa4f-3d37ebedad2f";
-      fsType = "btrfs";
-      options = [
-        "subvol=@nix"
-        "noatime"
-        "compress=zstd"
-      ];
-    };
-    "/persistent" = {
-      device = "/dev/disk/by-uuid/3638cea6-5503-43cc-aa4f-3d37ebedad2f";
-      fsType = "btrfs";
-      options = [
-        "subvol=@persistent"
-        "noatime"
-        "compress=zstd"
-      ];
-    };
-    "/boot/efi" = {
-      device = "/dev/disk/by-uuid/31C9-08FF";
-      fsType = "vfat";
-      options = [
-        "noatime"
-        "fmask=0077"
-        "dmask=0077"
-      ];
+    luks.devices.cryptroot = {
+      device = "/dev/mmcblk1p3";
     };
   };
 
@@ -85,4 +36,90 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  disko.devices = {
+    disk = {
+      main = {
+        type = "disk";
+        device = "/dev/mmcblk1";
+        content = {
+          type = "gpt";
+          partitions = {
+            ESP = {
+              priority = 1;
+              name = "ESP";
+              start = "1MiB";
+              end = "1GiB";
+              type = "EF00";
+              content = {
+                type = "filesystem";
+                format = "vfat";
+                mountpoint = "/boot/efi";
+                mountOptions = [
+                  "noatime"
+                  "fmask=0077"
+                  "dmask=0077"
+                ];
+              };
+            };
+            swap = {
+              priority = 2;
+              name = "swap";
+              size = "12G";
+              content = {
+                type = "swap";
+              };
+            };
+            cryptroot = {
+              priority = 3;
+              name = "root";
+              size = "100%";
+              content = {
+                type = "luks";
+                name = "cryptroot";
+                content = {
+                  type = "btrfs";
+                  extraArgs = [ "-f" ];
+                  subvolumes = {
+                    "@root" = {
+                      mountpoint = "/";
+                      mountOptions = [
+                        "noatime"
+                        "compress=zstd"
+                        "subvol=@root"
+                      ];
+                    };
+                    "@home" = {
+                      mountpoint = "/home";
+                      mountOptions = [
+                        "noatime"
+                        "compress=zstd"
+                        "subvol=@home"
+                      ];
+                    };
+                    "@nix" = {
+                      mountpoint = "/nix";
+                      mountOptions = [
+                        "noatime"
+                        "compress=zstd"
+                        "subvol=@nix"
+                      ];
+                    };
+                    "@persistent" = {
+                      mountpoint = "/persistent";
+                      mountOptions = [
+                        "noatime"
+                        "compress=zstd"
+                        "subvol=@persistent"
+                      ];
+                    };
+                  };
+                };
+              };
+            };
+          };
+        };
+      };
+    };
+  };
 }
