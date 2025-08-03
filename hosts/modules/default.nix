@@ -5,6 +5,7 @@
     ./boot.nix
     ./console.nix
     ./desktop.nix
+    ./ephermal.nix
     ./impermanence.nix
     ./locale.nix
     ./networking.nix
