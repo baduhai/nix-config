@@ -19,9 +19,6 @@
       ];
     };
     kernelModules = [ "kvm-intel" ];
-    luks.devices.cryptroot = {
-      device = "/dev/mmcblk1p3";
-    };
   };
 
   zramSwap = {
@@ -41,7 +38,7 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/mmcblk1";
+        device = "/dev/disk/by-id/mmc-hDEaP3_0x1041b689";
         content = {
           type = "gpt";
           partitions = {
