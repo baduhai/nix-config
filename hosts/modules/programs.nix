@@ -70,6 +70,7 @@
             [
               ### Dev Tools ###
               bat
+              ciscoPacketTracer8
               claude-code
               fd
               fzf
