@@ -5,7 +5,7 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/sda";
+        device = "/dev/disk/by-id/scsi-3605e4addb4c640319c8c03436205530b";
         content = {
           type = "gpt";
           partitions = {
