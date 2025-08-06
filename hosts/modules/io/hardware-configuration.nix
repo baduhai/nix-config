@@ -59,14 +59,6 @@
                 ];
               };
             };
-            swap = {
-              priority = 2;
-              name = "swap";
-              size = "12G";
-              content = {
-                type = "swap";
-              };
-            };
             cryptroot = {
               priority = 3;
               name = "root";
