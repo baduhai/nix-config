@@ -27,7 +27,7 @@
               };
             };
             cryptroot = {
-              priority = 3;
+              priority = 2;
               name = "root";
               size = "100%";
               content = {
