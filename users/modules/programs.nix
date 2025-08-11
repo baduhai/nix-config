@@ -94,17 +94,6 @@
 
     # Workstation specific configuration
     (lib.mkIf hostType.isWorkstation {
-      programs.alacritty = {
-        enable = true;
-        settings = {
-          window = {
-            padding = {
-              x = 8;
-              y = 8;
-            };
-          };
-        };
-      };
     })
   ];
 }
