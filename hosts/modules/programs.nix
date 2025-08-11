@@ -106,7 +106,6 @@
               protonup
               ### System Utilities ###
               adwaita-icon-theme
-              alacritty
               junction
               kara
               kde-rounded-corners
@@ -117,6 +116,7 @@
               quickemu
               quickgui
               rclone
+              sakura
               steam-run
               toggleaudiosink
               unrar
