@@ -24,6 +24,7 @@
 
         helix = {
           enable = true;
+          package = pkgs.evil-helix;
           settings = {
             editor = {
               file-picker.hidden = false;
@@ -39,14 +40,7 @@
               indent-guides.render = true;
             };
             keys.normal.space = {
-              space = "file_picker";
-              w = ":w";
-              q = ":q";
               o = "file_picker_in_current_buffer_directory";
-              esc = [
-                "collapse_selection"
-                "keep_primary_selection"
-              ];
             };
           };
         };
@@ -94,6 +88,16 @@
 
     # Workstation specific configuration
     (lib.mkIf hostType.isWorkstation {
+      programs.rio = {
+        enable = true;
+        settings = {
+          padding-x = 8;
+          padding-y = [
+            8
+            8
+          ];
+        };
+      };
     })
   ];
 }

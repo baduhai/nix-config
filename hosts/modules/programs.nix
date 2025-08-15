@@ -28,6 +28,9 @@
           neofetch = "${pkgs.fastfetch}/bin/fastfetch";
           tree = "ls --tree";
           syscleanup = "sudo nix-collect-garbage -d; sudo /run/current-system/bin/switch-to-configuration boot";
+          vi = "${pkgs.evil-helix}/bin/hx";
+          vim = "${pkgs.evil-helix}/bin/hx";
+          nvim = "${pkgs.evil-helix}/bin/hx";
         };
       };
 
@@ -116,7 +119,6 @@
               quickemu
               quickgui
               rclone
-              sakura
               steam-run
               toggleaudiosink
               unrar
