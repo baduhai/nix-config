@@ -91,10 +91,10 @@
       programs.rio = {
         enable = true;
         settings = {
-          padding-y = [
-            8
-            8
-          ];
+          window = {
+            width = 1121;
+            height = 633;
+          };
         };
       };
     })
