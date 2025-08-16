@@ -14,7 +14,6 @@
           ### Dev Tools ###
           agenix
           git
-          helix
           ### System Utilities ###
           btop
           nixos-firewall-tool
@@ -27,7 +26,6 @@
           ls = "${pkgs.eza}/bin/eza --icons --group-directories-first";
           neofetch = "${pkgs.fastfetch}/bin/fastfetch";
           tree = "ls --tree";
-          syscleanup = "sudo nix-collect-garbage -d; sudo /run/current-system/bin/switch-to-configuration boot";
           vi = "${pkgs.evil-helix}/bin/hx";
           vim = "${pkgs.evil-helix}/bin/hx";
           nvim = "${pkgs.evil-helix}/bin/hx";
@@ -77,6 +75,7 @@
               claude-code
               fd
               fzf
+              glow
               nixfmt-rfc-style
               nix-init
               nix-output-monitor
