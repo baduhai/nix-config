@@ -34,6 +34,8 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak/main";
 
     impermanence.url = "github:nix-community/impermanence";
+
+    nixvim.url = "github:nix-community/nixvim";
   };
 
   outputs =
@@ -49,6 +51,7 @@
       nixos-cli,
       nix-flatpak,
       impermanence,
+      nixvim,
       ...
     }:
     let
@@ -92,6 +95,7 @@
                 impermanence.nixosModules.impermanence
                 nix-flatpak.nixosModules.nix-flatpak
                 stylix.nixosModules.stylix
+                nixvim.nixosModules.nixvim
                 nixos-cli.nixosModules.nixos-cli
                 {
                   nixpkgs.overlays = [

@@ -39,6 +39,9 @@
           user = import ../../users/user.nix;
           root = import ../../users/root.nix;
         };
+        sharedModules = [
+          inputs.nixvim.homeModules.nixvim
+        ];
         extraSpecialArgs = {
           inherit hostType;
           inherit inputs;

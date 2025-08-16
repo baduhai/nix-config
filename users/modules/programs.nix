@@ -1,5 +1,4 @@
 {
-  config,
   hostType,
   lib,
   pkgs,
@@ -10,12 +9,6 @@
   config = lib.mkMerge [
     # Common configuration
     {
-      home = {
-        sessionVariables = {
-          EDITOR = "hx";
-        };
-      };
-
       programs = {
         bash = {
           enable = true;
@@ -43,6 +36,13 @@
               o = "file_picker_in_current_buffer_directory";
             };
           };
+        };
+
+        nixvim = {
+          enable = true;
+          defaultEditor = true;
+          enableMan = false;
+          enablePrintInit = false;
         };
 
         fish = {
@@ -88,15 +88,7 @@
 
     # Workstation specific configuration
     (lib.mkIf hostType.isWorkstation {
-      programs.rio = {
-        enable = true;
-        settings = {
-          window = {
-            width = 1121;
-            height = 633;
-          };
-        };
-      };
+      programs.nixvim.clipboard.providers.wl-copy.enable = true;
     })
   ];
 }

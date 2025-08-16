@@ -30,6 +30,17 @@
           ];
         };
 
+        nixvim.plugins = {
+          treesitter.enable = true;
+          multicursors.enable = true;
+          lspconfig.enable = true;
+          cmp.enable = true;
+          which-key.enable = true;
+          telescope.enable = true;
+          undotree.enable = true;
+          web-devicons.enable = true;
+        };
+
         password-store.enable = true;
 
         direnv = {
@@ -126,6 +137,16 @@
             pkgs.obs-studio-plugins.obs-backgroundremoval
             pkgs.obs-studio-plugins.obs-pipewire-audio-capture
           ];
+        };
+
+        rio = {
+          enable = true;
+          settings = {
+            window = {
+              width = 1121;
+              height = 633;
+            };
+          };
         };
       };
     })
