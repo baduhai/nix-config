@@ -24,7 +24,6 @@
 
         helix = {
           enable = true;
-          package = pkgs.evil-helix;
           settings = {
             editor = {
               file-picker.hidden = false;
@@ -40,7 +39,14 @@
               indent-guides.render = true;
             };
             keys.normal.space = {
+              space = "file_picker";
+              w = ":w";
+              q = ":q";
               o = "file_picker_in_current_buffer_directory";
+              esc = [
+                "collapse_selection"
+                "keep_primary_selection"
+              ];
             };
           };
         };
