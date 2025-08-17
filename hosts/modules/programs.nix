@@ -72,7 +72,6 @@
               ### Dev Tools ###
               bat
               ciscoPacketTracer8
-              claude-code
               fd
               fzf
               glow
@@ -81,7 +80,6 @@
               nix-output-monitor
               ripgrep
               ### Internet Browsers & Communication ###
-              beeper
               brave
               tor-browser
               vesktop
