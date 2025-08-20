@@ -21,6 +21,7 @@
           sysz
           tmux
           wget
+          yazi
         ];
         shellAliases = {
           ls = "${pkgs.eza}/bin/eza --icons --group-directories-first";
@@ -71,7 +72,8 @@
             [
               ### Dev Tools ###
               bat
-              ciscoPacketTracer8
+              lazygit
+              # ciscoPacketTracer8
               fd
               fzf
               glow
