@@ -30,6 +30,7 @@
           "/etc/nixos"
           "/var/lib/bluetooth"
           "/var/lib/flatpak"
+          "/var/lib/lxd"
           "/var/lib/nixos"
           "/var/lib/systemd/coredump"
           "/var/lib/systemd/timers"
