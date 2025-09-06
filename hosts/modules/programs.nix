@@ -115,8 +115,6 @@
               libfido2
               mission-center
               p7zip
-              quickemu
-              quickgui
               rclone
               steam-run
               toggleaudiosink
