@@ -16,7 +16,6 @@
           shell = pkgs.fish;
           extraGroups = [
             "networkmanager"
-            "docker"
             "wheel"
           ];
           openssh.authorizedKeys.keys = [

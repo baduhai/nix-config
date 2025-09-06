@@ -144,6 +144,7 @@
             enable = true;
             extraCompatPackages = [ pkgs.proton-ge-bin ];
           };
+          virt-manager.enable = true;
           dconf.enable = true;
           nix-ld.enable = true;
           kdeconnect.enable = true;
