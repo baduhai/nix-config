@@ -73,7 +73,6 @@
               ### Dev Tools ###
               bat
               lazygit
-              # ciscoPacketTracer8
               fd
               fzf
               glow
@@ -81,9 +80,11 @@
               nix-init
               nix-output-monitor
               ripgrep
-              ### Internet Browsers & Communication ###
+              ### Web ###
+              bitwarden-desktop
               brave
               tor-browser
+              qbittorrent
               vesktop
               ### Office & Productivity ###
               aspell
@@ -114,7 +115,6 @@
               libfido2
               mission-center
               p7zip
-              qbittorrent
               quickemu
               quickgui
               rclone
