@@ -19,10 +19,6 @@
     (lib.mkIf hostType.isWorkstation {
       services = {
         displayManager = {
-          autoLogin = {
-            enable = true;
-            user = "user";
-          };
           sddm = {
             enable = true;
             wayland = {
@@ -31,7 +27,6 @@
             };
           };
         };
-        desktopManager.plasma6.enable = true;
         pipewire = {
           enable = true;
           alsa.enable = true;
@@ -40,6 +35,11 @@
           jack.enable = true;
           wireplumber.enable = true;
         };
+      };
+
+      programs.hyprland = {
+        enable = true;
+        withUWSM = true;
       };
 
       hardware = {

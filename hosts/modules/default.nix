@@ -13,7 +13,6 @@
     ./programs.nix
     ./security.nix
     ./services.nix
-    ./stylix.nix
     ./users.nix
     ./virtualisation.nix
   ];

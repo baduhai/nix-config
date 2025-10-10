@@ -14,11 +14,6 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs-stable";
@@ -27,6 +22,11 @@
     disko = {
       url = "github:nix-community/disko?ref=v1.11.0";
       inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixos-cli.url = "github:nix-community/nixos-cli";
@@ -43,8 +43,8 @@
       nixpkgs-stable,
       home-manager,
       home-manager-stable,
-      stylix,
       disko,
+      dms,
       agenix,
       nixos-cli,
       nix-flatpak,
@@ -91,7 +91,6 @@
                 hm.nixosModules.default
                 impermanence.nixosModules.impermanence
                 nix-flatpak.nixosModules.nix-flatpak
-                stylix.nixosModules.stylix
                 nixos-cli.nixosModules.nixos-cli
                 {
                   nixpkgs.overlays = [
@@ -100,6 +99,7 @@
                 }
               ];
               workstationModules = [
+                dms.nixosModules.greeter
                 {
                   nixpkgs.overlays = [
                     self.overlays.workstationOverlay

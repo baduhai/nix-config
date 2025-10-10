@@ -93,15 +93,7 @@
 
     # Workstation specific configuration
     (lib.mkIf hostType.isWorkstation {
-      programs.rio = {
-        enable = true;
-        settings = {
-          window = {
-            width = 1121;
-            height = 633;
-          };
-        };
-      };
+
     })
   ];
 }

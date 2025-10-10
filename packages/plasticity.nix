@@ -62,7 +62,6 @@ stdenv.mkDerivation rec {
     hicolor-icon-theme
     libdrm
     libnotify
-    libsForQt5.kde-cli-tools
     libxkbcommon
     nspr
     nss
