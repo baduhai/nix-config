@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, ... }:
 
 {
   home = {
@@ -10,5 +10,6 @@
   imports = [
     ./modules
     ./modules/user
+    inputs.dms.homeModules.dankMaterialShell.default
   ];
 }

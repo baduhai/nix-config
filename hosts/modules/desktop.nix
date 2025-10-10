@@ -18,20 +18,6 @@
     # Workstation specific configuration
     (lib.mkIf hostType.isWorkstation {
       services = {
-        displayManager = {
-          autoLogin = {
-            enable = true;
-            user = "user";
-          };
-          sddm = {
-            enable = true;
-            wayland = {
-              enable = true;
-              compositor = "kwin";
-            };
-          };
-        };
-        desktopManager.plasma6.enable = true;
         pipewire = {
           enable = true;
           alsa.enable = true;
@@ -40,6 +26,18 @@
           jack.enable = true;
           wireplumber.enable = true;
         };
+        greetd.settings.initial_session = {
+          command = "niri";
+          user = "user";
+        };
+      };
+
+      programs = {
+        dankMaterialShell.greeter = {
+          enable = true;
+          compositor.name = "niri";
+        };
+        niri.enable = true;
       };
 
       hardware = {

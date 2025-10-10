@@ -14,11 +14,6 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs-stable";
@@ -27,6 +22,11 @@
     disko = {
       url = "github:nix-community/disko?ref=v1.11.0";
       inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixos-cli.url = "github:nix-community/nixos-cli";
@@ -43,8 +43,8 @@
       nixpkgs-stable,
       home-manager,
       home-manager-stable,
-      stylix,
       disko,
+      dms,
       agenix,
       nixos-cli,
       nix-flatpak,
@@ -88,10 +88,10 @@
                 ./hosts/${hostname}.nix
                 agenix.nixosModules.default
                 disko.nixosModules.default
+                dms.nixosModules.greeter
                 hm.nixosModules.default
                 impermanence.nixosModules.impermanence
                 nix-flatpak.nixosModules.nix-flatpak
-                stylix.nixosModules.stylix
                 nixos-cli.nixosModules.nixos-cli
                 {
                   nixpkgs.overlays = [
@@ -165,7 +165,7 @@
           toggleaudiosink = pkgs.callPackage ./packages/toggleaudiosink.nix { };
         }
         // nixpkgs.lib.optionalAttrs (system == "x86_64-linux") {
-          plasticity = pkgs.callPackage ./packages/plasticity.nix { };
+          # plasticity = pkgs.callPackage ./packages/plasticity.nix { };
         }
       );
 
@@ -173,7 +173,7 @@
         overlay = final: prev: {
         };
         workstationOverlay = final: prev: {
-          plasticity = self.packages.${final.system}.plasticity;
+          # plasticity = self.packages.${final.system}.plasticity;
           toggleaudiosink = self.packages.${final.system}.toggleaudiosink;
         };
         serverOverlay = final: prev: {

@@ -25,6 +25,7 @@
         helix = {
           enable = true;
           settings = {
+            theme = "base16_transparent";
             editor = {
               file-picker.hidden = false;
               idle-timeout = 0;
@@ -84,7 +85,6 @@
           ];
         };
       };
-
     }
 
     # Server specific configuration
@@ -96,6 +96,13 @@
       programs.rio = {
         enable = true;
         settings = {
+          theme = "catppuccin-mocha";
+          fonts = {
+            family = "FiraCode Nerd Font";
+            size = 16.0;
+            emoji.family = "Noto Color Emoji";
+          };
+          confirm-before-quit = false;
           window = {
             width = 1121;
             height = 633;

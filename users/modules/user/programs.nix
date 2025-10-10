@@ -115,6 +115,10 @@
       fonts.fontconfig.enable = true;
 
       programs = {
+        dankMaterialShell = {
+          enable = true;
+          enableVPN = false;
+        };
         password-store.package = pkgs.pass-wayland;
 
         mangohud.enable = true;
@@ -127,6 +131,16 @@
             pkgs.obs-studio-plugins.obs-pipewire-audio-capture
           ];
         };
+      };
+
+      xdg.portal = {
+        enable = true;
+        xdgOpenUsePortal = true;
+        extraPortals = with pkgs; [
+          kdePackages.xdg-desktop-portal-kde
+          xdg-desktop-portal-gtk
+          xdg-desktop-portal-gnome
+        ];
       };
     })
   ];

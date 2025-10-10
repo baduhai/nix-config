@@ -48,6 +48,7 @@
       let
         kdepkgs = with pkgs.kdePackages; [
           ark
+          dolphin
           dolphin-plugins
           kolourpaint
         ];
@@ -72,6 +73,7 @@
             [
               ### Dev Tools ###
               bat
+              claude-code
               lazygit
               fd
               fzf
@@ -109,6 +111,7 @@
               protonup
               ### System Utilities ###
               adwaita-icon-theme
+              colloid-gtk-theme
               junction
               kara
               kde-rounded-corners
@@ -125,15 +128,6 @@
               qview
             ]
             ++ kdepkgs;
-          plasma6.excludePackages = with pkgs.kdePackages; [
-            discover
-            elisa
-            gwenview
-            kate
-            khelpcenter
-            konsole
-            oxygen
-          ];
         };
 
         programs = {
@@ -163,8 +157,9 @@
           packages = with pkgs; [
             corefonts
             inter
-            nerd-fonts.hack
+            nerd-fonts.fira-code
             noto-fonts-cjk-sans
+            noto-fonts-color-emoji
             roboto
           ];
         };
