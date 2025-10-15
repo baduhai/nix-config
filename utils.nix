@@ -133,7 +133,7 @@ in
           [ ]
       ) allTags;
 
-      # Automatically import all .nix files from users/modules/${username}/
+      # Automatically import all .nix files from users/${username}/
       userModulePath = ./users/${username};
       userModuleFiles =
         if builtins.pathExists userModulePath then
