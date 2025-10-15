@@ -74,7 +74,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${lib.getExe pkgs.greetd.tuigreet} --time --remember --asterisks --cmd ${lib.getExe pkgs.niri}";
+          command = "${lib.getExe pkgs.tuigreet} --time --remember --asterisks --cmd ${lib.getExe pkgs.niri}";
           user = "greeter";
         };
         initial_session = {
