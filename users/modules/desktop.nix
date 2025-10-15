@@ -11,23 +11,24 @@
       enableVPN = false;
     };
 
-rio = {
-    enable = true;
-    settings = {
-      theme = "catppuccin-mocha";
-      fonts = {
-        family = "FiraCode Nerd Font";
-        size = 16.0;
-        emoji.family = "Noto Color Emoji";
-      };
-      confirm-before-quit = false;
-      window = {
-        width = 1121;
-        height = 633;
+    rio = {
+      enable = true;
+      settings = {
+        theme = "catppuccin-mocha";
+        fonts = {
+          family = "FiraCode Nerd Font";
+          size = 16.0;
+          emoji.family = "Noto Color Emoji";
+        };
+        confirm-before-quit = false;
+        window = {
+          width = 1121;
+          height = 633;
+        };
       };
     };
 
-        password-store = {
+    password-store = {
       enable = true;
       package = pkgs.pass-wayland;
     };
