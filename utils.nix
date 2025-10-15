@@ -166,6 +166,10 @@ in
         inherit inputs;
         userTags = allTags;
       };
-      modules = allModules;
+      modules = allModules ++ [
+        {
+          nixpkgs.overlays = [ self.overlays.default ];
+        }
+      ];
     };
 }
