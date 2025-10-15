@@ -71,12 +71,12 @@ pkgs.writeShellScriptBin "hm" ''
             "$HM" switch --flake "$FLAKE_PATH" --switch-generation "$3"
             ;;
           cleanup)
-            CURRENT_GEN=$("$HM" generations | sed -n 's/^[[:space:]]*id \([0-9]\+\) (current).*/\1/p')
+            CURRENT_GEN=$("$HM" generations | sed -n 's/^.*id \([0-9]\+\) .* (current)$/\1/p')
             if [[ -z "$CURRENT_GEN" ]]; then
               echo "Error: could not determine current generation"
               exit 1
             fi
-            OLD_GENS=$("$HM" generations | sed -n 's/^[[:space:]]*id \([0-9]\+\).*/\1/p' | grep -v "^$CURRENT_GEN$")
+            OLD_GENS=$("$HM" generations | sed -n 's/^.*id \([0-9]\+\) .*/\1/p' | grep -v "^$CURRENT_GEN$")
             if [[ -z "$OLD_GENS" ]]; then
               echo "No old generations to delete"
             else
