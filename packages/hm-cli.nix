@@ -23,9 +23,9 @@ pkgs.writeShellScriptBin "hm" ''
 
   Environment Variables:
     HM_PATH           Override default flake path (~/.config/home-manager)
-      Currently set to "$(echo $HM_PATH)"
+      Currently set to "''${HM_PATH:-<not set>}"
     HM_USER           Override default user output ("$(whoami)@$(hostname)")
-      Currently set to "$(echo $HM_USER)"
+      Currently set to "''${HM_USER:-<not set>}"
   EOF
     }
 
@@ -58,10 +58,14 @@ pkgs.writeShellScriptBin "hm" ''
             "$HM" remove-generations "$@"
             ;;
           rollback)
-            "$HM" generations | \
+            PREV_GEN=$("$HM" generations | \
               sed -n 's/^[[:space:]]*id \([0-9]\+\).*/\1/p' | \
-              head -n 2 | tail -n 1 | \
-              xargs -I {} "$HM" switch --flake "$FLAKE_PATH" --switch-generation {}
+              head -n 2 | tail -n 1)
+            if [[ -z "$PREV_GEN" ]]; then
+              echo "Error: could not determine previous generation (possibly only one generation exists)"
+              exit 1
+            fi
+            "$HM" switch --flake "$FLAKE_PATH" --switch-generation "$PREV_GEN"
             ;;
           switch)
             if [[ $# -ne 3 ]]; then
