@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   kwrite = pkgs.symlinkJoin {
@@ -81,9 +86,10 @@ in
       wireplumber.enable = true;
     };
     greetd = {
-      settings = {
-        default_session.command = ''${pkgs.greetd.tuigreet}/bin/tuigreet --remember --asterisks --time --greeting "Welcome to NixOS" --cmd ${plasma}/bin/plasma'';
-        initial_session.user = "user";
+      enable = true;
+      settings.default_session = {
+        command = "${lib.getExe pkgs.greetd.tuigreet} --time --remember --asterisks --cmd ${lib.getExe pkgs.niri}";
+        user = "greeter";
       };
     };
     flatpak = {
@@ -109,7 +115,16 @@ in
       update.auto.enable = true;
     };
   };
+
   security.rtkit.enable = true; # Needed for pipewire to acquire realtime priority
+
+  users = {
+    users.greeter = {
+      isSystemUser = true;
+      group = "greeter";
+    };
+    groups.greeter = { };
+  };
 
   programs = {
     niri.enable = true;
