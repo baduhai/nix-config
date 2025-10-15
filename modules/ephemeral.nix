@@ -45,8 +45,13 @@ in
         RemainAfterExit = true;
       };
       script = ''
+        set -euo pipefail
+
         mkdir /btrfs_tmp
-        mount ${cfg.rootDevice} /btrfs_tmp
+        if ! mount ${cfg.rootDevice} /btrfs_tmp; then
+          echo "ERROR: Failed to mount ${cfg.rootDevice}"
+          exit 1
+        fi
 
         if [[ -e /btrfs_tmp/${cfg.rootSubvolume} ]]; then
           mkdir -p /btrfs_tmp/old_roots
@@ -66,7 +71,12 @@ in
           delete_subvolume_recursively "$i"
         done
 
-        btrfs subvolume create /btrfs_tmp/${cfg.rootSubvolume}
+        if ! btrfs subvolume create /btrfs_tmp/${cfg.rootSubvolume}; then
+          echo "ERROR: Failed to create subvolume ${cfg.rootSubvolume}"
+          umount /btrfs_tmp
+          exit 1
+        fi
+
         umount /btrfs_tmp
       '';
     };
