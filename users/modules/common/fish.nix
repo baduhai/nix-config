@@ -16,21 +16,12 @@
         };
       }
       {
-        name = "sponge";
-        src = pkgs.fetchFromGitHub {
-          owner = "meaningful-ooo";
-          repo = "sponge";
-          rev = "384299545104d5256648cee9d8b117aaa9a6d7be";
-          sha256 = "sha256-MdcZUDRtNJdiyo2l9o5ma7nAX84xEJbGFhAVhK+Zm1w=";
-        };
-      }
-      {
         name = "z";
         src = pkgs.fetchFromGitHub {
           owner = "jethrokuan";
           repo = "z";
-          rev = "85f863f20f24faf675827fb00f3a4e15c7838d76";
-          sha256 = "sha256-+FUBM7CodtZrYKqU542fQD+ZDGrd2438trKM0tIESs0=";
+          rev = "067e867debee59aee231e789fc4631f80fa5788e";
+          sha256 = "sha256-emmjTsqt8bdI5qpx1bAzhVACkg0MNB/uffaRjjeuFxU=";
         };
       }
     ];
