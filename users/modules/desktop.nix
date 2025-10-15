@@ -42,7 +42,7 @@
       xdg-desktop-portal-gtk
       xdg-desktop-portal-gnome
     ];
-    config = "*";
+    config.common.default = "*";
   };
 
   gtk = {
