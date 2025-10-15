@@ -11,7 +11,7 @@ in
         "desktop"
         "bluetooth"
         "dev"
-        "ephermal"
+        "ephemeral"
         "fwupd"
         "gaming"
         "libvirtd"
@@ -26,7 +26,7 @@ in
         "desktop"
         "bluetooth"
         "dev"
-        "ephermal"
+        "ephemeral"
         "networkmanager"
         "podman"
       ];

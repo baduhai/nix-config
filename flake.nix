@@ -50,6 +50,7 @@
         ./devShells.nix
         ./homeConfigurations.nix
         ./nixosConfigurations.nix
+        ./nixosModules.nix
         ./overlays.nix
         ./packages.nix
       ];
