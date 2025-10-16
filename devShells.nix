@@ -8,8 +8,10 @@
         packages = with pkgs; [
           nil
           nixfmt-rfc-style
-          inputs.deploy-rs.packages.${pkgs.system}.default
         ];
+        shellHook = ''
+          alias deploy='${inputs.deploy-rs.packages.${pkgs.system}.default}/bin/deploy --skip-checks'
+        '';
       };
     };
 }

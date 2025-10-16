@@ -26,13 +26,11 @@
     buildDocs = false;
   };
 
-  services = {
-    nixos-cli = {
-      enable = true;
-      config = {
-        use_nvd = true;
-        ignore_dirty_tree = true;
-      };
+  services.nixos-cli = {
+    enable = true;
+    config = {
+      use_nvd = true;
+      ignore_dirty_tree = true;
     };
   };
 
