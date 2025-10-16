@@ -36,31 +36,14 @@
       in
       lib.mapAttrs (_: lib.recursiveUpdate commonVHostConfig) {
         "_".locations."/".return = "444";
-        "dav.baduhai.dev".locations = {
-          "/caldav" = {
-            proxyPass = "http://unix:/run/radicale/radicale.sock:/";
-            extraConfig = ''
-              proxy_set_header X-Script-Name /caldav;
-              proxy_pass_header Authorization;
-            '';
-          };
-          "/webdav" = {
-            proxyPass = "http://unix:/run/rclone-webdav/webdav.sock:/webdav/";
-            extraConfig = ''
-              proxy_set_header X-Script-Name /webdav;
-              proxy_pass_header Authorization;
-              proxy_connect_timeout 300; # Increase timeouts for large file uploads
-              proxy_send_timeout 300;
-              proxy_read_timeout 300;
-              client_max_body_size 10G; # Allow large file uploads
-              proxy_buffering off; # Buffer settings for better performance
-              proxy_request_buffering off;
-            '';
-          };
-        };
+        "cloud.baduhai.dev" = { };
         "git.baduhai.dev".locations."/".proxyPass =
           "http://unix:${config.services.forgejo.settings.server.HTTP_ADDR}:/";
         "jellyfin.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:8096/";
+        "office.baduhai.dev".locations."/" = {
+          proxyPass = "http://unix:/run/coolwsd/coolwsd.sock";
+          proxyWebsockets = true;
+        };
         "pass.baduhai.dev".locations."/".proxyPass =
           "http://unix:${config.services.vaultwarden.config.ROCKET_ADDRESS}:/";
         "speedtest.baduhai.dev".locations."/".proxyPass = "http://librespeed:80/";
