@@ -1,7 +1,10 @@
 { inputs, pkgs, ... }:
 
 {
-  imports = [ inputs.dms.homeModules.dankMaterialShell.default ];
+  imports = [
+    inputs.dms.homeModules.dankMaterialShell.default
+    inputs.zen-browser.homeModules.beta
+  ];
 
   fonts.fontconfig.enable = true;
 
@@ -9,6 +12,11 @@
     dankMaterialShell = {
       enable = true;
       enableVPN = false;
+    };
+
+    zen-browser = {
+      enable = true;
+      profiles.william = { };
     };
 
     ghostty = {
@@ -35,9 +43,7 @@
     enable = true;
     xdgOpenUsePortal = true;
     extraPortals = with pkgs; [
-      kdePackages.xdg-desktop-portal-kde
       xdg-desktop-portal-gtk
-      xdg-desktop-portal-gnome
     ];
     config.common.default = "*";
   };

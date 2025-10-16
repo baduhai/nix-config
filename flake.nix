@@ -37,6 +37,8 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/main";
 
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
     impermanence.url = "github:nix-community/impermanence";
   };
 

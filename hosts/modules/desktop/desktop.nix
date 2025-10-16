@@ -13,52 +13,46 @@
       KDEHOME = "$XDG_CONFIG_HOME/kde4"; # Stops kde from placing a .kde4 folder in the home dir
       NIXOS_OZONE_WL = "1"; # Forces chromium and most electron apps to run in wayland
     };
-    systemPackages =
-      with pkgs;
-      [
-        ### Web ###
-        bitwarden-desktop
-        brave
-        tor-browser
-        qbittorrent
-        vesktop
-        ### Office & Productivity ###
-        aspell
-        aspellDicts.de
-        aspellDicts.en
-        aspellDicts.en-computers
-        aspellDicts.pt_BR
-        kwrite
-        libreoffice-qt
-        onlyoffice-desktopeditors
-        rnote
-        ### Graphics & Design ###
-        gimp
-        inkscape
-        plasticity
-        ### System Utilities ###
-        adwaita-icon-theme
-        colloid-gtk-theme
-        junction
-        kara
-        kde-rounded-corners
-        libfido2
-        mission-center
-        p7zip
-        rclone
-        toggleaudiosink
-        unrar
-        ### Media ###
-        mpv
-        obs-studio
-        qview
-      ]
-      ++ (with pkgs.kdePackages; [
-        ark
-        dolphin
-        dolphin-plugins
-        kolourpaint
-      ]);
+    systemPackages = with pkgs; [
+      ### Web ###
+      bitwarden-desktop
+      brave
+      tor-browser
+      qbittorrent
+      vesktop
+      inputs.zen-browser.packages."${system}".default
+      ### Office & Productivity ###
+      aspell
+      aspellDicts.de
+      aspellDicts.en
+      aspellDicts.en-computers
+      aspellDicts.pt_BR
+      libreoffice
+      onlyoffice-desktopeditors
+      papers
+      rnote
+      ### Graphics & Design ###
+      gimp
+      inkscape
+      loupe
+      plasticity
+      ### System Utilities ###
+      adwaita-icon-theme
+      ghostty
+      gnome-disk-utility
+      junction
+      libfido2
+      mission-center
+      nautilus
+      p7zip
+      rclone
+      toggleaudiosink
+      unrar
+      ### Media ###
+      mpv
+      obs-studio
+      qview
+    ];
   };
 
   services = {
@@ -86,8 +80,6 @@
     flatpak = {
       enable = true;
       packages = [
-        ### Internet Browsers & Communication ###
-        "app.zen_browser.zen"
         ### Graphics & Design ###
         "com.boxy_svg.BoxySVG"
         rec {
@@ -121,7 +113,6 @@
     niri.enable = true;
     dconf.enable = true;
     kdeconnect.enable = true;
-    partition-manager.enable = true;
     appimage = {
       enable = true;
       binfmt = true;

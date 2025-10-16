@@ -13,7 +13,7 @@
         idle-timeout = 0;
         line-number = "relative";
         cursor-shape = {
-          normal = "bar";
+          normal = "underline";
           insert = "bar";
           select = "underline";
         };

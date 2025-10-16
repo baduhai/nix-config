@@ -53,5 +53,9 @@
         terminal = 12;
       };
     };
+    targets.zen-browser = {
+      enable = true;
+      profileNames = [ "william" ];
+    };
   };
 }
