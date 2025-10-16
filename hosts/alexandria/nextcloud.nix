@@ -9,7 +9,7 @@
   services = {
     nextcloud = {
       enable = true;
-      package = pkgs.nextcloud30;
+      package = pkgs.nextcloud32;
       datadir = "/data/nextcloud";
       hostName = "cloud.baduhai.dev";
       configureRedis = true;
@@ -78,12 +78,12 @@
 
   age.secrets = {
     "nextcloud-secrets.json" = {
-      file = ../../../secrets/nextcloud-secrets.json.age;
+      file = ../../secrets/nextcloud-secrets.json.age;
       owner = "nextcloud";
       group = "hosted";
     };
     nextcloud-adminpass = {
-      file = ../../../secrets/nextcloud-adminpass.age;
+      file = ../../secrets/nextcloud-adminpass.age;
       owner = "nextcloud";
       group = "hosted";
     };
