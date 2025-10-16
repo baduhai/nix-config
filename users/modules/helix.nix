@@ -8,13 +8,12 @@
   programs.helix = {
     enable = true;
     settings = {
-      theme = "base16_transparent";
       editor = {
         file-picker.hidden = false;
         idle-timeout = 0;
         line-number = "relative";
         cursor-shape = {
-          normal = "block";
+          normal = "bar";
           insert = "bar";
           select = "underline";
         };

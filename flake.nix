@@ -31,6 +31,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix.url = "github:danth/stylix";
+
     nixos-cli.url = "github:nix-community/nixos-cli";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/main";

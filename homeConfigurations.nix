@@ -15,6 +15,7 @@ in
         "helix"
         "obs-studio"
         "starship"
+        "stylix"
         "tmux"
       ];
     };
@@ -27,6 +28,7 @@ in
         "direnv"
         "helix"
         "starship"
+        "stylix"
         "tmux"
       ];
     };
