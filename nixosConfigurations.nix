@@ -1,6 +1,7 @@
 { inputs, ... }:
 let
-  utils = import ./utils.nix { inherit inputs; };
+  lib = inputs.nixpkgs.lib;
+  utils = import ./utils.nix { inherit inputs lib; };
   inherit (utils) mkHost;
 in
 {

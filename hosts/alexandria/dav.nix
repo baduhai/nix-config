@@ -1,7 +1,7 @@
 { lib, inputs, ... }:
 let
-  utils = import ../../utils.nix { inherit inputs; };
-  inherit (utils) mkNginxVhosts;
+  utils = import ../../utils.nix { inherit inputs lib; };
+  inherit (utils) mkNginxVHosts;
 
   rclone-webdav-start = pkgs.writeShellScript "rclone-webdav-start.sh" ''
     #!/bin/bash
@@ -46,31 +46,28 @@ let
 in
 {
   services = {
-    nginx.virtualHosts = mkNginxVhosts {
-      inherit lib;
+    nginx.virtualHosts = mkNginxVHosts {
       acmeHost = "baduhai.dev";
-      domains = {
-        "dav.baduhai.dev".locations = {
-          "/caldav" = {
-            proxyPass = "http://unix:/run/radicale/radicale.sock:/";
-            extraConfig = ''
-              proxy_set_header X-Script-Name /caldav;
-              proxy_pass_header Authorization;
-            '';
-          };
-          "/webdav" = {
-            proxyPass = "http://unix:/run/rclone-webdav/webdav.sock:/webdav/";
-            extraConfig = ''
-              proxy_set_header X-Script-Name /webdav;
-              proxy_pass_header Authorization;
-              proxy_connect_timeout 300;
-              proxy_send_timeout 300;
-              proxy_read_timeout 300;
-              client_max_body_size 10G;
-              proxy_buffering off;
-              proxy_request_buffering off;
-            '';
-          };
+      domains."dav.baduhai.dev".locations = {
+        "/caldav" = {
+          proxyPass = "http://unix:/run/radicale/radicale.sock:/";
+          extraConfig = ''
+            proxy_set_header X-Script-Name /caldav;
+            proxy_pass_header Authorization;
+          '';
+        };
+        "/webdav" = {
+          proxyPass = "http://unix:/run/rclone-webdav/webdav.sock:/webdav/";
+          extraConfig = ''
+            proxy_set_header X-Script-Name /webdav;
+            proxy_pass_header Authorization;
+            proxy_connect_timeout 300;
+            proxy_send_timeout 300;
+            proxy_read_timeout 300;
+            client_max_body_size 10G;
+            proxy_buffering off;
+            proxy_request_buffering off;
+          '';
         };
       };
     };
