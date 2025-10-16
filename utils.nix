@@ -97,7 +97,7 @@ in
     };
 
   # Tag-based user configuration system
-  mkUser =
+  mkHome =
     {
       username,
       homeDirectory ? "/home/${username}",
