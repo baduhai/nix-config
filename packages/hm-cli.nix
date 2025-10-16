@@ -36,7 +36,7 @@ pkgs.writeShellScriptBin "hm" ''
 
     case "$1" in
       apply)
-        "$HM" switch --flake "$FLAKE_PATH#$FLAKE_OUTPUT"
+        "$HM" switch --flake "$FLAKE_PATH#$FLAKE_OUTPUT" -b bkp
         ;;
       generation)
         if [[ $# -lt 2 ]]; then
@@ -65,14 +65,14 @@ pkgs.writeShellScriptBin "hm" ''
               echo "Error: could not determine previous generation (possibly only one generation exists)"
               exit 1
             fi
-            "$HM" switch --flake "$FLAKE_PATH" --switch-generation "$PREV_GEN"
+            "$HM" switch --flake "$FLAKE_PATH" --switch-generation "$PREV_GEN" -b bkp
             ;;
           switch)
             if [[ $# -ne 3 ]]; then
               echo "Error: switch requires exactly one generation ID"
               exit 1
             fi
-            "$HM" switch --flake "$FLAKE_PATH" --switch-generation "$3"
+            "$HM" switch --flake "$FLAKE_PATH" --switch-generation "$3" -b bkp
             ;;
           cleanup)
             CURRENT_GEN=$("$HM" generations | sed -n 's/^.*id \([0-9]\+\) .* (current)$/\1/p')
