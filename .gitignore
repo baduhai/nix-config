@@ -1,4 +1,10 @@
-result/
+# Nix build outputs
 result
+result-*
 .direnv/
-.pre-commit-config.yaml
+
+# Personal notes and temporary files
+todo.md
+notes.md
+scratch/
+tmp/
