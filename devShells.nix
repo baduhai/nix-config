@@ -1,4 +1,4 @@
-{ ... }:
+{ inputs, ... }:
 
 {
   perSystem =
@@ -8,6 +8,7 @@
         packages = with pkgs; [
           nil
           nixfmt-rfc-style
+          inputs.deploy-rs.packages.${pkgs.system}.default
         ];
       };
     };
