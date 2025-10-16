@@ -28,6 +28,11 @@
       };
     };
 
+    ghostty = {
+      enable = true;
+      enableFishIntegration = true;
+      enableBashIntegration = true;
+    };
     password-store = {
       enable = true;
       package = pkgs.pass-wayland;

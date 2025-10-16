@@ -25,7 +25,7 @@
         min_time = 500;
       };
       git_branch = {
-        symbol = " ";
+        symbol = " ";
         style = "purple";
       };
       git_status.style = "red";
