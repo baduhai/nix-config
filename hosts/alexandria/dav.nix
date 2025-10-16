@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
+{ lib, inputs, ... }:
 let
+  utils = import ../../utils.nix { inherit inputs; };
+  inherit (utils) mkNginxVhosts;
+
   rclone-webdav-start = pkgs.writeShellScript "rclone-webdav-start.sh" ''
     #!/bin/bash
 
@@ -42,12 +44,49 @@ let
       --verbose
   '';
 in
-
 {
-  age.secrets.webdav = {
-    file = ../../secrets/webdav.age;
-    owner = "user";
-    group = "users";
+  services = {
+    nginx.virtualHosts = mkNginxVhosts {
+      inherit lib;
+      acmeHost = "baduhai.dev";
+      domains = {
+        "dav.baduhai.dev".locations = {
+          "/caldav" = {
+            proxyPass = "http://unix:/run/radicale/radicale.sock:/";
+            extraConfig = ''
+              proxy_set_header X-Script-Name /caldav;
+              proxy_pass_header Authorization;
+            '';
+          };
+          "/webdav" = {
+            proxyPass = "http://unix:/run/rclone-webdav/webdav.sock:/webdav/";
+            extraConfig = ''
+              proxy_set_header X-Script-Name /webdav;
+              proxy_pass_header Authorization;
+              proxy_connect_timeout 300;
+              proxy_send_timeout 300;
+              proxy_read_timeout 300;
+              client_max_body_size 10G;
+              proxy_buffering off;
+              proxy_request_buffering off;
+            '';
+          };
+        };
+      };
+    };
+    radicale = {
+      enable = true;
+      settings = {
+        server = {
+          hosts = [ "/run/radicale/radicale.sock" ];
+        };
+        auth = {
+          type = "htpasswd";
+          htpasswd_filename = "/etc/radicale/users";
+          htpasswd_encryption = "bcrypt";
+        };
+      };
+    };
   };
 
   systemd.services.rclone-webdav = {
@@ -78,5 +117,11 @@ in
       chown user:users /data/webdav
       chmod 755 /data/webdav
     '';
+  };
+
+  age.secrets.webdav = {
+    file = ../../secrets/webdav.age;
+    owner = "user";
+    group = "users";
   };
 }
