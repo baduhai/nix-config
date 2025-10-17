@@ -17,6 +17,7 @@
       ### Web ###
       bitwarden-desktop
       brave
+      nextcloud-client
       tor-browser
       qbittorrent
       vesktop
