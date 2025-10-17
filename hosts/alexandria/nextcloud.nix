@@ -14,7 +14,6 @@
       hostName = "cloud.baduhai.dev";
       configureRedis = true;
       https = true;
-      autoUpdateApps.enable = true;
       secretFile = config.age.secrets."nextcloud-secrets.json".path;
       database.createLocally = true;
       maxUploadSize = "16G";
