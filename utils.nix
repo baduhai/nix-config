@@ -1,4 +1,5 @@
 { inputs, lib }:
+
 let
   inherit (inputs)
     self
@@ -8,6 +9,7 @@ let
     agenix
     ;
 in
+
 {
   # Tag-based host configuration system
   mkHost =

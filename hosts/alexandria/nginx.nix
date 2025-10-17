@@ -4,10 +4,12 @@
   inputs,
   ...
 }:
+
 let
   utils = import ../../utils.nix { inherit inputs lib; };
   inherit (utils) mkNginxVHosts;
 in
+
 {
   security.acme = {
     acceptTerms = true;
@@ -20,12 +22,6 @@ in
     certs."baduhai.dev" = {
       extraDomainNames = [ "*.baduhai.dev" ];
     };
-  };
-
-  age.secrets.cloudflare = {
-    file = ../../secrets/cloudflare.age;
-    owner = "nginx";
-    group = "nginx";
   };
 
   services.nginx = {
@@ -41,4 +37,10 @@ in
   };
 
   users.users.nginx.extraGroups = [ "acme" ];
+
+  age.secrets.cloudflare = {
+    file = ../../secrets/cloudflare.age;
+    owner = "nginx";
+    group = "nginx";
+  };
 }

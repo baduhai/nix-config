@@ -14,13 +14,14 @@ in
     config = {
       DOMAIN = "https://pass.baduhai.dev";
       SIGNUPS_ALLOWED = false;
-      ROCKET_ADDRESS = "/run/vaultwarden/vaultwarden.sock";
+      ROCKET_ADDRESS = "127.0.0.1";
+      ROCKET_PORT = 58222;
     };
   };
 
   services.nginx.virtualHosts = mkNginxVHosts {
     acmeHost = "baduhai.dev";
     domains."pass.baduhai.dev".locations."/".proxyPass =
-      "http://unix:${config.services.vaultwarden.config.ROCKET_ADDRESS}:/";
+      "http://${config.services.vaultwarden.config.ROCKET_ADDRESS}:${toString config.services.vaultwarden.config.ROCKET_PORT}/";
   };
 }

@@ -80,12 +80,12 @@
     "nextcloud-secrets.json" = {
       file = ../../secrets/nextcloud-secrets.json.age;
       owner = "nextcloud";
-      group = "hosted";
+      group = "nextcloud";
     };
     nextcloud-adminpass = {
       file = ../../secrets/nextcloud-adminpass.age;
       owner = "nextcloud";
-      group = "hosted";
+      group = "nextcloud";
     };
   };
 }
