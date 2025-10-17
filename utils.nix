@@ -1,4 +1,4 @@
-{ inputs }:
+{ inputs, lib }:
 let
   inherit (inputs)
     self
@@ -172,4 +172,19 @@ in
         }
       ];
     };
+
+  # Nginx virtual host utilities
+  mkNginxVHosts =
+    {
+      acmeHost,
+      domains,
+    }:
+    let
+      commonVHostConfig = {
+        useACMEHost = acmeHost;
+        forceSSL = true;
+        kTLS = true;
+      };
+    in
+    lib.mapAttrs (_: lib.recursiveUpdate commonVHostConfig) domains;
 }

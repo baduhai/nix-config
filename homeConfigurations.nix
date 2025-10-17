@@ -1,11 +1,14 @@
 { inputs, ... }:
+
 let
-  utils = import ./utils.nix { inherit inputs; };
-  inherit (utils) mkHome;
+  lib = inputs.nixpkgs.lib;
+  utils = import ./utils.nix { inherit inputs lib; };
+  inherit (utils) mkUser;
 in
+
 {
   flake.homeConfigurations = {
-    "user@rotterdam" = mkHome {
+    "user@rotterdam" = mkUser {
       username = "user";
       tags = [
         "btop"
@@ -20,7 +23,7 @@ in
       ];
     };
 
-    "user@io" = mkHome {
+    "user@io" = mkUser {
       username = "user";
       tags = [
         "btop"

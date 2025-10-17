@@ -1,5 +1,13 @@
-{ ... }:
-
+{
+  config,
+  lib,
+  inputs,
+  ...
+}:
+let
+  utils = import ../../utils.nix { inherit inputs lib; };
+  inherit (utils) mkNginxVHosts;
+in
 {
   services.forgejo = {
     enable = true;
@@ -17,5 +25,11 @@
       mailer.ENABLED = false;
       actions.ENABLED = false;
     };
+  };
+
+  services.nginx.virtualHosts = mkNginxVHosts {
+    acmeHost = "baduhai.dev";
+    domains."git.baduhai.dev".locations."/".proxyPass =
+      "http://unix:${config.services.forgejo.settings.server.HTTP_ADDR}:/";
   };
 }
