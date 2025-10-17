@@ -1,8 +1,9 @@
 { inputs, self, ... }:
 {
-  flake.deploy.nodes = {
+  flake.deploy = {
     remoteBuild = true;
-    alexandria = {
+    nodes = {
+      alexandria = {
       hostname = "alexandria";
       profiles.system = {
         sshUser = "user";
@@ -36,6 +37,7 @@
       };
     };
   };
+};
   perSystem =
     { system, ... }:
     {

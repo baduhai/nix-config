@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ ... }:
 
 {
   perSystem =
@@ -8,10 +8,8 @@
         packages = with pkgs; [
           nil
           nixfmt-rfc-style
+          deploy-rs
         ];
-        shellHook = ''
-          alias deploy='${inputs.deploy-rs.packages.${pkgs.system}.default}/bin/deploy --skip-checks'
-        '';
       };
     };
 }
