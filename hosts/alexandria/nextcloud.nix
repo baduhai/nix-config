@@ -2,8 +2,14 @@
   lib,
   config,
   pkgs,
+  inputs,
   ...
 }:
+
+let
+  utils = import ../../utils.nix { inherit inputs lib; };
+  inherit (utils) mkNginxVHosts;
+in
 
 {
   services = {
@@ -62,14 +68,32 @@
 
     collabora-online = {
       enable = true;
+      port = 9980;
       settings = {
         ssl = {
           enable = false;
           termination = true;
         };
         net = {
-          listen = "unix";
+          listen = "loopback";
           frame_ancestors = "cloud.baduhai.dev";
+        };
+      };
+    };
+
+    nginx.virtualHosts = mkNginxVHosts {
+      acmeHost = "baduhai.dev";
+      domains = {
+        "cloud.baduhai.dev" = { };
+        "office.baduhai.dev".locations = {
+          "/".proxyPass = "http://127.0.0.1:${toString config.services.collabora-online.port}";
+          "~ ^/cool/(.*)/ws$".proxyPass = "http://127.0.0.1:${toString config.services.collabora-online.port}";
+          "~ ^/cool/(.*)/ws$".extraConfig = ''
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "Upgrade";
+            proxy_set_header Host $host;
+            proxy_read_timeout 36000s;
+          '';
         };
       };
     };
