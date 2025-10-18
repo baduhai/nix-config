@@ -6,7 +6,10 @@
 }:
 
 {
-  imports = [ inputs.nix-flatpak.nixosModules.nix-flatpak ];
+  imports = [
+    inputs.niri.nixosModules.niri
+    inputs.nix-flatpak.nixosModules.nix-flatpak
+  ];
 
   environment = {
     sessionVariables = {
@@ -69,7 +72,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${lib.getExe pkgs.tuigreet} --time --remember --asterisks --cmd ${lib.getExe pkgs.niri}";
+          command = "${lib.getExe pkgs.tuigreet} --time --remember --asterisks --cmd ${pkgs.niri}/bin/niri-session";
           user = "greeter";
         };
         initial_session = {
@@ -111,7 +114,10 @@
   };
 
   programs = {
-    niri.enable = true;
+    niri = {
+      enable = true;
+      package = pkgs.niri;
+    };
     dconf.enable = true;
     kdeconnect.enable = true;
     appimage = {
@@ -119,6 +125,8 @@
       binfmt = true;
     };
   };
+
+  niri-flake.cache.enable = false;
 
   fonts = {
     fontDir.enable = true;

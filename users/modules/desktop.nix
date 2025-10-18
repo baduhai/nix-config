@@ -8,6 +8,8 @@
 
   fonts.fontconfig.enable = true;
 
+  home.packages = with pkgs; [ xwayland-satellite ];
+
   programs = {
     dankMaterialShell = {
       enable = true;
@@ -33,19 +35,11 @@
         keybind = [ "shift+enter=esc:\\x1b[13;2u" ];
       };
     };
+
     password-store = {
       enable = true;
       package = pkgs.pass-wayland;
     };
-  };
-
-  xdg.portal = {
-    enable = true;
-    xdgOpenUsePortal = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-    ];
-    config.common.default = "*";
   };
 
   gtk = {

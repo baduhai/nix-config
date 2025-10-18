@@ -13,15 +13,15 @@
     polarity = "dark";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/hardhacker.yaml";
     cursor = {
-      package = pkgs.kdePackages.breeze-icons;
-      name = "Breeze_Light";
+      package = pkgs.kdePackages.breeze;
+      name = "breeze_cursors";
       size = 24;
     };
     icons = {
       enable = true;
       package = pkgs.morewaita-icon-theme;
-      light = "adwaita";
-      dark = "adwaita-dark";
+      light = "MoreWaita";
+      dark = "MoreWaita";
     };
     opacity = {
       applications = 1.0;

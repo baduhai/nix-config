@@ -42,6 +42,8 @@
     impermanence.url = "github:nix-community/impermanence";
 
     deploy-rs.url = "github:serokell/deploy-rs";
+
+    niri.url = "github:sodiboo/niri-flake";
   };
 
   outputs =
