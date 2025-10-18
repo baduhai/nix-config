@@ -15,7 +15,7 @@ in
   services = {
     nextcloud = {
       enable = true;
-      package = pkgs.nextcloud31;
+      package = pkgs.nextcloud32;
       datadir = "/data/nextcloud";
       hostName = "cloud.baduhai.dev";
       configureRedis = true;
@@ -23,6 +23,14 @@ in
       secretFile = config.age.secrets."nextcloud-secrets.json".path;
       database.createLocally = true;
       maxUploadSize = "16G";
+      extraApps = {
+        inherit (config.services.nextcloud.package.packages.apps)
+          calendar
+          contacts
+          notes
+          ;
+      };
+      extraAppsEnable = true;
       caching = {
         apcu = true;
         redis = true;
@@ -66,36 +74,9 @@ in
       };
     };
 
-    collabora-online = {
-      enable = true;
-      port = 9980;
-      settings = {
-        ssl = {
-          enable = false;
-          termination = true;
-        };
-        net = {
-          listen = "loopback";
-          frame_ancestors = "cloud.baduhai.dev";
-        };
-      };
-    };
-
     nginx.virtualHosts = mkNginxVHosts {
       acmeHost = "baduhai.dev";
-      domains = {
-        "cloud.baduhai.dev" = { };
-        "office.baduhai.dev".locations = {
-          "/".proxyPass = "http://127.0.0.1:${toString config.services.collabora-online.port}";
-          "~ ^/cool/(.*)/ws$".proxyPass = "http://127.0.0.1:${toString config.services.collabora-online.port}";
-          "~ ^/cool/(.*)/ws$".extraConfig = ''
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection "Upgrade";
-            proxy_set_header Host $host;
-            proxy_read_timeout 36000s;
-          '';
-        };
-      };
+      domains."cloud.baduhai.dev" = { };
     };
   };
 
