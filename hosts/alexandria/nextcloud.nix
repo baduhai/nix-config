@@ -24,13 +24,10 @@ in
       database.createLocally = true;
       maxUploadSize = "16G";
       extraApps = {
-        inherit (config.services.nextcloud.package.packages.apps)
-          calendar
-          contacts
-          notes
-          ;
+        inherit (config.services.nextcloud.package.packages.apps) calendar contacts notes;
       };
       extraAppsEnable = true;
+      appstoreEnable = true;
       caching = {
         apcu = true;
         redis = true;
