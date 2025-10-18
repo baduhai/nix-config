@@ -27,7 +27,6 @@ in
         inherit (config.services.nextcloud.package.packages.apps) calendar contacts notes;
       };
       extraAppsEnable = true;
-      appstoreEnable = true;
       caching = {
         apcu = true;
         redis = true;
