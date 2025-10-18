@@ -7,6 +7,7 @@
       git
       ### System Utilities ###
       btop
+      helix
       nixos-firewall-tool
       nvd
       sysz
