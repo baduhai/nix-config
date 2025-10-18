@@ -6,7 +6,7 @@
     {
       devShells.default = pkgs.mkShell {
         packages = with pkgs; [
-          agenix
+          agenix-cli
           deploy-rs
           nil
           nixfmt-rfc-style
