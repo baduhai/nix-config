@@ -22,6 +22,14 @@ in
   };
 
   xdg.configFile."niri/config.kdl".text = ''
+    output "eDP-1" {
+        scale 1.0
+    }
+
+    output "DP-3" {
+        scale 1.0
+    }
+
     input {
         keyboard {
             xkb {
@@ -64,7 +72,7 @@ in
               else
                 ''
                   proportion 0.5
-                          proportion 1
+                          proportion 1.0
                 ''
             }
         }
@@ -118,7 +126,7 @@ in
 
     window-rule {
         match app-id="zen"
-        default-column-width { proportion ${if isRotterdam then "0.5" else "1"}; }
+        default-column-width { proportion ${if isRotterdam then "0.5" else "1.0"}; }
     }
 
     window-rule {
