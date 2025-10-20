@@ -4,40 +4,42 @@
     remoteBuild = true;
     nodes = {
       alexandria = {
-      hostname = "alexandria";
-      profiles.system = {
-        sshUser = "user";
-        path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.alexandria;
-        user = "root";
-      };
-    };
-
-    trantor = {
-      hostname = "trantor";
-      profiles.system = {
-        sshUser = "user";
-        path = inputs.deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.trantor;
-        user = "root";
-      };
-    };
-
-    io = {
-      hostname = "io";
-      profiles = {
-        system = {
+        hostname = "alexandria";
+        profiles.system = {
           sshUser = "user";
-          path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.io;
+          path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.alexandria;
           user = "root";
         };
-        user = {
+      };
+
+      trantor = {
+        hostname = "trantor";
+        profiles.system = {
           sshUser = "user";
-          path = inputs.deploy-rs.lib.x86_64-linux.activate.home-manager self.homeConfigurations."user@io";
-          user = "user";
+          path = inputs.deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.trantor;
+          user = "root";
+        };
+      };
+
+      io = {
+        hostname = "io";
+        profiles = {
+          system = {
+            sshUser = "user";
+            path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.io;
+            user = "root";
+            remoteBuild = false;
+          };
+          user = {
+            sshUser = "user";
+            path = inputs.deploy-rs.lib.x86_64-linux.activate.home-manager self.homeConfigurations."user@io";
+            user = "user";
+            remoteBuild = false;
+          };
         };
       };
     };
   };
-};
   perSystem =
     { system, ... }:
     {
