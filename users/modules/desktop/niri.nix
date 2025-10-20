@@ -150,6 +150,7 @@ in
         Ctrl+Alt+Shift+A allow-when-locked=true { spawn "toggleaudiosink"; }
         Mod+W repeat=false { toggle-overview; }
         Mod+Q { close-window; }
+        Alt+Shift+Q { close-window;}
         Super+Shift+L hotkey-overlay-title="Lock Screen" { spawn "dms" "ipc" "call" "lock" "lock"; }
         Mod+Shift+Q { close-window; }
         Mod+V hotkey-overlay-title="Clipboard Manager" { spawn "dms" "ipc" "call" "clipboard" "toggle"; }

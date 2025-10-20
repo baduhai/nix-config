@@ -1,4 +1,9 @@
-{ inputs, pkgs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 
 {
   fonts.fontconfig.enable = true;
@@ -18,6 +23,7 @@
           sha256 = "sha256:0g2lgqjdrn3c51glry7x2z30y7ml0y61arl5ykmf4yj0p85s5f41";
         }}";
         bell-features = "border";
+        gtk-titlebar-style = "tabs";
         keybind = [ "shift+enter=esc:\\x1b[13;2u" ];
       };
     };
@@ -41,5 +47,10 @@
     gtk4.extraConfig = {
       gtk-decoration-layout = "appmenu:";
     };
+  };
+
+  xdg = {
+    enable = true;
+    userDirs.enable = true;
   };
 }

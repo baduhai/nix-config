@@ -102,6 +102,7 @@
       uninstallUnmanaged = true;
       update.auto.enable = true;
     };
+    gvfs.enable = true;
   };
 
   security.rtkit.enable = true; # Needed for pipewire to acquire realtime priority

@@ -12,8 +12,9 @@ in
       username = "user";
       hostname = "rotterdam";
       tags = [
-        "btop"
         "desktop"
+        "btop"
+        "comma"
         "direnv"
         "gaming"
         "helix"
@@ -28,8 +29,9 @@ in
       username = "user";
       hostname = "io";
       tags = [
-        "btop"
         "desktop"
+        "btop"
+        "comma"
         "direnv"
         "helix"
         "starship"
