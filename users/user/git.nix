@@ -1,10 +1,17 @@
 { pkgs, ... }:
 
 {
-  programs.git = {
-    enable = true;
-    diff-so-fancy.enable = true;
-    userName = "William";
-    userEmail = "baduhai@proton.me";
+  programs = {
+    git = {
+      enable = true;
+      settings.user = {
+        name = "William";
+        email = "baduhai@proton.me";
+      };
+    };
+    diff-so-fancy = {
+      enable = true;
+      enableGitIntegration = true;
+    };
   };
 }

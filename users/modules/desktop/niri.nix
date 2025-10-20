@@ -58,13 +58,13 @@ in
               if isRotterdam then
                 ''
                   proportion 0.33333
-                  proportion 0.5
-                  proportion 0.66667
+                          proportion 0.5
+                          proportion 0.66667
                 ''
               else
                 ''
                   proportion 0.5
-                  proportion 1
+                          proportion 1
                 ''
             }
         }
@@ -116,7 +116,6 @@ in
         slowdown 0.3
     }
 
-    // open zen at half window width
     window-rule {
         match app-id="zen"
         default-column-width { proportion ${if isRotterdam then "0.5" else "1"}; }
