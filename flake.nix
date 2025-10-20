@@ -43,7 +43,9 @@
 
     deploy-rs.url = "github:serokell/deploy-rs";
 
-    niri.url = "github:sodiboo/niri-flake";
+    niri-flake.url = "github:sodiboo/niri-flake";
+
+    niri.url = "github:baduhai/niri/auto-center-when-space-available";
   };
 
   outputs =

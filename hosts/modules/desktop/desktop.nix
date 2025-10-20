@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   lib,
   pkgs,
@@ -7,7 +8,7 @@
 
 {
   imports = [
-    inputs.niri.nixosModules.niri
+    inputs.niri-flake.nixosModules.niri
     inputs.nix-flatpak.nixosModules.nix-flatpak
   ];
 
@@ -72,11 +73,11 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${lib.getExe pkgs.tuigreet} --time --remember --asterisks --cmd ${pkgs.niri}/bin/niri-session";
+          command = "${lib.getExe pkgs.tuigreet} --time --remember --asterisks --cmd ${config.programs.niri.package}/bin/niri-session";
           user = "greeter";
         };
         initial_session = {
-          command = "${lib.getExe pkgs.niri}";
+          command = "${config.programs.niri.package}/bin/niri-session";
           user = "user";
         };
       };
@@ -116,10 +117,9 @@
   programs = {
     niri = {
       enable = true;
-      package = pkgs.niri;
+      package = inputs.niri.packages.${pkgs.system}.niri;
     };
     dconf.enable = true;
-    kdeconnect.enable = true;
     appimage = {
       enable = true;
       binfmt = true;

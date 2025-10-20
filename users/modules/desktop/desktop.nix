@@ -1,25 +1,11 @@
 { inputs, pkgs, ... }:
 
 {
-  imports = [
-    inputs.dms.homeModules.dankMaterialShell.default
-    inputs.zen-browser.homeModules.beta
-  ];
-
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [ xwayland-satellite ];
 
   programs = {
-    dankMaterialShell = {
-      enable = true;
-      enableVPN = false;
-    };
-
-    zen-browser = {
-      enable = true;
-      profiles.william = { };
-    };
 
     ghostty = {
       enable = true;
@@ -40,6 +26,11 @@
       enable = true;
       package = pkgs.pass-wayland;
     };
+  };
+
+  services.kdeconnect = {
+    enable = true;
+    indicator = true;
   };
 
   gtk = {

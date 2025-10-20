@@ -102,6 +102,7 @@ in
   mkHome =
     {
       username,
+      hostname ? null,
       homeDirectory ? "/home/${username}",
       tags ? [ ],
       extraModules ? [ ],
@@ -165,7 +166,7 @@ in
     home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       extraSpecialArgs = {
-        inherit inputs;
+        inherit inputs hostname;
         userTags = allTags;
       };
       modules = allModules ++ [

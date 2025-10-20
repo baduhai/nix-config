@@ -6,7 +6,10 @@
 }:
 
 {
-  imports = [ inputs.stylix.homeModules.stylix ];
+  imports = [
+    inputs.stylix.homeModules.stylix
+    inputs.zen-browser.homeModules.beta
+  ];
 
   stylix = {
     enable = true;
@@ -57,5 +60,10 @@
       enable = true;
       profileNames = [ "william" ];
     };
+  };
+
+  programs.zen-browser = {
+    enable = true;
+    profiles.william = { };
   };
 }

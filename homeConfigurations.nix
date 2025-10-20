@@ -10,6 +10,7 @@ in
   flake.homeConfigurations = {
     "user@rotterdam" = mkHome {
       username = "user";
+      hostname = "rotterdam";
       tags = [
         "btop"
         "desktop"
@@ -25,6 +26,7 @@ in
 
     "user@io" = mkHome {
       username = "user";
+      hostname = "io";
       tags = [
         "btop"
         "desktop"
