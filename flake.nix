@@ -26,8 +26,8 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   pkgs,
   hostname ? null,
   ...
@@ -7,19 +8,11 @@
 
 let
   isRotterdam = hostname == "rotterdam";
+  noctalia = "${lib.getExe inputs.noctalia.packages.${pkgs.system}.default}";
 in
 
 {
-  imports = [
-    inputs.dms.homeModules.dankMaterialShell.default
-  ];
-
   home.packages = with pkgs; [ xwayland-satellite ];
-
-  programs.dankMaterialShell = {
-    enable = true;
-    enableVPN = false;
-  };
 
   xdg.configFile."niri/config.kdl".text = ''
     output "eDP-1" {
@@ -102,9 +95,13 @@ in
     }
 
     spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
-    spawn-at-startup "dms" "run"
+    spawn-at-startup "${noctalia}"
     layer-rule {
         match namespace="^wallpaper$"
+        place-within-backdrop true
+    }
+    layer-rule {
+        match namespace="^quickshell-overview$"
         place-within-backdrop true
     }
 
@@ -139,22 +136,20 @@ in
     }
 
     binds {
+        Alt+Space { spawn "${noctalia}" "ipc" "call" "launcher" "toggle"; }
+        XF86AudioRaiseVolume { spawn "${noctalia}" "ipc" "call" "volume" "increase"; }
+        XF86AudioLowerVolume { spawn "${noctalia}" "ipc" "call" "volume" "decrease"; }
+        XF86AudioMute { spawn "${noctalia}" "ipc" "call" "volume" "muteOutput"; }
+        XF86MonBrightnessUp { spawn "${noctalia}" "ipc" "call" "brightness" "increase"; }
+        XF86MonBrightnessDown { spawn "${noctalia}" "ipc" "call" "brightness" "decrease"; }
+        Mod+V { spawn "${noctalia}" "ipc" "call" "launcher" "clipboard"; }
+        Mod+Shift+L { spawn "${noctalia}" "ipc" "call" "lockScreen" "toggle"; }
         Mod+Return { spawn "ghostty"; }
-        Alt+Space { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
-        XF86AudioRaiseVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "increment" "5"; }
-        XF86AudioLowerVolume allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "decrement" "5"; }
-        XF86AudioMute allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "mute"; }
-        XF86AudioMicMute allow-when-locked=true { spawn "dms" "ipc" "call" "audio" "micmute"; }
-        XF86MonBrightnessUp allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "increment" "5" ""; }
-        XF86MonBrightnessDown allow-when-locked=true { spawn "dms" "ipc" "call" "brightness" "decrement" "5" ""; }
         Ctrl+Alt+Shift+A allow-when-locked=true { spawn "toggleaudiosink"; }
         Mod+W repeat=false { toggle-overview; }
         Mod+Q { close-window; }
         Alt+Shift+Q { close-window;}
-        Super+Shift+L hotkey-overlay-title="Lock Screen" { spawn "dms" "ipc" "call" "lock" "lock"; }
         Mod+Shift+Q { close-window; }
-        Mod+V hotkey-overlay-title="Clipboard Manager" { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
-        Mod+M hotkey-overlay-title="Task Manager" { spawn "dms" "ipc" "call" "processlist" "toggle"; }
         Alt+F4 { close-window; }
         Mod+Left  { focus-column-left; }
         Mod+Down  { focus-window-down; }
@@ -222,8 +217,8 @@ in
         Mod+Print { screenshot; }
         Ctrl+Print { screenshot-window; }
         Mod+Backspace allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
-        Mod+Shift+E { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
-        Ctrl+Alt+Delete { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
+        Mod+Alt+E { spawn "${noctalia}" "ipc" "call" "sessionMenu" "toggle"; }
+        Ctrl+Alt+Delete { spawn "${noctalia}" "ipc" "call" "sessionMenu" "toggle"; }
         Mod+Ctrl+P { power-off-monitors; }
     }
   '';
