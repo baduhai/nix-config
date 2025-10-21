@@ -42,7 +42,6 @@
       plasticity
       ### System Utilities ###
       adwaita-icon-theme
-      better-control
       ghostty
       gnome-disk-utility
       junction
