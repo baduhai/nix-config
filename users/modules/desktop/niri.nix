@@ -14,6 +14,10 @@ in
 {
   home.packages = with pkgs; [ xwayland-satellite ];
 
+  home.sessionVariables = {
+    QT_QPA_PLATFORMTHEME = "gtk3";
+  };
+
   xdg.configFile."niri/config.kdl".text = ''
     output "eDP-1" {
         scale 1.0
