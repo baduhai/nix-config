@@ -36,6 +36,7 @@ in
     alexandria = mkHost {
       hostname = "alexandria";
       tags = [
+        # "server" TODO: uncomment when 25.11 is out.
         "fwupd"
         "podman"
       ];
@@ -45,6 +46,7 @@ in
       hostname = "trantor";
       system = "aarch64-linux";
       tags = [
+        "server"
       ];
     };
   };
