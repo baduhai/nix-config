@@ -121,6 +121,7 @@
       enable = true;
       package = inputs.niri.packages.${pkgs.system}.niri;
     };
+    kdeconnect.enable = true;
     dconf.enable = true;
     appimage = {
       enable = true;
