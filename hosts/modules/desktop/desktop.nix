@@ -21,9 +21,9 @@
       ### Web ###
       bitwarden-desktop
       brave
+      fragments
       nextcloud-client
       tor-browser
-      qbittorrent
       vesktop
       inputs.zen-browser.packages."${system}".default
       ### Office & Productivity ###
@@ -39,7 +39,6 @@
       ### Graphics & Design ###
       gimp
       inkscape
-      loupe
       plasticity
       ### System Utilities ###
       adwaita-icon-theme
@@ -55,9 +54,10 @@
       toggleaudiosink
       unrar
       ### Media ###
-      mpv
+      decibels
+      loupe
       obs-studio
-      qview
+      showtime
     ];
   };
 
