@@ -47,6 +47,11 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    terranix = {
+      url = "github:terranix/terranix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -65,6 +70,7 @@
         ./overlays.nix
         ./packages.nix
         ./deploy.nix
+        ./terranixConfigurations.nix
       ];
     };
 }

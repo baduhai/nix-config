@@ -7,6 +7,7 @@ let
     nixpkgs-stable
     home-manager
     agenix
+    terranix
     ;
 in
 
@@ -190,4 +191,66 @@ in
       };
     in
     lib.mapAttrs (_: lib.recursiveUpdate commonVHostConfig) domains;
+
+  # Terranix configuration system
+  mkTerranixDerivation =
+    {
+      system,
+      configs,
+    }:
+    lib.mapAttrs (
+      name: cfg:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+        modules = cfg.modules;
+        extraArgs = cfg.extraArgs or { };
+
+        terraformConfiguration = terranix.lib.terranixConfiguration {
+          inherit system modules;
+          extraArgs = {
+            inherit lib pkgs;
+          } // extraArgs;
+        };
+
+        tf-json = pkgs.writeShellScriptBin "default" ''
+          cat ${terraformConfiguration} | ${pkgs.jq}/bin/jq
+        '';
+
+        apply = pkgs.writeShellScriptBin "apply" ''
+          if [[ -e config.tf.json ]]; then rm -f config.tf.json; fi
+          cp ${terraformConfiguration} config.tf.json \
+            && ${pkgs.terraform}/bin/terraform init \
+            && ${pkgs.terraform}/bin/terraform apply
+        '';
+
+        plan = pkgs.writeShellScriptBin "plan" ''
+          if [[ -e config.tf.json ]]; then rm -f config.tf.json; fi
+          cp ${terraformConfiguration} config.tf.json \
+            && ${pkgs.terraform}/bin/terraform init \
+            && ${pkgs.terraform}/bin/terraform plan
+        '';
+
+        destroy = pkgs.writeShellScriptBin "destroy" ''
+          if [[ -e config.tf.json ]]; then rm -f config.tf.json; fi
+          cp ${terraformConfiguration} config.tf.json \
+            && ${pkgs.terraform}/bin/terraform init \
+            && ${pkgs.terraform}/bin/terraform destroy
+        '';
+
+        create-state-bucket = pkgs.writeShellScriptBin "create-state-bucket" ''
+          BUCKET_NAME=''${1:-"terraform-state-bucket"}
+          ACCOUNT_ID=''${2:?"Error: Cloudflare account ID required as second argument"}
+          R2_ENDPOINT="https://$ACCOUNT_ID.r2.cloudflarestorage.com"
+
+          echo "Creating R2 bucket $BUCKET_NAME..."
+          ${pkgs.awscli}/bin/aws s3api create-bucket \
+            --bucket "$BUCKET_NAME" \
+            --endpoint-url "$R2_ENDPOINT"
+          echo "Bucket created successfully at $R2_ENDPOINT"
+        '';
+      in
+      tf-json // {
+        inherit apply plan destroy create-state-bucket;
+      }
+    ) configs;
 }
