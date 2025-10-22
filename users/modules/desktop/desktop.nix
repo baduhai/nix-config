@@ -24,7 +24,7 @@
         }}";
         bell-features = "border";
         gtk-titlebar-style = "tabs";
-        keybind = [ "shift+enter=esc:\\x1b[13;2u" ];
+        keybind = [ "shift+enter=text:\\x1b\\r" ];
       };
     };
 
@@ -32,11 +32,6 @@
       enable = true;
       package = pkgs.pass-wayland;
     };
-  };
-
-  services.kdeconnect = {
-    enable = true;
-    indicator = true;
   };
 
   xdg = {

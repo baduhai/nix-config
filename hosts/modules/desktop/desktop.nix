@@ -120,7 +120,10 @@
       enable = true;
       package = inputs.niri.packages.${pkgs.system}.niri;
     };
-    kdeconnect.enable = true;
+    kdeconnect = {
+      enable = true;
+      package = pkgs.valent;
+    };
     dconf.enable = true;
     appimage = {
       enable = true;
