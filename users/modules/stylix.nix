@@ -14,7 +14,7 @@
   stylix = {
     enable = true;
     polarity = "dark";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/hardhacker.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyodark.yaml";
     cursor = {
       package = pkgs.kdePackages.breeze;
       name = "breeze_cursors";
