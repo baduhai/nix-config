@@ -88,10 +88,11 @@ in
           gap 4
           place-within-column
         }
-        struts {
-          left 8
-          right 8
-        }
+        ${lib.optionalString isRotterdam ''
+          struts {
+            left 8
+            right 8
+          }''}
     }
 
     overview {
