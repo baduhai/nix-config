@@ -42,11 +42,9 @@
   xdg = {
     enable = true;
     userDirs.enable = true;
-
     mimeApps = {
       enable = true;
       defaultApplications = {
-        # Web browsing (priority: Junction > Zen > Brave > Tor)
         "text/html" = [
           "com.github.timecraft.junction.desktop"
           "zen-browser.desktop"
@@ -77,8 +75,6 @@
           "brave-browser.desktop"
           "torbrowser.desktop"
         ];
-
-        # Images
         "image/jpeg" = "org.gnome.Loupe.desktop";
         "image/png" = "org.gnome.Loupe.desktop";
         "image/gif" = "org.gnome.Loupe.desktop";
@@ -86,8 +82,6 @@
         "image/bmp" = "org.gnome.Loupe.desktop";
         "image/svg+xml" = "org.gnome.Loupe.desktop";
         "image/tiff" = "org.gnome.Loupe.desktop";
-
-        # Video
         "video/mp4" = "io.bassi.Showtime.desktop";
         "video/x-matroska" = "io.bassi.Showtime.desktop";
         "video/webm" = "io.bassi.Showtime.desktop";
@@ -95,28 +89,20 @@
         "video/x-msvideo" = "io.bassi.Showtime.desktop";
         "video/quicktime" = "io.bassi.Showtime.desktop";
         "video/x-flv" = "io.bassi.Showtime.desktop";
-
-        # Audio
         "audio/mpeg" = "io.bassi.Showtime.desktop";
         "audio/flac" = "io.bassi.Showtime.desktop";
         "audio/ogg" = "io.bassi.Showtime.desktop";
         "audio/wav" = "io.bassi.Showtime.desktop";
         "audio/mp4" = "io.bassi.Showtime.desktop";
         "audio/x-opus+ogg" = "io.bassi.Showtime.desktop";
-
-        # PDF and documents (priority: Papers > Zen Browser)
         "application/pdf" = [
           "org.gnome.Papers.desktop"
           "zen-browser.desktop"
         ];
-
-        # Text files (Ghostty + Helix)
         "text/plain" = "Helix.desktop";
         "text/markdown" = "Helix.desktop";
         "text/x-log" = "Helix.desktop";
         "application/x-shellscript" = "Helix.desktop";
-
-        # Office documents
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document" =
           "onlyoffice-desktopeditors.desktop"; # DOCX
         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" =
@@ -129,8 +115,6 @@
         "application/msword" = "onlyoffice-desktopeditors.desktop"; # DOC
         "application/vnd.ms-excel" = "onlyoffice-desktopeditors.desktop"; # XLS
         "application/vnd.ms-powerpoint" = "onlyoffice-desktopeditors.desktop"; # PPT
-
-        # Archives
         "application/zip" = "org.gnome.FileRoller.desktop";
         "application/x-tar" = "org.gnome.FileRoller.desktop";
         "application/x-compressed-tar" = "org.gnome.FileRoller.desktop";
@@ -140,8 +124,6 @@
         "application/x-rar" = "org.gnome.FileRoller.desktop";
         "application/gzip" = "org.gnome.FileRoller.desktop";
         "application/x-bzip" = "org.gnome.FileRoller.desktop";
-
-        # File manager
         "inode/directory" = "org.gnome.Nautilus.desktop";
       };
     };
