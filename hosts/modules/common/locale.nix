@@ -7,6 +7,7 @@
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
       LC_ADDRESS = "pt_BR.utf8";
+      LC_COLLATE = "pt_BR.utf8";
       LC_IDENTIFICATION = "pt_BR.utf8";
       LC_MEASUREMENT = "pt_BR.utf8";
       LC_MONETARY = "pt_BR.utf8";
