@@ -13,10 +13,10 @@ in
 
 {
   imports = [ inputs.noctalia.homeModules.default ];
-  home.packages = with pkgs; [ xwayland-satellite ];
 
-  home.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "gtk3";
+  home = {
+    packages = with pkgs; [ xwayland-satellite ];
+    sessionVariables.QT_QPA_PLATFORMTHEME = "gtk3";
   };
 
   xdg.configFile."niri/config.kdl".text = ''

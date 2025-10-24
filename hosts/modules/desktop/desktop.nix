@@ -150,6 +150,12 @@
       xdg-desktop-portal-gnome
       xdg-desktop-portal-gtk
     ];
-    config.common.default = "*";
+    config = {
+      common.default = "*";
+      niri.default = [
+        "gtk"
+        "gnome"
+      ];
+    };
   };
 }
