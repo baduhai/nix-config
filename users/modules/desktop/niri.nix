@@ -100,7 +100,6 @@ in
     }
 
     spawn-at-startup "${noctalia}"
-    spawn-at-startup "${lib.getExe pkgs.valent}"
     layer-rule {
       match namespace="^wallpaper$"
         place-within-backdrop true
