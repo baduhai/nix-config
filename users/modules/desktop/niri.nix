@@ -136,11 +136,15 @@ in
 
     binds {
       Alt+Space { spawn "${noctalia}" "ipc" "call" "launcher" "toggle"; }
-      XF86AudioRaiseVolume { spawn "${noctalia}" "ipc" "call" "volume" "increase"; }
-      XF86AudioLowerVolume { spawn "${noctalia}" "ipc" "call" "volume" "decrease"; }
-      XF86AudioMute { spawn "${noctalia}" "ipc" "call" "volume" "muteOutput"; }
-      XF86MonBrightnessUp { spawn "${noctalia}" "ipc" "call" "brightness" "increase"; }
-      XF86MonBrightnessDown { spawn "${noctalia}" "ipc" "call" "brightness" "decrease"; }
+      XF86AudioRaiseVolume allow-when-locked=true { spawn "${noctalia}" "ipc" "call" "volume" "increase"; }
+      XF86AudioLowerVolume allow-when-locked=true { spawn "${noctalia}" "ipc" "call" "volume" "decrease"; }
+      XF86AudioMute allow-when-locked=true { spawn "${noctalia}" "ipc" "call" "volume" "muteOutput"; }
+      XF86MonBrightnessUp allow-when-locked=true { spawn "${noctalia}" "ipc" "call" "brightness" "increase"; }
+      XF86MonBrightnessDown allow-when-locked=true { spawn "${noctalia}" "ipc" "call" "brightness" "decrease"; }
+      XF86AudioPlay        allow-when-locked=true { spawn "${lib.getExe pkgs.playerctl}" "play-pause"; }
+      XF86AudioStop        allow-when-locked=true { spawn "${lib.getExe pkgs.playerctl}" "stop"; }
+      XF86AudioPrev        allow-when-locked=true { spawn "${lib.getExe pkgs.playerctl}" "previous"; }
+      XF86AudioNext        allow-when-locked=true { spawn "${lib.getExe pkgs.playerctl}" "next"; }
       Mod+V { spawn "${noctalia}" "ipc" "call" "launcher" "clipboard"; }
       Mod+Shift+L { spawn "${noctalia}" "ipc" "call" "lockScreen" "toggle"; }
       Mod+Return { spawn "ghostty"; }
