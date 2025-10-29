@@ -7,11 +7,9 @@
 
   perSystem = {
     terranix.terranixConfigurations = {
-      # Example:
-      # myconfig = {
-      #   modules = [ ./terraform/myconfig.nix ];
-      #   extraArgs = { };  # optional
-      # };
+      oci-homelab = {
+        modules = [ ./terranix/oci/homelab.nix ];
+      };
     };
   };
 }
