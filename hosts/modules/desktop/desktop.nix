@@ -73,9 +73,11 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${lib.getExe pkgs.tuigreet} --time --remember --asterisks --cmd ${config.programs.niri.package}/bin/niri-session";
+          command = "${lib.getExe pkgs.tuigreet} --user-menu --time --remember --asterisks --cmd ${config.programs.niri.package}/bin/niri-session";
           user = "greeter";
         };
+      }
+      // lib.optionalAttrs (config.networking.hostName == "io") {
         initial_session = {
           command = "${config.programs.niri.package}/bin/niri-session";
           user = "user";
