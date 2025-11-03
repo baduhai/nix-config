@@ -7,6 +7,7 @@
       git
       ### System Utilities ###
       btop
+      fastfetch
       helix
       nixos-firewall-tool
       nvd
@@ -18,7 +19,6 @@
     shellAliases = {
       cat = "${lib.getExe pkgs.bat} --paging=never --style=plain";
       ls = "${lib.getExe pkgs.eza} --icons --group-directories-first";
-      neofetch = "${lib.getExe pkgs.fastfetch}";
       tree = "ls --tree";
     };
   };
