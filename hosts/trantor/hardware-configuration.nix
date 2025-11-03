@@ -1,15 +1,16 @@
 {
   lib,
   modulesPath,
-  self,
+  inputs,
   ...
 }:
 
 {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
-    self.diskoConfigurations.trantor
-  ];
+    inputs.disko.nixosModules.disko
+  ]
+  ++ inputs.self.diskoConfigurations.trantor.modules;
 
   boot = {
     kernelModules = [ ];
