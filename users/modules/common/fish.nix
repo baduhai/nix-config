@@ -3,7 +3,10 @@
 {
   programs.fish = {
     enable = true;
-    interactiveShellInit = "${lib.getExe pkgs.nix-your-shell} fish | source";
+    interactiveShellInit = ''
+      set fish_greeting
+      ${lib.getExe pkgs.nix-your-shell} fish | source
+    '';
     loginShellInit = "${lib.getExe pkgs.nix-your-shell} fish | source";
     plugins = [
       {

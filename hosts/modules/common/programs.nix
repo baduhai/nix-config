@@ -25,6 +25,16 @@
 
   programs = {
     command-not-found.enable = false;
-    fish.enable = true;
+    fish = {
+      enable = true;
+      interactiveShellInit = ''
+        set fish_greeting
+        if set -q SSH_CONNECTION
+          export TERM=xterm-256color
+          clear
+          fastfetch
+        end
+      '';
+    };
   };
 }

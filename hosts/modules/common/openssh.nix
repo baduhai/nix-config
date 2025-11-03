@@ -4,10 +4,8 @@
   services.openssh = {
     enable = true;
     settings.PermitRootLogin = "no";
+    extraConfig = ''
+      PrintLastLog no
+    '';
   };
-  programs.fish.interactiveShellInit = ''
-    if set -q SSH_CONNECTION
-      neofetch
-    end
-  '';
 }
