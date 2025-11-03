@@ -27,8 +27,7 @@
           name = "root";
           size = "100%";
           content = {
-            type = "filesystem";
-            format = "btrfs";
+            type = "btrfs";
             extraArgs = [ "-f" ];
             subvolumes = {
               "@root" = {
