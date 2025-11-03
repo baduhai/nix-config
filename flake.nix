@@ -17,10 +17,7 @@
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
-    disko = {
-      url = "github:nix-community/disko?ref=v1.11.0";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
+    disko.url = "github:nix-community/disko";
 
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
@@ -63,13 +60,14 @@
       ];
 
       imports = [
+        ./deploy.nix
         ./devShells.nix
+        ./diskoConfigurations.nix
         ./homeConfigurations.nix
         ./nixosConfigurations.nix
         ./nixosModules.nix
         ./overlays.nix
         ./packages.nix
-        ./deploy.nix
         ./terranixConfigurations.nix
       ];
     };

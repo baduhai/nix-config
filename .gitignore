@@ -2,6 +2,7 @@
 result
 result-*
 .direnv/
+oci-trantor/
 
 # Personal notes and temporary files
 todo.md

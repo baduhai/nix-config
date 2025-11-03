@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ config, inputs, ... }:
 
 {
   imports = [
@@ -8,7 +8,11 @@
 
   ephemeral = {
     enable = true;
-    rootDevice = "/dev/mapper/cryptroot";
+    rootDevice =
+      if config.networking.hostName == "trantor" then
+        "/dev/disk/by-id/scsi-36067d367fe184830a89bbe708c7b1066"
+      else
+        "/dev/mapper/cryptroot";
     rootSubvolume = "@root";
   };
 

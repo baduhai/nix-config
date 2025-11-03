@@ -5,11 +5,15 @@
     inputs.terranix.flakeModule
   ];
 
-  perSystem = {
-    terranix.terranixConfigurations = {
-      oci-homelab = {
-        modules = [ ./terranix/oci/homelab.nix ];
+  perSystem =
+    { pkgs, ... }:
+
+    {
+      terranix.terranixConfigurations = {
+        oci-trantor = {
+          modules = [ ./terranix/oci/trantor.nix ];
+          terraformWrapper.package = pkgs.opentofu;
+        };
       };
     };
-  };
 }

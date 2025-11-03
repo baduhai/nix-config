@@ -47,6 +47,7 @@ in
       system = "aarch64-linux";
       tags = [
         "server"
+        "ephemeral"
       ];
     };
   };

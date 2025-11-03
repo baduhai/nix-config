@@ -2,11 +2,15 @@
   config,
   lib,
   modulesPath,
+  self,
   ...
 }:
 
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+    self.diskoConfigurations.io
+  ];
 
   boot = {
     initrd = {
