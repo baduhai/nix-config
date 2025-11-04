@@ -6,7 +6,6 @@
     heroic
     mangohud
     prismlauncher
-    protonup
     steam-run
   ];
 
