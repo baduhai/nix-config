@@ -62,7 +62,6 @@
       imports = [
         ./deploy.nix
         ./devShells.nix
-        ./diskoConfigurations.nix
         ./homeConfigurations.nix
         ./nixosConfigurations.nix
         ./nixosModules.nix

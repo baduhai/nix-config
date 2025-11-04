@@ -10,7 +10,7 @@
     enable = true;
     rootDevice =
       if config.networking.hostName == "trantor" then
-        "/dev/disk/by-id/scsi-36067d367fe184830a89bbe708c7b1066"
+        "/dev/disk/by-id/scsi-360b207ed25d84372a95d1ecf842f8e20-part2"
       else
         "/dev/mapper/cryptroot";
     rootSubvolume = "@root";

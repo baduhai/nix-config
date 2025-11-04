@@ -1,30 +1,18 @@
 {
   lib,
   modulesPath,
-  inputs,
   ...
 }:
 
 {
-  imports = [
-    (modulesPath + "/profiles/qemu-guest.nix")
-    inputs.disko.nixosModules.disko
-  ]
-  ++ inputs.self.diskoConfigurations.trantor.modules;
+  imports = [ (modulesPath + "/profiles/qemu-guest.nix") ];
 
-  boot = {
-    kernelModules = [ ];
-    extraModulePackages = [ ];
-    initrd = {
-      availableKernelModules = [
-        "xhci_pci"
-        "virtio_pci"
-        "virtio_scsi"
-        "usbhid"
-      ];
-      kernelModules = [ ];
-    };
-  };
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "virtio_pci"
+    "virtio_scsi"
+    "usbhid"
+  ];
 
   networking.useDHCP = lib.mkDefault true;
 

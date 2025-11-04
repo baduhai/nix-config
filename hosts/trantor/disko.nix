@@ -1,7 +1,11 @@
+{ inputs, ... }:
+
 {
+  imports = [ inputs.disko.nixosModules.default ];
+
   disko.devices.disk.main = {
     type = "disk";
-    device = "/dev/disk/by-id/scsi-36067d367fe184830a89bbe708c7b1066";
+    device = "/dev/disk/by-id/scsi-360b207ed25d84372a95d1ecf842f8e20";
     content = {
       type = "gpt";
       partitions = {
