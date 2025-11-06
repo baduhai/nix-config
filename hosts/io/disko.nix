@@ -1,4 +1,8 @@
+{ inputs, ... }:
+
 {
+  imports = [ inputs.disko.nixosModules.default ];
+
   disko.devices.disk.main = {
     type = "disk";
     device = "/dev/disk/by-id/mmc-hDEaP3_0x1041b689";
