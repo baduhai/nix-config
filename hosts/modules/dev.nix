@@ -3,7 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     bat
-    claude-code
     lazygit
     fd
     fzf

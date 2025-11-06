@@ -10,6 +10,7 @@ in
       hostname = "rotterdam";
       tags = [
         "desktop"
+        "ai"
         "bluetooth"
         "dev"
         "ephemeral"
@@ -25,6 +26,7 @@ in
       hostname = "io";
       tags = [
         "desktop"
+        "ai"
         "bluetooth"
         "dev"
         "ephemeral"

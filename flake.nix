@@ -49,6 +49,8 @@
       url = "github:terranix/terranix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-ai-tools.url = "github:numtide/nix-ai-tools";
   };
 
   outputs =
