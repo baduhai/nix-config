@@ -229,6 +229,7 @@
       threshold = 5;
       threshold_type = "PERCENTAGE";
       display_name = "daily-spend-alert";
+      recipients = "baduhai@proton.me";
       description = "Alert when daily spending exceeds $0.05";
       message = "Daily spending has exceeded $0.05 in the trantor compartment";
     };
