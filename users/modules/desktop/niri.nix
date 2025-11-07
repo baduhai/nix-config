@@ -14,19 +14,27 @@ in
 {
   imports = [ inputs.noctalia.homeModules.default ];
 
+  services.kanshi = {
+    enable = true;
+    settings = [
+      {
+        profile.name = "default";
+        profile.outputs = [
+          {
+            criteria = "*";
+            scale = 1.0;
+          }
+        ];
+      }
+    ];
+  };
+
   home = {
     packages = with pkgs; [ xwayland-satellite ];
     sessionVariables.QT_QPA_PLATFORMTHEME = "gtk3";
   };
 
   xdg.configFile."niri/config.kdl".text = ''
-    output "eDP-1" {
-      scale 1.0
-    }
-    output "DP-3" {
-      scale 1.0
-    }
-
     input {
       keyboard {
         xkb {
