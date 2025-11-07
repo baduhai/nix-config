@@ -35,6 +35,7 @@
       libreoffice
       onlyoffice-desktopeditors
       papers
+      presenterm
       rnote
       ### Graphics & Design ###
       gimp
