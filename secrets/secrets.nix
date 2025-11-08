@@ -7,7 +7,7 @@ let
 
   alexandria = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK95QueW+jp1ZmF299Xr3XkgHJ6dL7aZVsfWxqbOKVKA root@alexandria";
 
-  trantor = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINkGuGLZPnYJbCGY4BhJ9uTupp6ruuR1NZ7FEYEaLPA7 root@alexandria";
+  trantor = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIh/2u5pr/iPVeavlsor5hbTtsgUfP1JpzZVco2YQAo3 root@trantor";
 in
 
 {
@@ -15,6 +15,7 @@ in
     io-user
     rotterdam-user
     alexandria
+    trantor
   ];
   "nextcloud-adminpass.age".publicKeys = [
     io-user
