@@ -190,4 +190,33 @@ in
       };
     in
     lib.mapAttrs (_: lib.recursiveUpdate commonVHostConfig) domains;
+
+  # Split DNS utilities for unbound
+  # Generates unbound view config from a list of DNS entries
+  mkSplitDNS =
+    entries:
+    let
+      # Generate view entries for a single domain
+      mkEntry =
+        {
+          domain,
+          lanIP,
+          tailscaleIP,
+        }:
+        [
+          {
+            name = "tailscale";
+            view-first = true;
+            local-zone = ''"baduhai.dev." transparent'';
+            local-data = ''"${domain}. IN A ${tailscaleIP}"'';
+          }
+          {
+            name = "lan";
+            view-first = true;
+            local-zone = ''"baduhai.dev." transparent'';
+            local-data = ''"${domain}. IN A ${lanIP}"'';
+          }
+        ];
+    in
+    builtins.concatMap mkEntry entries;
 }

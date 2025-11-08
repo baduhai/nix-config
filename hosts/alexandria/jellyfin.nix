@@ -13,4 +13,13 @@ in
     acmeHost = "baduhai.dev";
     domains."jellyfin.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:8096/";
   };
+
+  # Register this domain for split DNS
+  services.splitDNS.entries = [
+    {
+      domain = "jellyfin.baduhai.dev";
+      lanIP = "192.168.15.142";
+      tailscaleIP = "100.76.19.50";
+    }
+  ];
 }

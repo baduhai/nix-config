@@ -79,6 +79,15 @@ in
       acmeHost = "baduhai.dev";
       domains."cloud.baduhai.dev" = { };
     };
+
+    # Register this domain for split DNS
+    splitDNS.entries = [
+      {
+        domain = "cloud.baduhai.dev";
+        lanIP = "192.168.15.142";
+        tailscaleIP = "100.76.19.50";
+      }
+    ];
   };
 
   age.secrets = {

@@ -38,6 +38,11 @@ in
 
   users.users.nginx.extraGroups = [ "acme" ];
 
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
+
   age.secrets.cloudflare = {
     file = ../../secrets/cloudflare.age;
     owner = "nginx";

@@ -1,12 +1,12 @@
-{ ... }:
+{ inputs, ... }:
 
 {
   perSystem =
-    { pkgs, ... }:
+    { pkgs, system, ... }:
     {
       devShells.default = pkgs.mkShell {
         packages = with pkgs; [
-          agenix-cli
+          inputs.agenix.packages.${system}.default
           deploy-rs
           nil
           nixfmt-rfc-style

@@ -24,4 +24,13 @@ in
     domains."pass.baduhai.dev".locations."/".proxyPass =
       "http://${config.services.vaultwarden.config.ROCKET_ADDRESS}:${toString config.services.vaultwarden.config.ROCKET_PORT}/";
   };
+
+  # Register this domain for split DNS
+  services.splitDNS.entries = [
+    {
+      domain = "pass.baduhai.dev";
+      lanIP = "192.168.15.142";
+      tailscaleIP = "100.76.19.50";
+    }
+  ];
 }
