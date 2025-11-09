@@ -1,6 +1,5 @@
 # Required environment variables:
 #   CLOUDFLARE_API_TOKEN - API token with "Edit zone DNS" permissions
-#   TF_VAR_zone_id - Zone ID for baduhai.dev (find in Cloudflare dashboard)
 #   AWS_ACCESS_KEY_ID - Cloudflare R2 access key for state storage
 #   AWS_SECRET_ACCESS_KEY - Cloudflare R2 secret key for state storage
 
@@ -26,9 +25,8 @@
 
   variable = {
     zone_id = {
-      description = "Cloudflare zone ID for baduhai.dev";
+      default = "c63a8332fdddc4a8e5612ddc54557044";
       type = "string";
-      sensitive = true;
     };
   };
 
@@ -50,28 +48,31 @@
   };
 
   resource = {
-    cloudflare_record.root = {
-      zone_id = config.variable.zone_id;
+    cloudflare_dns_record.root = {
+      zone_id = config.variable.zone_id.default;
       name = "@";
       type = "A";
-      content = config.data.terraform_remote_state.trantor "outputs.instance_public_ip.value";
-      proxied = true;
+      content = config.data.terraform_remote_state.trantor "outputs.instance_public_ip";
+      proxied = false;
+      ttl = 3600;
     };
 
-    cloudflare_record.www = {
-      zone_id = config.variable.zone_id;
+    cloudflare_dns_record.www = {
+      zone_id = config.variable.zone_id.default;
       name = "www";
       type = "A";
-      content = config.data.terraform_remote_state.trantor "outputs.instance_public_ip.value";
-      proxied = true;
+      content = config.data.terraform_remote_state.trantor "outputs.instance_public_ip";
+      proxied = false;
+      ttl = 3600;
     };
 
-    cloudflare_record.wildcard = {
-      zone_id = config.variable.zone_id;
+    cloudflare_dns_record.wildcard = {
+      zone_id = config.variable.zone_id.default;
       name = "*";
       type = "A";
-      content = config.data.terraform_remote_state.trantor "outputs.instance_public_ip.value";
-      proxied = true;
+      content = config.data.terraform_remote_state.trantor "outputs.instance_public_ip";
+      proxied = false;
+      ttl = 3600;
     };
   };
 }
