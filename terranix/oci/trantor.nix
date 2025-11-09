@@ -1,3 +1,13 @@
+# Required environment variables:
+#   instead of OCI variables, ~/.oci/config may also be used
+#   OCI_TENANCY_OCID - Oracle tenancy OCID (or use TF_VAR_* to override variables)
+#   OCI_USER_OCID - Oracle user OCID
+#   OCI_FINGERPRINT - API key fingerprint
+#   OCI_PRIVATE_KEY_PATH - Path to OCI API private key
+#   AWS variables are required
+#   AWS_ACCESS_KEY_ID - Cloudflare R2 access key for state storage
+#   AWS_SECRET_ACCESS_KEY - Cloudflare R2 secret key for state storage
+
 { config, ... }:
 
 {
