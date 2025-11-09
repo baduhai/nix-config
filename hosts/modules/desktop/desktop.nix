@@ -20,7 +20,6 @@
     systemPackages = with pkgs; [
       ### Web ###
       bitwarden-desktop
-      brave
       fragments
       nextcloud-client
       tor-browser

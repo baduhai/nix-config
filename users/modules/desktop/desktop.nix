@@ -41,33 +41,28 @@
       enable = true;
       defaultApplications = {
         "text/html" = [
-          "com.github.timecraft.junction.desktop"
+          "re.sonny.Junction.desktop"
           "zen-browser.desktop"
-          "brave-browser.desktop"
           "torbrowser.desktop"
         ];
         "x-scheme-handler/http" = [
-          "com.github.timecraft.junction.desktop"
+          "re.sonny.Junction.desktop"
           "zen-browser.desktop"
-          "brave-browser.desktop"
           "torbrowser.desktop"
         ];
         "x-scheme-handler/https" = [
-          "com.github.timecraft.junction.desktop"
+          "re.sonny.Junction.desktop"
           "zen-browser.desktop"
-          "brave-browser.desktop"
           "torbrowser.desktop"
         ];
         "x-scheme-handler/about" = [
-          "com.github.timecraft.junction.desktop"
+          "re.sonny.Junction.desktop"
           "zen-browser.desktop"
-          "brave-browser.desktop"
           "torbrowser.desktop"
         ];
         "x-scheme-handler/unknown" = [
-          "com.github.timecraft.junction.desktop"
+          "re.sonny.Junction.desktop"
           "zen-browser.desktop"
-          "brave-browser.desktop"
           "torbrowser.desktop"
         ];
         "image/jpeg" = "org.gnome.Loupe.desktop";
