@@ -40,7 +40,6 @@ in
       tags = [
         # "server" TODO: uncomment when 25.11 is out.
         "fwupd"
-        "podman"
       ];
     };
 

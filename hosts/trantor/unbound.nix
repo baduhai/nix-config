@@ -16,8 +16,9 @@ in
         ];
         access-control = [
           "127.0.0.0/8 allow"
-          "192.168.0.0/16 allow"
+          "100.64.0.0/10 allow" # Tailscale CGNAT range
           "::1/128 allow"
+          "fd7a:115c:a1e0::/48 allow" # Tailscale IPv6
         ];
 
         num-threads = 2;
@@ -32,10 +33,9 @@ in
         so-rcvbuf = "1m";
         so-sndbuf = "1m";
 
-        # LAN-only DNS records
+        # Tailnet DNS records from shared services
         local-zone = ''"baduhai.dev." transparent'';
-        local-data = map (e: ''"${e.domain}. IN A ${e.lanIP}"'')
-          (lib.filter (e: e ? lanIP) utils.services);
+        local-data = map (e: ''"${e.domain}. IN A ${e.tailscaleIP}"'') utils.services;
       };
 
       forward-zone = [
