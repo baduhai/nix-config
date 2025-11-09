@@ -185,13 +185,15 @@ in
   mkNginxVHosts =
     { domains }:
     let
-      commonVHostConfig = {
-        enableACME = true;
-        forceSSL = true;
-        kTLS = true;
-      };
+      # Extract domain name and apply it as useACMEHost
+      mkVHostConfig = domain: config:
+        lib.recursiveUpdate {
+          useACMEHost = domain;
+          forceSSL = true;
+          kTLS = true;
+        } config;
     in
-    lib.mapAttrs (_: lib.recursiveUpdate commonVHostConfig) domains;
+    lib.mapAttrs mkVHostConfig domains;
 
   # Split DNS utilities for unbound
   # Generates unbound view config from a list of DNS entries

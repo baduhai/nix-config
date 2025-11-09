@@ -7,7 +7,17 @@
 
 let
   utils = import ../../utils.nix { inherit inputs lib; };
-  inherit (utils) mkNginxVHosts;
+  inherit (utils) mkNginxVHosts services;
+
+  # Get all unique domains from shared services on trantor (host = "trantor")
+  localDomains = lib.unique (
+    map (s: s.domain) (lib.filter (s: s.host == "trantor") services)
+  );
+
+  # Generate ACME cert configs for all local domains
+  acmeCerts = lib.genAttrs localDomains (domain: {
+    group = "nginx";
+  });
 in
 
 {
@@ -19,6 +29,7 @@ in
       dnsProvider = "cloudflare";
       credentialsFile = config.age.secrets.cloudflare.path;
     };
+    certs = acmeCerts;
   };
 
   services.nginx = {
