@@ -28,7 +28,6 @@ in
   };
 
   services.nginx.virtualHosts = mkNginxVHosts {
-    acmeHost = "baduhai.dev";
     domains."git.baduhai.dev".locations."/".proxyPass =
       "http://unix:${config.services.forgejo.settings.server.HTTP_ADDR}:/";
   };

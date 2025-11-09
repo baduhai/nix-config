@@ -6,7 +6,7 @@
   services = [
     {
       name = "vaultwarden";
-      domain = "vault.baduhai.dev";
+      domain = "pass.baduhai.dev";
       host = "alexandria";
       lanIP = "192.168.15.142";
       tailscaleIP = "100.76.19.50";
