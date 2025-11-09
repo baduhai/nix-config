@@ -167,10 +167,6 @@ in
       Mod+L     { focus-column-right; }
       Mod+J     { focus-window-or-workspace-down; }
       Mod+K     { focus-window-or-workspace-up; }
-      Ctrl+Alt+J    { focus-workspace-down; }
-      Ctrl+Alt+K    { focus-workspace-up; }
-      Ctrl+Alt+Down { focus-workspace-down; }
-      Ctrl+Alt+Up   { focus-workspace-up; }
       Mod+Ctrl+Left  { move-column-left; }
       Mod+Ctrl+Down  { move-window-down-or-to-workspace-down; }
       Mod+Ctrl+Up    { move-window-up-or-to-workspace-up; }
