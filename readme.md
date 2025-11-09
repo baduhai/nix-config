@@ -1,123 +1,87 @@
 # NixOS Configuration
 
-A declarative, modular NixOS/Home Manager flake configuration managing multiple systems with a tag-based architecture for maximum code reuse and flexibility.
+My personal NixOS configuration for multiple hosts, users, resources... too many things to list. If I could put my life in a flake I would.
 
 ## Hosts
 
-| Host | Type | System | Version | Description |
-|------|------|--------|---------|-------------|
-| **rotterdam** | Desktop | x86_64-linux | NixOS Unstable | Primary workstation with gaming, development |
-| **io** | Laptop | x86_64-linux | NixOS Unstable | Mobile workstation |
-| **alexandria** | Server/NAS | x86_64-linux | NixOS 25.05 | Personal server running Nextcloud, Forgejo, Jellyfin, Vaultwarden |
-| **trantor** | VPS | aarch64-linux | NixOS 25.05 | Oracle Cloud instance |
+### Desktop Systems
+- **rotterdam** - Main desktop workstation (x86_64)
+  - Features: Desktop, AI tools, Bluetooth, Dev environment, Gaming, Virtualization (libvirtd), Podman
+  - Storage: Ephemeral root with LUKS encryption
 
-## Key Features
+- **io** - Secondary desktop (x86_64)
+  - Features: Desktop, AI tools, Bluetooth, Dev environment, Podman
+  - Storage: Ephemeral root with LUKS encryption
 
-### Architecture
-- **Tag-based module system** - Compose configurations using tags instead of traditional inheritance
-- **Flake-based** - Fully reproducible builds with locked dependencies
-- **Multi-platform** - Supports both x86_64 and aarch64 architectures
-- **Deployment automation** - Remote deployment via deploy-rs
+### Servers
+- **alexandria** - Home server (x86_64)
+  - Hosts: Nextcloud, Vaultwarden, Jellyfin, Kanidm
 
-### Desktop Experience
-- **Niri compositor** - Custom fork with auto-centering window columns
-- **Unified theming** - Stylix-based theming
-- **Wayland-native** - Full Wayland support
-- **Ephemeral root** - Impermanent filesystem using BTRFS for atomic rollback capability
+- **trantor** - Cloud server (aarch64)
+  - Hosts: Forgejo
+  - Cloud provider: Oracle Cloud Infrastructure
+  - Storage: Ephemeral root with btrfs
 
-### Self-Hosted Services
-- **Nextcloud** - Cloud storage with calendar, contacts, and notes
-- **Forgejo** - Self-hosted Git server
-- **Jellyfin** - Media streaming
-- **Vaultwarden** - Password manager backend
-- **LibreSpeed** - Network speed testing
-- All services behind Nginx and Tailscale with automatic SSL via Let's Encrypt
+## Home Manager Configurations
+
+- **user@rotterdam** - Full desktop setup with gaming, OBS, and complete development environment
+- **user@io** - Lightweight desktop setup
+
+Both configurations include:
+- btop, direnv, helix, starship, tmux
+- Stylix theme management
+- Fish shell with custom configurations
+
+## Terranix Configurations
+
+Infrastructure as code using Terranix (NixOS + Terraform/OpenTofu):
+
+- **oci-trantor** - Oracle Cloud Infrastructure provisioning for Trantor server
+- **cloudflare-baduhaidev** - DNS and CDN configuration for baduhai.dev domain
+- **tailscale-tailnet** - Tailscale network ACL and device management
+
+## Services
+
+All services are accessible via custom domains under baduhai.dev:
+
+- **Kanidm** (auth.baduhai.dev) - Identity and access management
+- **Vaultwarden** (pass.baduhai.dev) - Password manager
+- **Forgejo** (git.baduhai.dev) - Git forge (publicly accessible)
+- **Nextcloud** (cloud.baduhai.dev) - File sync and collaboration
+- **Jellyfin** (jellyfin.baduhai.dev) - Media server
+
+Services are accessible via:
+- LAN for alexandria-hosted services
+- Tailscale VPN for all services
+- Public internet for Forgejo only
+
+## Notable Features
+
+### Ephemeral Root
+Rotterdam, io, and trantor use an ephemeral root filesystem that resets on every boot:
+- Root filesystem is automatically rolled back using btrfs snapshots
+- Old snapshots retained for 30 days
+- Persistent data stored in dedicated subvolumes
+- Implements truly stateless systems
+
+### Custom DNS Architecture
+- Unbound DNS servers on both alexandria and trantor
+- Service routing based on visibility flags (public/LAN/Tailscale)
+- Split-horizon DNS for optimal access paths
 
 ### Security
-- **Agenix** - Encrypted secrets management
-- **Tailscale** - Zero-config VPN mesh network
-- **Firewall** - Configured on all hosts
-- SSH key-based authentication
+- LUKS full-disk encryption on desktop systems
+- Fail2ban on public-facing servers
+- agenix for secrets management
+- Tailscale for secure remote access
 
-## Repository Structure
+### Desktop Environment
+- Custom Niri window manager (Wayland compositor)
+- Using forked version with auto-centering feature
+- Stylix for consistent theming
 
-```
-.
-├── flake.nix                    # Main flake definition
-├── utils.nix                    # Tag-based module system utilities
-├── nixosConfigurations.nix      # Host definitions with tags
-├── homeConfigurations.nix       # User configurations
-├── deploy.nix                   # Remote deployment configuration
-├── hosts/
-│   ├── alexandria/              # Server-specific config
-│   ├── io/                      # Laptop-specific config
-│   ├── rotterdam/               # Desktop-specific config
-│   ├── trantor/                 # VPS-specific config
-│   └── modules/
-│       ├── common/              # Shared base configuration
-│       ├── desktop/             # Desktop environment setup
-│       ├── server/              # Server-specific modules
-│       └── [tag].nix            # Optional feature modules
-├── users/
-│   └── modules/                 # Home Manager configurations
-│       └── [tag].nix            # Optional feature modules
-├── packages/                    # Custom package definitions
-└── secrets/                     # Encrypted secrets (agenix)
-```
-
-## Tag System
-
-Configurations are composed using tags that map to modules:
-
-**Common Tags** (all hosts):
-- `common` - Base system configuration (automatically applied)
-
-**General Tags**:
-- `desktop` - *Mostly* full desktop environment with Niri WM
-- `dev` - Development tools and environments
-- `gaming` - Steam, Heroic, gamemode, controller support
-- `ephemeral` - Impermanent root filesystem
-- `networkmanager` - WiFi and network management
-- `libvirtd` - KVM/QEMU virtualization
-- `podman` - Container runtime
-- `bluetooth` - Bluetooth support
-- `fwupd` - Firmware update daemon
-
-**Server Tags**:
-- `server` - Server-specific configuration
-
-## Usage
-
-### Rebuilding a Configuration
-
-```bash
-# Local rebuild
-sudo nixos-rebuild switch --flake .#hostname
-
-# Remote deployment
-deploy .#hostname
-```
-
-### Updating Dependencies
-
-```bash
-nix flake update
-```
-
-### Adding a New Host
-
-1. Create host directory in `hosts/`
-2. Define configuration in `nixosConfigurations.nix` with appropriate tags
-3. Add deployment profile in `deploy.nix` if needed
-
-## Dependencies
-
-- [nixpkgs](https://github.com/NixOS/nixpkgs) - Stable (25.05) and unstable channels
-- [home-manager](https://github.com/nix-community/home-manager) - User configuration
-- [agenix](https://github.com/ryantm/agenix) - Secrets management
-- [disko](https://github.com/nix-community/disko) - Declarative disk partitioning
-- [stylix](https://github.com/danth/stylix) - System-wide theming
-- [niri-flake](https://github.com/sodiboo/niri-flake) - Wayland compositor (custom fork)
-- [impermanence](https://github.com/nix-community/impermanence) - Ephemeral filesystem support
-- [deploy-rs](https://github.com/serokell/deploy-rs) - Remote deployment
-- [nix-flatpak](https://github.com/gmodena/nix-flatpak) - Declarative Flatpak management
+### Development Setup
+- Nix flakes for reproducible builds
+- deploy-rs for automated deployments
+- Podman for containerization
+- Complete AI tooling integration
