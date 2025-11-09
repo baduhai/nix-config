@@ -9,7 +9,7 @@ My personal Nix configuration for multiple NixOS hosts, home-manager users, misc
   - Features: Desktop, AI tools, Bluetooth, Dev environment, Gaming, Virtualization (libvirtd), Podman
   - Storage: Ephemeral root with LUKS encryption
 
-- **io** - Secondary desktop (x86_64)
+- **io** - Laptop workstation (x86_64)
   - Features: Desktop, AI tools, Bluetooth, Dev environment, Podman
   - Storage: Ephemeral root with LUKS encryption
 
