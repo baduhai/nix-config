@@ -25,6 +25,12 @@ in
       mailer.ENABLED = false;
       actions.ENABLED = false;
       service.DISABLE_REGISTRATION = true;
+      oauth2_client = {
+        ENABLE_AUTO_REGISTRATION = true;
+        UPDATE_AVATAR = true;
+        ACCOUNT_LINKING = "login";
+        USERNAME = "preferred_username";
+      };
     };
   };
 
