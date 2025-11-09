@@ -76,7 +76,6 @@ in
     };
 
     nginx.virtualHosts = mkNginxVHosts {
-      acmeHost = "baduhai.dev";
       domains."cloud.baduhai.dev" = { };
     };
   };

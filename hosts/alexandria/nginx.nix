@@ -19,9 +19,6 @@ in
       dnsProvider = "cloudflare";
       credentialsFile = config.age.secrets.cloudflare.path;
     };
-    certs."baduhai.dev" = {
-      extraDomainNames = [ "*.baduhai.dev" ];
-    };
   };
 
   services.nginx = {
@@ -30,9 +27,11 @@ in
     recommendedOptimisation = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
-    virtualHosts = mkNginxVHosts {
-      acmeHost = "baduhai.dev";
-      domains."_".locations."/".return = "444";
+    virtualHosts = {
+      "_" = {
+        default = true;
+        locations."/".return = "444";
+      };
     };
   };
 

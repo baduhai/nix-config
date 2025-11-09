@@ -10,7 +10,6 @@ in
   };
 
   services.nginx.virtualHosts = mkNginxVHosts {
-    acmeHost = "baduhai.dev";
     domains."jellyfin.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:8096/";
   };
 }

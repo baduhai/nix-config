@@ -183,13 +183,10 @@ in
 
   # Nginx virtual host utilities
   mkNginxVHosts =
-    {
-      acmeHost,
-      domains,
-    }:
+    { domains }:
     let
       commonVHostConfig = {
-        useACMEHost = acmeHost;
+        enableACME = true;
         forceSSL = true;
         kTLS = true;
       };

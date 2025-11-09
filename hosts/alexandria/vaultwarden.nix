@@ -20,7 +20,6 @@ in
   };
 
   services.nginx.virtualHosts = mkNginxVHosts {
-    acmeHost = "baduhai.dev";
     domains."pass.baduhai.dev".locations."/".proxyPass =
       "http://${config.services.vaultwarden.config.ROCKET_ADDRESS}:${toString config.services.vaultwarden.config.ROCKET_PORT}/";
   };
