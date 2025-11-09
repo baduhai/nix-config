@@ -32,13 +32,4 @@ in
     domains."git.baduhai.dev".locations."/".proxyPass =
       "http://unix:${config.services.forgejo.settings.server.HTTP_ADDR}:/";
   };
-
-  # Register this domain for split DNS
-  services.splitDNS.entries = [
-    {
-      domain = "git.baduhai.dev";
-      lanIP = "192.168.15.142";
-      tailscaleIP = "100.76.19.50";
-    }
-  ];
 }
