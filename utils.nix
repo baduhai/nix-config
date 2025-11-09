@@ -8,9 +8,14 @@ let
     home-manager
     agenix
     ;
+
+  # Import shared service definitions
+  sharedServices = import ./shared/services.nix;
 in
 
 {
+  # Re-export shared services for use in host configs
+  inherit (sharedServices) services;
   # Tag-based host configuration system
   mkHost =
     {
@@ -196,27 +201,24 @@ in
   mkSplitDNS =
     entries:
     let
-      # Generate view entries for a single domain
-      mkEntry =
-        {
-          domain,
-          lanIP,
-          tailscaleIP,
-        }:
-        [
-          {
-            name = "tailscale";
-            view-first = true;
-            local-zone = ''"baduhai.dev." transparent'';
-            local-data = ''"${domain}. IN A ${tailscaleIP}"'';
-          }
-          {
-            name = "lan";
-            view-first = true;
-            local-zone = ''"baduhai.dev." transparent'';
-            local-data = ''"${domain}. IN A ${lanIP}"'';
-          }
-        ];
+      # Generate local-data entries for all domains
+      tailscaleData = map (e: ''"${e.domain}. IN A ${e.tailscaleIP}"'') entries;
+      lanData = map (e: ''"${e.domain}. IN A ${e.lanIP}"'') entries;
     in
-    builtins.concatMap mkEntry entries;
+    [
+      # Single Tailscale view with all domains
+      {
+        name = "tailscale";
+        view-first = true;
+        local-zone = ''"baduhai.dev." transparent'';
+        local-data = tailscaleData;
+      }
+      # Single LAN view with all domains
+      {
+        name = "lan";
+        view-first = true;
+        local-zone = ''"baduhai.dev." transparent'';
+        local-data = lanData;
+      }
+    ];
 }
