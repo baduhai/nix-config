@@ -24,6 +24,7 @@ in
       log.LEVEL = "Warn";
       mailer.ENABLED = false;
       actions.ENABLED = false;
+      service.DISABLE_REGISTRATION = true;
     };
   };
 

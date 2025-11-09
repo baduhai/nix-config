@@ -27,4 +27,9 @@ in
     rotterdam-user
     alexandria
   ];
+  "forgejo-root-password.age".publicKeys = [
+    io-user
+    rotterdam-user
+    trantor
+  ];
 }
