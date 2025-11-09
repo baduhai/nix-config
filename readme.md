@@ -1,6 +1,6 @@
-# NixOS Configuration
+# Nix Configuration
 
-My personal NixOS configuration for multiple hosts, users, resources... too many things to list. If I could put my life in a flake I would.
+My personal Nix configuration for multiple NixOS hosts, home-manager users, miscellaneous resources... too many things to list. If I could put my life in a flake I would.
 
 ## Hosts
 
