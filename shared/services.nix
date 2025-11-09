@@ -16,7 +16,6 @@
       name = "vaultwarden";
       domain = "pass.baduhai.dev";
       host = "alexandria";
-      public = true;
       lanIP = "192.168.15.142";
       tailscaleIP = "100.76.19.50";
       port = 8222;
@@ -33,7 +32,6 @@
       name = "nextcloud";
       domain = "cloud.baduhai.dev";
       host = "alexandria";
-      public = true;
       lanIP = "192.168.15.142";
       tailscaleIP = "100.76.19.50";
       port = 443;
