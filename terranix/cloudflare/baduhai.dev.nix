@@ -15,13 +15,17 @@ let
   # Public services point to trantor's public IP
   # Private services point to their tailscale IP
   mkServiceRecords = lib.listToAttrs (
-    lib.imap0 (i: svc:
+    lib.imap0 (
+      i: svc:
       let
         subdomain = getSubdomain svc.domain;
-        targetIP = if svc.public or false
-          then config.data.terraform_remote_state.trantor "outputs.instance_public_ip"
-          else svc.tailscaleIP;
-      in {
+        targetIP =
+          if svc.public or false then
+            config.data.terraform_remote_state.trantor "outputs.instance_public_ip"
+          else
+            svc.tailscaleIP;
+      in
+      {
         name = "service_${toString i}";
         value = {
           zone_id = config.variable.zone_id.default;
@@ -78,25 +82,5 @@ in
     };
   };
 
-  resource = {
-    cloudflare_dns_record = mkServiceRecords // {
-      root = {
-        zone_id = config.variable.zone_id.default;
-        name = "@";
-        type = "A";
-        content = config.data.terraform_remote_state.trantor "outputs.instance_public_ip";
-        proxied = false;
-        ttl = 3600;
-      };
-
-      www = {
-        zone_id = config.variable.zone_id.default;
-        name = "www";
-        type = "A";
-        content = config.data.terraform_remote_state.trantor "outputs.instance_public_ip";
-        proxied = false;
-        ttl = 3600;
-      };
-    };
-  };
+  resource.cloudflare_dns_record = mkServiceRecords;
 }

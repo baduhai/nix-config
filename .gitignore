@@ -3,6 +3,8 @@ result
 result-*
 .direnv/
 oci-trantor/
+tailscale-tailnet/
+cloudflare-baduhaidev
 
 # Personal notes and temporary files
 todo.md
