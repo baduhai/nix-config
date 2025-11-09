@@ -8,7 +8,6 @@
       name = "kanidm";
       domain = "auth.baduhai.dev";
       host = "alexandria";
-      public = false;
       lanIP = "192.168.15.142";
       tailscaleIP = "100.76.19.50";
       port = 8443;
@@ -43,7 +42,6 @@
       name = "jellyfin";
       domain = "jellyfin.baduhai.dev";
       host = "alexandria";
-      public = false;
       lanIP = "192.168.15.142";
       tailscaleIP = "100.76.19.50";
       port = 8096;

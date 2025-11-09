@@ -3,7 +3,38 @@
 #   AWS_ACCESS_KEY_ID - Cloudflare R2 access key for state storage
 #   AWS_SECRET_ACCESS_KEY - Cloudflare R2 secret key for state storage
 
-{ config, ... }:
+{ config, lib, ... }:
+
+let
+  inherit (import ../../shared/services.nix) services;
+
+  # Helper to extract subdomain from full domain (e.g., "git.baduhai.dev" -> "git")
+  getSubdomain = domain: lib.head (lib.splitString "." domain);
+
+  # Generate DNS records for services
+  # Public services point to trantor's public IP
+  # Private services point to their tailscale IP
+  mkServiceRecords = lib.listToAttrs (
+    lib.imap0 (i: svc:
+      let
+        subdomain = getSubdomain svc.domain;
+        targetIP = if svc.public or false
+          then config.data.terraform_remote_state.trantor "outputs.instance_public_ip"
+          else svc.tailscaleIP;
+      in {
+        name = "service_${toString i}";
+        value = {
+          zone_id = config.variable.zone_id.default;
+          name = subdomain;
+          type = "A";
+          content = targetIP;
+          proxied = false;
+          ttl = 3600;
+        };
+      }
+    ) services
+  );
+in
 
 {
   terraform.required_providers.cloudflare = {
@@ -48,31 +79,24 @@
   };
 
   resource = {
-    cloudflare_dns_record.root = {
-      zone_id = config.variable.zone_id.default;
-      name = "@";
-      type = "A";
-      content = config.data.terraform_remote_state.trantor "outputs.instance_public_ip";
-      proxied = false;
-      ttl = 3600;
-    };
+    cloudflare_dns_record = mkServiceRecords // {
+      root = {
+        zone_id = config.variable.zone_id.default;
+        name = "@";
+        type = "A";
+        content = config.data.terraform_remote_state.trantor "outputs.instance_public_ip";
+        proxied = false;
+        ttl = 3600;
+      };
 
-    cloudflare_dns_record.www = {
-      zone_id = config.variable.zone_id.default;
-      name = "www";
-      type = "A";
-      content = config.data.terraform_remote_state.trantor "outputs.instance_public_ip";
-      proxied = false;
-      ttl = 3600;
-    };
-
-    cloudflare_dns_record.wildcard = {
-      zone_id = config.variable.zone_id.default;
-      name = "*";
-      type = "A";
-      content = config.data.terraform_remote_state.trantor "outputs.instance_public_ip";
-      proxied = false;
-      ttl = 3600;
+      www = {
+        zone_id = config.variable.zone_id.default;
+        name = "www";
+        type = "A";
+        content = config.data.terraform_remote_state.trantor "outputs.instance_public_ip";
+        proxied = false;
+        ttl = 3600;
+      };
     };
   };
 }
