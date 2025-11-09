@@ -8,7 +8,6 @@
 
 let
   isRotterdam = hostname == "rotterdam";
-  noctalia = "${lib.getExe inputs.noctalia.packages.${pkgs.system}.default}";
 in
 
 {
@@ -30,7 +29,10 @@ in
   };
 
   home = {
-    packages = with pkgs; [ xwayland-satellite ];
+    packages = with pkgs; [
+      xwayland-satellite
+      inputs.noctalia.packages.${pkgs.system}.default
+    ];
     sessionVariables.QT_QPA_PLATFORMTHEME = "gtk3";
   };
 
@@ -91,23 +93,18 @@ in
         inactive-color "#505050"
         urgent-color "#9b0000"
       }
-        tab-indicator {
-          width 4
-          gap 4
-          place-within-column
-        }
-        ${lib.optionalString isRotterdam ''
-          struts {
-            left 8
-            right 8
-          }''}
+      tab-indicator {
+        width 4
+        gap 4
+        place-within-column
+      }
     }
 
     overview {
       zoom 0.65
     }
 
-    spawn-at-startup "${noctalia}"
+    spawn-at-startup "noctalia-shell" "-d"
     layer-rule {
       match namespace="^wallpaper$"
         place-within-backdrop true
@@ -143,18 +140,18 @@ in
     }
 
     binds {
-      Alt+Space { spawn "${noctalia}" "ipc" "call" "launcher" "toggle"; }
-      XF86AudioRaiseVolume allow-when-locked=true { spawn "${noctalia}" "ipc" "call" "volume" "increase"; }
-      XF86AudioLowerVolume allow-when-locked=true { spawn "${noctalia}" "ipc" "call" "volume" "decrease"; }
-      XF86AudioMute allow-when-locked=true { spawn "${noctalia}" "ipc" "call" "volume" "muteOutput"; }
-      XF86MonBrightnessUp allow-when-locked=true { spawn "${noctalia}" "ipc" "call" "brightness" "increase"; }
-      XF86MonBrightnessDown allow-when-locked=true { spawn "${noctalia}" "ipc" "call" "brightness" "decrease"; }
+      Alt+Space { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+      XF86AudioRaiseVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
+      XF86AudioLowerVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+      XF86AudioMute allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
+      XF86MonBrightnessUp allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
+      XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
       XF86AudioPlay        allow-when-locked=true { spawn "${lib.getExe pkgs.playerctl}" "play-pause"; }
       XF86AudioStop        allow-when-locked=true { spawn "${lib.getExe pkgs.playerctl}" "stop"; }
       XF86AudioPrev        allow-when-locked=true { spawn "${lib.getExe pkgs.playerctl}" "previous"; }
       XF86AudioNext        allow-when-locked=true { spawn "${lib.getExe pkgs.playerctl}" "next"; }
-      Mod+V { spawn "${noctalia}" "ipc" "call" "launcher" "clipboard"; }
-      Mod+Shift+L { spawn "${noctalia}" "ipc" "call" "lockScreen" "toggle"; }
+      Mod+V { spawn "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
+      Mod+Shift+L { spawn "noctalia-shell" "ipc" "call" "lockScreen" "toggle"; }
       Mod+Return { spawn "ghostty"; }
       Ctrl+Alt+Shift+A allow-when-locked=true { spawn "toggleaudiosink"; }
       Mod+W repeat=false { toggle-overview; }
@@ -228,8 +225,8 @@ in
       Mod+Print { screenshot; }
       Ctrl+Print { screenshot-window; }
       Mod+Backspace allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
-      Mod+Alt+E { spawn "${noctalia}" "ipc" "call" "sessionMenu" "toggle"; }
-      Ctrl+Alt+Delete { spawn "${noctalia}" "ipc" "call" "sessionMenu" "toggle"; }
+      Mod+Alt+E { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
+      Ctrl+Alt+Delete { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
       Mod+Ctrl+P { power-off-monitors; }
     }
   '';
