@@ -29,6 +29,7 @@ in
           contacts
           notes
           tasks
+          user_oidc
           ;
       };
       extraAppsEnable = true;
@@ -40,6 +41,7 @@ in
         trusted_proxies = [ "127.0.0.1" ];
         default_phone_region = "BR";
         maintenance_window_start = "4";
+        allow_local_remote_servers = true;
         enabledPreviewProviders = [
           "OC\\Preview\\BMP"
           "OC\\Preview\\EMF"

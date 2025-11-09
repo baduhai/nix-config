@@ -15,6 +15,7 @@ in
 {
   services.kanidm = {
     enableServer = true;
+    enableClient = true;
     package = pkgs.kanidm;
 
     serverSettings = {
@@ -26,6 +27,10 @@ in
       # Use self-signed certificates for internal TLS
       tls_chain = "${kanidmCertDir}/cert.pem";
       tls_key = "${kanidmCertDir}/key.pem";
+    };
+
+    clientSettings = {
+      uri = "https://auth.baduhai.dev";
     };
   };
 
