@@ -1,9 +1,17 @@
 # Shared service definitions for cross-host configuration
 # Used by:
-# - alexandria: DNS server (LAN) + service hosting (vaultwarden, nextcloud, jellyfin)
+# - alexandria: DNS server (LAN) + service hosting (vaultwarden, nextcloud, jellyfin, kanidm)
 # - trantor: DNS server (Tailnet) + service hosting (forgejo)
 {
   services = [
+    {
+      name = "kanidm";
+      domain = "auth.baduhai.dev";
+      host = "alexandria";
+      lanIP = "192.168.15.142";
+      tailscaleIP = "100.76.19.50";
+      port = 8443;
+    }
     {
       name = "vaultwarden";
       domain = "pass.baduhai.dev";
