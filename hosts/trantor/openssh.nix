@@ -14,7 +14,7 @@
         port = "ssh";
         filter = "sshd";
         logpath = "/var/log/auth.log";
-        maxretry = 5;
+        maxretry = 3;
         findtime = "10m";
         bantime = "1h";
       };
