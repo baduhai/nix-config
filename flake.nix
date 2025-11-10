@@ -51,6 +51,8 @@
     };
 
     nix-ai-tools.url = "github:numtide/nix-ai-tools";
+
+    vicinae.url = "github:vicinaehq/vicinae";
   };
 
   outputs =

@@ -140,7 +140,7 @@ in
     }
 
     binds {
-      Alt+Space { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+      Alt+Space repeat=false { spawn "vicinae" "toggle"; }
       XF86AudioRaiseVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
       XF86AudioLowerVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
       XF86AudioMute allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
@@ -150,7 +150,7 @@ in
       XF86AudioStop        allow-when-locked=true { spawn "${lib.getExe pkgs.playerctl}" "stop"; }
       XF86AudioPrev        allow-when-locked=true { spawn "${lib.getExe pkgs.playerctl}" "previous"; }
       XF86AudioNext        allow-when-locked=true { spawn "${lib.getExe pkgs.playerctl}" "next"; }
-      Mod+V { spawn "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
+      Mod+V repeat=false { spawn "vicinae" "vicinae://extensions/vicinae/clipboard/history"; }
       Mod+Shift+L { spawn "noctalia-shell" "ipc" "call" "lockScreen" "toggle"; }
       Mod+Return { spawn "ghostty"; }
       Ctrl+Alt+Shift+A allow-when-locked=true { spawn "toggleaudiosink"; }

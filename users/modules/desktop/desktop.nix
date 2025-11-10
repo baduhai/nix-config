@@ -1,14 +1,20 @@
 {
-  config,
   inputs,
   pkgs,
   ...
 }:
 
 {
+  imports = [ inputs.vicinae.homeManagerModules.default ];
+
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [ xwayland-satellite ];
+
+  services.vicinae = {
+    enable = true;
+    autoStart = true;
+  };
 
   programs = {
 
