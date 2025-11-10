@@ -151,7 +151,7 @@ in
       XF86AudioPrev        allow-when-locked=true { spawn "${lib.getExe pkgs.playerctl}" "previous"; }
       XF86AudioNext        allow-when-locked=true { spawn "${lib.getExe pkgs.playerctl}" "next"; }
       Mod+V repeat=false { spawn "vicinae" "vicinae://extensions/vicinae/clipboard/history"; }
-      Mod+Shift+L { spawn "noctalia-shell" "ipc" "call" "lockScreen" "toggle"; }
+      Mod+Shift+L repeat=false { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
       Mod+Return { spawn "ghostty"; }
       Ctrl+Alt+Shift+A allow-when-locked=true { spawn "toggleaudiosink"; }
       Mod+W repeat=false { toggle-overview; }
