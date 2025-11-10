@@ -53,6 +53,7 @@
 
     ssh_public_keys = {
       default = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICQPkAyy+Du9Omc2WtnUF2TV8jFAF4H6mJi2D4IZ1nzg user@himalia"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO3Y0PVpGfJHonqDS7qoCFhqzUvqGq9I9sax+F9e/5cs user@io"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA1v3+q3EaruiiStWjubEJWvtejam/r41uoOpCdwJtLL user@rotterdam"
       ];
