@@ -49,6 +49,7 @@
       };
     };
     upower.enable = true;
+    power-profiles-daemon.enable = true;
   };
 
   # TODO: remove once gmodena/nix-flatpak/issues/45 fixed
