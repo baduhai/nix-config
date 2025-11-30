@@ -100,17 +100,17 @@
         "text/x-log" = "Helix.desktop";
         "application/x-shellscript" = "Helix.desktop";
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document" =
-          "onlyoffice-desktopeditors.desktop"; # DOCX
+          "com.collabora.Office.desktop"; # DOCX
         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" =
-          "onlyoffice-desktopeditors.desktop"; # XLSX
+          "com.collabora.Office.desktop"; # XLSX
         "application/vnd.openxmlformats-officedocument.presentationml.presentation" =
-          "onlyoffice-desktopeditors.desktop"; # PPTX
-        "application/vnd.oasis.opendocument.text" = "onlyoffice-desktopeditors.desktop"; # ODT
-        "application/vnd.oasis.opendocument.spreadsheet" = "onlyoffice-desktopeditors.desktop"; # ODS
-        "application/vnd.oasis.opendocument.presentation" = "onlyoffice-desktopeditors.desktop"; # ODP
-        "application/msword" = "onlyoffice-desktopeditors.desktop"; # DOC
-        "application/vnd.ms-excel" = "onlyoffice-desktopeditors.desktop"; # XLS
-        "application/vnd.ms-powerpoint" = "onlyoffice-desktopeditors.desktop"; # PPT
+          "com.collabora.Office.desktop"; # PPTX
+        "application/vnd.oasis.opendocument.text" = "com.collabora.Office.desktop"; # ODT
+        "application/vnd.oasis.opendocument.spreadsheet" = "com.collabora.Office.desktop"; # ODS
+        "application/vnd.oasis.opendocument.presentation" = "com.collabora.Office.desktop"; # ODP
+        "application/msword" = "com.collabora.Office.desktop"; # DOC
+        "application/vnd.ms-excel" = "com.collabora.Office.desktop"; # XLS
+        "application/vnd.ms-powerpoint" = "com.collabora.Office.desktop"; # PPT
         "application/zip" = "org.gnome.FileRoller.desktop";
         "application/x-tar" = "org.gnome.FileRoller.desktop";
         "application/x-compressed-tar" = "org.gnome.FileRoller.desktop";

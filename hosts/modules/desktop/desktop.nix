@@ -31,8 +31,6 @@
       aspellDicts.en
       aspellDicts.en-computers
       aspellDicts.pt_BR
-      libreoffice
-      onlyoffice-desktopeditors
       papers
       presenterm
       rnote
