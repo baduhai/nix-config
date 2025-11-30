@@ -11,11 +11,21 @@ let
 
   # Import shared service definitions
   sharedServices = import ./shared/services.nix;
+
+  # Enrich services with host IP information
+  enrichedServices = builtins.map (svc:
+    let
+      hostInfo = sharedServices.hosts.${svc.host} or {};
+    in
+    svc // lib.optionalAttrs (hostInfo ? lanIP) { inherit (hostInfo) lanIP; }
+        // lib.optionalAttrs (hostInfo ? tailscaleIP) { inherit (hostInfo) tailscaleIP; }
+  ) sharedServices.services;
 in
 
 {
-  # Re-export shared services for use in host configs
-  inherit (sharedServices) services;
+  # Re-export enriched services and hosts for use in host configs
+  services = enrichedServices;
+  inherit (sharedServices) hosts;
   # Tag-based host configuration system
   mkHost =
     {
