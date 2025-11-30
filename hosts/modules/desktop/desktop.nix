@@ -87,6 +87,15 @@
     flatpak = {
       enable = true;
       packages = [
+        ### Office & Productivity ###
+        rec {
+          appId = "com.collabora.Office";
+          sha256 = "1im6s8p6wvj2hblr4mhn1g2rry77giccsi6mk76nk8d6bjp1fwa4";
+          bundle = "${pkgs.fetchurl {
+            url = "https://cdn.collaboraoffice.com/collaboraoffice-v25.04.7.2_final.flatpak";
+            inherit sha256;
+          }}";
+        }
         ### Graphics & Design ###
         "com.boxy_svg.BoxySVG"
         rec {
