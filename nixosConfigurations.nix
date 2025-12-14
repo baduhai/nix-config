@@ -38,7 +38,7 @@ in
     alexandria = mkHost {
       hostname = "alexandria";
       tags = [
-        # "server" TODO: uncomment when 25.11 is out.
+        "server"
         "fwupd"
       ];
     };
