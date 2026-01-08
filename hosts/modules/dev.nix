@@ -2,18 +2,17 @@
 
 {
   environment.systemPackages = with pkgs; [
+    android-tools
     bat
     lazygit
     fd
     fzf
     glow
-    nixfmt-rfc-style
+    nixfmt
     nix-init
     nix-output-monitor
     ripgrep
   ];
-
-  programs.adb.enable = true;
 
   users.users.user.extraGroups = [ "adbusers" ];
 }

@@ -9,7 +9,7 @@
           inputs.agenix.packages.${system}.default
           deploy-rs
           nil
-          nixfmt-rfc-style
+          nixfmt
         ];
       };
     };
