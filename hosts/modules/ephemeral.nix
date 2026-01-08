@@ -16,6 +16,8 @@
     rootSubvolume = "@root";
   };
 
+  fileSystems."/persistent".neededForBoot = true;
+
   environment.persistence.main = {
     persistentStoragePath = "/persistent";
     files = [
