@@ -13,11 +13,13 @@
 
   services.vicinae = {
     enable = true;
-    autoStart = true;
+    systemd = {
+      enable = true;
+      autoStart = true;
+    };
   };
 
   programs = {
-
     ghostty = {
       enable = true;
       settings = {

@@ -30,7 +30,7 @@
     "io.itch.itch"
     "io.mrarm.mcpelauncher"
     "net.retrodeck.retrodeck"
-    "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/24.08"
+    "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/25.08"
     rec {
       appId = "com.hypixel.HytaleLauncher";
       sha256 = "01307s44bklc1ldcigcn9n4lm8hf8q793v9fv7w4w04xd5zyh4rv";
