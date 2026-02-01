@@ -30,6 +30,7 @@ in
         "bluetooth"
         "dev"
         "ephemeral"
+        "libvirtd"
         "networkmanager"
         "podman"
       ];
