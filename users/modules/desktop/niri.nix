@@ -106,11 +106,7 @@ in
 
     spawn-at-startup "noctalia-shell" "-d"
     layer-rule {
-      match namespace="^wallpaper$"
-        place-within-backdrop true
-    }
-    layer-rule {
-      match namespace="^quickshell-overview$"
+      match namespace="^noctalia-overview*"
       place-within-backdrop true
     }
 
