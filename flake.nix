@@ -24,8 +24,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix.url = "github:danth/stylix";
-
     nixos-cli.url = "github:nix-community/nixos-cli";
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/main";
@@ -37,8 +35,6 @@
     deploy-rs.url = "github:serokell/deploy-rs";
 
     niri-flake.url = "github:sodiboo/niri-flake";
-
-    niri.url = "github:baduhai/niri/auto-center-when-space-available";
 
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
