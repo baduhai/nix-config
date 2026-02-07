@@ -72,6 +72,7 @@
 
       imports = [
         flake-parts.flakeModules.modules
+        inputs.terranix.flakeModule
       ] ++ aspectsModule.imports
         ++ packagesModule.imports
         ++ shellsModule.imports

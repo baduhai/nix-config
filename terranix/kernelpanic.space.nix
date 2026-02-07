@@ -1,9 +1,7 @@
 # Cloudflare kernelpanic.space configuration placeholder
-{ inputs, ... }:
+{ ... }:
 
 {
-  imports = [ inputs.terranix.flakeModule ];
-
   perSystem =
     { pkgs, ... }:
     {

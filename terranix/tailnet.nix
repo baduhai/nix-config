@@ -4,11 +4,9 @@
 #   AWS_ACCESS_KEY_ID - Cloudflare R2 access key for state storage
 #   AWS_SECRET_ACCESS_KEY - Cloudflare R2 secret key for state storage
 
-{ inputs, ... }:
+{ ... }:
 
 {
-  imports = [ inputs.terranix.flakeModule ];
-
   perSystem =
     { pkgs, ... }:
     {

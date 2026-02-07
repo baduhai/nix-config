@@ -1,9 +1,7 @@
 # OCI Terminus configuration placeholder
-{ inputs, ... }:
+{ ... }:
 
 {
-  imports = [ inputs.terranix.flakeModule ];
-
   perSystem =
     { pkgs, ... }:
     {
