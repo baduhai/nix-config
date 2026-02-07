@@ -6,7 +6,15 @@
 { config, lib, ... }:
 
 let
-  inherit (import ../../shared/services.nix) services;
+  sharedData = import ../../data/services.nix;
+  # Enrich services with host IPs
+  services = map (svc:
+    let hostInfo = sharedData.hosts.${svc.host} or {};
+    in svc // {
+      lanIP = hostInfo.lanIP or null;
+      tailscaleIP = hostInfo.tailscaleIP or null;
+    }
+  ) sharedData.services;
 
   # Helper to extract subdomain from full domain (e.g., "git.baduhai.dev" -> "git")
   getSubdomain = domain: lib.head (lib.splitString "." domain);

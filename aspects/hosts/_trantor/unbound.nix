@@ -1,7 +1,7 @@
 { inputs, lib, ... }:
 
 let
-  utils = import ../../../utils.nix { inherit inputs lib; };
+  services = inputs.self.services;
 in
 
 {
@@ -35,7 +35,7 @@ in
 
         # Tailnet DNS records from shared services
         local-zone = ''"baduhai.dev." transparent'';
-        local-data = map (e: ''"${e.domain}. IN A ${e.tailscaleIP}"'') utils.services;
+        local-data = map (e: ''"${e.domain}. IN A ${e.tailscaleIP}"'') services;
       };
 
       forward-zone = [

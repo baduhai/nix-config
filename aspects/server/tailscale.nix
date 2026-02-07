@@ -1,10 +1,7 @@
 # aspects/server/tailscale.nix
-{ inputs, ... }:
+{ ... }:
 {
   flake.modules.nixos.server-tailscale = { config, lib, pkgs, ... }: {
-    # Import parent aspect for inheritance
-    imports = [ inputs.self.modules.nixos.common-tailscale ];
-
     services.tailscale = {
       extraSetFlags = [ "--advertise-exit-node" ];
       useRoutingFeatures = "server";

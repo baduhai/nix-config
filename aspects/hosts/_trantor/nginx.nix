@@ -6,8 +6,7 @@
 }:
 
 let
-  utils = import ../../../utils.nix { inherit inputs lib; };
-  inherit (utils) mkNginxVHosts services;
+  services = inputs.self.services;
 
   # Get all unique domains from shared services on trantor (host = "trantor")
   localDomains = lib.unique (

@@ -6,8 +6,7 @@
 }:
 
 let
-  utils = import ../../../utils.nix { inherit inputs lib; };
-  inherit (utils) mkNginxVHosts services;
+  services = inputs.self.services;
 
   # Get all unique domains from shared services that have LAN IPs (served by this host)
   localDomains = lib.unique (map (s: s.domain) (lib.filter (s: s.host == "alexandria") services));

@@ -1,9 +1,6 @@
-{ inputs, ... }:
+{ ... }:
 {
   flake.modules.nixos.desktop-boot = { config, lib, pkgs, ... }: {
-    # Import parent aspect for inheritance
-    imports = [ inputs.self.modules.nixos.common-boot ];
-
     boot = {
       plymouth.enable = true;
       initrd.systemd.enable = true;

@@ -1,7 +1,7 @@
 { inputs, lib, ... }:
 
 let
-  utils = import ../../../utils.nix { inherit inputs lib; };
+  services = inputs.self.services;
 in
 
 {
@@ -35,7 +35,7 @@ in
         # LAN-only DNS records
         local-zone = ''"baduhai.dev." transparent'';
         local-data = map (e: ''"${e.domain}. IN A ${e.lanIP}"'')
-          (lib.filter (e: e ? lanIP) utils.services);
+          (lib.filter (e: e.lanIP != null) services);
       };
 
       forward-zone = [

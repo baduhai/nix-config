@@ -58,21 +58,23 @@
 
   outputs =
     inputs@{ flake-parts, import-tree, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } (
-      import-tree ./aspects
-      // {
-        systems = [
-          "x86_64-linux"
-          "aarch64-linux"
-        ];
+    let
+      aspectsModule = import-tree ./aspects;
+    in
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
 
-        imports = [
-          ./deploy.nix
-          ./devShells.nix
-          ./overlays.nix
-          ./packages.nix
-          ./terranixConfigurations.nix
-        ];
-      }
-    );
+      imports = [
+        flake-parts.flakeModules.modules
+      ] ++ aspectsModule.imports ++ [
+        ./deploy.nix
+        ./devShells.nix
+        ./overlays.nix
+        ./packages.nix
+        ./terranixConfigurations.nix
+      ];
+    };
 }

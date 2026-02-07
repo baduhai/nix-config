@@ -2,9 +2,6 @@
 { inputs, ... }:
 {
   flake.modules.nixos.server-nix = { config, lib, pkgs, ... }: {
-    # Import parent aspect for inheritance
-    imports = [ inputs.self.modules.nixos.common-nix ];
-
     environment.etc."channels/nixpkgs".source = inputs.nixpkgs-stable.outPath;
 
     nix = {

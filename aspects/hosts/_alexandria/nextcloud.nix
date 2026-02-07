@@ -7,8 +7,7 @@
 }:
 
 let
-  utils = import ../../../utils.nix { inherit inputs lib; };
-  inherit (utils) mkNginxVHosts;
+  mkNginxVHosts = inputs.self.lib.mkNginxVHosts;
 in
 
 {
