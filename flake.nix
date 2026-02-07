@@ -60,6 +60,7 @@
     inputs@{ flake-parts, import-tree, ... }:
     let
       aspectsModule = import-tree ./aspects;
+      packagesModule = import-tree ./packages;
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
@@ -69,12 +70,12 @@
 
       imports = [
         flake-parts.flakeModules.modules
-      ] ++ aspectsModule.imports ++ [
-        ./deploy.nix
-        ./devShells.nix
-        ./overlays.nix
-        ./packages.nix
-        ./terranixConfigurations.nix
-      ];
+      ] ++ aspectsModule.imports
+        ++ packagesModule.imports
+        ++ [
+          ./deploy.nix
+          ./devShells.nix
+          ./terranixConfigurations.nix
+        ];
     };
 }
