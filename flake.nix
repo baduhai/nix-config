@@ -3,6 +3,7 @@
 
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
@@ -56,22 +57,22 @@
   };
 
   outputs =
-    inputs@{ flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
+    inputs@{ flake-parts, import-tree, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } (
+      import-tree ./aspects
+      // {
+        systems = [
+          "x86_64-linux"
+          "aarch64-linux"
+        ];
 
-      imports = [
-        ./deploy.nix
-        ./devShells.nix
-        ./homeConfigurations.nix
-        ./nixosConfigurations.nix
-        ./nixosModules.nix
-        ./overlays.nix
-        ./packages.nix
-        ./terranixConfigurations.nix
-      ];
-    };
+        imports = [
+          ./deploy.nix
+          ./devShells.nix
+          ./overlays.nix
+          ./packages.nix
+          ./terranixConfigurations.nix
+        ];
+      }
+    );
 }
