@@ -1,12 +1,22 @@
 { inputs, ... }:
 
+let
+  packageDir = builtins.readDir ./.;
+
+  # Filter to .nix files, excluding overlays.nix
+  isPackageFile = name:
+    name != "overlays.nix" && builtins.match ".*\\.nix$" name != null;
+
+  # Extract package name from filename (e.g., "foo-bar.nix" -> "foo-bar")
+  toPackageName = filename:
+    builtins.head (builtins.match "(.+)\\.nix$" filename);
+
+  packageNames = map toPackageName (builtins.filter isPackageFile (builtins.attrNames packageDir));
+in
 {
-  flake.overlays.default = final: prev: {
-    base16-schemes = inputs.self.packages.${final.system}.base16-schemes;
-    claude-desktop = inputs.self.packages.${final.system}.claude-desktop;
-    fastfetch = inputs.self.packages.${final.system}.fastfetch;
-    hm-cli = inputs.self.packages.${final.system}.hm-cli;
-    kwrite = inputs.self.packages.${final.system}.kwrite;
-    toggleaudiosink = inputs.self.packages.${final.system}.toggleaudiosink;
-  };
+  flake.overlays.default = final: prev:
+    builtins.listToAttrs (map (name: {
+      inherit name;
+      value = inputs.self.packages.${final.system}.${name};
+    }) packageNames);
 }
