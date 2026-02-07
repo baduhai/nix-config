@@ -50,35 +50,8 @@ let
     };
   };
 
-  # Raw services list before enrichment
-  rawServices = [
-    {
-      name = "kanidm";
-      domain = "auth.baduhai.dev";
-      host = "alexandria";
-    }
-    {
-      name = "vaultwarden";
-      domain = "pass.baduhai.dev";
-      host = "alexandria";
-    }
-    {
-      name = "forgejo";
-      domain = "git.baduhai.dev";
-      host = "trantor";
-      public = true;
-    }
-    {
-      name = "nextcloud";
-      domain = "cloud.baduhai.dev";
-      host = "alexandria";
-    }
-    {
-      name = "jellyfin";
-      domain = "jellyfin.baduhai.dev";
-      host = "alexandria";
-    }
-  ];
+  # Import shared data (also used by terranix)
+  sharedData = import ../data/services.nix;
 
   # Enrich services with host IP information
   enrichServices = hosts: services:
@@ -115,17 +88,9 @@ in
   };
 
   config.flake = {
-    hosts = {
-      alexandria = {
-        lanIP = "192.168.15.142";
-        tailscaleIP = "100.76.19.50";
-      };
-      trantor = {
-        tailscaleIP = "100.108.5.90";
-      };
-    };
+    hosts = sharedData.hosts;
 
-    services = enrichServices config.flake.hosts rawServices;
+    services = enrichServices config.flake.hosts sharedData.services;
 
     lib = {
       # Nginx virtual host utilities
