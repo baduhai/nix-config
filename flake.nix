@@ -62,6 +62,7 @@
       aspectsModule = import-tree ./aspects;
       packagesModule = import-tree ./packages;
       shellsModule = import-tree ./shells;
+      terranixModule = import-tree ./terranix;
     in
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
@@ -74,9 +75,9 @@
       ] ++ aspectsModule.imports
         ++ packagesModule.imports
         ++ shellsModule.imports
+        ++ terranixModule.imports
         ++ [
           ./deploy.nix
-          ./terranixConfigurations.nix
         ];
     };
 }
