@@ -6,7 +6,12 @@
     modules = [
       inputs.agenix.nixosModules.default
       { networking.hostName = "trantor"; }
-      { nixpkgs.overlays = [ inputs.agenix.overlays.default inputs.self.overlays.default ]; }
+      {
+        nixpkgs.overlays = [
+          inputs.agenix.overlays.default
+          inputs.self.overlays.default
+        ];
+      }
 
       # Common aspects (always included)
       inputs.self.modules.nixos.common-boot
@@ -19,7 +24,10 @@
       inputs.self.modules.nixos.common-security
       inputs.self.modules.nixos.common-services
       inputs.self.modules.nixos.common-tailscale
-      inputs.self.modules.nixos.common-users
+
+      # User aspects
+      inputs.self.modules.nixos.user
+      inputs.self.modules.nixos.root
 
       # Server aspects
       inputs.self.modules.nixos.server-boot
