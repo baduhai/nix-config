@@ -4,7 +4,7 @@
   flake.modules.nixos.root =
     { pkgs, ... }:
     {
-      users.root = {
+      users.users.root = {
         shell = pkgs.fish;
         hashedPassword = "!";
       };
