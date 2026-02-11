@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, self, ... }:
 
 {
   flake = {
@@ -113,6 +113,12 @@
           }
         ];
       };
+    };
+    deploy.nodes.io.profiles.user = {
+      sshUser = "user";
+      path = inputs.deploy-rs.lib.x86_64-linux.activate.home-manager self.homeConfigurations."user@io";
+      user = "user";
+      remoteBuild = false;
     };
   };
 }
