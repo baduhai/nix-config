@@ -7,7 +7,6 @@
       devShells.default = pkgs.mkShell {
         packages = with pkgs; [
           inputs.agenix.packages.${system}.default
-          deploy-rs
           nil
           nixfmt
         ];

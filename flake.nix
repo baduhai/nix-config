@@ -40,7 +40,6 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     # stand-alone tools
-    deploy-rs.url = "github:serokell/deploy-rs";
     terranix = {
       url = "github:terranix/terranix";
       inputs.nixpkgs.follows = "nixpkgs";
