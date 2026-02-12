@@ -1,4 +1,4 @@
-{ inputs, self, ... }:
+{ inputs, ... }:
 
 {
   flake.nixosConfigurations.alexandria = inputs.nixpkgs-stable.lib.nixosSystem {
@@ -35,8 +35,9 @@
       inputs.self.modules.nixos.server-nix
       inputs.self.modules.nixos.server-tailscale
 
-      # Other aspects based on tags
+      # Other aspects
       inputs.self.modules.nixos.fwupd
+      inputs.self.modules.nixos.podman
 
       # Host-specific files (from _alexandria/)
       ./_alexandria/hardware-configuration.nix
