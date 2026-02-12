@@ -34,8 +34,7 @@ in
 
         # LAN-only DNS records
         local-zone = ''"baduhai.dev." transparent'';
-        local-data = map (e: ''"${e.domain}. IN A ${e.lanIP}"'')
-          (lib.filter (e: e.lanIP != null) services);
+        local-data = map (e: ''"${e.domain}. IN A ${e.lanIP}"'') (lib.filter (e: e.lanIP != null) services);
       };
 
       forward-zone = [

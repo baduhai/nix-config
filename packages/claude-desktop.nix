@@ -18,7 +18,8 @@
       };
 
       src =
-        srcs.${pkgs.stdenv.hostPlatform.system} or (throw "Unsupported system: ${pkgs.stdenv.hostPlatform.system}");
+        srcs.${pkgs.stdenv.hostPlatform.system}
+          or (throw "Unsupported system: ${pkgs.stdenv.hostPlatform.system}");
 
       claudeNativeStub = ''
         // Stub implementation of claude-native using KeyboardKey enum values

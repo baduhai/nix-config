@@ -54,12 +54,15 @@ let
   sharedData = import ../data/services.nix;
 
   # Enrich services with host IP information
-  enrichServices = hosts: services:
-    map (svc:
+  enrichServices =
+    hosts: services:
+    map (
+      svc:
       let
-        hostInfo = hosts.${svc.host} or {};
+        hostInfo = hosts.${svc.host} or { };
       in
-      svc // {
+      svc
+      // {
         lanIP = hostInfo.lanIP or null;
         tailscaleIP = hostInfo.tailscaleIP or null;
       }
@@ -70,19 +73,19 @@ in
   options.flake = {
     hosts = lib.mkOption {
       type = lib.types.attrsOf hostType;
-      default = {};
+      default = { };
       description = "Host definitions with IP addresses";
     };
 
     services = lib.mkOption {
       type = lib.types.listOf serviceType;
-      default = [];
+      default = [ ];
       description = "Service definitions with enriched host information";
     };
 
     lib = lib.mkOption {
       type = lib.types.attrsOf lib.types.raw;
-      default = {};
+      default = { };
       description = "Utility functions for flake configuration";
     };
   };
@@ -94,9 +97,11 @@ in
 
     lib = {
       # Nginx virtual host utilities
-      mkNginxVHosts = { domains }:
+      mkNginxVHosts =
+        { domains }:
         let
-          mkVHostConfig = domain: vhostConfig:
+          mkVHostConfig =
+            domain: vhostConfig:
             lib.recursiveUpdate {
               useACMEHost = domain;
               forceSSL = true;
@@ -107,7 +112,8 @@ in
 
       # Split DNS utilities for unbound
       # Generates unbound view config from a list of DNS entries
-      mkSplitDNS = entries:
+      mkSplitDNS =
+        entries:
         let
           tailscaleData = map (e: ''"${e.domain}. IN A ${e.tailscaleIP}"'') entries;
           lanData = map (e: ''"${e.domain}. IN A ${e.lanIP}"'') entries;

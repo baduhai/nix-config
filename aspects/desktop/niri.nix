@@ -1,6 +1,14 @@
 { ... }:
 {
-  flake.modules.homeManager.desktop-niri = { config, lib, pkgs, inputs, hostname ? null, ... }:
+  flake.modules.homeManager.desktop-niri =
+    {
+      config,
+      lib,
+      pkgs,
+      inputs,
+      hostname ? null,
+      ...
+    }:
     let
       isRotterdam = hostname == "rotterdam";
     in

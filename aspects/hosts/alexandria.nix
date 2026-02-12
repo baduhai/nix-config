@@ -1,4 +1,5 @@
 { inputs, self, ... }:
+
 {
   flake.nixosConfigurations.alexandria = inputs.nixpkgs-stable.lib.nixosSystem {
     system = "x86_64-linux";

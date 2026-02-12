@@ -3,7 +3,8 @@
 { inputs, ... }:
 {
   # Base module with options (for external flakes or direct use)
-  flake.modules.nixos.ephemeral = { lib, config, ... }:
+  flake.modules.nixos.ephemeral =
+    { lib, config, ... }:
     let
       cfg = config.ephemeral;
     in
@@ -89,18 +90,19 @@
 
   # Factory function that generates configured modules
   flake.factory.ephemeral =
-    { rootDevice
-    , rootSubvolume ? "@root"
-    , retentionDays ? 30
-    , persistentStoragePath ? "/persistent"
-    , persistentFiles ? [
+    {
+      rootDevice,
+      rootSubvolume ? "@root",
+      retentionDays ? 30,
+      persistentStoragePath ? "/persistent",
+      persistentFiles ? [
         "/etc/machine-id"
         "/etc/ssh/ssh_host_ed25519_key"
         "/etc/ssh/ssh_host_ed25519_key.pub"
         "/etc/ssh/ssh_host_rsa_key"
         "/etc/ssh/ssh_host_rsa_key.pub"
-      ]
-    , persistentDirectories ? [
+      ],
+      persistentDirectories ? [
         "/etc/NetworkManager/system-connections"
         "/etc/nixos"
         "/var/lib/bluetooth"
@@ -111,9 +113,10 @@
         "/var/lib/systemd/timers"
         "/var/lib/tailscale"
         "/var/log"
-      ]
+      ],
     }:
-    { ... }: {
+    { ... }:
+    {
       imports = [
         inputs.impermanence.nixosModules.impermanence
         inputs.self.modules.nixos.ephemeral
