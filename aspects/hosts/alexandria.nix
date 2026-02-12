@@ -41,7 +41,6 @@
       # Host-specific files (from _alexandria/)
       ./_alexandria/hardware-configuration.nix
       ./_alexandria/jellyfin.nix
-      ./_alexandria/kanidm.nix
       ./_alexandria/nextcloud.nix
       ./_alexandria/nginx.nix
       ./_alexandria/unbound.nix
