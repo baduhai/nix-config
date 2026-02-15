@@ -1,7 +1,7 @@
 { ... }:
 {
   flake.modules.nixos.nix =
-    { inputs, ... }:
+    { inputs, pkgs, ... }:
     {
       imports = [ inputs.nixos-cli.nixosModules.nixos-cli ];
 
@@ -40,6 +40,11 @@
           confirmation.empty = "default-yes";
         };
       };
+
+      environment.systemPackages = with pkgs; [
+        nix-output-monitor
+        nvd
+      ];
 
       system.stateVersion = "22.11";
     };
