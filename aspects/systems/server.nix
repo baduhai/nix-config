@@ -1,7 +1,7 @@
-# aspects/server/nix.nix
 { inputs, ... }:
+
 {
-  flake.modules.nixos.server-nix =
+  flake.modules.nixos.server =
     {
       config,
       lib,
@@ -9,6 +9,14 @@
       ...
     }:
     {
+      boot = {
+        kernelPackages = pkgs.linuxPackages_hardened;
+        kernel.sysctl = {
+          "net.ipv4.ip_forward" = 1;
+          "net.ipv6.conf.all.forwarding" = 1;
+        };
+      };
+
       environment.etc."channels/nixpkgs".source = inputs.nixpkgs-stable.outPath;
 
       nix = {
@@ -18,5 +26,11 @@
           "/nix/var/nix/profiles/per-user/root/channels"
         ];
       };
+
+      services.tailscale = {
+        extraSetFlags = [ "--advertise-exit-node" ];
+        useRoutingFeatures = "server";
+      };
+
     };
 }

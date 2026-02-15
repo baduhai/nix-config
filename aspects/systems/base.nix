@@ -7,6 +7,7 @@
         boot
         console
         firewall
+        fish
         locale
         nix
         security
@@ -28,12 +29,7 @@
         };
       };
 
-      programs = {
-        command-not-found.enable = false;
-        fish = {
-          enable = true;
-        };
-      };
+      programs.command-not-found.enable = false;
 
       services = {
         dbus.implementation = "broker";

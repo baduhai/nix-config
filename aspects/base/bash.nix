@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager.shell-bash =
+  flake.modules.homeManager.bash =
     {
       config,
       lib,
