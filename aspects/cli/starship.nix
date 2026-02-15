@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager.cli-starship =
+  flake.modules.homeManager.starship =
     {
       config,
       lib,

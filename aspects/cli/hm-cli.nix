@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager.cli-base =
+  flake.modules.homeManager.hm-cli =
     {
       config,
       lib,

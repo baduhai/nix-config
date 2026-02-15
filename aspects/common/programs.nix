@@ -8,13 +8,10 @@
           ### Dev Tools ###
           git
           ### System Utilities ###
-          btop
           fastfetch
-          helix
           nixos-firewall-tool
           nvd
           sysz
-          tmux
           wget
           yazi
         ];

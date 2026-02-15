@@ -1,57 +1,67 @@
 { ... }:
 {
-  flake.modules.homeManager.cli-helix =
-    {
-      config,
-      lib,
-      pkgs,
-      ...
-    }:
-    {
-      home.sessionVariables = {
-        EDITOR = "hx";
+  flake.modules = {
+    nixos.helix =
+      { pkgs, ... }:
+      {
+        environment.systemPackages = with pkgs; [
+          helix
+        ];
       };
 
-      programs.helix = {
-        enable = true;
-        settings = {
-          editor = {
-            file-picker.hidden = false;
-            idle-timeout = 0;
-            line-number = "relative";
-            cursor-shape = {
-              normal = "underline";
-              insert = "bar";
-              select = "underline";
-            };
-            soft-wrap.enable = true;
-            auto-format = true;
-            indent-guides.render = true;
-          };
-          keys.normal = {
-            space = {
-              o = "file_picker_in_current_buffer_directory";
-              esc = [
-                "collapse_selection"
-                "keep_primary_selection"
-              ];
-            };
-          };
+    homeManager.helix =
+      {
+        config,
+        lib,
+        pkgs,
+        ...
+      }:
+      {
+        home.sessionVariables = {
+          EDITOR = "hx";
         };
-        languages = {
-          language = [
-            {
-              name = "nix";
+
+        programs.helix = {
+          enable = true;
+          settings = {
+            editor = {
+              file-picker.hidden = false;
+              idle-timeout = 0;
+              line-number = "relative";
+              cursor-shape = {
+                normal = "underline";
+                insert = "bar";
+                select = "underline";
+              };
+              soft-wrap.enable = true;
               auto-format = true;
-              formatter.command = "nixfmt";
-            }
-            {
-              name = "typst";
-              auto-format = true;
-              formatter.command = "typstyle -c 1000 -i";
-            }
-          ];
+              indent-guides.render = true;
+            };
+            keys.normal = {
+              space = {
+                o = "file_picker_in_current_buffer_directory";
+                esc = [
+                  "collapse_selection"
+                  "keep_primary_selection"
+                ];
+              };
+            };
+          };
+          languages = {
+            language = [
+              {
+                name = "nix";
+                auto-format = true;
+                formatter.command = "nixfmt";
+              }
+              {
+                name = "typst";
+                auto-format = true;
+                formatter.command = "typstyle -c 1000 -i";
+              }
+            ];
+          };
         };
       };
-    };
+  };
 }

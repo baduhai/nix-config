@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 
 {
   flake.nixosConfigurations.alexandria = inputs.nixpkgs-stable.lib.nixosSystem {
@@ -13,39 +13,34 @@
           inputs.self.overlays.default
         ];
       }
+      ((inputs.import-tree.initFilter (p: lib.hasSuffix ".nix" p)) ./_alexandria)
+    ]
+    ++ (with inputs.self.modules.nixos; [
+      cli
 
       # Common aspects (always included)
-      inputs.self.modules.nixos.common-boot
-      inputs.self.modules.nixos.common-console
-      inputs.self.modules.nixos.common-firewall
-      inputs.self.modules.nixos.common-locale
-      inputs.self.modules.nixos.common-nix
-      inputs.self.modules.nixos.common-openssh
-      inputs.self.modules.nixos.common-programs
-      inputs.self.modules.nixos.common-security
-      inputs.self.modules.nixos.common-services
-      inputs.self.modules.nixos.common-tailscale
+      common-boot
+      common-console
+      common-firewall
+      common-locale
+      common-nix
+      common-openssh
+      common-programs
+      common-security
+      common-services
+      common-tailscale
 
       # User aspects
-      inputs.self.modules.nixos.user
-      inputs.self.modules.nixos.root
+      user
+      root
 
       # Server aspects
-      inputs.self.modules.nixos.server-boot
-      inputs.self.modules.nixos.server-nix
-      inputs.self.modules.nixos.server-tailscale
+      server-boot
+      server-nix
+      server-tailscale
 
       # Other aspects
-      inputs.self.modules.nixos.fwupd
-      inputs.self.modules.nixos.podman
-
-      # Host-specific files (from _alexandria/)
-      ./_alexandria/hardware-configuration.nix
-      ./_alexandria/jellyfin.nix
-      ./_alexandria/nextcloud.nix
-      ./_alexandria/nginx.nix
-      ./_alexandria/unbound.nix
-      ./_alexandria/vaultwarden.nix
-    ];
+      fwupd
+    ]);
   };
 }

@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager.cli-direnv =
+  flake.modules.homeManager.direnv =
     {
       config,
       lib,

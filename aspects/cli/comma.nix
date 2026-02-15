@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.homeManager.cli-comma =
+  flake.modules.homeManager.comma =
     {
       config,
       lib,
