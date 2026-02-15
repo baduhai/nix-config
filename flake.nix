@@ -26,7 +26,6 @@
     stylix.url = "github:danth/stylix";
 
     # nixos/hm program modules
-    niri-flake.url = "github:sodiboo/niri-flake";
     nix-ai-tools.url = "github:numtide/llm-agents.nix";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -44,9 +43,6 @@
       url = "github:terranix/terranix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # others
-    niri.url = "github:baduhai/niri/auto-center-when-space-available";
   };
 
   outputs =

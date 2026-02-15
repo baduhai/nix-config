@@ -33,7 +33,10 @@
         config = {
           use_nvd = true;
           ignore_dirty_tree = true;
-          apply.reexec_as_root = true;
+          apply = {
+            reexec_as_root = true;
+            use_nom = true;
+          };
           confirmation.empty = "default-yes";
         };
       };

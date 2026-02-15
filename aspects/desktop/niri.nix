@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ ... }:
 {
   flake.modules = {
     nixos.niri =
@@ -9,18 +9,11 @@
         ...
       }:
       {
-        imports = [ inputs.niri-flake.nixosModules.niri ];
-
         services.greetd.settings = {
           default_session.command = "${lib.getExe pkgs.tuigreet} --user-menu --time --remember --asterisks --cmd ${config.programs.niri.package}/bin/niri-session";
         };
 
         programs.niri.enable = true;
-
-        xdg.portal.config.niri.default = [
-          "gtk"
-          "gnome"
-        ];
       };
     homeManager.niri =
       {
@@ -88,26 +81,27 @@
             focus-follows-mouse
           }
 
+          output "LG Electronics LG ULTRAWIDE 206AZFM5E459" {
+            layout {
+              preset-column-widths {
+                proportion 0.33333
+                proportion 0.5
+                proportion 0.66667
+              }
+              default-column-width { proportion 0.33333; }
+            }
+          }
+
           layout {
             gaps 8
             center-focused-column "never"
-            auto-center-when-space-available
+            always-center-single-column
+            empty-workspace-above-first
             preset-column-widths {
-              ${
-                if isRotterdam then
-                  ''
-                    proportion 0.33333
-                        proportion 0.5
-                        proportion 0.66667
-                  ''
-                else
-                  ''
-                    proportion 0.5
-                        proportion 1.0
-                  ''
-              }
+              proportion 0.5
+              proportion 1.0
             }
-            default-column-width { proportion ${if isRotterdam then "0.33333" else "0.5"}; }
+            default-column-width { proportion 0.5; }
             focus-ring {
               off
             }

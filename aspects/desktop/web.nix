@@ -5,12 +5,11 @@
     {
       inputs,
       pkgs,
-      system,
       ...
     }:
     {
       environment.systemPackages = with pkgs; [
-        inputs.zen-browser.packages."${system}".default
+        inputs.zen-browser.packages."${pkgs.system}".default
         bitwarden-desktop
         fragments
         nextcloud-client
