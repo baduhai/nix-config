@@ -19,7 +19,7 @@
     homeManager.cli =
       { ... }:
       {
-        imports = with inputs.self.modules.nixos; [
+        imports = with inputs.self.modules.homeManager; [
           btop
           comma
           direnv

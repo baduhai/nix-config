@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.modules.nixos.gaming-steam =
+  flake.modules.nixos.steam =
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
@@ -15,5 +15,10 @@
         };
         gamemode.enable = true;
       };
+
+      services.flatpak.packages = [
+        "com.steamgriddb.SGDBoop"
+        "io.github.Foldex.AdwSteamGtk"
+      ];
     };
 }

@@ -2,7 +2,7 @@
 
 {
   flake.modules = {
-    nixos.gaming-mangohud =
+    nixos.mangohud =
       { pkgs, ... }:
       {
         environment.systemPackages = with pkgs; [
@@ -10,7 +10,7 @@
         ];
       };
 
-    homeManager.gaming-mangohud =
+    homeManager.mangohud =
       { config, ... }:
       {
         programs.mangohud = {

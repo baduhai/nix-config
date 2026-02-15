@@ -40,11 +40,13 @@
           ((inputs.import-tree.initFilter (p: lib.hasSuffix ".nix" p)) ./_user)
         ]
         ++ (with inputs.self.modules.homeManager; [
-          base # base aspect
-          cli # cli aspect
-          desktop # desktop aspect
+          # system aspects
+          base
+          cli
+          desktop
+          gaming
 
-          # other aspect
+          # other aspects
           stylix
           niri
         ]);
@@ -68,9 +70,10 @@
           ((inputs.import-tree.initFilter (p: lib.hasSuffix ".nix" p)) ./_user)
         ]
         ++ (with inputs.self.modules.homeManager; [
-          base # base aspect
-          cli # cli aspect
-          desktop # desktop aspect
+          # system aspects
+          base
+          cli
+          desktop
 
           # other aspect
           stylix

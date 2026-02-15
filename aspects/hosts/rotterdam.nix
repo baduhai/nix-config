@@ -23,20 +23,17 @@
       base
       cli
       desktop
+      gaming
 
       # user aspects
       user
       root
 
-      # Other aspects based on tags
+      # other aspects
       ai
       bluetooth
       dev
       fwupd
-      gaming-flatpak
-      gaming-hardware
-      gaming-launchers
-      gaming-steam
       libvirtd
       networkmanager
       niri

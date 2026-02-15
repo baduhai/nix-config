@@ -19,17 +19,13 @@
       # system aspects
       base
       cli
+      server
 
       # user aspects
       user
       root
 
-      # Server aspects
-      server-boot
-      server-nix
-      server-tailscale
-
-      # Other aspects
+      # other aspects
       fwupd
     ]);
   };
