@@ -22,16 +22,11 @@
       # system aspects
       base
       cli
+      desktop
 
       # user aspects
       user
       root
-
-      # Desktop aspects
-      desktop-boot
-      desktop-desktop
-      desktop-nix
-      desktop-services
 
       # Other aspects
       ai
@@ -39,6 +34,7 @@
       dev
       libvirtd
       networkmanager
+      niri
       podman
     ]);
   };

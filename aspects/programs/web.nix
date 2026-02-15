@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.modules.nixos.programs-web =
+  flake.modules.nixos.web =
     {
       inputs,
       pkgs,

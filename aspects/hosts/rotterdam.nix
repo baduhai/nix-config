@@ -22,28 +22,24 @@
       # system aspects
       base
       cli
+      desktop
 
       # user aspects
       user
       root
-
-      # Desktop aspects
-      desktop-boot
-      desktop-desktop
-      desktop-nix
-      desktop-services
 
       # Other aspects based on tags
       ai
       bluetooth
       dev
       fwupd
-      gaming-steam
-      gaming-hardware
       gaming-flatpak
+      gaming-hardware
       gaming-launchers
+      gaming-steam
       libvirtd
       networkmanager
+      niri
       podman
     ]);
   };

@@ -2,7 +2,7 @@
 
 {
   flake.modules = {
-    nixos.programs-media =
+    nixos.media =
       { pkgs, ... }:
       {
         environment.systemPackages = with pkgs; [

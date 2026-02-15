@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.modules.nixos.programs-graphics =
+  flake.modules.nixos.graphics =
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [

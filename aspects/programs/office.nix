@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.modules.nixos.programs-office =
+  flake.modules.nixos.office =
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [

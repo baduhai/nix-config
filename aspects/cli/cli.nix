@@ -3,12 +3,17 @@
 {
   flake.modules = {
     nixos.cli =
-      { ... }:
+      { pkgs, ... }:
       {
         imports = with inputs.self.modules.nixos; [
           btop
           helix
           tmux
+        ];
+
+        environment.systemPackages = with pkgs; [
+          p7zip
+          rclone
         ];
       };
     homeManager.cli =
