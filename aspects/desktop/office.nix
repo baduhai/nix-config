@@ -10,6 +10,7 @@
         aspellDicts.en
         aspellDicts.en-computers
         aspellDicts.pt_BR
+        glow
         papers
         presenterm
         rnote

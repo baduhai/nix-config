@@ -1,4 +1,5 @@
 { ... }:
+
 {
   flake.modules = {
     nixos.stylix =
@@ -15,10 +16,7 @@
         ...
       }:
       {
-        imports = [
-          inputs.stylix.homeModules.stylix
-          inputs.zen-browser.homeModules.beta
-        ];
+        imports = [ inputs.stylix.homeModules.stylix ];
 
         stylix = {
           enable = true;
@@ -65,15 +63,6 @@
               terminal = 12;
             };
           };
-          targets.zen-browser = {
-            enable = true;
-            profileNames = [ "william" ];
-          };
-        };
-
-        programs.zen-browser = {
-          enable = true;
-          profiles.william = { };
         };
       };
   };
