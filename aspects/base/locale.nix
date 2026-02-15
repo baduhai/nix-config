@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.nixos.common-locale =
+  flake.modules.nixos.locale =
     { ... }:
     {
       time.timeZone = "America/Bahia";

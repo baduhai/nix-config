@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.nixos.common-firewall =
+  flake.modules.nixos.firewall =
     { ... }:
     {
       networking = {

@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.nixos.common-nix =
+  flake.modules.nixos.nix =
     { inputs, ... }:
     {
       imports = [ inputs.nixos-cli.nixosModules.nixos-cli ];

@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.nixos.common-console =
+  flake.modules.nixos.console =
     { ... }:
     {
       console = {

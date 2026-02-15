@@ -12,30 +12,17 @@
           inputs.self.overlays.default
         ];
       }
-
-      # Factory-generated ephemeral module
+      ((inputs.import-tree.initFilter (p: lib.hasSuffix ".nix" p)) ./_trantor)
       (inputs.self.factory.ephemeral {
         rootDevice = "/dev/disk/by-id/scsi-360b207ed25d84372a95d1ecf842f8e20-part2";
       })
-
-      ((inputs.import-tree.initFilter (p: lib.hasSuffix ".nix" p)) ./_trantor)
     ]
     ++ (with inputs.self.modules.nixos; [
+      # system aspects
+      base
       cli
 
-      # Common aspects (always included)
-      common-boot
-      common-console
-      common-firewall
-      common-locale
-      common-nix
-      common-openssh
-      common-programs
-      common-security
-      common-services
-      common-tailscale
-
-      # User aspects
+      # user aspects
       user
       root
 

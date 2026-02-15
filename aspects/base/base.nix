@@ -1,16 +1,22 @@
-{ ... }:
+{ inputs, ... }:
 {
-  flake.modules.nixos.common-programs =
+  flake.modules.nixos.base =
     { lib, pkgs, ... }:
     {
+      imports = with inputs.self.modules.nixos; [
+        boot
+        console
+        firewall
+        locale
+        nix
+        security
+        ssh
+      ];
       environment = {
         systemPackages = with pkgs; [
-          ### Dev Tools ###
           git
-          ### System Utilities ###
           fastfetch
           nixos-firewall-tool
-          nvd
           sysz
           wget
           yazi
@@ -26,14 +32,16 @@
         command-not-found.enable = false;
         fish = {
           enable = true;
-          interactiveShellInit = ''
-            set fish_greeting
-            if set -q SSH_CONNECTION; and not set -q IN_NIX_SHELL; or not set -q TMUX
-              export TERM=xterm-256color
-              clear
-              fastfetch
-            end
-          '';
+        };
+      };
+
+      services = {
+        dbus.implementation = "broker";
+        irqbalance.enable = true;
+        fstrim.enable = true;
+        tailscale = {
+          enable = true;
+          extraUpFlags = [ "--operator=user" ];
         };
       };
     };

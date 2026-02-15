@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.nixos.common-security =
+  flake.modules.nixos.security =
     { ... }:
     {
       security.sudo = {

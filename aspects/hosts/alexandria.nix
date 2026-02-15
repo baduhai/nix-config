@@ -16,21 +16,11 @@
       ((inputs.import-tree.initFilter (p: lib.hasSuffix ".nix" p)) ./_alexandria)
     ]
     ++ (with inputs.self.modules.nixos; [
+      # system aspects
+      base
       cli
 
-      # Common aspects (always included)
-      common-boot
-      common-console
-      common-firewall
-      common-locale
-      common-nix
-      common-openssh
-      common-programs
-      common-security
-      common-services
-      common-tailscale
-
-      # User aspects
+      # user aspects
       user
       root
 
