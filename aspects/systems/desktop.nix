@@ -158,7 +158,10 @@
         ...
       }:
       {
-        imports = [ inputs.vicinae.homeManagerModules.default ];
+        imports = [
+          inputs.vicinae.homeManagerModules.default
+        ]
+        ++ (with inputs.self.modules.homeManager; [ media ]);
 
         fonts.fontconfig.enable = true;
 

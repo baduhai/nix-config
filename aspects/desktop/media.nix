@@ -13,7 +13,7 @@
         ];
       };
 
-    homeManager.programs-media =
+    homeManager.media =
       { pkgs, ... }:
       {
         programs.obs-studio = {
