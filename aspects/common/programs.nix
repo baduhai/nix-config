@@ -31,7 +31,7 @@
           enable = true;
           interactiveShellInit = ''
             set fish_greeting
-            if set -q SSH_CONNECTION
+            if set -q SSH_CONNECTION; and not set -q IN_NIX_SHELL; or not set -q TMUX
               export TERM=xterm-256color
               clear
               fastfetch
