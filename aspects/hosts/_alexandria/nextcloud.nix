@@ -1,8 +1,7 @@
 {
-  lib,
   config,
-  pkgs,
   inputs,
+  pkgs,
   ...
 }:
 
@@ -83,12 +82,12 @@ in
 
   age.secrets = {
     "nextcloud-secrets.json" = {
-      file = ../../../secrets/nextcloud-secrets.json.age;
+      file = "${inputs.self}/secrets/nextcloud-secrets.json.age";
       owner = "nextcloud";
       group = "nextcloud";
     };
     nextcloud-adminpass = {
-      file = ../../../secrets/nextcloud-adminpass.age;
+      file = "${inputs.self}/secrets/nextcloud-adminpass.age";
       owner = "nextcloud";
       group = "nextcloud";
     };

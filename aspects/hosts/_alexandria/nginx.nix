@@ -51,7 +51,7 @@ in
   ];
 
   age.secrets.cloudflare = {
-    file = ../../../secrets/cloudflare.age;
+    file = "${inputs.self}/secrets/cloudflare.age";
     owner = "nginx";
     group = "nginx";
   };
