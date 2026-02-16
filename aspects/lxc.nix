@@ -9,9 +9,14 @@
       ...
     }:
     {
-      virtualisation.lxc = {
-        enable = true;
-        unprivilegedContainers = true;
+      virtualisation = {
+        lxc = {
+          enable = true;
+          unprivilegedContainers = true;
+        };
+        incus.enable = true;
       };
+
+      users.users.user.extraGroups = [ "incus-admin" ];
     };
 }

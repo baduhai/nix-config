@@ -27,7 +27,7 @@
 
       # other aspects
       fwupd
-      podman
+      lxc
     ]);
   };
 }
