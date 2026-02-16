@@ -8,10 +8,8 @@
 let
   services = inputs.self.services;
 
-  # Get all unique domains from shared services on trantor (host = "trantor")
   localDomains = lib.unique (map (s: s.domain) (lib.filter (s: s.host == "trantor") services));
 
-  # Generate ACME cert configs for all local domains
   acmeCerts = lib.genAttrs localDomains (domain: {
     group = "nginx";
   });

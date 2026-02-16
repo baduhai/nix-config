@@ -21,6 +21,8 @@ in
           ROOT_URL = "https://git.baduhai.dev";
           OFFLINE_MODE = true; # disable use of CDNs
           SSH_DOMAIN = "git.baduhai.dev";
+          SSH_USER = "forgejo";
+          SSH_PORT = lib.head config.services.openssh.ports;
         };
         log.LEVEL = "Warn";
         mailer.ENABLED = false;
@@ -67,5 +69,8 @@ in
   };
 
   # Disable PrivateMounts to allow LoadCredential to work with bind-mounted directories
-  systemd.services.forgejo.serviceConfig.PrivateMounts = lib.mkForce false;
+  systemd.services.forgejo.serviceConfig = {
+    PrivateMounts = lib.mkForce false;
+    ProtectSystem = lib.mkForce false;
+  };
 }
