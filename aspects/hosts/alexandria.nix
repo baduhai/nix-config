@@ -27,6 +27,7 @@
 
       # other aspects
       fwupd
+      lxc
     ]);
   };
 }
