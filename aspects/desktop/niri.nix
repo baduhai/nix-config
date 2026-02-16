@@ -123,6 +123,7 @@
           }
 
           spawn-at-startup "noctalia-shell" "-d"
+          spawn-at-startup "${lib.getExe pkgs.niri-auto-centre}"
           layer-rule {
             match namespace="^noctalia-overview*"
             place-within-backdrop true

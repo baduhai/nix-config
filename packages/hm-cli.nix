@@ -5,8 +5,6 @@
     { pkgs, ... }:
     {
       packages.hm-cli = pkgs.writeShellScriptBin "hm" ''
-        set -e
-
         HM="${pkgs.lib.getExe pkgs.home-manager}"
         FLAKE_PATH="''${HM_PATH:-$HOME/.config/home-manager}"
         FLAKE_OUTPUT="''${HM_USER:-$(whoami)@$(hostname)}"
