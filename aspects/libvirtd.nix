@@ -15,7 +15,7 @@
 
       programs.virt-manager.enable = true;
 
-      environment.systemPackages = with pkgs; [ vagrant ];
+      environment.systemPackages = with pkgs; [ lima ];
 
       networking.firewall.trustedInterfaces = [ "virbr0" ];
 
