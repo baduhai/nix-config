@@ -3,23 +3,24 @@
   flake.modules.nixos.nix =
     { inputs, pkgs, ... }:
     {
-      imports = [ inputs.nixos-cli.nixosModules.nixos-cli ];
+      imports = [
+        inputs.nixos-cli.nixosModules.nixos-cli
+        inputs.determinate.nixosModules.default
+      ];
 
-      nix = {
-        settings = {
-          auto-optimise-store = true;
-          connect-timeout = 10;
-          log-lines = 25;
-          min-free = 128000000;
-          max-free = 1000000000;
-          trusted-users = [ "@wheel" ];
-        };
-        extraOptions = "experimental-features = nix-command flakes";
-        gc = {
-          automatic = true;
-          options = "--delete-older-than 8d";
-        };
+      nix.gc = {
+        automatic = true;
+        options = "--delete-older-than 8d";
       };
+
+      environment.etc."nix/nix.custom.conf".text = ''
+        auto-optimise-store = true
+        connect-timeout = 10
+        log-lines = 25
+        min-free = 128000000
+        max-free = 1000000000
+        trusted-users = @wheel
+      '';
 
       nixpkgs.config = {
         allowUnfree = true;
