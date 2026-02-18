@@ -48,7 +48,7 @@
         home = {
           packages = with pkgs; [
             xwayland-satellite
-            inputs.noctalia.packages.${pkgs.system}.default
+            inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
           ];
           sessionVariables.QT_QPA_PLATFORMTHEME = "gtk3";
         };

@@ -5,7 +5,7 @@
     {
       environment.systemPackages =
         (with pkgs; [ ])
-        ++ (with inputs.nix-ai-tools.packages.${pkgs.system}; [
+        ++ (with inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}; [
           claude-code
           claudebox
           opencode
