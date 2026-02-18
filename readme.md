@@ -1,87 +1,73 @@
-# Nix Configuration
+# NixOS Flake Configuration
 
-My personal Nix configuration for multiple NixOS hosts, home-manager users, miscellaneous resources... too many things to list. If I could put my life in a flake I would.
+Modular NixOS configuration using flake-parts with the [dendritic](https://github.com/gytis-ivaskevicius/dendritic) pattern.
+
+## Structure
+
+```
+.
+├── aspects/           # Reusable NixOS/home-manager modules (dendritic)
+│   ├── base/          # Base system configuration
+│   ├── hosts/         # Host-specific configurations
+│   │   ├── _alexandria/
+│   │   ├── _io/
+│   │   ├── _rotterdam/
+│   │   └── _trantor/
+│   ├── systems/       # System type modules (desktop, server, cli, gaming)
+│   └── users/         # User account configurations
+├── data/              # Shared host/service definitions
+├── packages/          # Custom packages and overlays
+├── shells/            # Shell configurations
+└── terranix/          # Terraform configurations for cloud resources
+```
 
 ## Hosts
 
-### Desktop Systems
-- **rotterdam** - Main desktop workstation (x86_64)
-  - Features: Desktop, AI tools, Bluetooth, Dev environment, Gaming, Virtualization (libvirtd), Podman
-  - Storage: Ephemeral root with LUKS encryption
-
-- **io** - Laptop workstation (x86_64)
-  - Features: Desktop, AI tools, Bluetooth, Dev environment, Podman
-  - Storage: Ephemeral root with LUKS encryption
-
-### Servers
-- **alexandria** - Home server (x86_64)
-  - Hosts: Nextcloud, Vaultwarden, Jellyfin, Kanidm
-
-- **trantor** - Cloud server (aarch64)
-  - Hosts: Forgejo
-  - Cloud provider: Oracle Cloud Infrastructure
-  - Storage: Ephemeral root with btrfs
-
-## Home Manager Configurations
-
-- **user@rotterdam** - Full desktop setup with gaming, OBS, and complete development environment
-- **user@io** - Lightweight desktop setup
-
-Both configurations include:
-- btop, direnv, helix, starship, tmux
-- Stylix theme management
-- Fish shell with custom configurations
-
-## Terranix Configurations
-
-Infrastructure as code using Terranix (NixOS + Terraform/OpenTofu):
-
-- **oci-trantor** - Oracle Cloud Infrastructure provisioning for Trantor server
-- **cloudflare-baduhaidev** - DNS and CDN configuration for baduhai.dev domain
-- **tailscale-tailnet** - Tailscale network ACL and device management
+| Host | Architecture | Type | Description |
+|------|--------------|------|-------------|
+| trantor | aarch64-linux | server | ARM server running Forgejo |
+| alexandria | x86_64-linux | server | x86 server (Kanidm, Vaultwarden, Nextcloud, Jellyfin) |
+| rotterdam | x86_64-linux | desktop | Gaming desktop with GPU passthrough |
+| io | x86_64-linux | desktop | Workstation |
 
 ## Services
 
-All services are accessible via custom domains under baduhai.dev:
+- **git.baduhai.dev** (Forgejo) - Publicly accessible on trantor
 
-- **Kanidm** (auth.baduhai.dev) - Identity and access management
-- **Vaultwarden** (pass.baduhai.dev) - Password manager
-- **Forgejo** (git.baduhai.dev) - Git forge (publicly accessible)
-- **Nextcloud** (cloud.baduhai.dev) - File sync and collaboration
-- **Jellyfin** (jellyfin.baduhai.dev) - Media server
+Other services (LAN/Tailscale only): Kanidm, Vaultwarden, Nextcloud, Jellyfin
 
-Services are accessible via:
-- LAN for alexandria-hosted services
-- Tailscale VPN for all services
-- Public internet for Forgejo only
+## Features
 
-## Notable Features
+- **Ephemeral root**: Automatic btrfs subvolume rollover with impermanence
+- **Secrets**: Managed via agenix with age encryption
+- **Disk management**: disko for declarative disk partitioning
+- **Modular architecture**: Each aspect is a separate module imported via import-tree
+- **Dendritic pattern**: Aspects are imported as a unified flake module
 
-### Ephemeral Root
-Rotterdam, io, and trantor use an ephemeral root filesystem that resets on every boot:
-- Root filesystem is automatically rolled back using btrfs snapshots
-- Old snapshots retained for 30 days
-- Persistent data stored in dedicated subvolumes
-- Implements truly stateless systems
+## Building
 
-### Custom DNS Architecture
-- Unbound DNS servers on both alexandria and trantor
-- Service routing based on visibility flags (public/LAN/Tailscale)
-- Split-horizon DNS for optimal access paths
+```bash
+# Build specific host
+nix build .#nixosConfigurations.trantor.config.system.build.toplevel
 
-### Security
-- LUKS full-disk encryption on desktop systems
-- Fail2ban on public-facing servers
-- agenix for secrets management
-- Tailscale for secure remote access
+# Rebuild host (if using nixos-cli on the host)
+sudo nixos apply
+```
 
-### Desktop Environment
-- Custom Niri window manager (Wayland compositor)
-- Using forked version with auto-centering feature
-- Stylix for consistent theming
+## Terranix
 
-### Development Setup
-- Nix flakes for reproducible builds
-- deploy-rs for automated deployments
-- Podman for containerization
-- Complete AI tooling integration
+Terraform configurations for cloud infrastructure managed via terranix:
+
+- baduhai.dev DNS
+- Cloudflare tunnel endpoints
+- Tailscale subnet routers
+
+## Key Dependencies
+
+- nixpkgs (nixos-unstable for workstations, nixos for servers)
+- home-manager
+- agenix
+- disko
+- impermanence
+- nix-flatpak
+- nixos-cli
