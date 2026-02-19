@@ -58,8 +58,8 @@ sudo nixos apply
 
 Terraform configurations for cloud infrastructure managed via terranix:
 
-- baduhai.dev DNS
-- Cloudflare tunnel endpoints
+- baduhai.dev DNS on CloudFlare
+- VPS provisioning on OCI
 - Tailscale subnet routers
 
 ## Key Dependencies
