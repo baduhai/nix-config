@@ -4,11 +4,8 @@
     { inputs, pkgs, ... }:
     {
       environment.systemPackages =
-        (with pkgs; [ ])
+        (with pkgs; [ opencode ])
         ++ (with inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}; [
-          claude-code
-          claudebox
-          opencode
         ]);
     };
 }
