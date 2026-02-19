@@ -27,14 +27,14 @@ Modular NixOS configuration using flake-parts with the [dendritic](https://githu
 |------|--------------|------|-------------|
 | trantor | aarch64-linux | server | ARM server running Forgejo |
 | alexandria | x86_64-linux | server | x86 server (Kanidm, Vaultwarden, Nextcloud, Jellyfin) |
-| rotterdam | x86_64-linux | desktop | Gaming desktop with GPU passthrough |
+| rotterdam | x86_64-linux | desktop | Main workstation setup for gaming |
 | io | x86_64-linux | desktop | Workstation |
 
 ## Services
 
 - **git.baduhai.dev** (Forgejo) - Publicly accessible on trantor
 
-Other services (LAN/Tailscale only): Kanidm, Vaultwarden, Nextcloud, Jellyfin
+Other services (LAN/Tailscale only): Vaultwarden, Nextcloud, Jellyfin
 
 ## Features
 
