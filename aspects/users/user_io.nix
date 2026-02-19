@@ -1,7 +1,7 @@
 { inputs, lib, ... }:
 
 {
-  flake."user@io" = inputs.home-manager.lib.homeManagerConfiguration {
+  flake.homeConfigurations."user@io" = {
     pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
     extraSpecialArgs = {
       inherit inputs;
@@ -24,7 +24,7 @@
       cli
       desktop
 
-      # other aspect
+      # other aspects
       stylix
       niri
     ]);
