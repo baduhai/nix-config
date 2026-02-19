@@ -1,34 +1,17 @@
-{ inputs, lib, ... }:
+{ inputs, ... }:
+
+let
+  mkHost = inputs.self.lib.mkHost;
+in
 
 {
-  flake.nixosConfigurations.rotterdam = inputs.nixpkgs.lib.nixosSystem {
-    system = "x86_64-linux";
-    specialArgs = { inherit inputs; };
-    modules = [
-      inputs.agenix.nixosModules.default
-      { networking.hostName = "rotterdam"; }
-      {
-        nixpkgs.overlays = [
-          inputs.agenix.overlays.default
-          inputs.self.overlays.default
-        ];
-      }
-      ((inputs.import-tree.initFilter (p: lib.hasSuffix ".nix" p)) ./_rotterdam)
-      (inputs.self.factory.ephemeral {
-        rootDevice = "/dev/mapper/cryptroot";
-      })
-    ]
-    ++ (with inputs.self.modules.nixos; [
-      # system aspects
-      base
-      cli
+  flake.nixosConfigurations.rotterdam = mkHost {
+    hostname = "rotterdam";
+    ephemeralRootDev = "/dev/mapper/cryptroot";
+    extraModules = with inputs.self.modules.nixos; [
+      # base aspects
       desktop
       gaming
-
-      # user aspects
-      user
-      root
-
       # other aspects
       ai
       bluetooth
@@ -38,6 +21,6 @@
       networkmanager
       niri
       podman
-    ]);
+    ];
   };
 }

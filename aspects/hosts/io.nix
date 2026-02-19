@@ -1,34 +1,17 @@
-{ inputs, lib, ... }:
+{ inputs, ... }:
+
+let
+  mkHost = inputs.self.lib.mkHost;
+in
 
 {
-  flake.nixosConfigurations.io = inputs.nixpkgs.lib.nixosSystem {
-    system = "x86_64-linux";
-    specialArgs = { inherit inputs; };
-    modules = [
-      inputs.agenix.nixosModules.default
-      { networking.hostName = "io"; }
-      {
-        nixpkgs.overlays = [
-          inputs.agenix.overlays.default
-          inputs.self.overlays.default
-        ];
-      }
-      ((inputs.import-tree.initFilter (p: lib.hasSuffix ".nix" p)) ./_io)
-      (inputs.self.factory.ephemeral {
-        rootDevice = "/dev/mapper/cryptroot";
-      })
-    ]
-    ++ (with inputs.self.modules.nixos; [
-      # system aspects
-      base
-      cli
+  flake.nixosConfigurations.io = mkHost {
+    hostname = "io";
+    ephemeralRootDev = "/dev/mapper/cryptroot";
+    extraModules = with inputs.self.modules.nixos; [
+      # base aspects
       desktop
-
-      # user aspects
-      user
-      root
-
-      # Other aspects
+      # other aspects
       ai
       bluetooth
       dev
@@ -36,6 +19,6 @@
       networkmanager
       niri
       podman
-    ]);
+    ];
   };
 }

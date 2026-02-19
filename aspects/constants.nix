@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  inputs,
+  lib,
+  config,
+  ...
+}:
 
 let
   # Host submodule type
@@ -132,6 +137,81 @@ in
             local-data = lanData;
           }
         ];
+      # Generates flake.homeConfigurations
+      mkHomeConfiguration =
+        {
+          user,
+          hostname,
+          system ? "x86_64-linux",
+          stateVersion ? "22.05",
+          nixpkgs ? inputs.nixpkgs, # override with e.g. inputs.nixpkgs-stable
+          userModules ? [ ],
+          overlays ? [ inputs.self.overlays.default ],
+          homeManagerModules ? with inputs.self.modules.homeManager; [
+            base
+            cli
+          ],
+          userDirectory ? "/home/${user}",
+        }:
+        inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+
+          extraSpecialArgs = {
+            inherit inputs hostname;
+          };
+
+          modules = [
+            { nixpkgs.overlays = overlays; }
+            {
+              home = {
+                username = user;
+                homeDirectory = userDirectory;
+                inherit stateVersion;
+              };
+            }
+            ((inputs.import-tree.initFilter (p: lib.hasSuffix ".nix" p))
+              "/${inputs.self}/aspects/users/_${user}"
+            )
+          ]
+          ++ homeManagerModules
+          ++ userModules;
+        };
+      # Generates flake.nixosConfigurations
+      mkHost =
+        {
+          hostname,
+          system ? "x86_64-linux",
+          nixpkgs ? inputs.nixpkgs,
+          overlays ? [
+            inputs.agenix.overlays.default
+            inputs.self.overlays.default
+          ],
+          ephemeralRootDev ? null, # pass rootDevice string to enable, e.g. ephemeralephemeralRootDev = "/dev/mapper/cryptroot"
+          nixosModules ? with inputs.self.modules.nixos; [
+            base
+            cli
+            user
+            root
+          ],
+          extraModules ? [ ],
+        }:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [
+            inputs.agenix.nixosModules.default
+            { networking.hostName = hostname; }
+            { nixpkgs.overlays = overlays; }
+            ((inputs.import-tree.initFilter (p: lib.hasSuffix ".nix" p))
+              "${inputs.self}/aspects/hosts/_${hostname}"
+            )
+          ]
+          ++ (lib.optional (ephemeralRootDev != null) (
+            inputs.self.factory.ephemeral { rootDevice = ephemeralRootDev; }
+          ))
+          ++ nixosModules
+          ++ extraModules;
+        };
     };
   };
 }

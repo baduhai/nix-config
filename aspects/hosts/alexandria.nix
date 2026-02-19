@@ -1,33 +1,19 @@
-{ inputs, lib, ... }:
+{ inputs, ... }:
+
+let
+  mkHost = inputs.self.lib.mkHost;
+in
 
 {
-  flake.nixosConfigurations.alexandria = inputs.nixpkgs-stable.lib.nixosSystem {
-    system = "x86_64-linux";
-    specialArgs = { inherit inputs; };
-    modules = [
-      inputs.agenix.nixosModules.default
-      { networking.hostName = "alexandria"; }
-      {
-        nixpkgs.overlays = [
-          inputs.agenix.overlays.default
-          inputs.self.overlays.default
-        ];
-      }
-      ((inputs.import-tree.initFilter (p: lib.hasSuffix ".nix" p)) ./_alexandria)
-    ]
-    ++ (with inputs.self.modules.nixos; [
-      # system aspects
-      base
-      cli
+  flake.nixosConfigurations.alexandria = mkHost {
+    hostname = "alexandria";
+    nixpkgs = inputs.nixpkgs-stable;
+    extraModules = with inputs.self.modules.nixos; [
+      # base aspects
       server
-
-      # user aspects
-      user
-      root
-
       # other aspects
       fwupd
       libvirtd
-    ]);
+    ];
   };
 }
