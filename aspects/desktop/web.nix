@@ -15,6 +15,7 @@
         fragments
         nextcloud-client
         tor-browser
+        ungoogled-chromium
         vesktop
       ];
     };
