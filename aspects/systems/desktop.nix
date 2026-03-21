@@ -77,9 +77,17 @@
           udev.packages = with pkgs; [ yubikey-personalization ];
           keyd = {
             enable = true;
-            keyboards.all = {
-              ids = [ "*" ];
-              settings.main.capslock = "overload(meta, esc)";
+            keyboards = {
+              all = {
+                ids = [ "*" ];
+                settings.main.capslock = "overload(meta, esc)";
+              };
+              corne = {
+                ids = [ "5653:0001" ];
+                settings.main = {
+                  esc = "overload(meta, esc)";
+                };
+              };
             };
           };
           pipewire = {

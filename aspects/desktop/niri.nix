@@ -34,13 +34,32 @@
           enable = true;
           settings = [
             {
-              profile.name = "default";
-              profile.outputs = [
-                {
-                  criteria = "*";
-                  scale = 1.0;
-                }
-              ];
+              profile = {
+                name = "undocked";
+                outputs = [
+                  {
+                    criteria = "eDP-1";
+                    status = "enable";
+                    scale = 1.0;
+                  }
+                ];
+              };
+            }
+            {
+              profile = {
+                name = "docked";
+                outputs = [
+                  {
+                    criteria = "eDP-1";
+                    status = "disable";
+                  }
+                  {
+                    criteria = "DP-1";
+                    status = "enable";
+                    scale = 1.0;
+                  }
+                ];
+              };
             }
           ];
         };
