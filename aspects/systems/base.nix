@@ -13,6 +13,7 @@
           nix
           security
           ssh
+          zsh
         ];
         environment = {
           systemPackages = with pkgs; [
@@ -49,6 +50,7 @@
         imports = with inputs.self.modules.homeManager; [
           bash
           fish
+          zsh
         ];
       };
   };

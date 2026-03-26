@@ -11,7 +11,7 @@ in
       {
         users.users.user = {
           isNormalUser = true;
-          shell = pkgs.fish;
+          shell = pkgs.zsh;
           extraGroups = [
             "networkmanager"
             "wheel"
