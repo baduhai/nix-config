@@ -34,8 +34,9 @@ in
           gaming
 
           # other aspects
+          kde
           stylix
-          niri
+          # niri
         ];
       };
       "user@io" = mkHomeConfiguration {

@@ -17,9 +17,10 @@ in
       bluetooth
       dev
       fwupd
+      kde
       libvirtd
       networkmanager
-      niri
+      # niri
       podman
     ];
   };

@@ -98,9 +98,9 @@
             jack.enable = true;
             wireplumber.enable = true;
           };
-          greetd = {
+          displayManager.autoLogin = {
             enable = true;
-            settings.default_session.user = "greeter";
+            user = "user";
           };
           flatpak = {
             enable = true;
@@ -116,19 +116,7 @@
 
         security.rtkit.enable = true; # Needed for pipewire to acquire realtime priority
 
-        users = {
-          users.greeter = {
-            isSystemUser = true;
-            group = "greeter";
-          };
-          groups.greeter = { };
-        };
-
         programs = {
-          kdeconnect = {
-            enable = true;
-            package = pkgs.valent;
-          };
           dconf.enable = true;
           appimage = {
             enable = true;
@@ -146,14 +134,6 @@
             noto-fonts-color-emoji
             roboto
           ];
-        };
-
-        xdg.portal = {
-          extraPortals = with pkgs; [
-            xdg-desktop-portal-gnome
-            xdg-desktop-portal-gtk
-          ];
-          config.common.default = "*";
         };
       };
 
