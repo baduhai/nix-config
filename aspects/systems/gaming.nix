@@ -23,7 +23,7 @@
           "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/25.08"
           rec {
             appId = "com.hypixel.HytaleLauncher";
-            sha256 = "MSCzfcucPbAlSXZSwX4MOJjetiRW5bLihxvQ0QKQtBI=";
+            sha256 = "uu7FA36M4wSqDXRF1fFNla8S5MjL1N1kZi4gwbpw1oY=";
             bundle = "${pkgs.fetchurl {
               url = "https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-latest.flatpak";
               inherit sha256;

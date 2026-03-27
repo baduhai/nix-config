@@ -29,6 +29,21 @@
           initExtra = ''
             unsetopt beep
             ${lib.getExe pkgs.nix-your-shell} zsh | source /dev/stdin
+
+            # Fish-style Ctrl+Backspace: delete one path segment at a time
+            function backward-kill-path-component() {
+              if [[ "$LBUFFER" == */ ]]; then
+                LBUFFER="''${LBUFFER%/}"
+              fi
+
+              if [[ "$LBUFFER" == */* ]]; then
+                LBUFFER="''${LBUFFER%/*}/"
+              else
+                zle backward-kill-word
+              fi
+            }
+            zle -N backward-kill-path-component
+            bindkey '^H' backward-kill-path-component
           '';
           loginExtra = "${lib.getExe pkgs.nix-your-shell} zsh | source /dev/stdin";
           history = {

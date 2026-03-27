@@ -18,9 +18,7 @@ in
       dev
       fwupd
       kde
-      libvirtd
       networkmanager
-      # niri
       podman
     ];
   };

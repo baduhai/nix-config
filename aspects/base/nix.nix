@@ -1,7 +1,12 @@
 { ... }:
 {
   flake.modules.nixos.nix =
-    { inputs, pkgs, ... }:
+    {
+      inputs,
+      pkgs,
+      lib,
+      ...
+    }:
     {
       imports = [ inputs.nixos-cli.nixosModules.nixos-cli ];
 
@@ -31,20 +36,27 @@
       services.nixos-cli = {
         enable = true;
         config = {
-          use_nvd = true;
           ignore_dirty_tree = true;
           apply = {
             reexec_as_root = true;
             use_nom = true;
           };
           confirmation.empty = "default-yes";
+          differ = {
+            command = [
+              "${lib.getExe pkgs.nvd}"
+              "diff"
+            ];
+            tool = "command";
+          };
         };
       };
 
       environment.systemPackages = with pkgs; [
         nix-output-monitor
-        nvd
       ];
+
+      documentation.nixos.enable = false;
 
       system.stateVersion = "22.11";
     };

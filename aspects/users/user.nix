@@ -35,8 +35,6 @@ in
 
           # other aspects
           kde
-          stylix
-          # niri
         ];
       };
       "user@io" = mkHomeConfiguration {
@@ -47,8 +45,7 @@ in
           desktop
 
           # other aspects
-          stylix
-          niri
+          kde
         ];
       };
     };

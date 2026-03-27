@@ -6,10 +6,9 @@
       { pkgs, ... }:
       {
         environment.systemPackages = with pkgs; [
-          decibels
-          loupe
+          mpv
           obs-studio
-          showtime
+          qview
         ];
       };
 

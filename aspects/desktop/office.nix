@@ -11,7 +11,7 @@
         aspellDicts.en-computers
         aspellDicts.pt_BR
         glow
-        papers
+        kwrite
         presenterm
         rnote
       ];

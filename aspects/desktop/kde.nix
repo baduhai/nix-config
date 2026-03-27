@@ -33,7 +33,22 @@
           ];
           config.common.default = "*";
         };
-        programs.kdeconnect.enable = true;
+        environment = {
+          systemPackages = with pkgs; [
+            kara
+            kdePackages.karousel
+            kde-rounded-corners
+          ];
+          plasma6.excludePackages = with pkgs.kdePackages; [
+            elisa
+            gwenview
+            kate
+          ];
+        };
+        programs = {
+          kdeconnect.enable = true;
+          partition-manager.enable = true;
+        };
       };
 
     homeManager.kde =

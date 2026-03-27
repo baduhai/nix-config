@@ -15,9 +15,8 @@ in
       ai
       bluetooth
       dev
-      libvirtd
+      kde
       networkmanager
-      niri
       podman
     ];
   };

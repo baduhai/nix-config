@@ -22,7 +22,6 @@
             nixos-firewall-tool
             sysz
             wget
-            yazi
           ];
           shellAliases = {
             cat = "${lib.getExe pkgs.bat} --paging=never --style=plain";

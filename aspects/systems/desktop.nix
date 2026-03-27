@@ -60,13 +60,9 @@
             NIXOS_OZONE_WL = "1"; # Forces chromium and most electron apps to run in wayland
           };
           systemPackages = with pkgs; [
-            adwaita-icon-theme
-            ghostty
-            gnome-disk-utility
             junction
             libfido2
             mission-center
-            nautilus
             toggleaudiosink
             unrar
           ];
@@ -153,39 +149,11 @@
 
         fonts.fontconfig.enable = true;
 
-        home = {
-          packages = with pkgs; [ xwayland-satellite ];
-          sessionVariables.TERMINAL = "ghostty";
-        };
-
         services.vicinae = {
           enable = true;
           systemd = {
             enable = true;
             autoStart = true;
-          };
-        };
-
-        programs = {
-          ghostty = {
-            enable = true;
-            settings = {
-              cursor-style = "block";
-              shell-integration-features = "no-cursor";
-              cursor-style-blink = false;
-              custom-shader = "${builtins.fetchurl {
-                url = "https://raw.githubusercontent.com/hackr-sh/ghostty-shaders/cb6eb4b0d1a3101c869c62e458b25a826f9dcde3/cursor_blaze.glsl";
-                sha256 = "sha256:0g2lgqjdrn3c51glry7x2z30y7ml0y61arl5ykmf4yj0p85s5f41";
-              }}";
-              bell-features = "";
-              gtk-titlebar-style = "tabs";
-              keybind = [ "shift+enter=text:\\x1b\\r" ];
-            };
-          };
-
-          password-store = {
-            enable = true;
-            package = pkgs.pass-wayland;
           };
         };
 

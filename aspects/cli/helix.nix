@@ -23,7 +23,14 @@
 
         programs.helix = {
           enable = true;
+          themes = {
+            base16_terminal_transparent = {
+              inherits = "base16_terminal";
+              "ui.background" = { };
+            };
+          };
           settings = {
+            theme = "base16_terminal_transparent";
             editor = {
               file-picker.hidden = false;
               idle-timeout = 0;

@@ -12,7 +12,7 @@
         inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
         beeper
         bitwarden-desktop
-        fragments
+        qbittorrent
         nextcloud-client
         tor-browser
         ungoogled-chromium
