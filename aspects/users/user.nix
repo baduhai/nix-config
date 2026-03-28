@@ -34,6 +34,7 @@ in
           gaming
 
           # other aspects
+          ai
           kde
         ];
       };
@@ -45,6 +46,7 @@ in
           desktop
 
           # other aspects
+          ai
           kde
         ];
       };
