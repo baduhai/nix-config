@@ -13,7 +13,7 @@ in
       server
       # other aspects
       fwupd
-      libvirtd
+      podman
     ];
   };
 }
