@@ -30,6 +30,10 @@
             unsetopt beep
             ${lib.getExe pkgs.nix-your-shell} zsh | source /dev/stdin
 
+            # Expand !! and !$ on space (Fish-style)
+            bindkey ' ' magic-space
+            setopt HIST_VERIFY
+
             # Fish-style Ctrl+Backspace: delete one path segment at a time
             function backward-kill-path-component() {
               if [[ "$LBUFFER" == */ ]]; then
