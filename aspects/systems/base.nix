@@ -26,6 +26,7 @@
           shellAliases = {
             cat = "${lib.getExe pkgs.bat} --paging=never --style=plain";
             ls = "${lib.getExe pkgs.eza} --git --icons --group-directories-first";
+            la = "ls -hal";
             tree = "ls --tree";
           };
         };
