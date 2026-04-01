@@ -43,6 +43,7 @@
             elisa
             gwenview
             kate
+            khelpcenter
           ];
         };
         programs = {
