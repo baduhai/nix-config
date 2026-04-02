@@ -37,6 +37,10 @@
               keyWidth = 11;
             }
             {
+              type = "gpu";
+              keyWidth = 11;
+            }
+            {
               type = "memory";
               keyWidth = 11;
             }
@@ -79,6 +83,6 @@
       );
     in
     {
-      packages.fastfetch = pkgs.writeShellScriptBin "fastfetch" ''exec ${lib.getExe pkgs.fastfetch} --config ${fastfetch-config} --logo-type kitty --logo ${fastfetch-logo} --logo-padding-right 1 --logo-width 36 "$@" '';
+      packages.fastfetch = pkgs.writeShellScriptBin "fastfetch" ''exec ${lib.getExe pkgs.fastfetch} --config ${fastfetch-config} --logo-type auto --logo ${fastfetch-logo} --logo-padding-right 1 --logo-width 36 "$@" '';
     };
 }
