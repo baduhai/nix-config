@@ -125,9 +125,13 @@
           pkgs.brave
         ];
         postBuild = ''
+          desktop="$out/share/applications/brave-browser.desktop"
+          if [ -L "$desktop" ]; then
+            cp --remove-destination "$(readlink "$desktop")" "$desktop"
+          fi
           sed -i \
-            "s|Exec=brave-browser|Exec=$out/bin/brave|g" \
-            $out/share/applications/brave-browser.desktop 2>/dev/null || true
+            "s|^Exec=.*|Exec=$out/bin/brave %U|g" \
+            "$desktop"
         '';
       };
     };
