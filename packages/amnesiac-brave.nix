@@ -115,23 +115,73 @@
           --die-with-parent \
           -- ${pkgs.brave}/bin/brave --no-first-run "$@"
       '';
+
+      brave-desktop = pkgs.writeTextFile {
+        name = "amnesiac-brave.desktop";
+        destination = "/share/applications/amnesiac-brave.desktop";
+        text = "[Desktop Entry]
+Version=1.0
+Name=Amnesiac Brave
+GenericName=Amnesiac Web Browser
+Comment=Access the internet, leave no trace on your system
+Exec=@BRAVE_WRAPPER@ %U
+StartupNotify=true
+Icon=amnesiac-brave
+Type=Application
+Categories=Network;WebBrowser;
+MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/chromium;
+Actions=new-window
+
+[Desktop Action new-window]
+Name=New Window
+Exec=@BRAVE_WRAPPER@ %U
+";
+      };
+
+      amnesiac-brave-icon =
+        pkgs.runCommand "amnesiac-brave-icon"
+          {
+            nativeBuildInputs = [ pkgs.imagemagick ];
+          }
+          ''
+            mkdir -p "$out/share/icons/hicolor/256x256/apps"
+            convert ${pkgs.brave}/share/icons/hicolor/256x256/apps/brave-browser.png \
+              -modulate 100,100,270 \
+              "$out/share/icons/hicolor/256x256/apps/amnesiac-brave.png"
+            for size in 16 24 32 48 64; do
+              mkdir -p "$out/share/icons/hicolor/''${size}x''${size}/apps"
+              convert ${pkgs.brave}/share/icons/hicolor/''${size}x''${size}/apps/brave-browser.png \
+                -modulate 100,100,270 \
+                "$out/share/icons/hicolor/''${size}x''${size}/apps/amnesiac-brave.png"
+            done
+          '';
+
     in
     {
-      packages.brave = pkgs.symlinkJoin {
-        name = "brave";
+      packages.amnesiac-brave = pkgs.symlinkJoin {
+        name = "amnesiac-brave";
         paths = [
           brave-launcher
           brave-policy
+          brave-desktop
+          amnesiac-brave-icon
           pkgs.brave
         ];
         postBuild = ''
-          desktop="$out/share/applications/brave-browser.desktop"
-          if [ -L "$desktop" ]; then
-            cp --remove-destination "$(readlink "$desktop")" "$desktop"
+          brave_bin="$(readlink -f "$out/bin/brave")"
+
+          amnesiac_desktop="$out/share/applications/amnesiac-brave.desktop"
+          if [ -L "$amnesiac_desktop" ]; then
+            cp --remove-destination "$(readlink "$amnesiac_desktop")" "$amnesiac_desktop"
           fi
           sed -i \
-            "s|^Exec=.*|Exec=$out/bin/brave %U|g" \
-            "$desktop"
+            "s|@BRAVE_WRAPPER@|$brave_bin|g" \
+            "$amnesiac_desktop"
+
+          rm -f "$out/share/applications/brave-browser.desktop"
+          rm -f "$out/share/applications/com.brave.Browser.desktop"
+
+          rm -f "$out/share/icons/hicolor/"*/apps/brave-browser.png
         '';
       };
     };
