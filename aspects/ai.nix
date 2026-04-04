@@ -25,7 +25,10 @@
         programs.opencode = {
           enable = true;
           package = inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
-          settings.theme = "system";
+          settings = {
+            theme = "system";
+            plugin = [ "opencode-claude-auth" ];
+          };
         };
       };
   };
