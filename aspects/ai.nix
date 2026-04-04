@@ -5,8 +5,10 @@
       { inputs, pkgs, ... }:
       {
         environment.systemPackages =
-          (with pkgs; [ ])
+          (with pkgs; [ opencode-claude-auth ])
           ++ (with inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}; [
+            ccusage-opencode
+            claude-code
             opencode
           ]);
 
@@ -17,11 +19,14 @@
           ];
         };
       };
-    homeManager.ai = {
-      programs.opencode = {
-        enable = true;
-        settings.theme = "system";
+    homeManager.ai =
+      { inputs, pkgs, ... }:
+      {
+        programs.opencode = {
+          enable = true;
+          package = inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
+          settings.theme = "system";
+        };
       };
-    };
   };
 }
