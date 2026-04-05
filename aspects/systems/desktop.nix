@@ -60,7 +60,6 @@
             NIXOS_OZONE_WL = "1"; # Forces chromium and most electron apps to run in wayland
           };
           systemPackages = with pkgs; [
-            junction
             libfido2
             mission-center
             toggleaudiosink
