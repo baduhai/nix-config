@@ -5,10 +5,9 @@
       { inputs, pkgs, ... }:
       {
         environment.systemPackages =
-          (with pkgs; [ opencode-claude-auth ])
+          (with pkgs; [ ])
           ++ (with inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}; [
             ccusage-opencode
-            claude-code
             opencode
           ]);
 
@@ -25,10 +24,7 @@
         programs.opencode = {
           enable = true;
           package = inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
-          settings = {
-            theme = "system";
-            plugin = [ "opencode-claude-auth" ];
-          };
+          settings.theme = "system";
         };
       };
   };
