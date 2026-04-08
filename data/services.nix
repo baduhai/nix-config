@@ -13,11 +13,6 @@
 
   services = [
     {
-      name = "kanidm";
-      domain = "auth.baduhai.dev";
-      host = "alexandria";
-    }
-    {
       name = "vaultwarden";
       domain = "pass.baduhai.dev";
       host = "alexandria";
@@ -36,6 +31,11 @@
     {
       name = "jellyfin";
       domain = "jellyfin.baduhai.dev";
+      host = "alexandria";
+    }
+    {
+      name = "freshrss";
+      domain = "rss.baduhai.dev";
       host = "alexandria";
     }
   ];

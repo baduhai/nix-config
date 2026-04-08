@@ -32,4 +32,9 @@ in
     rotterdam-user
     trantor
   ];
+  "freshrss-adminpass.age".publicKeys = [
+    io-user
+    rotterdam-user
+    alexandria
+  ];
 }
