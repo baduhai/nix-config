@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  inputs,
-  ...
-}:
+{ config, inputs, ... }:
 
 let
   mkNginxVHosts = inputs.self.lib.mkNginxVHosts;
@@ -14,7 +9,7 @@ in
     miniflux = {
       enable = true;
       config = {
-        LISTEN_ADDR = "/run/miniflux/miniflux.sock";
+        LISTEN_ADDR = "localhost:8080";
         CREATE_ADMIN = 1;
       };
       adminCredentialsFile = config.age.secrets.miniflux-admincreds.path;
@@ -23,12 +18,10 @@ in
 
     nginx.virtualHosts = mkNginxVHosts {
       domains."rss.baduhai.dev" = {
-        locations."/".proxyPass = "http://unix:/run/miniflux/miniflux.sock:/";
+        locations."/".proxyPass = "http://${config.services.miniflux.config.LISTEN_ADDR}/";
       };
     };
   };
-
-  users.users.nginx.extraGroups = [ "miniflux" ];
 
   age.secrets.miniflux-admincreds = {
     file = "${inputs.self}/secrets/miniflux-admincreds.age";
