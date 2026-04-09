@@ -32,7 +32,7 @@ in
     rotterdam-user
     trantor
   ];
-  "freshrss-adminpass.age".publicKeys = [
+  "miniflux-admincreds.age".publicKeys = [
     io-user
     rotterdam-user
     alexandria

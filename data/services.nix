@@ -34,7 +34,7 @@
       host = "alexandria";
     }
     {
-      name = "freshrss";
+      name = "miniflux";
       domain = "rss.baduhai.dev";
       host = "alexandria";
     }
