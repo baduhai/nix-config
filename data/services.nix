@@ -38,5 +38,10 @@
       domain = "rss.baduhai.dev";
       host = "alexandria";
     }
+    {
+      name = "karakeep";
+      domain = "read.baduhai.dev";
+      host = "alexandria";
+    }
   ];
 }
