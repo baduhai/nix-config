@@ -39,7 +39,7 @@
       host = "alexandria";
     }
     {
-      name = "karakeep";
+      name = "linkwarden";
       domain = "read.baduhai.dev";
       host = "alexandria";
     }

@@ -37,4 +37,9 @@ in
     rotterdam-user
     alexandria
   ];
+  "linkwarden-nextauth-secret.age".publicKeys = [
+    io-user
+    rotterdam-user
+    alexandria
+  ];
 }

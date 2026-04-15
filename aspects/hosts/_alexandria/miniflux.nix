@@ -11,6 +11,10 @@ in
       config = {
         LISTEN_ADDR = "localhost:8080";
         CREATE_ADMIN = 1;
+        FETCHER_ALLOW_PRIVATE_NETWORKS = 1;
+        POLLING_SCHEDULER = "entry_frequency";
+        SCHEDULER_ENTRY_FREQUENCY_MIN_INTERVAL = 60;
+        SCHEDULER_ENTRY_FREQUENCY_MAX_INTERVAL = 10080;
       };
       adminCredentialsFile = config.age.secrets.miniflux-admincreds.path;
       createDatabaseLocally = true;
