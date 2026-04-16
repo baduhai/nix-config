@@ -9,7 +9,7 @@ in
     miniflux = {
       enable = true;
       config = {
-        LISTEN_ADDR = "localhost:8080";
+        LISTEN_ADDR = "localhost:58000";
         CREATE_ADMIN = 1;
         FETCHER_ALLOW_PRIVATE_NETWORKS = 1;
         POLLING_SCHEDULER = "entry_frequency";
