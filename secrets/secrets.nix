@@ -32,14 +32,4 @@ in
     rotterdam-user
     trantor
   ];
-  "miniflux-admincreds.age".publicKeys = [
-    io-user
-    rotterdam-user
-    alexandria
-  ];
-  "linkwarden-nextauth-secret.age".publicKeys = [
-    io-user
-    rotterdam-user
-    alexandria
-  ];
 }

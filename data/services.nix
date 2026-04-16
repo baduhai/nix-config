@@ -34,13 +34,8 @@
       host = "alexandria";
     }
     {
-      name = "miniflux";
+      name = "tt-rss";
       domain = "rss.baduhai.dev";
-      host = "alexandria";
-    }
-    {
-      name = "linkwarden";
-      domain = "read.baduhai.dev";
       host = "alexandria";
     }
   ];
