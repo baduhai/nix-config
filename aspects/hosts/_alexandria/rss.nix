@@ -21,11 +21,32 @@ in
     };
 
     nginx.virtualHosts = mkNginxVHosts {
-      domains."rss.baduhai.dev" = {
-        locations."/".proxyPass = "http://${config.services.miniflux.config.LISTEN_ADDR}/";
-      };
+      domains."rss.baduhai.dev".locations."/".proxyPass =
+        "http://${config.services.miniflux.config.LISTEN_ADDR}/";
+      domains."read.baduhai.dev".locations."/".proxyPass = "http://localhost:58001/";
     };
   };
+
+  virtualisation.oci-containers.containers.laterfeed = {
+    image = "reaperberri/laterfeed:latest";
+    ports = [
+      "58001:8000"
+    ];
+    environment = {
+      PORT = "8000";
+      DATABASE_URL = "sqlite:/data/data.db";
+      BASE_URL = "https://read.baduhai.dev";
+      AUTH_TOKEN = "changeme";
+    };
+    volumes = [
+      "/var/lib/laterfeed:/data"
+    ];
+    autoStart = true;
+  };
+
+  systemd.tmpfiles.rules = [
+    "d /var/lib/laterfeed 0755 root root -"
+  ];
 
   age.secrets.miniflux-admincreds = {
     file = "${inputs.self}/secrets/miniflux-admincreds.age";

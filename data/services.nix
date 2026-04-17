@@ -38,5 +38,10 @@
       domain = "rss.baduhai.dev";
       host = "alexandria";
     }
+    {
+      name = "laterfeed";
+      domain = "read.baduhai.dev";
+      host = "alexandria";
+    }
   ];
 }
