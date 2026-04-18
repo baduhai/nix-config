@@ -43,5 +43,10 @@
       domain = "read.baduhai.dev";
       host = "alexandria";
     }
+    {
+      name = "opencode-web";
+      domain = "ai.baduhai.dev";
+      host = "alexandria";
+    }
   ];
 }
