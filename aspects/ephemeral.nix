@@ -62,6 +62,7 @@
               mkdir -p /btrfs_tmp/old_roots
               timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/${cfg.rootSubvolume})" "+%Y-%m-%-d_%H:%M:%S")
               mv /btrfs_tmp/${cfg.rootSubvolume} "/btrfs_tmp/old_roots/$timestamp"
+              touch "/btrfs_tmp/old_roots/$timestamp"
             fi
 
             delete_subvolume_recursively() {
