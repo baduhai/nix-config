@@ -32,6 +32,11 @@ in
     rotterdam-user
     trantor
   ];
+  "pocket-id.key.age".publicKeys = [
+    io-user
+    rotterdam-user
+    trantor
+  ];
   "miniflux-admincreds.age".publicKeys = [
     io-user
     rotterdam-user
