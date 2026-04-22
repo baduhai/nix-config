@@ -27,4 +27,17 @@ in
   age.secrets.pocket-id-key = {
     file = "${inputs.self}/secrets/pocket-id.key.age";
   };
+
+  environment.persistence.main.directories = [
+    {
+      directory = config.services.pocket-id.dataDir;
+      inherit (config.services.pocket-id) user group;
+      mode = "0700";
+    }
+  ];
+
+  systemd.services.pocket-id.serviceConfig = {
+    PrivateMounts = lib.mkForce false;
+    ProtectSystem = lib.mkForce false;
+  };
 }
