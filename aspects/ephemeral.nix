@@ -129,6 +129,11 @@
         oldRootRetentionDays = retentionDays;
       };
 
+      age.identityPaths = [
+        "${persistentStoragePath}/etc/ssh/ssh_host_ed25519_key"
+        "${persistentStoragePath}/etc/ssh/ssh_host_rsa_key"
+      ];
+
       fileSystems."/persistent".neededForBoot = true;
 
       environment.persistence.main = {
