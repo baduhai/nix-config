@@ -5,6 +5,10 @@
   ...
 }:
 
+let
+  mkNginxVHosts = inputs.self.lib.mkNginxVHosts;
+in
+
 {
   services.pocket-id = {
     enable = true;
@@ -14,6 +18,10 @@
       TRUST_PROXY = true;
       ANALYTICS_DISABLED = true;
     };
+  };
+
+  services.nginx.virtualHosts = mkNginxVHosts {
+    domains."auth.baduhai.dev".locations."/".proxyPass = "http://localhost:1411/";
   };
 
   age.secrets.pocket-id-key = {
