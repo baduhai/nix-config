@@ -28,4 +28,14 @@ in
       '';
     };
   };
+
+  systemd.services.disable-gpp0-wakeup = {
+    description = "Disable GPP0 wakeup trigger to fix Aorus B550 sleep";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.bash}/bin/bash -c 'if grep -q \"GPP0.*enabled\" /proc/acpi/wakeup; then echo GPP0 > /proc/acpi/wakeup; fi'";
+      RemainAfterExit = true;
+    };
+  };
 }
