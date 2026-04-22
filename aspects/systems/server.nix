@@ -27,9 +27,12 @@
         ];
       };
 
-      services.tailscale = {
-        extraSetFlags = [ "--advertise-exit-node" ];
-        useRoutingFeatures = "server";
+      services = {
+        tailscale = {
+          extraSetFlags = [ "--advertise-exit-node" ];
+          useRoutingFeatures = "server";
+        };
+        logrotate.checkConfig = false;
       };
 
     };
