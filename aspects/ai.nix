@@ -5,7 +5,10 @@
       { inputs, pkgs, ... }:
       {
         environment.systemPackages =
-          (with pkgs; [ ])
+          (with pkgs; [
+            playwright
+            playwright-mcp
+          ])
           ++ (with inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}; [
             ccusage-opencode
             opencode
@@ -24,9 +27,18 @@
         programs.opencode = {
           enable = true;
           package = inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
-          settings = {
+          tui = {
             theme = "system";
             autoupdate = false;
+          };
+          settings = {
+            mcp = {
+              playwright = {
+                type = "local";
+                command = [ "mcp-server-playwright" ];
+                enabled = true;
+              };
+            };
           };
         };
       };

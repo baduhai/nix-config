@@ -15,6 +15,7 @@
         bitwarden-desktop
         qbittorrent
         nextcloud-client
+        ungoogled-chromium
         vesktop
       ];
     };
