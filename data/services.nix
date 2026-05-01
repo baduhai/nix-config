@@ -24,12 +24,6 @@
       public = true;
     }
     {
-      name = "pocket-id";
-      domain = "auth.baduhai.dev";
-      host = "trantor";
-      public = true;
-    }
-    {
       name = "nextcloud";
       domain = "cloud.baduhai.dev";
       host = "alexandria";
@@ -53,6 +47,12 @@
       name = "opencode-web";
       domain = "ai.baduhai.dev";
       host = "alexandria";
+    }
+    {
+      name = "pocket-id";
+      domain = "auth.baduhai.dev";
+      host = "trantor";
+      public = true;
     }
   ];
 }
