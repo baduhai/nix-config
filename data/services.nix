@@ -44,7 +44,7 @@
       host = "alexandria";
     }
     {
-      name = "opencode-web";
+      name = "open-webui";
       domain = "ai.baduhai.dev";
       host = "alexandria";
     }
