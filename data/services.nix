@@ -44,11 +44,6 @@
       host = "alexandria";
     }
     {
-      name = "open-webui";
-      domain = "ai.baduhai.dev";
-      host = "alexandria";
-    }
-    {
       name = "pocket-id";
       domain = "auth.baduhai.dev";
       host = "trantor";
