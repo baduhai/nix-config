@@ -37,6 +37,7 @@
           systemPackages = with pkgs; [
             kara
             kdePackages.karousel
+            kdePackages.krdc
             kde-rounded-corners
           ];
           plasma6.excludePackages = with pkgs.kdePackages; [

@@ -25,7 +25,10 @@ let
 in
 
 {
-  environment.systemPackages = [ reboot-into-qubes ];
+  environment.systemPackages = [
+    reboot-into-qubes
+    pkgs.kdePackages.krdp
+  ];
 
   programs.steam.dedicatedServer.openFirewall = true;
 }
