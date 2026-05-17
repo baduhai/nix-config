@@ -10,7 +10,6 @@
             playwright-mcp
           ])
           ++ (with inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}; [
-            ccusage-opencode
             opencode
           ]);
 
@@ -22,7 +21,12 @@
         };
       };
     homeManager.ai =
-      { config, inputs, pkgs, ... }:
+      {
+        config,
+        inputs,
+        pkgs,
+        ...
+      }:
       {
         programs.opencode = {
           enable = true;
