@@ -33,7 +33,7 @@
         buildDocs = false;
       };
 
-      services.nixos-cli = {
+      programs.nixos-cli = {
         enable = true;
         config = {
           ignore_dirty_tree = true;
