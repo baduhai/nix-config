@@ -42,12 +42,12 @@ in
     rotterdam-user
     alexandria
   ];
-  "rss-mtls-ca.crt.age".publicKeys = [
+  "mtls-ca.crt.age".publicKeys = [
     io-user
     rotterdam-user
     trantor
   ];
-  "rss-mtls-ca.key.age".publicKeys = [
+  "mtls-ca.key.age".publicKeys = [
     io-user
     rotterdam-user
   ];

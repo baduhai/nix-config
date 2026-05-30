@@ -11,8 +11,8 @@ Requires `rage` and `openssl`. Run from the repo root:
 mkdir -p /tmp/mtls-cert && cd /tmp/mtls-cert
 
 # Decrypt the CA key (you need one of the user SSH keys from secrets.nix)
-rage -d -i ~/.ssh/id_ed25519 -o ca.key secrets/rss-mtls-ca.key.age
-rage -d -i ~/.ssh/id_ed25519 -o ca.crt secrets/rss-mtls-ca.crt.age
+rage -d -i ~/.ssh/id_ed25519 -o ca.key secrets/mtls-ca.key.age
+rage -d -i ~/.ssh/id_ed25519 -o ca.crt secrets/mtls-ca.crt.age
 
 # Generate and sign a client cert (change CN to identify the device)
 CN="my-device"
