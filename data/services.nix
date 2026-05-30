@@ -38,6 +38,7 @@
       name = "miniflux";
       domain = "rss.baduhai.dev";
       host = "alexandria";
+      public = true;
     }
     {
       name = "laterfeed";

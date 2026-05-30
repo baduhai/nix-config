@@ -9,7 +9,7 @@ in
     miniflux = {
       enable = true;
       config = {
-        LISTEN_ADDR = "localhost:58000";
+        LISTEN_ADDR = "0.0.0.0:58000";
         CREATE_ADMIN = 1;
         FETCHER_ALLOW_PRIVATE_NETWORKS = 1;
         POLLING_SCHEDULER = "entry_frequency";
@@ -22,10 +22,12 @@ in
 
     nginx.virtualHosts = mkNginxVHosts {
       domains."rss.baduhai.dev".locations."/".proxyPass =
-        "http://${config.services.miniflux.config.LISTEN_ADDR}/";
+        "http://127.0.0.1:58000/";
       domains."read.baduhai.dev".locations."/".proxyPass = "http://localhost:58001/";
     };
   };
+
+  networking.firewall.interfaces.tailscale0.allowedTCPPorts = [ 58000 ];
 
   virtualisation.oci-containers.containers.laterfeed = {
     image = "reaperberri/laterfeed:latest";
