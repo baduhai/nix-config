@@ -38,13 +38,11 @@
       name = "miniflux";
       domain = "rss.baduhai.dev";
       host = "alexandria";
-      public = true;
     }
     {
       name = "laterfeed";
       domain = "read.baduhai.dev";
       host = "alexandria";
-      public = true;
     }
     {
       name = "pocket-id";

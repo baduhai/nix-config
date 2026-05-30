@@ -42,13 +42,4 @@ in
     rotterdam-user
     alexandria
   ];
-  "mtls-ca.crt.age".publicKeys = [
-    io-user
-    rotterdam-user
-    trantor
-  ];
-  "mtls-ca.key.age".publicKeys = [
-    io-user
-    rotterdam-user
-  ];
 }
