@@ -15,7 +15,7 @@
     {
       name = "vaultwarden";
       domain = "pass.baduhai.dev";
-      host = "alexandria";
+      host = "trantor";
       public = true;
     }
     {
