@@ -16,6 +16,7 @@
       name = "vaultwarden";
       domain = "pass.baduhai.dev";
       host = "alexandria";
+      public = true;
     }
     {
       name = "forgejo";
