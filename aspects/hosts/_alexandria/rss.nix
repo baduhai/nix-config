@@ -27,7 +27,7 @@ in
     };
   };
 
-  networking.firewall.interfaces.tailscale0.allowedTCPPorts = [ 58000 ];
+  networking.firewall.interfaces.tailscale0.allowedTCPPorts = [ 58000 58001 ];
 
   virtualisation.oci-containers.containers.laterfeed = {
     image = "reaperberri/laterfeed:latest";

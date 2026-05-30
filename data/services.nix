@@ -44,6 +44,7 @@
       name = "laterfeed";
       domain = "read.baduhai.dev";
       host = "alexandria";
+      public = true;
     }
     {
       name = "pocket-id";
