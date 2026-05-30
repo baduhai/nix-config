@@ -32,9 +32,11 @@
             # Expand !! and !$ on space (Fish-style)
             bindkey ' ' magic-space
             setopt HIST_VERIFY
-            # History prefix search with up/down arrows
-            bindkey "^[[A" history-search-backward
-            bindkey "^[[B" history-search-forward
+            # History prefix search with up/down arrows (Fish-style)
+            bindkey "^[[A" history-beginning-search-backward
+            bindkey "^[[B" history-beginning-search-forward
+            bindkey "^[OA" history-beginning-search-backward
+            bindkey "^[OB" history-beginning-search-forward
             # Fish-style Ctrl+Backspace: delete one path segment at a time
             function backward-kill-path-component() {
               if [[ "$LBUFFER" == */ ]]; then
