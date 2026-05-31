@@ -17,6 +17,7 @@ in
       APP_URL = "https://auth.baduhai.dev";
       TRUST_PROXY = true;
       ANALYTICS_DISABLED = true;
+      EMAILS_VERIFIED = true;
     };
   };
 
