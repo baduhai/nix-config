@@ -35,7 +35,6 @@ in
   <SplashscreenEnabled>true</SplashscreenEnabled>
 </BrandingOptions>
 BRANDEOF
-    chown jellyfin:jellyfin /var/lib/jellyfin/config/branding.xml
   '';
 
   age.secrets.jellyfin-sso = {
