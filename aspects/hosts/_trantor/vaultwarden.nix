@@ -24,6 +24,49 @@ in
     domains."pass.baduhai.dev".locations."/".proxyPass = "http://127.0.0.1:58222/";
   };
 
+  services.fail2ban.jails = {
+    vaultwarden-web = {
+      settings = {
+        enabled = true;
+        filter = "vaultwarden-web";
+        banaction = "%(banaction_allports)s";
+        maxretry = 3;
+        findtime = "10m";
+        bantime = "1h";
+      };
+    };
+    vaultwarden-admin = {
+      settings = {
+        enabled = true;
+        filter = "vaultwarden-admin";
+        banaction = "%(banaction_allports)s";
+        maxretry = 3;
+        findtime = "10m";
+        bantime = "1h";
+      };
+    };
+  };
+
+  environment.etc."fail2ban/filter.d/vaultwarden-web.conf".text = ''
+    [INCLUDES]
+    before = common.conf
+
+    [Definition]
+    failregex = ^.*Username or password is incorrect. Try again. IP: <HOST>. Username:.*$
+    ignoreregex =
+    journalmatch = _SYSTEMD_UNIT=vaultwarden.service
+  '';
+
+  environment.etc."fail2ban/filter.d/vaultwarden-admin.conf".text = ''
+    [INCLUDES]
+    before = common.conf
+
+    [Definition]
+    failregex = ^.*Invalid admin token. IP: <HOST>.*$
+    ignoreregex =
+    journalmatch = _SYSTEMD_UNIT=vaultwarden.service
+  '';
+
   environment.persistence.main.directories = [
     {
       directory = "/var/lib/bitwarden_rs";
