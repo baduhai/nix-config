@@ -47,4 +47,9 @@ in
     rotterdam-user
     alexandria
   ];
+  "vaultwarden-sso.env.age".publicKeys = [
+    io-user
+    rotterdam-user
+    trantor
+  ];
 }

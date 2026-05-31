@@ -17,7 +17,14 @@ in
       SIGNUPS_ALLOWED = false;
       ROCKET_ADDRESS = "127.0.0.1";
       ROCKET_PORT = 58222;
+      SSO_ENABLED = true;
+      SSO_AUTHORITY = "https://auth.baduhai.dev";
+      SSO_SCOPES = "email profile groups offline_access";
+      SSO_PKCE = true;
+      SSO_SIGNUPS_MATCH_EMAIL = true;
+      SSO_ALLOW_UNKNOWN_EMAIL_VERIFICATION = true;
     };
+    environmentFile = config.age.secrets.vaultwarden-sso.path;
   };
 
   services.nginx.virtualHosts = mkNginxVHosts {
@@ -79,5 +86,11 @@ in
   systemd.services.vaultwarden.serviceConfig = {
     PrivateMounts = lib.mkForce false;
     ProtectSystem = lib.mkForce false;
+  };
+
+  age.secrets.vaultwarden-sso = {
+    file = "${inputs.self}/secrets/vaultwarden-sso.env.age";
+    owner = "vaultwarden";
+    group = "vaultwarden";
   };
 }
