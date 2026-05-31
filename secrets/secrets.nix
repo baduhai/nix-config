@@ -52,4 +52,9 @@ in
     rotterdam-user
     trantor
   ];
+  "jellyfin-sso.xml.age".publicKeys = [
+    io-user
+    rotterdam-user
+    alexandria
+  ];
 }
