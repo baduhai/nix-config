@@ -69,6 +69,7 @@ in
       config = {
         dbtype = "pgsql";
         adminpassFile = config.age.secrets.nextcloud-adminpass.path;
+        hide_login_form = true;
       };
       phpOptions = {
         "opcache.interned_strings_buffer" = "16";
