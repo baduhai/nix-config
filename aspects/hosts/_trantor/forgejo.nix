@@ -26,7 +26,7 @@ in
         };
         log.LEVEL = "Warn";
         mailer.ENABLED = false;
-        actions.ENABLED = false;
+        actions.ENABLED = true;
         service.DISABLE_REGISTRATION = true;
         oauth2_client = {
           ENABLE_AUTO_REGISTRATION = true;
