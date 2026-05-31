@@ -13,9 +13,6 @@ in
   };
 
   systemd.services.jellyfin.preStart = ''
-    rm -f /var/lib/jellyfin/plugins/configurations/SSO-Auth.xml
-    cp ${config.age.secrets.jellyfin-sso.path} /var/lib/jellyfin/plugins/configurations/SSO-Auth.xml
-    chmod 600 /var/lib/jellyfin/plugins/configurations/SSO-Auth.xml
     cat > /var/lib/jellyfin/config/branding.xml << 'BRANDEOF'
 <?xml version="1.0" encoding="utf-8"?>
 <BrandingOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
