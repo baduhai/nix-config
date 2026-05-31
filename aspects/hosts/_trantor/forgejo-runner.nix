@@ -29,8 +29,6 @@
   environment.persistence.main.directories = [
     {
       directory = "/var/lib/gitea-runner";
-      user = "gitea-runner";
-      group = "gitea-runner";
       mode = "0700";
     }
   ];
