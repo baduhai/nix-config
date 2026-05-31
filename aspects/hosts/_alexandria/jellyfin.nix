@@ -16,6 +16,29 @@ in
     rm -f /var/lib/jellyfin/plugins/configurations/SSO-Auth.xml
     cp ${config.age.secrets.jellyfin-sso.path} /var/lib/jellyfin/plugins/configurations/SSO-Auth.xml
     chmod 600 /var/lib/jellyfin/plugins/configurations/SSO-Auth.xml
+    cat > /var/lib/jellyfin/config/branding.xml << 'BRANDEOF'
+<?xml version="1.0" encoding="utf-8"?>
+<BrandingOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <LoginDisclaimer>&lt;form action=&quot;https://jellyfin.baduhai.dev/sso/OID/start/PocketID&quot;&gt;
+  &lt;button class=&quot;raised block emby-button button-submit&quot;&gt;
+    Sign in with PocketID
+  &lt;/button&gt;
+&lt;/form&gt;</LoginDisclaimer>
+  <CustomCss>a.raised.emby-button {
+  padding: 0.9em 1em;
+  color: inherit !important;
+}
+.disclaimerContainer {
+  display: block;
+}
+#loginPage .manualLoginForm {
+  display: none;
+}
+</CustomCss>
+  <SplashscreenEnabled>true</SplashscreenEnabled>
+</BrandingOptions>
+BRANDEOF
+    chown jellyfin:jellyfin /var/lib/jellyfin/config/branding.xml
   '';
 
   age.secrets.jellyfin-sso = {
