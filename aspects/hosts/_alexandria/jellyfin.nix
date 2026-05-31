@@ -14,6 +14,7 @@ in
 
   systemd.services.jellyfin.preStart = ''
     cp ${config.age.secrets.jellyfin-sso.path} /var/lib/jellyfin/plugins/configurations/SSO-Auth.xml
+    chmod 600 /var/lib/jellyfin/plugins/configurations/SSO-Auth.xml
   '';
 
   age.secrets.jellyfin-sso = {
