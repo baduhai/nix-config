@@ -28,6 +28,7 @@ in
         mailer.ENABLED = false;
         actions.ENABLED = true;
         service.DISABLE_REGISTRATION = true;
+        service.ENABLE_PASSWORD_LOGIN = false;
         oauth2_client = {
           ENABLE_AUTO_REGISTRATION = true;
           UPDATE_AVATAR = true;
