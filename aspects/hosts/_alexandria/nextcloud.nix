@@ -13,7 +13,7 @@ in
   services = {
     nextcloud = {
       enable = true;
-      package = pkgs.nextcloud32;
+      package = pkgs.nextcloud33;
       datadir = "/data/nextcloud";
       hostName = "cloud.baduhai.dev";
       configureRedis = true;
@@ -25,7 +25,6 @@ in
         inherit (config.services.nextcloud.package.packages.apps)
           calendar
           contacts
-          notes
           tasks
           user_oidc
           ;
