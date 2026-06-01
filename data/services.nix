@@ -41,11 +41,6 @@
       host = "alexandria";
     }
     {
-      name = "laterfeed";
-      domain = "read.baduhai.dev";
-      host = "alexandria";
-    }
-    {
       name = "pocket-id";
       domain = "auth.baduhai.dev";
       host = "trantor";
