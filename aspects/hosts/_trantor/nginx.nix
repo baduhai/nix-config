@@ -22,7 +22,7 @@ in
       email = "baduhai@proton.me";
       dnsResolver = "1.1.1.1:53";
       dnsProvider = "cloudflare";
-      credentialFiles = { "cloudflare" = config.age.secrets.cloudflare.path; };
+      environmentFile = config.age.secrets.cloudflare.path;
     };
     certs = acmeCerts;
   };
