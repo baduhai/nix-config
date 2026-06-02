@@ -10,7 +10,7 @@ let
 in
 
 {
-  imports = [ inputs.fusion.nixosModules.default ];
+  imports = [ (inputs.fusion.nixosModules.default { self = inputs.fusion; }) ];
 
   services = {
     fusion = {
