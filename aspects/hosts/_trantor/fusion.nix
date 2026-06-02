@@ -46,4 +46,6 @@ in
     PrivateMounts = lib.mkForce false;
     ProtectSystem = lib.mkForce false;
   };
+
+  systemd.services.fusion.environment.FUSION_ALLOW_EMPTY_PASSWORD = "true";
 }
