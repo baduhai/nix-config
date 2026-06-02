@@ -10,7 +10,6 @@ in
   services = {
     fusion = {
       enable = true;
-      package = inputs.fusion.packages.${pkgs.system}.default;
       port = 58000;
       allowPrivateFeeds = true;
     };
