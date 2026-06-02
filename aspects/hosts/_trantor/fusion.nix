@@ -24,14 +24,25 @@ in
     };
   };
 
+  users.users.fusion = {
+    isSystemUser = true;
+    group = "fusion";
+  };
+  users.groups.fusion = {};
+
   environment.persistence.main.directories = [
     {
       directory = "/var/lib/fusion";
+      user = "fusion";
+      group = "fusion";
       mode = "0700";
     }
   ];
 
   systemd.services.fusion.serviceConfig = {
+    DynamicUser = lib.mkForce false;
+    User = "fusion";
+    Group = "fusion";
     PrivateMounts = lib.mkForce false;
     ProtectSystem = lib.mkForce false;
   };
