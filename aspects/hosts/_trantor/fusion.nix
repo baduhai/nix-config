@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  inputs,
+  ...
+}:
 
 let
   mkNginxVHosts = inputs.self.lib.mkNginxVHosts;
@@ -17,5 +22,17 @@ in
     nginx.virtualHosts = mkNginxVHosts {
       domains."rss.baduhai.dev".locations."/".proxyPass = "http://localhost:58000/";
     };
+  };
+
+  environment.persistence.main.directories = [
+    {
+      directory = "/var/lib/fusion";
+      mode = "0700";
+    }
+  ];
+
+  systemd.services.fusion.serviceConfig = {
+    PrivateMounts = lib.mkForce false;
+    ProtectSystem = lib.mkForce false;
   };
 }
