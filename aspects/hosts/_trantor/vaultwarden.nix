@@ -23,7 +23,6 @@ in
       SSO_PKCE = true;
       SSO_SIGNUPS_MATCH_EMAIL = true;
       SSO_ALLOW_UNKNOWN_EMAIL_VERIFICATION = true;
-      SSO_ONLY = true;
     };
     environmentFile = config.age.secrets.vaultwarden-sso.path;
   };
