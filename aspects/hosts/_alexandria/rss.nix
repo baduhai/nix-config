@@ -5,6 +5,8 @@ let
 in
 
 {
+  imports = [ inputs.fusion.nixosModules.default ];
+
   services = {
     fusion = {
       enable = true;
