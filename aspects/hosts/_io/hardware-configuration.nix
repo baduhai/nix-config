@@ -18,6 +18,9 @@
         "sd_mod"
         "sdhci_pci"
       ];
+      kernelModules = [
+        "i915"
+      ];
     };
     kernelModules = [ "kvm-intel" ];
   };
