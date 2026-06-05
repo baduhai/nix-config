@@ -7,7 +7,6 @@
         environment.systemPackages =
           (with pkgs; [
             playwright
-            playwright-mcp
           ])
           ++ (with inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}; [
             opencode
@@ -36,20 +35,6 @@
             autoupdate = false;
           };
           settings = {
-            mcp = {
-              playwright = {
-                type = "local";
-                command = [
-                  "${pkgs.coreutils}/bin/env"
-                  "PLAYWRIGHT_BROWSERS_PATH=${config.xdg.cacheHome}/playwright-mcp"
-                  "${pkgs.nodejs}/bin/node"
-                  "${pkgs.playwright-mcp}/lib/node_modules/playwright-mcp-internal/cli.js"
-                  "--executable-path"
-                  "/run/current-system/sw/bin/chromium"
-                ];
-                enabled = true;
-              };
-            };
           };
         };
       };
