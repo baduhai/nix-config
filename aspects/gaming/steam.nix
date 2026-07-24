@@ -18,7 +18,6 @@
 
       services.flatpak.packages = [
         "com.steamgriddb.SGDBoop"
-        "io.github.Foldex.AdwSteamGtk"
       ];
     };
 }

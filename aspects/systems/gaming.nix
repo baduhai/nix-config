@@ -8,6 +8,7 @@
         imports = with inputs.self.modules.nixos; [
           mangohud
           steam
+          sunshine
         ];
         hardware = {
           xpadneo.enable = true;
