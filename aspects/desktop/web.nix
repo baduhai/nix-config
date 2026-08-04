@@ -11,11 +11,11 @@
       environment.systemPackages = with pkgs; [
         inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
         amnesiac-brave
-        beeper
         qbittorrent
         nextcloud-client
         ungoogled-chromium
         vesktop
+        zapzap
       ];
     };
 }
