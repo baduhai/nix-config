@@ -54,19 +54,31 @@
       shellsModules = import-tree ./shells;
       terranixModules = import-tree ./terranix;
     in
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
+    flake-parts.lib.mkFlake { inherit inputs; } (
+      { inputs, ... }:
+      {
+        systems = [
+          "x86_64-linux"
+          "aarch64-linux"
+        ];
 
-      imports = [
-        flake-parts.flakeModules.modules
-        inputs.terranix.flakeModule
-      ]
-      ++ aspectsModules.imports
-      ++ packagesModules.imports
-      ++ shellsModules.imports
-      ++ terranixModules.imports;
-    };
+        perSystem =
+          { system, ... }:
+          {
+            _module.args.pkgs = import inputs.nixpkgs {
+              inherit system;
+              config.allowUnfree = true;
+            };
+          };
+
+        imports = [
+          flake-parts.flakeModules.modules
+          inputs.terranix.flakeModule
+        ]
+        ++ aspectsModules.imports
+        ++ packagesModules.imports
+        ++ shellsModules.imports
+        ++ terranixModules.imports;
+      }
+    );
 }
