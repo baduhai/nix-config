@@ -148,7 +148,7 @@
 
         fonts.fontconfig.enable = true;
 
-        services.vicinae = {
+        programs.vicinae = {
           enable = true;
           systemd = {
             enable = true;
