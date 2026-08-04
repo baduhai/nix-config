@@ -175,13 +175,13 @@
                 ;;
               zip)
                 if [[ -n "$vflag" ]]; then
-                  zip -v "$out" "''${files[@]}"
+                  zip -rv "$out" "''${files[@]}"
                 else
-                  zip -q "$out" "''${files[@]}"
+                  zip -rq "$out" "''${files[@]}"
                 fi
                 ;;
               7z)
-                7z a "$out" "''${files[@]}"
+                7z a -y "$out" "''${files[@]}"
                 ;;
               rar)
                 rar a "$out" "''${files[@]}"
@@ -240,10 +240,10 @@
                 fi
                 ;;
               7z)
-                7z x "$file" -o"$dest"
+                7z x -y "$file" -o"$dest"
                 ;;
               rar)
-                unrar x "$file" "$dest/"
+                unrar x -o+ -y "$file" "$dest/"
                 ;;
               ar)
                 (
