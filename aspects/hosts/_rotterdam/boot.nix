@@ -3,7 +3,7 @@
 let
   qubesnsh = pkgs.writeTextFile {
     name = "qubes.nsh";
-    text = "HD1f65535a1:EFI\\qubes\\grubx64.efi";
+    text = "HD1a65535a1:EFI\\qubes\\grubx64.efi";
   };
 in
 
