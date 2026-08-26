@@ -51,10 +51,5 @@
       domain = "notes.baduhai.dev";
       host = "alexandria";
     }
-    {
-      name = "open-webui";
-      domain = "ai.baduhai.dev";
-      host = "alexandria";
-    }
   ];
 }
