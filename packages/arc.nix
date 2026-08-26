@@ -17,8 +17,6 @@
           zip
           unzip
           p7zip
-          rar
-          unrar
           binutils
         ];
         text = ''
@@ -39,7 +37,7 @@
             .tar.zst             .tar.lz4              .tar.lz, .tar.lzip
             .tar                 .gz                   .bz2
             .xz                  .zst                  .lz4
-            .zip                 .7z                   .rar
+            .zip                 .7z                   .rar (extract only)
             .ar
 
           Extraction:
@@ -118,11 +116,8 @@
                   in_body && NF > 0 { print $NF }
                 ' | cut -d/ -f1 | sort -u) || return 1
                 ;;
-              7z)
+              7z|rar)
                 listing=$(7z l -ba -slt "$file" 2>/dev/null | grep '^Path = ' | sed 's/^Path = //' | cut -d/ -f1 | sort -u) || return 1
-                ;;
-              rar)
-                listing=$(unrar vb "$file" 2>/dev/null | cut -d/ -f1 | sort -u) || return 1
                 ;;
               *)
                 return 1
@@ -184,7 +179,8 @@
                 7z a -y "$out" "''${files[@]}"
                 ;;
               rar)
-                rar a "$out" "''${files[@]}"
+                echo "Error: rar creation unsupported" >&2
+                return 1
                 ;;
               ar)
                 ar rcs "$out" "''${files[@]}"
@@ -239,11 +235,8 @@
                   unzip -q "$file" -d "$dest"
                 fi
                 ;;
-              7z)
+              7z|rar)
                 7z x -y "$file" -o"$dest"
-                ;;
-              rar)
-                unrar x -o+ -y "$file" "$dest/"
                 ;;
               ar)
                 (
