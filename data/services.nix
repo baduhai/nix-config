@@ -51,5 +51,11 @@
       domain = "notes.baduhai.dev";
       host = "alexandria";
     }
+    {
+      name = "sparkyfitness";
+      domain = "fitness.baduhai.dev";
+      host = "trantor";
+      public = true;
+    }
   ];
 }
