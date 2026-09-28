@@ -49,12 +49,6 @@
 
   outputs =
     inputs@{ flake-parts, import-tree, ... }:
-    let
-      aspectsModules = import-tree ./aspects;
-      packagesModules = import-tree ./packages;
-      shellsModules = import-tree ./shells;
-      terranixModules = import-tree ./terranix;
-    in
     flake-parts.lib.mkFlake { inherit inputs; } (
       { inputs, ... }:
       {
@@ -75,11 +69,11 @@
         imports = [
           flake-parts.flakeModules.modules
           inputs.terranix.flakeModule
-        ]
-        ++ aspectsModules.imports
-        ++ packagesModules.imports
-        ++ shellsModules.imports
-        ++ terranixModules.imports;
+          (import-tree ./aspects)
+          (import-tree ./packages)
+          (import-tree ./shells)
+          (import-tree ./terranix)
+        ];
       }
     );
 }
