@@ -11,8 +11,8 @@
           hash = "sha256-6Oq778g8HbSa53PZ4zGM8JEYKlH7uGr/h7yHHoZ65ho=";
         };
         x86_64-linux = {
-          url = "https://github.com/netbootxyz/netboot.xyz/releases/download/${version}/netboot.xyz.efi";
-          hash = "sha256-Vrsh6fbXnq25R+cDGgiMmvzEiqHrmbJQLRYfCxxYaoI=";
+          url = "https://github.com/netbootxyz/netboot.xyz/releases/download/${version}/netboot.xyz-legacy.efi";
+          hash = "sha256-xns+RnTf5ZJ71ujLSiA+VCLlCiyPWQ6ZGSlKX5ONWMQ=";
         };
       };
     in
