@@ -21,6 +21,10 @@
     };
     disko.url = "github:nix-community/disko";
     impermanence.url = "github:nix-community/impermanence";
+    microvm = {
+      url = "github:microvm-nix/microvm.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixos-cli.url = "github:nix-community/nixos-cli";
     nix-flatpak.url = "github:gmodena/nix-flatpak/main";
     stylix.url = "github:danth/stylix";
