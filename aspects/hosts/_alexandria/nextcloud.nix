@@ -13,7 +13,7 @@ in
   services = {
     nextcloud = {
       enable = true;
-      package = pkgs.nextcloud33;
+      package = pkgs.nextcloud35;
       datadir = "/data/nextcloud";
       hostName = "cloud.baduhai.dev";
       configureRedis = true;
