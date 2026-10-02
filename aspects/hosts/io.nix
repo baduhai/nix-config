@@ -17,6 +17,7 @@ in
       dev
       kde
       networkmanager
+      nixos-containers
       podman
     ];
   };

@@ -13,6 +13,7 @@ in
       server
       # other aspects
       fwupd
+      nixos-containers
       podman
     ];
   };

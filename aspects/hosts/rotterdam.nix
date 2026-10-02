@@ -19,6 +19,7 @@ in
       fwupd
       kde
       networkmanager
+      nixos-containers
       podman
     ];
   };
