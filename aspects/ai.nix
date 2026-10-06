@@ -35,6 +35,13 @@
             autoupdate = false;
           };
           settings = {
+            mcp = {
+              nixos = {
+                type = "local";
+                command = [ "${pkgs.mcp-nixos}/bin/mcp-nixos" ];
+                enabled = true;
+              };
+            };
           };
         };
       };
