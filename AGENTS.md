@@ -31,6 +31,14 @@ nixos build --config apply.use_nom=false
 it works before or after the subcommand and with all aliases. Never edit the
 config to turn nom off globally.
 
+### Cleaning up generations
+- NixOS: `nixos generation list` (alias `nixos list-generations`), then
+  `nixos generation rollback` or `nixos generation switch <gen>` to move.
+  Prune with `nixos generation delete` (`--all` keeps the current generation,
+  `--older-than 30d`, `--min N`, or explicit generation numbers).
+- Home-manager: `hm generation list | rollback | switch <id> | delete <id>`, and
+  `hm generation cleanup` (deletes all but the current generation).
+
 ## Layout
 - `aspects/**`: expose `flake.modules.nixos.<name>` and/or `flake.modules.homeManager.<name>`.
 - `aspects/hosts/<host>.nix`: host entrypoint; calls `inputs.self.lib.mkHost`.
