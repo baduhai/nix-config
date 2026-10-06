@@ -57,9 +57,4 @@ in
     rotterdam-user
     alexandria
   ];
-  "sparkyfitness.env.age".publicKeys = [
-    io-user
-    rotterdam-user
-    trantor
-  ];
 }
