@@ -46,10 +46,5 @@
       host = "trantor";
       public = true;
     }
-    {
-      name = "silverbullet";
-      domain = "notes.baduhai.dev";
-      host = "alexandria";
-    }
   ];
 }
