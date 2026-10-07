@@ -13,7 +13,8 @@ in
     extraModules = with inputs.self.modules.nixos; [
       # base aspects
       server
-      podman
+      # other aspects
+      nixos-containers
     ];
   };
 }
