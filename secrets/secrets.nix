@@ -37,11 +37,6 @@ in
     rotterdam-user
     trantor
   ];
-  "forgejo-runner-token.age".publicKeys = [
-    io-user
-    rotterdam-user
-    trantor
-  ];
   "miniflux-admincreds.age".publicKeys = [
     io-user
     rotterdam-user
