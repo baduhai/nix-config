@@ -13,6 +13,18 @@ in
     domains."git.baduhai.dev".locations."/".proxyPass = "http://10.233.2.2:3000/";
   };
 
+  # Forgejo's built-in SSH runs in the container; nginx stream proxies it on
+  # 2222. Only the Tailscale interface is allowed through the firewall, so it
+  # is reachable over the tailnet but not publicly. (nspawn's own --port
+  # forwarding doesn't survive the host nftables firewall.)
+  networking.firewall.interfaces.tailscale0.allowedTCPPorts = [ 2222 ];
+  services.nginx.streamConfig = ''
+    server {
+      listen 2222;
+      proxy_pass 10.233.2.2:2222;
+    }
+  '';
+
   services.fail2ban.jails.forgejo = {
     settings = {
       enabled = true;
@@ -74,7 +86,13 @@ in
             DOMAIN = "git.baduhai.dev";
             ROOT_URL = "https://git.baduhai.dev";
             OFFLINE_MODE = true; # disable use of CDNs
-            DISABLE_SSH = true; # git-over-SSH is not supported in a container
+            DISABLE_SSH = false;
+            START_SSH_SERVER = true;
+            SSH_LISTEN_HOST = "0.0.0.0";
+            SSH_LISTEN_PORT = 2222; # unprivileged: no CAP_NET_BIND_SERVICE needed
+            SSH_PORT = 2222; # advertised in clone URLs
+            SSH_DOMAIN = "git.baduhai.dev";
+            BUILTIN_SSH_SERVER_USER = "git";
           };
           log = {
             LEVEL = "Warn";
