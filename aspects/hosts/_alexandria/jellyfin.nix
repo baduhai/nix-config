@@ -1,5 +1,6 @@
 {
   inputs,
+  pkgs,
   ...
 }:
 
@@ -52,7 +53,14 @@ in
         hostPath = "/data/media";
         isReadOnly = false;
       };
-      config = { ... }: {
+      config = { lib, ... }: {
+        # The container runs unstable, the host stable. nixos-containers hands
+        # the container the host's stdenv platform object, which the container's
+        # lib considers unequal to its own elaboration and therefore treats as a
+        # cross build (infinite recursion in the bootstrap). Pin the platform by
+        # system name so both nixpkgs elaborate it identically.
+        nixpkgs.hostPlatform = lib.mkForce pkgs.stdenv.hostPlatform.system;
+
         # uid/gid pinned to the host's existing on-disk ownership so the moved
         # data (and /data/media) keeps its owner without a recursive chown.
         users = {
