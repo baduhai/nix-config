@@ -44,47 +44,52 @@ in
     groups.jellyfin.gid = 977;
   };
 
-  containers.jellyfin = mkContainer {
-    index = 6;
-    # Media library is far too large to move into the container root.
-    bindMounts."/data/media" = {
-      hostPath = "/data/media";
-      isReadOnly = false;
-    };
-    config = { ... }: {
-      # uid/gid pinned to the host's existing on-disk ownership so the moved
-      # data (and /data/media) keeps its owner without a recursive chown.
-      users = {
-        users.jellyfin.uid = 989;
-        groups.jellyfin.gid = 977;
+  containers.jellyfin =
+    (mkContainer {
+      index = 6;
+      # Media library is far too large to move into the container root.
+      bindMounts."/data/media" = {
+        hostPath = "/data/media";
+        isReadOnly = false;
       };
+      config = { ... }: {
+        # uid/gid pinned to the host's existing on-disk ownership so the moved
+        # data (and /data/media) keeps its owner without a recursive chown.
+        users = {
+          users.jellyfin.uid = 989;
+          groups.jellyfin.gid = 977;
+        };
 
-      services.jellyfin.enable = true;
+        services.jellyfin.enable = true;
 
-      systemd.services.jellyfin.preStart = ''
-        cat > /var/lib/jellyfin/config/branding.xml << 'BRANDEOF'
-        <?xml version="1.0" encoding="utf-8"?>
-        <BrandingOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-          <LoginDisclaimer>&lt;form action=&quot;https://jellyfin.baduhai.dev/sso/OID/start/PocketID&quot;&gt;
-          &lt;button class=&quot;raised block emby-button button-submit&quot;&gt;
-            Sign in with PocketID
-          &lt;/button&gt;
-        &lt;/form&gt;</LoginDisclaimer>
-          <CustomCss>a.raised.emby-button {
-          padding: 0.9em 1em;
-          color: inherit !important;
-        }
-        .disclaimerContainer {
-          display: block;
-        }
-        #loginPage .manualLoginForm {
-          display: none;
-        }
-        </CustomCss>
-          <SplashscreenEnabled>true</SplashscreenEnabled>
-        </BrandingOptions>
-        BRANDEOF
-      '';
+        systemd.services.jellyfin.preStart = ''
+          cat > /var/lib/jellyfin/config/branding.xml << 'BRANDEOF'
+          <?xml version="1.0" encoding="utf-8"?>
+          <BrandingOptions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <LoginDisclaimer>&lt;form action=&quot;https://jellyfin.baduhai.dev/sso/OID/start/PocketID&quot;&gt;
+            &lt;button class=&quot;raised block emby-button button-submit&quot;&gt;
+              Sign in with PocketID
+            &lt;/button&gt;
+          &lt;/form&gt;</LoginDisclaimer>
+            <CustomCss>a.raised.emby-button {
+            padding: 0.9em 1em;
+            color: inherit !important;
+          }
+          .disclaimerContainer {
+            display: block;
+          }
+          #loginPage .manualLoginForm {
+            display: none;
+          }
+          </CustomCss>
+            <SplashscreenEnabled>true</SplashscreenEnabled>
+          </BrandingOptions>
+          BRANDEOF
+        '';
+      };
+    })
+    // {
+      # Stable on the hosts, but Jellyfin 12.x only ships on unstable.
+      nixpkgs = inputs.nixpkgs.outPath;
     };
-  };
 }
