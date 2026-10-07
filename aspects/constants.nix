@@ -137,6 +137,60 @@ in
             local-data = lanData;
           }
         ];
+      # Generates a NixOS container with sane defaults for this repo.
+      #
+      # Private-network containers get a fixed veth subnet derived from their
+      # index (10.233.<index>.0/24) so the host nginx can reach them, and a
+      # resolv.conf pointing at the veth gateway where the shared-net unbound
+      # container listens. Data lives in the container root
+      # (/var/lib/nixos-containers/<name>), which nixos-containers.nix keeps
+      # persistent on ephemeral hosts.
+      mkContainer =
+        {
+          index ? null,
+          privateNetwork ? true,
+          bindMounts ? { },
+          specialArgs ? { },
+          forwardPorts ? [ ],
+          config,
+        }:
+        {
+          autoStart = true;
+          inherit
+            privateNetwork
+            specialArgs
+            forwardPorts
+            ;
+          bindMounts = {
+            "/run/agenix" = {
+              hostPath = "/run/agenix";
+              isReadOnly = true;
+            };
+          }
+          // bindMounts;
+          config = {
+            imports = [
+              {
+                system.stateVersion = "22.11";
+                # Shared-net containers would otherwise rewrite the host's
+                # nftables ruleset; private ones have no ingress but the host.
+                networking.firewall.enable = false;
+              }
+              (lib.optionalAttrs privateNetwork {
+                networking = {
+                  nameservers = [ "10.233.${toString index}.1" ];
+                  resolvconf.enable = false;
+                };
+                environment.etc."resolv.conf".text = "nameserver 10.233.${toString index}.1\n";
+              })
+              config
+            ];
+          };
+        }
+        // lib.optionalAttrs privateNetwork {
+          hostAddress = "10.233.${toString index}.1";
+          localAddress = "10.233.${toString index}.2";
+        };
       # Generates flake.homeConfigurations
       mkHomeConfiguration =
         {
