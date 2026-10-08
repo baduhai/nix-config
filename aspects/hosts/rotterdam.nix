@@ -18,6 +18,7 @@ in
       dev
       fwupd
       kde
+      libvirtd
       networkmanager
       nixos-containers
       podman
