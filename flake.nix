@@ -38,10 +38,6 @@
     vicinae.url = "github:vicinaehq/vicinae";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     fusion.url = "github:baduhai/fusion";
-    degoog = {
-      url = "github:degoog-org/degoog";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # stand-alone tools
     terranix = {

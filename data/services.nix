@@ -46,10 +46,5 @@
       host = "trantor";
       public = true;
     }
-    {
-      name = "degoog";
-      domain = "search.baduhai.dev";
-      host = "alexandria";
-    }
   ];
 }
