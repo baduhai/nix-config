@@ -23,7 +23,7 @@ existing patterns over clever abstractions.
 parse. Agents MUST pass the config override on every invocation:
 
 ```bash
-nixos apply --config apply.use_nom=false
+nixos apply --yes --config apply.use_nom=false
 nixos build --config apply.use_nom=false
 ```
 
