@@ -9,7 +9,8 @@
             playwright
           ])
           ++ (with inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}; [
-            opencode
+            # OpenCode v2 installs as `opencode2`; the sleep-inhibit plugin needs >=2.0.14.
+            opencode2
           ]);
 
         nix.settings = {
@@ -29,9 +30,12 @@
       {
         home.packages = [ pkgs.gcli ];
 
+        # OpenCode v2 ships as `opencode2`; keep the familiar command name.
+        home.shellAliases.opencode = "opencode2";
+
         programs.opencode = {
           enable = true;
-          package = inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.opencode;
+          package = inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.opencode2;
           tui = {
             theme = "system";
             autoupdate = false;
@@ -53,6 +57,16 @@
               unless the user explicitly asks.
           '';
           settings = {
+            # Prevent suspend/hibernation while agents are working.
+            plugins = [
+              {
+                package = "opencode-sleep-inhibit";
+                options = {
+                  mode = "sleep";
+                  cooldownMinutes = 0;
+                };
+              }
+            ];
             mcp = {
               nixos = {
                 type = "local";
@@ -64,7 +78,8 @@
                 command = [
                   "${pkgs.playwright-mcp}/bin/playwright-mcp"
                   "--headless"
-                  "--executable-path" "${pkgs.ungoogled-chromium}/bin/chromium"
+                  "--executable-path"
+                  "${pkgs.ungoogled-chromium}/bin/chromium"
                 ];
                 enabled = true;
               };
