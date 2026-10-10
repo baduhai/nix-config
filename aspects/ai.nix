@@ -52,9 +52,13 @@
             - Never pass `--yes`/`-y` to skip gcli's own confirmation.
 
             ## Browser automation
-            - Always use the system Chromium (`ungoogled-chromium` in PATH); the
-              `playwright` MCP server is pinned to it. Do not install another browser
-              unless the user explicitly asks.
+            - Use the headless server (`playwright-headless`) by default.
+            - Use the visible server (`playwright`) only when the user asks to see the
+              browser.
+            - Both run isolated, ephemeral profiles: logins/cookies are discarded when
+              the browser closes.
+            - Both are pinned to the system Chromium (`ungoogled-chromium`); do not
+              install another browser unless the user explicitly asks.
           '';
           settings = {
             # Prevent suspend/hibernation while agents are working.
@@ -73,11 +77,24 @@
                 command = [ "${pkgs.mcp-nixos}/bin/mcp-nixos" ];
                 enabled = true;
               };
-              playwright = {
+              # Default browser for agent use: no window, works on display-less hosts.
+              playwright-headless = {
                 type = "local";
                 command = [
                   "${pkgs.playwright-mcp}/bin/playwright-mcp"
                   "--headless"
+                  "--isolated"
+                  "--executable-path"
+                  "${pkgs.ungoogled-chromium}/bin/chromium"
+                ];
+                enabled = true;
+              };
+              # Visible window, only when the user wants to watch the browser.
+              playwright = {
+                type = "local";
+                command = [
+                  "${pkgs.playwright-mcp}/bin/playwright-mcp"
+                  "--isolated"
                   "--executable-path"
                   "${pkgs.ungoogled-chromium}/bin/chromium"
                 ];
