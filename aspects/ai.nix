@@ -36,10 +36,6 @@
         programs.opencode = {
           enable = true;
           package = inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}.opencode2;
-          tui = {
-            theme = "system";
-            autoupdate = false;
-          };
           context = ''
             # Global rules
 
@@ -61,6 +57,10 @@
               install another browser unless the user explicitly asks.
           '';
           settings = {
+            # The v2 server reads the update policy from opencode.json
+            # (the legacy tui.json `autoupdate` key is ignored by v2).
+            update = "disable";
+
             # Prevent suspend/hibernation while agents are working.
             plugins = [
               {
@@ -129,6 +129,21 @@
               "gcli api*" = "ask";
             };
           };
+        };
+
+        # OpenCode v2 reads terminal settings (theme, keybinds, ...) from
+        # cli.json. The home-manager module only writes tui.json, which v2
+        # migrates once and then ignores, so declare cli.json directly.
+        xdg.configFile."opencode/cli.json".source = (pkgs.formats.json { }).generate "opencode-cli.json" {
+          "$schema" = "https://opencode.ai/v2/cli.json";
+          theme.name = "system";
+          keybinds = {
+            # Enter inserts a newline; Ctrl+Enter sends the prompt.
+            "input.submit" = "ctrl+return";
+            "input.newline" = "return,shift+return,alt+return,ctrl+j";
+          };
+          # Keep reasoning blocks hidden by default.
+          session.thinking = "hide";
         };
       };
   };
