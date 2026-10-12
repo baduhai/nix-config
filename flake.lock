@@ -335,11 +335,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1791459007,
-        "narHash": "sha256-3feHlxlrQ9uvMGNI+Wt6BtMRr5vBImnslqJHsGGNyS4=",
+        "lastModified": 1791768467,
+        "narHash": "sha256-eHZ/pe+RdE8zxp1eJxlVc9R9yM4LjEKji4LuotDrZxI=",
         "owner": "baduhai",
         "repo": "fusion",
-        "rev": "bd7ee6993a2e7854ad475c0805c08f6a3d971655",
+        "rev": "aeedd241096cd1a1e54e13eca9a23cb75ea59bff",
         "type": "github"
       },
       "original": {
