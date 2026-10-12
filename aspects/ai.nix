@@ -128,6 +128,13 @@
               "gcli config*" = "ask";
               "gcli api*" = "ask";
             };
+
+            # Let OpenCode access the Nix store (sources, docs) and /tmp (scratch,
+            # /tmp/opencode) without prompting for each path.
+            permission.external_directory = {
+              "/nix/store/*" = "allow";
+              "/tmp/*" = "allow";
+            };
           };
         };
 
