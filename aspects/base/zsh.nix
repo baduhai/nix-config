@@ -4,7 +4,17 @@
     nixos.zsh =
       { ... }:
       {
-        programs.zsh.enable = true;
+        programs.zsh = {
+          enable = true;
+          # The home-manager zsh module already extends fpath and runs
+          # `compinit -C` (see homeManager.zsh below). The global compinit that
+          # NixOS puts in /etc/zshrc duplicates that and pays the full
+          # compaudit scan, so turn it off.
+          enableGlobalCompInit = false;
+          # starship sets the prompt from ~/.zshrc; the built-in "suse" prompt
+          # setup in /etc/zshrc only runs to be overwritten.
+          promptInit = "";
+        };
       };
     homeManager.zsh =
       {
@@ -25,6 +35,9 @@
             ];
           };
           enableCompletion = true;
+          # Skip compinit's compaudit security scan on every startup; on NixOS
+          # fpath dirs are root-owned, so the check buys nothing and costs ~35ms.
+          completionInit = "autoload -Uz compinit && compinit -C";
           syntaxHighlighting.enable = true;
           initExtra = ''
             unsetopt beep
@@ -58,7 +71,6 @@
             bindkey "^[[1;5D" backward-word
             bindkey "^[[1;5C" forward-word
           '';
-          loginExtra = "${lib.getExe pkgs.nix-your-shell} zsh | source /dev/stdin";
           history = {
             size = 10000;
             save = 10000;
