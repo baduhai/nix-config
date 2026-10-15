@@ -8,7 +8,6 @@
         aspell
         aspellDicts.de
         aspellDicts.en
-        aspellDicts.en-computers
         aspellDicts.pt_BR
         glow
         kwrite
