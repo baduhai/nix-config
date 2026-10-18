@@ -17,6 +17,8 @@
           enable = true;
           enableSessionWide = true;
           settings = {
+            # Start hidden; toggle with the toggle_hud keybind
+            no_display = true;
             position = "top-left";
             fps = true;
             frametime = false;
