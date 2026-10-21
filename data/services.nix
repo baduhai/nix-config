@@ -28,7 +28,6 @@
       name = "nextcloud";
       domain = "cloud.baduhai.dev";
       host = "alexandria";
-      public = true;
     }
     {
       name = "jellyfin";
