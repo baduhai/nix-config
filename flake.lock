@@ -673,6 +673,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-small": {
+      "locked": {
+        "lastModified": 1792622593,
+        "narHash": "sha256-Bje51pDaL2oqLqC9TxTmr3gwKoIGpOraL4UIOnpfZJo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d544efa48c201dc307853464df7b9ded6cda2d30",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-26.05-small",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1791883866,
@@ -887,6 +903,7 @@
         "nix-index-database": "nix-index-database",
         "nixos-cli": "nixos-cli",
         "nixpkgs": "nixpkgs_6",
+        "nixpkgs-small": "nixpkgs-small",
         "nixpkgs-stable": "nixpkgs-stable",
         "noctalia": "noctalia",
         "stylix": "stylix",

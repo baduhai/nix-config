@@ -9,6 +9,9 @@
     # nixos/hm
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
+    # Reduced-build channel: Hydra only builds a small subset, so this is for
+    # services that should pull as little as possible (the nextcloud container).
+    nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-26.05-small";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";

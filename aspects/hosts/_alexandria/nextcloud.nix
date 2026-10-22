@@ -1,11 +1,15 @@
 {
   inputs,
+  pkgs,
   ...
 }:
 
 let
   mkNginxVHosts = inputs.self.lib.mkNginxVHosts;
   mkContainer = inputs.self.lib.mkContainer;
+  # Kept out of the container's own `pkgs` (which comes from nixpkgs-small):
+  # reading the container's pkgs to set its platform would be a cycle.
+  hostPkgs = pkgs;
 in
 
 {
@@ -37,83 +41,96 @@ in
     groups.nextcloud.gid = 985;
   };
 
-  containers.nextcloud = mkContainer {
-    index = 5;
-    config =
-      { config, pkgs, ... }:
-      {
-        # uid/gid pinned to the host's existing on-disk ownership so the moved
-        # data keeps its owner without a recursive chown.
-        users = {
-          users.nextcloud.uid = 985;
-          groups.nextcloud.gid = 985;
-        };
+  containers.nextcloud =
+    (mkContainer {
+      index = 5;
+      config =
+        { lib, config, pkgs, ... }:
+        {
+          # Same reasoning as jellyfin.nix: this container runs a different
+          # nixpkgs than the host, so pin the platform by system name instead of
+          # letting nixos-containers hand over the host's stdenv platform
+          # (which the container's lib treats as a cross build).
+          nixpkgs.hostPlatform = lib.mkForce hostPkgs.stdenv.hostPlatform.system;
 
-        services.nextcloud = {
-          enable = true;
-          package = pkgs.nextcloud35;
-          datadir = "/data/nextcloud";
-          hostName = "cloud.baduhai.dev";
-          configureRedis = true;
-          https = false; # TLS is terminated by the host nginx
-          secretFile = "/run/agenix/nextcloud-secrets.json";
-          database.createLocally = true;
-          maxUploadSize = "16G";
-          extraApps = {
-            inherit (config.services.nextcloud.package.packages.apps)
-              calendar
-              contacts
-              tasks
-              user_oidc
-              ;
+          # uid/gid pinned to the host's existing on-disk ownership so the moved
+          # data keeps its owner without a recursive chown.
+          users = {
+            users.nextcloud.uid = 985;
+            groups.nextcloud.gid = 985;
           };
-          extraAppsEnable = true;
-          caching = {
-            apcu = true;
-            redis = true;
-          };
-          settings = {
-            trusted_proxies = [
-              "10.233.5.1"
-              "127.0.0.1"
-            ];
-            default_phone_region = "BR";
-            maintenance_window_start = "4";
-            allow_local_remote_servers = true;
-            enabledPreviewProviders = [
-              "OC\\Preview\\BMP"
-              "OC\\Preview\\EMF"
-              "OC\\Preview\\Font"
-              "OC\\Preview\\GIF"
-              "OC\\Preview\\HEIC"
-              "OC\\Preview\\Illustrator"
-              "OC\\Preview\\JPEG"
-              "OC\\Preview\\Krita"
-              "OC\\Preview\\MarkDown"
-              "OC\\Preview\\Movie"
-              "OC\\Preview\\MP3"
-              "OC\\Preview\\MSOffice2003"
-              "OC\\Preview\\MSOffice2007"
-              "OC\\Preview\\MSOfficeDoc"
-              "OC\\Preview\\OpenDocument"
-              "OC\\Preview\\PDF"
-              "OC\\Preview\\Photoshop"
-              "OC\\Preview\\PNG"
-              "OC\\Preview\\Postscript"
-              "OC\\Preview\\SVG"
-              "OC\\Preview\\TIFF"
-              "OC\\Preview\\TXT"
-              "OC\\Preview\\XBitmap"
-            ];
-          };
-          config = {
-            dbtype = "pgsql";
-            adminpassFile = "/run/agenix/nextcloud-adminpass";
-          };
-          phpOptions = {
-            "opcache.interned_strings_buffer" = "16";
+
+          services.nextcloud = {
+            enable = true;
+            package = pkgs.nextcloud35;
+            datadir = "/data/nextcloud";
+            hostName = "cloud.baduhai.dev";
+            configureRedis = true;
+            https = false; # TLS is terminated by the host nginx
+            secretFile = "/run/agenix/nextcloud-secrets.json";
+            database.createLocally = true;
+            maxUploadSize = "16G";
+            extraApps = {
+              inherit (config.services.nextcloud.package.packages.apps)
+                calendar
+                contacts
+                tasks
+                user_oidc
+                ;
+            };
+            extraAppsEnable = true;
+            caching = {
+              apcu = true;
+              redis = true;
+            };
+            settings = {
+              trusted_proxies = [
+                "10.233.5.1"
+                "127.0.0.1"
+              ];
+              default_phone_region = "BR";
+              maintenance_window_start = "4";
+              allow_local_remote_servers = true;
+              enabledPreviewProviders = [
+                "OC\\Preview\\BMP"
+                "OC\\Preview\\EMF"
+                "OC\\Preview\\Font"
+                "OC\\Preview\\GIF"
+                "OC\\Preview\\HEIC"
+                "OC\\Preview\\Illustrator"
+                "OC\\Preview\\JPEG"
+                "OC\\Preview\\Krita"
+                "OC\\Preview\\MarkDown"
+                "OC\\Preview\\Movie"
+                "OC\\Preview\\MP3"
+                "OC\\Preview\\MSOffice2003"
+                "OC\\Preview\\MSOffice2007"
+                "OC\\Preview\\MSOfficeDoc"
+                "OC\\Preview\\OpenDocument"
+                "OC\\Preview\\PDF"
+                "OC\\Preview\\Photoshop"
+                "OC\\Preview\\PNG"
+                "OC\\Preview\\Postscript"
+                "OC\\Preview\\SVG"
+                "OC\\Preview\\TIFF"
+                "OC\\Preview\\TXT"
+                "OC\\Preview\\XBitmap"
+              ];
+            };
+            config = {
+              dbtype = "pgsql";
+              adminpassFile = "/run/agenix/nextcloud-adminpass";
+            };
+            phpOptions = {
+              "opcache.interned_strings_buffer" = "16";
+            };
           };
         };
-      };
-  };
+    })
+    // {
+      # alexandria runs stable, but nextcloud only needs a handful of packages:
+      # take it from the reduced-build channel (fewer Hydra builds, so the
+      # container's closure stays small).
+      nixpkgs = inputs.nixpkgs-small.outPath;
+    };
 }
