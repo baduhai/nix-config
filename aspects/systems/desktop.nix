@@ -62,6 +62,7 @@
           systemPackages = with pkgs; [
             libfido2
             mission-center
+            papers
             toggleaudiosink
             unrar
           ];
@@ -134,37 +135,15 @@
 
     homeManager.desktop =
       {
-        config,
-        lib,
         pkgs,
-        inputs,
         ...
       }:
       {
-        imports = [
-          inputs.vicinae.homeManagerModules.default
-        ]
-        ++ (with inputs.self.modules.homeManager; [ media ]);
+        imports = with inputs.self.modules.homeManager; [ media ];
 
         fonts.fontconfig.enable = true;
 
-        programs.vicinae = {
-          enable = true;
-          systemd = {
-            enable = true;
-            autoStart = true;
-          };
-        };
-
-        nix = {
-          package = pkgs.nix;
-          settings = {
-            extra-substituters = [ "https://vicinae.cachix.org" ];
-            extra-trusted-public-keys = [
-              "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
-            ];
-          };
-        };
+        nix.package = pkgs.nix;
 
         xdg = {
           enable = true;

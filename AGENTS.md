@@ -36,8 +36,11 @@ config to turn nom off globally.
   `nixos generation rollback` or `nixos generation switch <gen>` to move.
   Prune with `nixos generation delete` (`--all` keeps the current generation,
   `--older-than 30d`, `--min N`, or explicit generation numbers).
-- Home-manager: `hm generation list | rollback | switch <id> | delete <id>`, and
-  `hm generation cleanup` (deletes all but the current generation).
+- Home-manager: `hm` mirrors the `nixos` CLI (same aliases and flags):
+  `hm generation list [-t|--table|-j|--json]`, `rollback [-d]`,
+  `switch <id> [-d]`, `diff <a> <b>`, and `delete` (`--all` keeps the current
+  generation, `--older-than 30d`, `--min N`, `--keep <id>`, `--pattern <regex>`,
+  `-y`). `delete` also removes the generations' store paths.
 
 ## Layout
 - `aspects/**`: expose `flake.modules.nixos.<name>` and/or `flake.modules.homeManager.<name>`.

@@ -10,7 +10,6 @@
         aspellDicts.en
         aspellDicts.pt_BR
         glow
-        kwrite
         presenterm
         rnote
       ];

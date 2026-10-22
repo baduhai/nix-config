@@ -39,6 +39,7 @@
             kdePackages.karousel
             kdePackages.krdc
             kde-rounded-corners
+            kwrite
           ];
           plasma6.excludePackages = with pkgs.kdePackages; [
             elisa

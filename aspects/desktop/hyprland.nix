@@ -58,7 +58,6 @@
 
             local mod = "SUPER"
             local terminal = "alacritty"
-            local menu = "vicinae toggle"
             local frame = 1000 / 60
 
             -- ============= MONITOR =============
@@ -236,9 +235,7 @@
             -- =========== KEYBINDINGS ============
 
             -- apps
-            hl.bind("ALT + SPACE",              hl.dsp.exec_cmd(menu))
             hl.bind(mod .. " + RETURN",         hl.dsp.exec_cmd(terminal))
-            hl.bind(mod .. " + V",              hl.dsp.exec_cmd("vicinae vicinae://launch/clipboard/history"))
 
             -- session
             hl.bind("CTRL + ALT + DELETE",      hl.dsp.exit())
@@ -458,7 +455,6 @@
             })
             hl.window_rule({ match = { class = "zen-beta" }, scrolling_width = 0.5 })
 
-            hl.layer_rule({ match = { namespace = "vicinae" }, blur = true, ignore_alpha = 0.0, no_anim = true })
             hl.layer_rule({ match = { namespace = "wayle.*" }, blur = true })
           '';
         };

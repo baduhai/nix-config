@@ -17,8 +17,8 @@ in
       bluetooth
       dev
       fwupd
-      kde
       libvirtd
+      mango
       networkmanager
       nixos-containers
       podman
