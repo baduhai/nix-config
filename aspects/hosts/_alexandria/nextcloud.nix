@@ -7,7 +7,7 @@
 let
   mkNginxVHosts = inputs.self.lib.mkNginxVHosts;
   mkContainer = inputs.self.lib.mkContainer;
-  # Kept out of the container's own `pkgs` (which comes from nixpkgs-small):
+  # Kept out of the container's own `pkgs` (which comes from nixpkgs-stable-small):
   # reading the container's pkgs to set its platform would be a cycle.
   hostPkgs = pkgs;
 in
@@ -45,7 +45,12 @@ in
     (mkContainer {
       index = 5;
       config =
-        { lib, config, pkgs, ... }:
+        {
+          lib,
+          config,
+          pkgs,
+          ...
+        }:
         {
           # Same reasoning as jellyfin.nix: this container runs a different
           # nixpkgs than the host, so pin the platform by system name instead of
@@ -131,6 +136,6 @@ in
       # alexandria runs stable, but nextcloud only needs a handful of packages:
       # take it from the reduced-build channel (fewer Hydra builds, so the
       # container's closure stays small).
-      nixpkgs = inputs.nixpkgs-small.outPath;
+      nixpkgs = inputs.nixpkgs-stable-small.outPath;
     };
 }
