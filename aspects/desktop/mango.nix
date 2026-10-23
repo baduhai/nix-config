@@ -87,7 +87,12 @@
           with pkgs;
           [
             kdePackages.breeze # Breeze cursor theme (breeze_cursors)
+            # KWallet: the session starts ksecretd (see below), which serves
+            # org.freedesktop.secrets on top of the KDE wallet - the store the
+            # Nextcloud client already used while running Plasma.
+            kdePackages.kwallet
             adwaita-icon-theme # Adwaita icon theme for GTK/Qt apps
+            morewaita-icon-theme # Adwaita-style extras (folder-games etc.)
             # GTK theming for DMS. adw-gtk3 gives DMS a writable copy to patch
             # with dank-colors.css; gsettings-desktop-schemas makes
             # org.gnome.desktop.interface resolvable for DMS's gsettings calls
@@ -130,6 +135,25 @@
         # mango's nixpkgs module does not enable polkit; DMS needs it for
         # lock/reboot/logout actions.
         security.polkit.enable = true;
+
+        # Nextcloud (via QtKeychain/libsecret) keeps the account token in the
+        # Secret Service. Plasma serves that from KWallet: ksecretd translates
+        # org.freedesktop.secrets into the kdewallet collection. A bare mango
+        # session starts neither, so the client had nowhere to store the token
+        # and asked for the password again on every boot. Plasma autostarts
+        # ksecretd from its session; mango has to pull it in explicitly.
+        systemd.user.services.ksecretd = {
+          wantedBy = [ "mango-session.target" ];
+          serviceConfig = {
+            ExecStart = "${pkgs.kdePackages.kwallet}/bin/ksecretd";
+            Restart = "on-failure";
+          };
+        };
+
+        # Flatpak apps read their secrets through the portal, which the mango
+        # module points at gnome-keyring. Use KWallet's implementation instead;
+        # ksecretd ships it, and gnome-keyring is not installed here.
+        xdg.portal.config.mango."org.freedesktop.impl.portal.Secret" = lib.mkForce [ "kwallet" ];
 
         services.displayManager = {
           # Auto-login (from aspects/desktop) resolves to this session, so mango
