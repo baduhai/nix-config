@@ -7,7 +7,6 @@
       environment.systemPackages = with pkgs; [
         gimp
         inkscape
-        plasticity
       ];
 
       services.flatpak.packages = [
