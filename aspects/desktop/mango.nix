@@ -150,10 +150,21 @@
           };
         };
 
-        # Flatpak apps read their secrets through the portal, which the mango
-        # module points at gnome-keyring. Use KWallet's implementation instead;
-        # ksecretd ships it, and gnome-keyring is not installed here.
-        xdg.portal.config.mango."org.freedesktop.impl.portal.Secret" = lib.mkForce [ "kwallet" ];
+        xdg.portal = {
+          # File dialogs: the mango module leaves FileChooser unset, so it
+          # falls through to the `gtk` default - a plain GTK3 list view with no
+          # search, recents or thumbnails. GNOME's backend ships the Nautilus-
+          # style GTK4 picker; point the interface at it explicitly.
+          extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+
+          # Flatpak apps read their secrets through the portal, which the mango
+          # module points at gnome-keyring. Use KWallet's implementation instead;
+          # ksecretd ships it, and gnome-keyring is not installed here.
+          config.mango = {
+            "org.freedesktop.impl.portal.Secret" = lib.mkForce [ "kwallet" ];
+            "org.freedesktop.impl.portal.FileChooser" = [ "gnome" ];
+          };
+        };
 
         services.displayManager = {
           # Auto-login (from aspects/desktop) resolves to this session, so mango
