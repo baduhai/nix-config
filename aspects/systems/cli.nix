@@ -13,7 +13,7 @@
 
         environment.systemPackages = with pkgs; [
           arc
-          p7zip
+          jq
           rclone
         ];
       };
