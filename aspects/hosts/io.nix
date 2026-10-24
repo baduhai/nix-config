@@ -15,7 +15,7 @@ in
       ai
       bluetooth
       dev
-      kde
+      mango
       networkmanager
       nixos-containers
       podman
