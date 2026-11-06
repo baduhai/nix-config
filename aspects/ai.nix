@@ -11,6 +11,9 @@
           ++ (with inputs.nix-ai-tools.packages.${pkgs.stdenv.hostPlatform.system}; [
             # OpenCode v2 installs as `opencode2`; the sleep-inhibit plugin needs >=2.0.14.
             opencode2
+            # Local dictation daemon. The mango session starts it (see
+            # ~/.config/mango/dictation.conf) and alt+[ toggles recording.
+            tonguetyped
           ]);
 
         nix.settings = {
