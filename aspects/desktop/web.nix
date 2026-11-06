@@ -15,7 +15,13 @@
         nextcloud-client
         ungoogled-chromium
         vesktop
-        zapzap
+      ];
+
+      services.flatpak.packages = [
+        {
+          appId = "rocks.zapfast.ZapFast";
+          origin = "flatpark";
+        }
       ];
     };
 }

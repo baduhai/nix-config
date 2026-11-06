@@ -24,13 +24,16 @@
         "com.collabora.Office"
         "com.boxy_svg.BoxySVG"
         "io.github.softfever.OrcaSlicer"
-        # Not on Flathub; only published by the FlatPark repo.
         {
           appId = "ai.storyteller.photocraft";
           origin = "flatpark";
         }
         {
           appId = "ai.storyteller.vectorcraft";
+          origin = "flatpark";
+        }
+        {
+          appId = "br.gov.serpro.desktop.assinador";
           origin = "flatpark";
         }
       ];
