@@ -32,10 +32,6 @@
           appId = "ai.storyteller.vectorcraft";
           origin = "flatpark";
         }
-        {
-          appId = "br.gov.serpro.desktop.assinador";
-          origin = "flatpark";
-        }
       ];
     };
 }
