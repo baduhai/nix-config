@@ -15,6 +15,7 @@
         glow
         gimp
         inkscape
+        obs-studio
         presenterm
         rnote
       ];
