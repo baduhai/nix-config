@@ -29,6 +29,7 @@
           "photocraft-cli" = "flatpak run --cwd=\"$PWD\" --command=photocraft-cli ai.storyteller.photocraft";
           "vectorcraft-cli" =
             "flatpak run --cwd=\"$PWD\" --command=vectorcraft-cli ai.storyteller.vectorcraft";
+          "soundcraft-cli" = "flatpak run --cwd \"$PWD\"--command=soundcraft-cli ai.storyteller.soundcraft";
         };
       };
 
@@ -45,6 +46,10 @@
             appId = "ai.storyteller.vectorcraft";
             origin = "flatpark";
           }
+          {
+            appId = "ai.storyteller.soundcraft";
+            origin = "flatpark";
+          }
         ];
 
         # Both sandboxes only expose ~/Documents and ~/Pictures by default. The
@@ -52,6 +57,7 @@
         overrides = {
           "ai.storyteller.photocraft".Context.filesystems = [ "host" ];
           "ai.storyteller.vectorcraft".Context.filesystems = [ "host" ];
+          "ai.storyteller.soundcraft".Context.filesystems = [ "host" ];
         };
       };
     };
