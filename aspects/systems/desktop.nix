@@ -16,9 +16,8 @@
           inputs.nix-flatpak.nixosModules.nix-flatpak
         ]
         ++ (with inputs.self.modules.nixos; [
-          graphics
           media
-          office
+          productivity
           web
         ]);
 
@@ -106,6 +105,20 @@
             ];
             uninstallUnmanaged = true;
             update.auto.enable = true;
+            # Central remote list. Defining `remotes` replaces nix-flatpak's
+            # default, and `uninstallUnmanaged = true` would `remote-delete
+            # --force` every remote missing from this list, so aspects that
+            # install flatpaks must use one of these remotes.
+            remotes = [
+              {
+                name = "flathub";
+                location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+              }
+              {
+                name = "flatpark";
+                location = "https://dl.flatpark.org/flatpark.flatpakrepo";
+              }
+            ];
           };
           gvfs.enable = true;
         };
