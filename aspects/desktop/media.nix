@@ -13,6 +13,11 @@
 
         services.flatpak.packages = [
           "com.stremio.Stremio"
+          # Not on Flathub; only published by the FlatPark repo.
+          {
+            appId = "com.pocoguy.Muse";
+            origin = "flatpark";
+          }
         ];
 
         services.flatpak.overrides."com.stremio.Stremio".Environment = {
