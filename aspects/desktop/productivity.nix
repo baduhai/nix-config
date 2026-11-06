@@ -7,31 +7,52 @@
   flake.modules.nixos.productivity =
     { pkgs, ... }:
     {
-      environment.systemPackages = with pkgs; [
-        aspell
-        aspellDicts.de
-        aspellDicts.en
-        aspellDicts.pt_BR
-        glow
-        gimp
-        inkscape
-        obs-studio
-        presenterm
-        rnote
-      ];
+      environment = {
+        systemPackages = with pkgs; [
+          aspell
+          aspellDicts.de
+          aspellDicts.en
+          aspellDicts.pt_BR
+          glow
+          gimp
+          inkscape
+          obs-studio
+          presenterm
+          rnote
+        ];
 
-      services.flatpak.packages = [
-        "com.collabora.Office"
-        "com.boxy_svg.BoxySVG"
-        "io.github.softfever.OrcaSlicer"
-        {
-          appId = "ai.storyteller.photocraft";
-          origin = "flatpark";
-        }
-        {
-          appId = "ai.storyteller.vectorcraft";
-          origin = "flatpark";
-        }
-      ];
+        # PhotoCraft and VectorCraft ship a CLI (and an MCP server mode) inside
+        # the flatpak, next to the GUI, and `flatpak run --command=...` is the
+        # only way to reach it. Short names keep that usable. `--cwd` is needed
+        # because the sandbox otherwise starts in $HOME and relative paths miss.
+        shellAliases = {
+          "photocraft-cli" = "flatpak run --cwd=\"$PWD\" --command=photocraft-cli ai.storyteller.photocraft";
+          "vectorcraft-cli" =
+            "flatpak run --cwd=\"$PWD\" --command=vectorcraft-cli ai.storyteller.vectorcraft";
+        };
+      };
+
+      services.flatpak = {
+        packages = [
+          "com.collabora.Office"
+          "com.boxy_svg.BoxySVG"
+          "io.github.softfever.OrcaSlicer"
+          {
+            appId = "ai.storyteller.photocraft";
+            origin = "flatpark";
+          }
+          {
+            appId = "ai.storyteller.vectorcraft";
+            origin = "flatpark";
+          }
+        ];
+
+        # Both sandboxes only expose ~/Documents and ~/Pictures by default. The
+        # CLIs take arbitrary paths (MCP read/write roots included), so open them.
+        overrides = {
+          "ai.storyteller.photocraft".Context.filesystems = [ "host" ];
+          "ai.storyteller.vectorcraft".Context.filesystems = [ "host" ];
+        };
+      };
     };
 }
