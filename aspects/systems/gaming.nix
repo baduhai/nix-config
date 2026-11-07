@@ -6,7 +6,7 @@
       { pkgs, ... }:
       {
         imports = with inputs.self.modules.nixos; [
-          mangohud
+          # mangohud
           steam
         ];
         hardware = {
@@ -20,7 +20,6 @@
           "io.itch.itch"
           "io.mrarm.mcpelauncher"
           "net.retrodeck.retrodeck"
-          "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/25.08"
           rec {
             appId = "com.hypixel.HytaleLauncher";
             sha256 = "uu7FA36M4wSqDXRF1fFNla8S5MjL1N1kZi4gwbpw1oY=";

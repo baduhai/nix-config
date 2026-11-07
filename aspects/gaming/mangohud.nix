@@ -8,6 +8,9 @@
         environment.systemPackages = with pkgs; [
           mangohud
         ];
+        services.flatpak.packages = [
+          "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/25.08"
+        ];
       };
 
     homeManager.mangohud =
