@@ -39,7 +39,7 @@
 
       services.flatpak = {
         packages = [
-          "com.collabora.Office"
+          "org.eurooffice.desktopeditors"
           "com.boxy_svg.BoxySVG"
           "io.github.softfever.OrcaSlicer"
           {
