@@ -21,15 +21,19 @@
           rnote
         ];
 
-        # PhotoCraft and VectorCraft ship a CLI (and an MCP server mode) inside
-        # the flatpak, next to the GUI, and `flatpak run --command=...` is the
-        # only way to reach it. Short names keep that usable. `--cwd` is needed
-        # because the sandbox otherwise starts in $HOME and relative paths miss.
+        # PhotoCraft, VectorCraft, SoundCraft and SolidCraft ship a CLI (and an
+        # MCP server mode) inside the flatpak, next to the GUI, and `flatpak run
+        # --command=...` is the only way to reach it. Short names keep that
+        # usable. `--cwd` is needed because the sandbox otherwise starts in
+        # $HOME and relative paths miss. SolidCraft's `solvecraft-cli` is just a
+        # symlink to `solidcraft-cli`, so it needs no alias of its own.
         shellAliases = {
           "photocraft-cli" = "flatpak run --cwd=\"$PWD\" --command=photocraft-cli ai.storyteller.photocraft";
+          "soundcraft-cli" = "flatpak run --cwd=\"$PWD\" --command=soundcraft-cli ai.storyteller.soundcraft";
           "vectorcraft-cli" =
             "flatpak run --cwd=\"$PWD\" --command=vectorcraft-cli ai.storyteller.vectorcraft";
-          "soundcraft-cli" = "flatpak run --cwd \"$PWD\"--command=soundcraft-cli ai.storyteller.soundcraft";
+          "solidcraft-cli" =
+            "flatpak run --cwd=\"$PWD\" --command=solidcraft-cli io.github.bherbruck.SolidCraft";
         };
       };
 
@@ -50,14 +54,19 @@
             appId = "ai.storyteller.soundcraft";
             origin = "flatpark";
           }
+          {
+            appId = "io.github.bherbruck.SolidCraft";
+            origin = "flatpark";
+          }
         ];
 
-        # Both sandboxes only expose ~/Documents and ~/Pictures by default. The
+        # The sandboxes only expose ~/Documents and ~/Pictures by default. The
         # CLIs take arbitrary paths (MCP read/write roots included), so open them.
         overrides = {
           "ai.storyteller.photocraft".Context.filesystems = [ "host" ];
           "ai.storyteller.vectorcraft".Context.filesystems = [ "host" ];
           "ai.storyteller.soundcraft".Context.filesystems = [ "host" ];
+          "io.github.bherbruck.SolidCraft".Context.filesystems = [ "host" ];
         };
       };
     };
