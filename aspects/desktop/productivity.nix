@@ -30,6 +30,7 @@
         shellAliases = {
           "photocraft-cli" = "flatpak run --cwd=\"$PWD\" --command=photocraft-cli ai.storyteller.photocraft";
           "soundcraft-cli" = "flatpak run --cwd=\"$PWD\" --command=soundcraft-cli ai.storyteller.soundcraft";
+          "filmcraft-cli" = "flatpak run --cwd=\"$PWD\" --command=filmcraft-cli ai.storyteller.filmcraft";
           "vectorcraft-cli" =
             "flatpak run --cwd=\"$PWD\" --command=vectorcraft-cli ai.storyteller.vectorcraft";
           "solidcraft-cli" =
@@ -47,11 +48,15 @@
             origin = "flatpark";
           }
           {
-            appId = "ai.storyteller.vectorcraft";
+            appId = "ai.storyteller.soundcraft";
             origin = "flatpark";
           }
           {
-            appId = "ai.storyteller.soundcraft";
+            appId = "ai.storyteller.filmcraft";
+            origin = "flatpark";
+          }
+          {
+            appId = "ai.storyteller.vectorcraft";
             origin = "flatpark";
           }
           {
