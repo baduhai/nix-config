@@ -13,7 +13,7 @@
           aspellDicts.de
           aspellDicts.en
           aspellDicts.pt_BR
-          glow
+          leaf-markdown-viewer
           gimp
           inkscape
           obs-studio
