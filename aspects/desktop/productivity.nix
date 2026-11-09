@@ -1,6 +1,4 @@
-# Office documents, note-taking, presentations and the creative
-# apps every desktop should have: editors (gimp, inkscape, ...)
-# and their flatpak counterparts.
+# Office documents, note-taking, presentations and the creative apps
 { ... }:
 
 {
@@ -14,8 +12,6 @@
           aspellDicts.en
           aspellDicts.pt_BR
           leaf-markdown-viewer
-          gimp
-          inkscape
           obs-studio
           presenterm
           rnote
@@ -40,9 +36,11 @@
 
       services.flatpak = {
         packages = [
-          "org.eurooffice.desktopeditors"
-          "com.boxy_svg.BoxySVG"
-          "io.github.softfever.OrcaSlicer"
+          {
+            appId = "org.eurooffice.desktopeditors";
+            origin = "flatpark";
+          }
+          "com.orcaslicer.OrcaSlicer"
           {
             appId = "ai.storyteller.photocraft";
             origin = "flatpark";
