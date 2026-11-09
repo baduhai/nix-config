@@ -221,8 +221,8 @@
                 end, { timeout = frame, type = "oneshot" })
                 pending_lock = false
               end
-              -- zen 100% width on non-YDU monitors
-              if w.class == "zen-beta" then
+              -- zen 100% width on non-YDU monitors (class varies: zen-beta, app.zen_browser.zen)
+              if w.class:find("zen") then
                 local m = w.monitor
                 if m and m.description and not m.description:find("YDU") then
                   hl.timer(function()
@@ -453,7 +453,7 @@
               match = { class = "^$", title = "^$", xwayland = true, float = true, fullscreen = false, pin = false },
               no_focus = true,
             })
-            hl.window_rule({ match = { class = "zen-beta" }, scrolling_width = 0.5 })
+            hl.window_rule({ match = { class = "zen" }, scrolling_width = 0.5 })
 
             hl.layer_rule({ match = { namespace = "wayle.*" }, blur = true })
           '';
