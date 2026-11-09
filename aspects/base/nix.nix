@@ -54,6 +54,7 @@
 
       environment.systemPackages = with pkgs; [
         nix-output-monitor
+        nix-search-tv
       ];
 
       documentation.nixos.enable = false;
