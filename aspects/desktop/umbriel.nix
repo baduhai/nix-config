@@ -107,6 +107,22 @@
               gsettings-desktop-schemas
               rio
               ghostty
+              # Noctalia's phone-connect plugin reads kdeconnect's device list
+              # over DBus by shelling out to gdbus (glib). Without it on PATH the
+              # panel opens but stays empty even when kdeconnect-cli sees the
+              # phone, and the failure is silent.
+              glib
+              # ddcutil for external-monitor brightness/contrast (DDC/CI). It
+              # needs /dev/i2c-* and write access to them, so hardware.i2c is
+              # enabled below; the "i2c-dev" kernelParams entry in
+              # aspects/systems/desktop.nix only reaches the kernel command
+              # line and does not load the module.
+              ddcutil
+              # File picker for the phone-connect plugin: its pick_image /
+              # pick_share actions shell out to kdialog, falling back to zenity,
+              # and error out with "kdialog/zenity not found" when neither is on
+              # PATH. It does not use the xdg portal picker.
+              zenity
               # File manager + archive manager. Nautilus needs gvfs for trash,
               # network shares and phones, and udisks2 to mount removable media.
               patchedNautilus
@@ -116,6 +132,11 @@
             ]
             ++ archiveTools;
         };
+
+        # ddcutil talks DDC/CI over i2c; this loads i2c-dev and lets seated
+        # users open /dev/i2c-* (uaccess rule), which is what "ddcutil detect"
+        # needs to see the monitor instead of failing with a permission error.
+        hardware.i2c.enable = true;
 
         # The umbriel module's preferred config falls back to the plain GTK3
         # file chooser. GNOME's backend delegates FileChooser to Nautilus, so
