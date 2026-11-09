@@ -100,15 +100,10 @@
           flatpak = {
             enable = true;
             packages = [
-              "com.github.tchx84.Flatseal"
               "com.rustdesk.RustDesk"
             ];
             uninstallUnmanaged = true;
             update.auto.enable = true;
-            # Central remote list. Defining `remotes` replaces nix-flatpak's
-            # default, and `uninstallUnmanaged = true` would `remote-delete
-            # --force` every remote missing from this list, so aspects that
-            # install flatpaks must use one of these remotes.
             remotes = [
               {
                 name = "flathub";
