@@ -46,7 +46,6 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
     fusion.url = "github:baduhai/fusion";
     # Personal Nautilus patches. Keep its own nixpkgs: the pinned Nautilus
     # 51.0.1 needs GLib >= 2.89, which this flake's nixpkgs does not have yet.
