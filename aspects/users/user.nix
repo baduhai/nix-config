@@ -32,7 +32,6 @@ in
           # system aspects
           desktop
           gaming
-          noctaliaGtkTheme
 
           # other aspects
           ai
