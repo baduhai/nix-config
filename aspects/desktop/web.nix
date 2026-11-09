@@ -2,22 +2,20 @@
 
 {
   flake.modules.nixos.web =
-    {
-      inputs,
-      pkgs,
-      ...
-    }:
+    { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
-        inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".default
-        amnesiac-brave
         qbittorrent
         nextcloud-client
-        ungoogled-chromium
         vesktop
       ];
 
       services.flatpak.packages = [
+        "app.zen_browser.zen"
+        {
+          appId = "net.imput.helium";
+          origin = "flatpark";
+        }
         {
           appId = "rocks.zapfast.ZapFast";
           origin = "flatpark";
