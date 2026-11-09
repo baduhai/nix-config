@@ -18,10 +18,10 @@ in
       dev
       fwupd
       libvirtd
-      mango
       networkmanager
       nixos-containers
       podman
+      umbriel
     ];
   };
 }
