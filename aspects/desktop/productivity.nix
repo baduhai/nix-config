@@ -13,7 +13,6 @@
           aspellDicts.pt_BR
           leaf-markdown-viewer
           obs-studio
-          presenterm
           rnote
         ];
 
