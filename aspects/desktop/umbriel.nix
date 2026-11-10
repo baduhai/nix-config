@@ -3,7 +3,12 @@
 {
   flake.modules = {
     nixos.umbriel =
-      { inputs, pkgs, ... }:
+      {
+        inputs,
+        pkgs,
+        config,
+        ...
+      }:
       let
         # file-roller shells out to command-line tools for every format
         archiveTools = with pkgs; [
@@ -63,6 +68,13 @@
             recommendedServices.enable = true;
           };
           kdeconnect.enable = true;
+        };
+
+        # Autologin: greetd runs this session before the greeter on boot, so
+        # logging out drops back to noctalia-greeter instead of a dead TTY.
+        services.greetd.settings.initial_session = {
+          command = "${config.programs.umbriel.package}/bin/start-umbriel";
+          user = "user";
         };
 
         services.displayManager.noctalia-greeter = {
