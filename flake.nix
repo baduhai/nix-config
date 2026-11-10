@@ -42,10 +42,16 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # Pin the release tag, not the branch: upstream publishes
+    # noctalia.cachix.org for exactly what its tags build. Keep its own nixpkgs
+    # too, since following ours changes the derivation hash and would turn
+    # every bump into a full rebuild.
+    noctalia.url = "github:noctalia-dev/noctalia-shell/v5.4.1";
+    # Umbriel from upstream, not the copy in nixpkgs: its module disables the
+    # nixpkgs one, pins its own nixpkgs and the `cachix` branch tracks the
+    # newest commit CI has actually cached. Keep it off `nixpkgs`, otherwise
+    # the store paths no longer match umbriel.cachix.org.
+    umbriel.url = "github:noctalia-dev/umbriel/cachix";
     fusion.url = "github:baduhai/fusion";
     # Personal Nautilus patches. Keep its own nixpkgs: the pinned Nautilus
     # 51.0.1 needs GLib >= 2.89, which this flake's nixpkgs does not have yet.
