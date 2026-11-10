@@ -93,11 +93,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1794221987,
-        "narHash": "sha256-5jnMY65GXyDENPtpe9ZvC2k+6Pc5wkjNflgrKASIaz8=",
+        "lastModified": 1794318425,
+        "narHash": "sha256-T5Dnp/nZm1MW7hqsFyyrbGUCPxszFFoDRZ2ZR4zlfeI=",
         "ref": "refs/heads/main",
-        "rev": "c0b70e71451ca5bb1a4340320e12a9fd47323647",
-        "revCount": 40,
+        "rev": "eb210d3284baeed21995200d38f957649820f3a6",
+        "revCount": 42,
         "type": "git",
         "url": "https://git.baduhai.dev/baduhai/better-nautilus.git"
       },
