@@ -15,7 +15,7 @@ in
       ai
       bluetooth
       dev
-      mango
+      umbriel
       networkmanager
       nixos-containers
       podman
