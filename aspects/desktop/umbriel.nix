@@ -71,7 +71,10 @@
             name = "Breeze_Light";
             package = pkgs.kdePackages.breeze;
           };
-          settings.cursor.size = 24;
+          settings = {
+            appearance.hide_logo = false;
+            cursor.size = 24;
+          };
         };
         environment.persistence.main.directories = [
           "/var/lib/noctalia-greeter"
