@@ -73,11 +73,8 @@
           };
           settings.cursor.size = 24;
         };
-        environment.persistence.main.files = [
-          "/var/lib/noctalia-greeter/sync.toml"
-          "/var/lib/noctalia-greeter/wallpaper.webp"
-          "/var/lib/noctalia-greeter/wallpaper.png"
-          "/var/lib/noctalia-greeter/wallpaper.jpg"
+        environment.persistence.main.directories = [
+          "/var/lib/noctalia-greeter"
         ];
 
         environment = {
