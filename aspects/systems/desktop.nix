@@ -23,7 +23,6 @@
 
         boot = {
           plymouth.enable = true;
-          initrd.systemd.enable = true;
           loader.efi.efiSysMountPoint = "/boot/efi";
           kernelPackages = pkgs.linuxPackages_xanmod_latest;
           extraModprobeConfig = ''
