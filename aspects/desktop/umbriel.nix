@@ -108,6 +108,8 @@
               adw-gtk3
               gsettings-desktop-schemas
               ghostty
+              # Resolves the XDG default terminal for `Terminal=true` launchers.
+              xdg-terminal-exec
               glib
               ddcutil
               zenity
