@@ -6,7 +6,6 @@
       { pkgs, ... }:
       {
         imports = with inputs.self.modules.nixos; [
-          # mangohud
           steam
         ];
         hardware = {
@@ -36,12 +35,9 @@
           prismlauncher
         ];
       };
-    homeManager.gaming =
-      { ... }:
-      {
-        imports = with inputs.self.modules.homeManager; [
-          mangohud
-        ];
-      };
+
+    # Home-manager side of gaming. MangoHud is deliberately not enabled;
+    # import `mangohud` (aspects/gaming/mangohud.nix) if it is ever wanted.
+    homeManager.gaming = _: { };
   };
 }
