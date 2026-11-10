@@ -111,7 +111,16 @@
 
         xdg.portal = {
           extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
-          config.umbriel."org.freedesktop.impl.portal.FileChooser" = [ "gnome" ];
+
+          # Flatpak apps read their secrets through the Secret portal, which the
+          # umbriel module leaves unset; nothing here implements it, so those
+          # apps cannot store anything. KWallet's backend (`kwallet`, already
+          # installed for Qt clients) does, and ksecretd backs it with the same
+          # wallet the Nextcloud/Qt token lives in.
+          config.umbriel = {
+            "org.freedesktop.impl.portal.Secret" = [ "kwallet" ];
+            "org.freedesktop.impl.portal.FileChooser" = [ "gnome" ];
+          };
         };
 
         systemd.user.services.ksecretd = {
