@@ -5,8 +5,8 @@
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
-        qbittorrent
         nextcloud-client
+        transmission_4-gtk
         vesktop
       ];
 
