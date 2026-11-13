@@ -22,6 +22,12 @@
             nixos-firewall-tool
             sysz
             wget
+            # Ghostty's terminfo entry, so hosts know TERM=xterm-ghostty.
+            # NixOS's set-environment points TERMINFO_DIRS at the profile
+            # terminfo dirs, so without this every ssh login from Ghostty
+            # warns "can't find terminal definition for xterm-ghostty"
+            # and terminfo-aware tools misbehave.
+            ghostty.terminfo
           ];
           shellAliases = {
             cat = "${lib.getExe pkgs.bat} --paging=never --style=plain";
