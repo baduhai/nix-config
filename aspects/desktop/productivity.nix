@@ -39,7 +39,6 @@
             appId = "org.eurooffice.desktopeditors";
             origin = "flatpark";
           }
-          "com.orcaslicer.OrcaSlicer"
           {
             appId = "ai.storyteller.photocraft";
             origin = "flatpark";
