@@ -19,20 +19,15 @@
           "io.itch.itch"
           "io.mrarm.mcpelauncher"
           "net.retrodeck.retrodeck"
-          rec {
-            appId = "com.hypixel.HytaleLauncher";
-            sha256 = "uu7FA36M4wSqDXRF1fFNla8S5MjL1N1kZi4gwbpw1oY=";
-            bundle = "${pkgs.fetchurl {
-              url = "https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-latest.flatpak";
-              inherit sha256;
-            }}";
+          {
+            appId = "dev.playhorizon.Horizon";
+            origin = "flatpark";
           }
         ];
 
         environment.systemPackages = with pkgs; [
           clonehero
           heroic
-          prismlauncher
         ];
       };
 
