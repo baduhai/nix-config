@@ -154,6 +154,9 @@
           };
           # Keep reasoning blocks hidden by default.
           session.thinking = "hide";
+          # Only copy when explicitly asked; selecting text to inspect it
+          # otherwise overwrites the clipboard.
+          terminal.copy = "manual";
         };
       };
   };
