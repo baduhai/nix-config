@@ -28,7 +28,6 @@
 
       nixpkgs.config = {
         allowUnfree = true;
-        enableParallelBuilding = true;
         buildManPages = false;
         buildDocs = false;
       };
