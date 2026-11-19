@@ -16,19 +16,19 @@
       name = "vaultwarden";
       domain = "pass.baduhai.dev";
       host = "trantor";
-      public = true;
+      public = false;
     }
     {
       name = "forgejo";
       domain = "git.baduhai.dev";
       host = "trantor";
-      public = true;
+      public = false;
     }
     {
       name = "nextcloud";
       domain = "cloud.baduhai.dev";
       host = "alexandria";
-      public = true;
+      public = false;
     }
     {
       name = "jellyfin";
@@ -44,7 +44,7 @@
       name = "pocket-id";
       domain = "auth.baduhai.dev";
       host = "trantor";
-      public = true;
+      public = false;
     }
   ];
 }
